@@ -3,6 +3,7 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { BookOpen, Target, Users } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { ImageZoom } from '@/components/ui/image-zoom';
 
 const highlights = [
   { icon: BookOpen, titleKey: 'about.highlight1.title', descKey: 'about.highlight1.desc' },
@@ -42,10 +43,10 @@ export function AboutSection() {
             <div className="relative w-80 h-80 mx-auto">
               <div className="absolute inset-0 bg-gradient-primary rounded-2xl rotate-6 opacity-20" />
               <div className="absolute inset-0 bg-gradient-card rounded-2xl border border-border overflow-hidden">
-                <img
+                <ImageZoom
                   src="https://avatars.githubusercontent.com/u/119018632?v=4"
                   alt="Roger Varela"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full"
                 />
               </div>
               {/* Decorative Elements */}

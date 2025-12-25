@@ -21,7 +21,21 @@ const hardSkills = [
   { name: 'IoT / Arduino', level: 75 },
   { name: 'ERP Systems', level: 80 },
   { name: 'HelpDesk / Suporte N1', level: 90 },
+  { name: 'Marketing Digital', level: 75 },
 ];
+
+const languageSkills = {
+  pt: [
+    { name: 'Português', level: 'Nativo' },
+    { name: 'Inglês - Básico', level: 'A1-A2' },
+    { name: 'Inglês - Intermediário', level: 'B1' },
+  ],
+  en: [
+    { name: 'Portuguese', level: 'Native' },
+    { name: 'English - Basic', level: 'A1-A2' },
+    { name: 'English - Intermediate', level: 'B1' },
+  ],
+};
 
 const softSkills = {
   pt: [
@@ -134,7 +148,7 @@ export function SkillsSection() {
               {t('skills.soft')}
             </h3>
             
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-3 mb-8">
               {softSkills[language].map((skill, index) => (
                 <motion.span
                   key={index}
@@ -145,6 +159,27 @@ export function SkillsSection() {
                 >
                   {skill}
                 </motion.span>
+              ))}
+            </div>
+
+            {/* Language Skills */}
+            <h3 className="font-heading font-semibold text-xl text-foreground mb-4 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-500" />
+              {language === 'pt' ? 'Idiomas' : 'Languages'}
+            </h3>
+            
+            <div className="flex flex-wrap gap-3 mb-8">
+              {languageSkills[language].map((lang, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ duration: 0.3, delay: 0.4 + index * 0.1 }}
+                  className="px-4 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-medium"
+                >
+                  <span className="font-semibold">{lang.name}</span>
+                  <span className="text-emerald-400/70 ml-2">({lang.level})</span>
+                </motion.div>
               ))}
             </div>
             

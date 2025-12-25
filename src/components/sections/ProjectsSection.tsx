@@ -50,18 +50,6 @@ const projects = [
     isLive: true,
     category: 'revyra',
   },
-  // Journalism Project
-  {
-    name: 'Curta UCS - Jornalismo 2019',
-    description: {
-      pt: 'Projeto audiovisual de jornalismo desenvolvido em 2019, demonstrando habilidades em comunicação e produção de conteúdo.',
-      en: 'Audiovisual journalism project developed in 2019, demonstrating communication and content production skills.',
-    },
-    technologies: ['Jornalismo', 'Produção', 'Audiovisual', 'Comunicação'],
-    github: 'https://www.youtube.com/watch?v=Qnp20Cq433A&t=151s',
-    isVideo: true,
-    category: 'journalism',
-  },
   // Academic Projects
   {
     name: 'Sistema Operacional de Redes',
@@ -185,23 +173,6 @@ export function ProjectsSection() {
           </div>
         </motion.div>
 
-        {/* Journalism Project */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mb-8"
-        >
-          <h3 className="text-xl font-heading font-semibold text-rose-400 flex items-center gap-2 mb-6">
-            <Newspaper className="w-5 h-5" />
-            {language === 'pt' ? 'Projetos de Jornalismo' : 'Journalism Projects'}
-          </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.filter(p => p.category === 'journalism').map((project, index) => (
-              <ProjectCard key={index} project={project} index={index} isInView={isInView} language={language} t={t} techColors={techColors} />
-            ))}
-          </div>
-        </motion.div>
 
         {/* Academic Projects */}
         <motion.div

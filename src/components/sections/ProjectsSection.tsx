@@ -5,39 +5,39 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 
 const projects = [
-  // REVYERA Projects
+  // Rovr Projects
   {
     name: 'Klyexa',
     description: {
-      pt: 'Aplicativo inovador desenvolvido com IA pela REVYERA - Plataforma inteligente para produtividade e automação.',
-      en: 'Innovative app developed with AI by REVYERA - Intelligent platform for productivity and automation.',
+      pt: 'Aplicativo inovador desenvolvido com IA pela Rovr - Plataforma inteligente para produtividade e automação.',
+      en: 'Innovative app developed with AI by Rovr - Intelligent platform for productivity and automation.',
     },
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'AI', 'Lovable'],
     github: 'https://klyexa.lovable.app',
     isLive: true,
-    category: 'revyera',
+    category: 'rovr',
   },
   {
     name: 'Emagrio Transforma Já',
     description: {
-      pt: 'Plataforma de transformação e bem-estar desenvolvida pela REVYERA com foco em resultados.',
-      en: 'Transformation and wellness platform developed by REVYERA focused on results.',
+      pt: 'Plataforma de transformação e bem-estar desenvolvida pela Rovr com foco em resultados.',
+      en: 'Transformation and wellness platform developed by Rovr focused on results.',
     },
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'AI', 'Lovable'],
     github: 'https://emagrio-transforma-ja.lovable.app',
     isLive: true,
-    category: 'revyera',
+    category: 'rovr',
   },
   {
     name: 'Emagrio Journey',
     description: {
-      pt: 'Jornada de emagrecimento personalizada com onboarding inteligente pela REVYERA.',
-      en: 'Personalized weight loss journey with intelligent onboarding by REVYERA.',
+      pt: 'Jornada de emagrecimento personalizada com onboarding inteligente pela Rovr.',
+      en: 'Personalized weight loss journey with intelligent onboarding by Rovr.',
     },
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'UX/UI', 'Lovable'],
     github: 'https://emagrio-journey-unlocked.lovable.app/onboarding',
     isLive: true,
-    category: 'revyera',
+    category: 'rovr',
   },
   {
     name: 'Tratamento Gastrite',
@@ -48,7 +48,7 @@ const projects = [
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Health', 'Lovable'],
     github: 'https://tratamentodiario.lovable.app/tasks',
     isLive: true,
-    category: 'revyera',
+    category: 'rovr',
   },
   {
     name: 'DentiFlow',
@@ -59,7 +59,7 @@ const projects = [
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'AI', 'Vercel'],
     github: 'https://v0-dental-assistant-app.vercel.app/',
     isLive: true,
-    category: 'revyera',
+    category: 'rovr',
   },
   // Academic Projects
   {
@@ -166,7 +166,7 @@ export function ProjectsSection() {
           <p className="section-subtitle mx-auto">{t('projects.subtitle')}</p>
         </motion.div>
 
-        {/* REVYERA Projects */}
+        {/* Rovr Projects */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -175,10 +175,10 @@ export function ProjectsSection() {
         >
           <h3 className="text-xl font-heading font-semibold text-primary flex items-center gap-2 mb-6">
             <Rocket className="w-5 h-5" />
-            {language === 'pt' ? 'Projetos REVYERA' : 'REVYERA Projects'}
+            {language === 'pt' ? 'Projetos Rovr' : 'Rovr Projects'}
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.filter(p => p.category === 'revyera').map((project, index) => (
+            {projects.filter(p => p.category === 'rovr').map((project, index) => (
               <ProjectCard key={index} project={project} index={index} isInView={isInView} language={language} t={t} techColors={techColors} />
             ))}
           </div>
@@ -218,7 +218,7 @@ interface ProjectCardProps {
 function ProjectCard({ project, index, isInView, language, t, techColors }: ProjectCardProps) {
   const getIcon = () => {
     switch (project.category) {
-      case 'revyera': return <Rocket className="w-7 h-7 text-primary-foreground" />;
+      case 'rovr': return <Rocket className="w-7 h-7 text-primary-foreground" />;
       case 'journalism': return <Newspaper className="w-7 h-7 text-primary-foreground" />;
       default: return <Code2 className="w-7 h-7 text-primary-foreground" />;
     }
@@ -226,7 +226,7 @@ function ProjectCard({ project, index, isInView, language, t, techColors }: Proj
 
   const getIconBg = () => {
     switch (project.category) {
-      case 'revyera': return 'bg-gradient-to-br from-primary to-violet-500';
+      case 'rovr': return 'bg-gradient-to-br from-primary to-violet-500';
       case 'journalism': return 'bg-gradient-to-br from-rose-500 to-pink-500';
       default: return 'bg-gradient-primary';
     }
@@ -244,10 +244,10 @@ function ProjectCard({ project, index, isInView, language, t, techColors }: Proj
       className="relative p-6 rounded-2xl bg-gradient-card border border-border/50 hover:border-primary/30 transition-all duration-300 card-glow flex flex-col"
     >
       {/* Category Badge */}
-      {project.category === 'revyera' && (
+      {project.category === 'rovr' && (
         <div className="absolute top-4 right-4">
           <span className="px-2 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary border border-primary/30">
-            REVYERA
+            Rovr
           </span>
         </div>
       )}

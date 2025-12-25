@@ -31,7 +31,7 @@ export default function Contact() {
         availabilityValue: 'Disponível para novos projetos',
       },
       social: 'Redes Sociais',
-      revyera: 'Conheça minha startup',
+      rovr: 'Conheça minha startup',
     },
     en: {
       title: 'Get in Touch',
@@ -52,7 +52,7 @@ export default function Contact() {
         availabilityValue: 'Available for new projects',
       },
       social: 'Social Networks',
-      revyera: 'Check out my startup',
+      rovr: 'Check out my startup',
     },
   };
 
@@ -166,7 +166,7 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* REVYERA Promo */}
+              {/* Rovr Promo */}
               <motion.a
                 href="https://revyera.lovable.app"
                 target="_blank"
@@ -176,8 +176,8 @@ export default function Contact() {
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-primary-foreground/80 mb-1">{t.revyera}</p>
-                    <h4 className="text-2xl font-heading font-bold text-primary-foreground">REVYERA</h4>
+                    <p className="text-sm text-primary-foreground/80 mb-1">{t.rovr}</p>
+                    <h4 className="text-2xl font-heading font-bold text-primary-foreground">Rovr</h4>
                     <p className="text-sm text-primary-foreground/70 mt-1">MicroSaaS & Web Apps</p>
                   </div>
                   <ExternalLink className="w-6 h-6 text-primary-foreground/70 group-hover:text-primary-foreground transition-colors" />

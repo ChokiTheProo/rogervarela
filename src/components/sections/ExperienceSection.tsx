@@ -6,7 +6,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 const experiences = [
   {
     role: { pt: 'CEO & Co-fundador', en: 'CEO & Co-founder' },
-    company: 'REVYERA',
+    company: 'Rovr',
     companyUrl: 'https://revyera.lovable.app',
     location: 'Remoto',
     period: '2024 - 2025',

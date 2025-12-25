@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowLeft, Mail, Linkedin, Github, MapPin, Clock, ExternalLink } from 'lucide-react';
+import { ArrowLeft, Linkedin, Github, MapPin, Clock, ExternalLink, Send } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -115,7 +115,7 @@ export default function Contact() {
                   />
                 </div>
                 <Button variant="hero" size="lg" className="w-full">
-                  <Mail className="w-5 h-5 mr-2" />
+                  <Send className="w-5 h-5 mr-2" />
                   {t.form.send}
                 </Button>
               </form>
@@ -132,17 +132,6 @@ export default function Contact() {
                 <h3 className="text-xl font-heading font-semibold mb-6">{t.info.title}</h3>
                 
                 <div className="space-y-4">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-xl bg-primary/10 text-primary">
-                      <Mail className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">{t.info.email}</p>
-                      <a href="mailto:rogervarelav@gmail.com" className="text-foreground hover:text-primary transition-colors">
-                        rogervarelav@gmail.com
-                      </a>
-                    </div>
-                  </div>
 
                   <div className="flex items-center gap-4">
                     <div className="p-3 rounded-xl bg-primary/10 text-primary">
@@ -203,12 +192,6 @@ export default function Contact() {
                     className="p-4 rounded-xl bg-foreground/10 text-foreground hover:bg-foreground/20 transition-colors"
                   >
                     <Github className="w-6 h-6" />
-                  </a>
-                  <a
-                    href="mailto:rogervarelav@gmail.com"
-                    className="p-4 rounded-xl bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
-                  >
-                    <Mail className="w-6 h-6" />
                   </a>
                 </div>
               </div>

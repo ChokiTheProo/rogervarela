@@ -307,7 +307,8 @@ function ProjectCard({ project, index, isInView, language, t, techColors }: Proj
             href={project.github} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex-1 inline-flex items-center justify-center gap-2 h-9 px-3 rounded-md text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 transition-all"
+            onClick={(e) => e.stopPropagation()}
+            className="flex-1 inline-flex items-center justify-center gap-2 h-10 px-4 rounded-md text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 transition-all cursor-pointer z-10"
           >
             <ExternalLink className="w-4 h-4" />
             {language === 'pt' ? 'Ver Projeto' : 'View Project'}
@@ -317,7 +318,8 @@ function ProjectCard({ project, index, isInView, language, t, techColors }: Proj
             href={project.github} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex-1 inline-flex items-center justify-center gap-2 h-9 px-3 rounded-md text-sm font-medium border border-rose-500/30 text-rose-400 hover:bg-rose-500/10 transition-all"
+            onClick={(e) => e.stopPropagation()}
+            className="flex-1 inline-flex items-center justify-center gap-2 h-10 px-4 rounded-md text-sm font-medium border border-rose-500/30 text-rose-400 hover:bg-rose-500/10 transition-all cursor-pointer z-10"
           >
             <Play className="w-4 h-4" />
             {language === 'pt' ? 'Assistir Vídeo' : 'Watch Video'}
@@ -327,7 +329,8 @@ function ProjectCard({ project, index, isInView, language, t, techColors }: Proj
             href={project.github} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex-1 inline-flex items-center justify-center gap-2 h-9 px-3 rounded-md text-sm font-medium border border-border bg-transparent text-foreground hover:bg-secondary hover:border-primary/50 transition-all"
+            onClick={(e) => e.stopPropagation()}
+            className="flex-1 inline-flex items-center justify-center gap-2 h-10 px-4 rounded-md text-sm font-medium border border-border bg-transparent text-foreground hover:bg-secondary hover:border-primary/50 transition-all cursor-pointer z-10"
           >
             <Github className="w-4 h-4" />
             {t('projects.viewGithub')}

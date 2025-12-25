@@ -12,6 +12,27 @@ const certifications = [
     hours: '1000h',
   },
   {
+    name: { pt: 'Marketing Digital', en: 'Digital Marketing' },
+    institution: 'Curso em Vídeo',
+    year: '2022',
+    type: { pt: 'Certificação', en: 'Certification' },
+    hours: '40h',
+  },
+  {
+    name: { pt: 'Inglês Nível Básico', en: 'Basic English' },
+    institution: 'Curso em Vídeo',
+    year: '2022',
+    type: { pt: 'Certificação', en: 'Certification' },
+    hours: '40h',
+  },
+  {
+    name: { pt: 'Inglês Nível Médio', en: 'Intermediate English' },
+    institution: 'Curso em Vídeo',
+    year: '2023',
+    type: { pt: 'Certificação', en: 'Certification' },
+    hours: '40h',
+  },
+  {
     name: { pt: 'Lógica de Programação', en: 'Programming Logic' },
     institution: 'Flexxo Centro de Capacitação em TI',
     year: '2021',
@@ -45,13 +66,6 @@ const certifications = [
     year: '2023',
     type: { pt: 'Certificação', en: 'Certification' },
     hours: '40h',
-  },
-  {
-    name: { pt: 'Inglês Iniciantes (1-3)', en: 'Beginner English (1-3)' },
-    institution: 'Curso em Vídeo',
-    year: '2022',
-    type: { pt: 'Certificação', en: 'Certification' },
-    hours: '60h',
   },
   {
     name: { pt: 'Desenvolvimento de Aplicativos Mobile', en: 'Mobile App Development' },

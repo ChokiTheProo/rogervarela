@@ -3,6 +3,7 @@ import { ArrowDown, Github, Mail, Briefcase, Download } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { ParticleBackground } from '@/components/ParticleBackground';
+import { Logo3D } from '@/components/Logo3D';
 
 export function HeroSection() {
   const { t, language } = useLanguage();
@@ -67,15 +68,18 @@ export function HeroSection() {
             </span>
           </motion.div>
 
-          <motion.h1
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-4"
+            className="flex items-center justify-center gap-4 mb-4"
           >
-            <span className="text-foreground">Roger </span>
-            <span className="text-gradient">Varela</span>
-          </motion.h1>
+            <Logo3D size="lg" />
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold">
+              <span className="text-foreground">Roger </span>
+              <span className="text-gradient">Varela</span>
+            </h1>
+          </motion.div>
 
           <motion.h2
             initial={{ opacity: 0, y: 30 }}

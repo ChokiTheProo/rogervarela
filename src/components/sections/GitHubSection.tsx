@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { Github, Star, GitFork, Users, Code } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
+import { ImageZoom } from '@/components/ui/image-zoom';
 
 const stats = [
   { icon: Code, value: '6+', labelPt: 'Repositórios', labelEn: 'Repositories' },
@@ -51,13 +52,13 @@ export function GitHubSection() {
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="relative">
                 <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-primary/30">
-                  <img
+                  <ImageZoom
                     src="https://avatars.githubusercontent.com/u/119018632?v=4"
                     alt="GitHub Profile"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full"
                   />
                 </div>
-                <div className="absolute -bottom-2 -right-2 w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center">
+                <div className="absolute -bottom-2 -right-2 w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center pointer-events-none">
                   <Github className="w-4 h-4 text-primary-foreground" />
                 </div>
               </div>

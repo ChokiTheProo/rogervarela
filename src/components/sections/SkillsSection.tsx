@@ -196,7 +196,7 @@ export function SkillsSection() {
                 </div>
                 <div>
                   <h4 className="font-heading font-semibold text-foreground">
-                    CEO @ REVYERA
+                    CEO @ Rovr
                   </h4>
                   <p className="text-sm text-muted-foreground">
                     {language === 'pt'

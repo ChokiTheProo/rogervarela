@@ -1,17 +1,48 @@
 import { motion } from 'framer-motion';
-import { ArrowDown, Github, Mail, Briefcase } from 'lucide-react';
+import { ArrowDown, Github, Mail, Briefcase, Download } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
+import { ParticleBackground } from '@/components/ParticleBackground';
 
 export function HeroSection() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
+      {/* Particle Animation Background */}
+      <ParticleBackground />
+      
       {/* Animated Background Elements */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-glow" />
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '1.5s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
+        
+        {/* Floating Orbs */}
+        <motion.div
+          animate={{
+            y: [0, -30, 0],
+            x: [0, 15, 0],
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute top-20 right-20 w-20 h-20 bg-gradient-to-br from-primary/30 to-accent/30 rounded-full blur-xl"
+        />
+        <motion.div
+          animate={{
+            y: [0, 20, 0],
+            x: [0, -20, 0],
+          }}
+          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+          className="absolute bottom-32 left-16 w-16 h-16 bg-gradient-to-br from-accent/40 to-primary/40 rounded-full blur-xl"
+        />
+        <motion.div
+          animate={{
+            y: [0, -25, 0],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+          className="absolute top-1/3 right-1/4 w-12 h-12 bg-primary/20 rounded-full blur-lg"
+        />
         
         {/* Grid Pattern */}
         <div className="absolute inset-0 opacity-5"
@@ -50,10 +81,19 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl md:text-2xl lg:text-3xl font-heading font-medium text-muted-foreground mb-6"
+            className="text-xl md:text-2xl lg:text-3xl font-heading font-medium text-muted-foreground mb-2"
           >
             {t('hero.title')}
           </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+            className="text-lg text-primary font-medium mb-6"
+          >
+            CEO & {language === 'pt' ? 'Fundador' : 'Founder'} @ <span className="text-gradient font-bold">REVYRA</span>
+          </motion.p>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -68,7 +108,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 flex-wrap"
           >
             <Button variant="hero" size="lg" asChild>
               <a href="#projects">
@@ -88,6 +128,12 @@ export function HeroSection() {
                 {t('hero.cta.contact')}
               </a>
             </Button>
+            <Button variant="glass" size="lg" asChild>
+              <a href="/downloads/curriculo-roger-varela.pdf" download>
+                <Download className="w-5 h-5 mr-2" />
+                {language === 'pt' ? 'Baixar CV' : 'Download CV'}
+              </a>
+            </Button>
           </motion.div>
 
           {/* Stats */}
@@ -95,19 +141,25 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-16 grid grid-cols-3 gap-8 max-w-md mx-auto"
+            className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto"
           >
             {[
-              { value: '6+', label: 'Projetos' },
-              { value: '5+', label: 'Tecnologias' },
-              { value: '100%', label: 'Dedicação' },
+              { value: '6+', label: language === 'pt' ? 'Projetos' : 'Projects' },
+              { value: '10+', label: language === 'pt' ? 'Tecnologias' : 'Technologies' },
+              { value: '3+', label: language === 'pt' ? 'Anos Exp.' : 'Years Exp.' },
+              { value: '🏆', label: language === 'pt' ? 'Premiado' : 'Award Winner' },
             ].map((stat, index) => (
-              <div key={index} className="text-center">
+              <motion.div 
+                key={index} 
+                className="text-center"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+              >
                 <div className="text-3xl md:text-4xl font-heading font-bold text-gradient">
                   {stat.value}
                 </div>
                 <div className="text-sm text-muted-foreground mt-1">{stat.label}</div>
-              </div>
+              </motion.div>
             ))}
           </motion.div>
         </div>

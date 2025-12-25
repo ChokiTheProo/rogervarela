@@ -125,12 +125,14 @@ export function EducationSection() {
                   </p>
 
                   {edu.certificate && (
-                    <Button variant="glass" size="sm" asChild>
-                      <a href="/downloads/certificado-qitec.pdf" download>
-                        <Download className="w-4 h-4 mr-2" />
-                        {language === 'pt' ? 'Baixar Diploma' : 'Download Diploma'}
-                      </a>
-                    </Button>
+                    <div className="flex gap-2">
+                      <Button variant="glass" size="sm" asChild>
+                        <a href="/downloads/certificado-roger.pdf" download>
+                          <Download className="w-4 h-4 mr-2" />
+                          {language === 'pt' ? 'Baixar Certificado' : 'Download Certificate'}
+                        </a>
+                      </Button>
+                    </div>
                   )}
                 </div>
               </motion.div>

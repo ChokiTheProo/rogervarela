@@ -303,26 +303,35 @@ function ProjectCard({ project, index, isInView, language, t, techColors }: Proj
       {/* Actions */}
       <div className="flex gap-3">
         {'isLive' in project && project.isLive ? (
-          <Button variant="default" size="sm" asChild className="flex-1">
-            <a href={project.github} target="_blank" rel="noopener noreferrer">
-              <ExternalLink className="w-4 h-4 mr-2" />
-              {language === 'pt' ? 'Ver Projeto' : 'View Project'}
-            </a>
-          </Button>
+          <a 
+            href={project.github} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex-1 inline-flex items-center justify-center gap-2 h-9 px-3 rounded-md text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 transition-all"
+          >
+            <ExternalLink className="w-4 h-4" />
+            {language === 'pt' ? 'Ver Projeto' : 'View Project'}
+          </a>
         ) : 'isVideo' in project && project.isVideo ? (
-          <Button variant="outline" size="sm" asChild className="flex-1 border-rose-500/30 text-rose-400 hover:bg-rose-500/10">
-            <a href={project.github} target="_blank" rel="noopener noreferrer">
-              <Play className="w-4 h-4 mr-2" />
-              {language === 'pt' ? 'Assistir Vídeo' : 'Watch Video'}
-            </a>
-          </Button>
+          <a 
+            href={project.github} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex-1 inline-flex items-center justify-center gap-2 h-9 px-3 rounded-md text-sm font-medium border border-rose-500/30 text-rose-400 hover:bg-rose-500/10 transition-all"
+          >
+            <Play className="w-4 h-4" />
+            {language === 'pt' ? 'Assistir Vídeo' : 'Watch Video'}
+          </a>
         ) : (
-          <Button variant="outline" size="sm" asChild className="flex-1">
-            <a href={project.github} target="_blank" rel="noopener noreferrer">
-              <Github className="w-4 h-4 mr-2" />
-              {t('projects.viewGithub')}
-            </a>
-          </Button>
+          <a 
+            href={project.github} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex-1 inline-flex items-center justify-center gap-2 h-9 px-3 rounded-md text-sm font-medium border border-border bg-transparent text-foreground hover:bg-secondary hover:border-primary/50 transition-all"
+          >
+            <Github className="w-4 h-4" />
+            {t('projects.viewGithub')}
+          </a>
         )}
       </div>
     </motion.div>

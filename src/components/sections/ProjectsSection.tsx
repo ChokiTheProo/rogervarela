@@ -1,8 +1,7 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Github, ExternalLink, Code2, Play, Rocket, GraduationCap, Newspaper } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Button } from '@/components/ui/button';
 
 const projects = [
   // Rovr Projects
@@ -152,17 +151,57 @@ export function ProjectsSection() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section id="projects" className="py-24 bg-secondary/20">
-      <div className="container mx-auto px-4" ref={ref}>
+    <section id="projects" className="py-24 bg-secondary/20 relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <motion.div
+          animate={{
+            rotate: [0, 360],
+          }}
+          transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
+          className="absolute -top-1/2 -right-1/2 w-full h-full"
+          style={{
+            background: 'conic-gradient(from 0deg, transparent, hsl(var(--primary) / 0.05), transparent)',
+          }}
+        />
+        {/* Floating Code Symbols */}
+        {['</', '/>', '{ }', '( )', '[ ]'].map((symbol, i) => (
+          <motion.div
+            key={i}
+            className="absolute text-2xl font-mono text-primary/10"
+            style={{
+              top: `${10 + i * 20}%`,
+              right: `${5 + i * 15}%`,
+            }}
+            animate={{
+              y: [-30, 30, -30],
+              rotate: [-10, 10, -10],
+              opacity: [0.1, 0.2, 0.1],
+            }}
+            transition={{
+              duration: 5 + i,
+              repeat: Infinity,
+              delay: i * 0.5,
+            }}
+          >
+            {symbol}
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="section-title mb-4">
+          <motion.h2 
+            className="section-title mb-4"
+            whileHover={{ scale: 1.02 }}
+          >
             <span className="text-gradient">{t('projects.title')}</span>
-          </h2>
+          </motion.h2>
           <p className="section-subtitle mx-auto">{t('projects.subtitle')}</p>
         </motion.div>
 
@@ -171,12 +210,20 @@ export function ProjectsSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mb-8"
+          className="mb-12"
         >
-          <h3 className="text-xl font-heading font-semibold text-primary flex items-center gap-2 mb-6">
-            <Rocket className="w-5 h-5" />
+          <motion.h3 
+            className="text-xl font-heading font-semibold text-primary flex items-center gap-2 mb-6"
+            whileHover={{ x: 10 }}
+          >
+            <motion.div
+              animate={{ rotate: [0, 360] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
+            >
+              <Rocket className="w-5 h-5" />
+            </motion.div>
             {language === 'pt' ? 'Projetos Rovr' : 'Rovr Projects'}
-          </h3>
+          </motion.h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.filter(p => p.category === 'rovr').map((project, index) => (
               <ProjectCard key={index} project={project} index={index} isInView={isInView} language={language} t={t} techColors={techColors} />
@@ -184,17 +231,24 @@ export function ProjectsSection() {
           </div>
         </motion.div>
 
-
         {/* Academic Projects */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <h3 className="text-xl font-heading font-semibold text-emerald-400 flex items-center gap-2 mb-6">
-            <GraduationCap className="w-5 h-5" />
+          <motion.h3 
+            className="text-xl font-heading font-semibold text-emerald-400 flex items-center gap-2 mb-6"
+            whileHover={{ x: 10 }}
+          >
+            <motion.div
+              animate={{ y: [0, -5, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <GraduationCap className="w-5 h-5" />
+            </motion.div>
             {language === 'pt' ? 'Projetos Acadêmicos' : 'Academic Projects'}
-          </h3>
+          </motion.h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.filter(p => p.category === 'academic').map((project, index) => (
               <ProjectCard key={index} project={project} index={index} isInView={isInView} language={language} t={t} techColors={techColors} />
@@ -216,6 +270,8 @@ interface ProjectCardProps {
 }
 
 function ProjectCard({ project, index, isInView, language, t, techColors }: ProjectCardProps) {
+  const [isHovered, setIsHovered] = useState(false);
+
   const getIcon = () => {
     switch (project.category) {
       case 'rovr': return <Rocket className="w-7 h-7 text-primary-foreground" />;
@@ -232,91 +288,131 @@ function ProjectCard({ project, index, isInView, language, t, techColors }: Proj
     }
   };
 
-  const handleVideoClick = () => {
-    window.open(project.github, '_blank', 'noopener,noreferrer');
-  };
-
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="relative p-6 rounded-2xl bg-gradient-card border border-border/50 hover:border-primary/30 transition-all duration-300 card-glow flex flex-col"
+      initial={{ opacity: 0, y: 30, rotateX: -15 }}
+      animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
+      transition={{ 
+        duration: 0.5, 
+        delay: index * 0.1,
+        type: 'spring',
+        stiffness: 80
+      }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      whileHover={{ 
+        y: -10,
+        rotateY: 5,
+        rotateX: -5,
+      }}
+      className="relative p-6 rounded-2xl bg-gradient-card border border-border/50 transition-all duration-300 flex flex-col cursor-pointer"
+      style={{ 
+        perspective: '1000px',
+        transformStyle: 'preserve-3d',
+        boxShadow: isHovered 
+          ? '0 25px 50px -12px hsl(var(--primary) / 0.25), 0 0 30px -10px hsl(var(--primary) / 0.2)' 
+          : 'none'
+      }}
     >
+      {/* Glow Effect on Hover */}
+      <motion.div
+        className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 opacity-0"
+        animate={{ opacity: isHovered ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+      />
+
       {/* Category Badge */}
       {project.category === 'rovr' && (
-        <div className="absolute top-4 right-4">
+        <motion.div 
+          className="absolute top-4 right-4"
+          style={{ transform: 'translateZ(20px)' }}
+          animate={isHovered ? { scale: 1.1, rotate: 5 } : {}}
+        >
           <span className="px-2 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary border border-primary/30">
             Rovr
           </span>
-        </div>
-      )}
-      {'isVideo' in project && project.isVideo && (
-        <div className="absolute top-4 right-4">
-          <span className="px-2 py-1 text-xs font-medium rounded-full bg-rose-500/20 text-rose-400 border border-rose-500/30">
-            YouTube
-          </span>
-        </div>
+        </motion.div>
       )}
 
-      {/* Project Icon */}
-      <div className={`w-14 h-14 rounded-xl ${getIconBg()} flex items-center justify-center mb-4 hover:scale-110 transition-transform`}>
+      {/* Project Icon with 3D Effect */}
+      <motion.div 
+        className={`w-14 h-14 rounded-xl ${getIconBg()} flex items-center justify-center mb-4 relative z-10`}
+        style={{ transform: 'translateZ(30px)' }}
+        animate={isHovered ? { 
+          rotateY: 360,
+          scale: 1.1,
+        } : {}}
+        transition={{ duration: 0.6 }}
+      >
         {getIcon()}
-      </div>
+      </motion.div>
 
-      <h3 className="font-heading font-semibold text-lg text-foreground mb-3">
+      <motion.h3 
+        className="font-heading font-semibold text-lg text-foreground mb-3 relative z-10"
+        style={{ transform: 'translateZ(25px)' }}
+        animate={isHovered ? { x: 5 } : { x: 0 }}
+      >
         {project.name}
-      </h3>
+      </motion.h3>
 
-      <p className="text-sm text-muted-foreground mb-4 flex-grow">
+      <motion.p 
+        className="text-sm text-muted-foreground mb-4 flex-grow relative z-10"
+        style={{ transform: 'translateZ(20px)' }}
+      >
         {project.description[language]}
-      </p>
+      </motion.p>
 
-      {/* Technologies */}
-      <div className="flex flex-wrap gap-2 mb-6">
+      {/* Technologies with stagger animation */}
+      <div className="flex flex-wrap gap-2 mb-6 relative z-10" style={{ transform: 'translateZ(15px)' }}>
         {project.technologies.map((tech, i) => (
-          <span
+          <motion.span
             key={i}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ delay: index * 0.1 + i * 0.05 }}
+            whileHover={{ scale: 1.1, y: -2 }}
             className={`px-2 py-1 text-xs rounded-md border ${
               techColors[tech] || 'bg-primary/20 text-primary border-primary/30'
             }`}
           >
             {tech}
-          </span>
+          </motion.span>
         ))}
       </div>
 
       {/* Actions */}
-      <div className="flex gap-3 relative z-20">
+      <div className="flex gap-3 relative z-20" style={{ transform: 'translateZ(10px)' }}>
         {'isLive' in project && project.isLive ? (
-          <a 
+          <motion.a 
             href={project.github} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex-1 inline-flex items-center justify-center gap-2 h-10 px-4 rounded-md text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 transition-all"
+            className="flex-1 inline-flex items-center justify-center gap-2 h-10 px-4 rounded-md text-sm font-medium bg-primary text-primary-foreground transition-all"
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: '0 10px 30px -10px hsl(var(--primary) / 0.5)'
+            }}
+            whileTap={{ scale: 0.95 }}
           >
             <ExternalLink className="w-4 h-4" />
             {language === 'pt' ? 'Ver Projeto' : 'View Project'}
-          </a>
-        ) : 'isVideo' in project && project.isVideo ? (
-          <button 
-            type="button"
-            onClick={handleVideoClick}
-            className="flex-1 inline-flex items-center justify-center gap-2 h-10 px-4 rounded-md text-sm font-medium border border-rose-500/30 text-rose-400 hover:bg-rose-500/10 transition-all"
-          >
-            <Play className="w-4 h-4" />
-            {language === 'pt' ? 'Assistir Vídeo' : 'Watch Video'}
-          </button>
+          </motion.a>
         ) : (
-          <a 
+          <motion.a 
             href={project.github} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex-1 inline-flex items-center justify-center gap-2 h-10 px-4 rounded-md text-sm font-medium border border-border bg-transparent text-foreground hover:bg-secondary hover:border-primary/50 transition-all"
+            className="flex-1 inline-flex items-center justify-center gap-2 h-10 px-4 rounded-md text-sm font-medium border border-border bg-transparent text-foreground transition-all"
+            whileHover={{ 
+              scale: 1.05,
+              borderColor: 'hsl(var(--primary) / 0.5)',
+              backgroundColor: 'hsl(var(--secondary))'
+            }}
+            whileTap={{ scale: 0.95 }}
           >
             <Github className="w-4 h-4" />
             {t('projects.viewGithub')}
-          </a>
+          </motion.a>
         )}
       </div>
     </motion.div>

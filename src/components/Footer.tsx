@@ -51,8 +51,8 @@ export function Footer() {
             </h3>
             <p className="text-muted-foreground mb-4 max-w-md">
               {language === 'pt' 
-                ? 'Desenvolvedor Full Stack apaixonado por criar soluções inovadoras. CEO & Co-fundador da REVYRA.'
-                : 'Full Stack Developer passionate about creating innovative solutions. CEO & Co-founder of REVYRA.'
+                ? 'Desenvolvedor Full Stack apaixonado por criar soluções inovadoras. CEO & Co-fundador da REVYERA.'
+                : 'Full Stack Developer passionate about creating innovative solutions. CEO & Co-founder of REVYERA.'
               }
             </p>
             
@@ -62,14 +62,14 @@ export function Footer() {
               <span>Brasil</span>
             </div>
             
-            {/* REVYRA Banner */}
+            {/* REVYERA Banner */}
             <a
               href="https://revyera.lovable.app"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-4 py-3 rounded-xl bg-gradient-primary hover:opacity-90 transition-opacity group"
             >
-              <span className="text-primary-foreground font-bold">REVYRA</span>
+              <span className="text-primary-foreground font-bold">REVYERA</span>
               <span className="text-primary-foreground/70 text-sm">MicroSaaS & Apps</span>
               <ExternalLink className="w-4 h-4 text-primary-foreground/70 group-hover:text-primary-foreground transition-colors" />
             </a>
@@ -163,7 +163,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="text-gradient font-semibold hover:opacity-80 transition-opacity"
               >
-                REVYRA
+                REVYERA
               </a>
             </div>
           </div>

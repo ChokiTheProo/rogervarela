@@ -74,12 +74,15 @@ export function GitHubSection() {
                 </p>
               </div>
 
-              <Button variant="hero" size="lg" asChild>
-                <a href="https://github.com/ChokiTheProo" target="_blank" rel="noopener noreferrer">
-                  <Github className="w-5 h-5 mr-2" />
-                  {t('github.viewProfile')}
-                </a>
-              </Button>
+              <a 
+                href="https://github.com/ChokiTheProo" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-lg text-base font-semibold bg-gradient-to-r from-primary to-accent text-primary-foreground hover:opacity-90 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-300"
+              >
+                <Github className="w-5 h-5" />
+                {t('github.viewProfile')}
+              </a>
             </div>
           </motion.div>
 

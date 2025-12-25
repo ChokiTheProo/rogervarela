@@ -1,10 +1,30 @@
-import { Heart, Github, Linkedin, Mail, ExternalLink } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Heart, Github, Linkedin, Mail, ExternalLink, MapPin } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export function Footer() {
   const { t, language } = useLanguage();
   const currentYear = new Date().getFullYear();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleSectionClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   const quickLinks = [
     { href: '#about', label: language === 'pt' ? 'Sobre' : 'About' },
@@ -29,12 +49,18 @@ export function Footer() {
             <h3 className="text-2xl font-heading font-bold mb-4">
               Roger <span className="text-gradient">Varela</span>
             </h3>
-            <p className="text-muted-foreground mb-6 max-w-md">
+            <p className="text-muted-foreground mb-4 max-w-md">
               {language === 'pt' 
                 ? 'Desenvolvedor Full Stack apaixonado por criar soluções inovadoras. CEO & Co-fundador da REVYRA.'
                 : 'Full Stack Developer passionate about creating innovative solutions. CEO & Co-founder of REVYRA.'
               }
             </p>
+            
+            {/* Location */}
+            <div className="flex items-center gap-2 text-muted-foreground mb-6">
+              <MapPin className="w-4 h-4 text-primary" />
+              <span>Brasil</span>
+            </div>
             
             {/* REVYRA Banner */}
             <a
@@ -59,7 +85,8 @@ export function Footer() {
                 <li key={link.href}>
                   <a 
                     href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors"
+                    onClick={(e) => handleSectionClick(e, link.href)}
+                    className="text-muted-foreground hover:text-primary transition-colors cursor-pointer"
                   >
                     {link.label}
                   </a>

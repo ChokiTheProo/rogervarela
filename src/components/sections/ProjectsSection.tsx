@@ -314,16 +314,17 @@ function ProjectCard({ project, index, isInView, language, t, techColors }: Proj
             {language === 'pt' ? 'Ver Projeto' : 'View Project'}
           </a>
         ) : 'isVideo' in project && project.isVideo ? (
-          <a 
-            href={project.github} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
+          <button 
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              window.open(project.github, '_blank', 'noopener,noreferrer');
+            }}
             className="flex-1 inline-flex items-center justify-center gap-2 h-10 px-4 rounded-md text-sm font-medium border border-rose-500/30 text-rose-400 hover:bg-rose-500/10 transition-all cursor-pointer z-10"
           >
             <Play className="w-4 h-4" />
             {language === 'pt' ? 'Assistir Vídeo' : 'Watch Video'}
-          </a>
+          </button>
         ) : (
           <a 
             href={project.github} 

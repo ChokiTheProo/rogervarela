@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { Trophy, Medal, ExternalLink, Download } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
+import { ImageZoom } from '@/components/ui/image-zoom';
 import qitecProject from '@/assets/qitec-project.png';
 import qitecAward from '@/assets/qitec-award.png';
 
@@ -50,15 +51,14 @@ export function AwardsSection() {
                 initial={{ opacity: 0, x: -30 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="relative group"
+                className="relative"
               >
                 <div className="relative rounded-2xl overflow-hidden border border-border/50">
-                  <img 
+                  <ImageZoom 
                     src={qitecProject} 
                     alt="QITEC 2023 Project Presentation"
-                    className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-auto"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
                 <p className="text-center text-sm text-muted-foreground mt-3">
                   {language === 'pt' ? 'Apresentação do projeto na QITEC 2023' : 'Project presentation at QITEC 2023'}
@@ -70,15 +70,14 @@ export function AwardsSection() {
                 initial={{ opacity: 0, x: 30 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="relative group"
+                className="relative"
               >
                 <div className="relative rounded-2xl overflow-hidden border border-border/50">
-                  <img 
+                  <ImageZoom 
                     src={qitecAward} 
                     alt="QITEC 2023 Bronze Medal Award Ceremony"
-                    className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-auto"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
                 <p className="text-center text-sm text-muted-foreground mt-3">
                   {language === 'pt' ? 'Cerimônia de premiação - Medalha de Bronze' : 'Award ceremony - Bronze Medal'}

@@ -39,7 +39,7 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    // Send email to Roger (portfolio owner)
+    // Send email to Roger (portfolio owner) - using roger1robson2@gmail.com as it's the verified Resend email
     const emailToOwnerResponse = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -48,7 +48,7 @@ const handler = async (req: Request): Promise<Response> => {
       },
       body: JSON.stringify({
         from: "Portfolio Contact <onboarding@resend.dev>",
-        to: ["rogervarelav@gmail.com"],
+        to: ["roger1robson2@gmail.com"],
         subject: `Nova mensagem de contato de ${name}`,
         html: `
           <!DOCTYPE html>
@@ -103,60 +103,14 @@ const handler = async (req: Request): Promise<Response> => {
       throw new Error(emailToOwnerData.message || "Failed to send email to owner");
     }
 
-    // Send confirmation email to the sender
-    const confirmationResponse = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${RESEND_API_KEY}`,
-      },
-      body: JSON.stringify({
-        from: "Roger Varela <onboarding@resend.dev>",
-        to: [email],
-        subject: "Obrigado pelo contato!",
-        html: `
-          <!DOCTYPE html>
-          <html>
-          <head>
-            <style>
-              body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0f0f23; color: #ffffff; padding: 20px; }
-              .container { max-width: 600px; margin: 0 auto; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border-radius: 16px; padding: 32px; border: 1px solid #a855f7; }
-              .header { text-align: center; margin-bottom: 24px; }
-              .header h1 { color: #a855f7; margin: 0; font-size: 24px; }
-              .content { text-align: center; padding: 24px; }
-              .content p { color: #e0e0e0; line-height: 1.6; }
-              .highlight { color: #a855f7; font-weight: 600; }
-              .footer { text-align: center; margin-top: 24px; color: #888; font-size: 12px; }
-            </style>
-          </head>
-          <body>
-            <div class="container">
-              <div class="header">
-                <h1>✨ Mensagem Recebida!</h1>
-              </div>
-              <div class="content">
-                <p>Olá <span class="highlight">${name}</span>,</p>
-                <p>Muito obrigado por entrar em contato! Recebi sua mensagem e responderei o mais breve possível.</p>
-                <p>Agradeço pelo interesse!</p>
-                <p style="margin-top: 24px;">Atenciosamente,<br><span class="highlight">Roger Varela</span></p>
-              </div>
-              <div class="footer">
-                <p>Este é um email automático, por favor não responda.</p>
-              </div>
-            </div>
-          </body>
-          </html>
-        `,
-      }),
-    });
-
-    const confirmationData = await confirmationResponse.json();
-    console.log("Confirmation email sent:", confirmationData);
+    // Note: Confirmation email to sender is disabled because Resend requires a verified domain
+    // to send emails to addresses other than the account owner's email
+    console.log("Email sent successfully to owner. Confirmation email skipped (requires verified domain).");
 
     return new Response(
       JSON.stringify({ 
         success: true, 
-        message: "Emails sent successfully" 
+        message: "Email sent successfully" 
       }), 
       {
         status: 200,

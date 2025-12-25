@@ -39,15 +39,26 @@ const projects = [
     isLive: true,
     category: 'revyra',
   },
+  {
+    name: 'Tratamento Gastrite',
+    description: {
+      pt: 'Aplicativo de acompanhamento diário para tratamento de gastrite e saúde digestiva.',
+      en: 'Daily tracking app for gastritis treatment and digestive health.',
+    },
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Health', 'Lovable'],
+    github: 'https://tratamentodiario.lovable.app/tasks',
+    isLive: true,
+    category: 'revyra',
+  },
   // Journalism Project
   {
-    name: 'Projeto de Jornalismo 2019',
+    name: 'Curta UCS - Jornalismo 2019',
     description: {
       pt: 'Projeto audiovisual de jornalismo desenvolvido em 2019, demonstrando habilidades em comunicação e produção de conteúdo.',
       en: 'Audiovisual journalism project developed in 2019, demonstrating communication and content production skills.',
     },
     technologies: ['Jornalismo', 'Produção', 'Audiovisual', 'Comunicação'],
-    github: 'https://www.youtube.com/watch?v=Qnp20Cq433A',
+    github: 'https://www.youtube.com/watch?v=Qnp20Cq433A&t=151s',
     isVideo: true,
     category: 'journalism',
   },

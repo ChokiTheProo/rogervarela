@@ -4,6 +4,7 @@ import { Menu, X } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { LanguageToggle } from './LanguageToggle';
 import { Button } from './ui/button';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const navItems = [
   { key: 'about', href: '#about' },
@@ -18,6 +19,8 @@ export function Header() {
   const { t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +29,35 @@ export function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setIsMobileMenuOpen(false);
+    
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    if (location.pathname !== '/') {
+      navigate('/');
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   return (
     <motion.header
@@ -38,7 +70,8 @@ export function Header() {
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         <motion.a
-          href="#"
+          href="/"
+          onClick={handleLogoClick}
           className="text-2xl font-heading font-bold text-gradient"
           whileHover={{ scale: 1.05 }}
         >
@@ -51,7 +84,8 @@ export function Header() {
             <motion.a
               key={item.key}
               href={item.href}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
+              onClick={(e) => handleNavClick(e, item.href)}
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group cursor-pointer"
               whileHover={{ y: -2 }}
             >
               {t(`nav.${item.key}`)}
@@ -89,11 +123,11 @@ export function Header() {
                 <motion.a
                   key={item.key}
                   href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary/50 px-4 py-3 rounded-lg transition-all"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary/50 px-4 py-3 rounded-lg transition-all cursor-pointer"
                 >
                   {t(`nav.${item.key}`)}
                 </motion.a>

@@ -38,7 +38,7 @@ const translations: Record<Language, Record<string, string>> = {
     
     // Certifications
     'certs.title': 'Certificações & Cursos',
-    'certs.subtitle': 'Formação acadêmica e certificações profissionais que fundamentam minha expertise técnica.',
+    'certs.subtitle': 'Trajetória acadêmica e qualificações profissionais que sustentam minha atuação no mercado.',
     
     // Experience
     'exp.title': 'Experiência Profissional',

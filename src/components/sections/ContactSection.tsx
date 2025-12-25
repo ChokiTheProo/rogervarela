@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { Mail, MapPin, Clock, Linkedin, Github, Send, CheckCircle } from 'lucide-react';
+import { MapPin, Clock, Linkedin, Github, Send, CheckCircle } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -119,12 +119,6 @@ export function ContactSection() {
   };
 
   const contactInfo = [
-    {
-      icon: Mail,
-      label: t('contact.info.email'),
-      value: 'roger1robson2@gmail.com',
-      href: 'mailto:roger1robson2@gmail.com',
-    },
     {
       icon: MapPin,
       label: t('contact.info.location'),
@@ -281,16 +275,7 @@ export function ContactSection() {
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground mb-1">{info.label}</p>
-                    {info.href ? (
-                      <a
-                        href={info.href}
-                        className="text-foreground font-medium hover:text-primary transition-colors"
-                      >
-                        {info.value}
-                      </a>
-                    ) : (
-                      <p className="text-foreground font-medium">{info.value}</p>
-                    )}
+                    <p className="text-foreground font-medium">{info.value}</p>
                   </div>
                 </div>
               </motion.div>

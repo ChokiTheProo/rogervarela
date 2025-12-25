@@ -50,6 +50,17 @@ const projects = [
     isLive: true,
     category: 'revyra',
   },
+  {
+    name: 'DentiFlow',
+    description: {
+      pt: 'Assistente dental inteligente para gestão de clínicas e atendimento odontológico.',
+      en: 'Intelligent dental assistant for clinic management and dental care.',
+    },
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'AI', 'Vercel'],
+    github: 'https://v0-dental-assistant-app.vercel.app/',
+    isLive: true,
+    category: 'revyra',
+  },
   // Academic Projects
   {
     name: 'Sistema Operacional de Redes',

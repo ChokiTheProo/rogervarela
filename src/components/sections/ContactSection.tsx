@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 export function ContactSection() {
   const { t, language } = useLanguage();
@@ -32,6 +33,9 @@ export function ContactSection() {
     if (!formData.name.trim()) {
       newErrors.name = language === 'pt' ? 'Nome é obrigatório' : 'Name is required';
       isValid = false;
+    } else if (formData.name.trim().length > 100) {
+      newErrors.name = language === 'pt' ? 'Nome muito longo (máx 100 caracteres)' : 'Name too long (max 100 characters)';
+      isValid = false;
     }
 
     if (!formData.email.trim()) {
@@ -40,6 +44,9 @@ export function ContactSection() {
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = language === 'pt' ? 'Email inválido' : 'Invalid email';
       isValid = false;
+    } else if (formData.email.trim().length > 255) {
+      newErrors.email = language === 'pt' ? 'Email muito longo' : 'Email too long';
+      isValid = false;
     }
 
     if (!formData.message.trim()) {
@@ -47,6 +54,9 @@ export function ContactSection() {
       isValid = false;
     } else if (formData.message.trim().length < 10) {
       newErrors.message = language === 'pt' ? 'Mensagem muito curta (mínimo 10 caracteres)' : 'Message too short (min 10 characters)';
+      isValid = false;
+    } else if (formData.message.trim().length > 1000) {
+      newErrors.message = language === 'pt' ? 'Mensagem muito longa (máx 1000 caracteres)' : 'Message too long (max 1000 characters)';
       isValid = false;
     }
 
@@ -63,22 +73,40 @@ export function ContactSection() {
 
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSuccess(true);
-    toast({
-      title: language === 'pt' ? '✅ Mensagem enviada com sucesso!' : '✅ Message sent successfully!',
-      description: language === 'pt' 
-        ? 'Obrigado pelo contato. Retornarei em breve!' 
-        : 'Thank you for reaching out. I will get back to you soon!',
-    });
-    
-    setIsSubmitting(false);
-    setFormData({ name: '', email: '', message: '' });
-    
-    // Reset success state after 5 seconds
-    setTimeout(() => setIsSuccess(false), 5000);
+    try {
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: {
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          message: formData.message.trim()
+        }
+      });
+
+      if (error) {
+        throw error;
+      }
+      
+      setIsSuccess(true);
+      toast({
+        title: language === 'pt' ? '✅ Mensagem enviada com sucesso!' : '✅ Message sent successfully!',
+        description: language === 'pt' 
+          ? 'Obrigado pelo contato. Retornarei em breve!' 
+          : 'Thank you for reaching out. I will get back to you soon!',
+      });
+      
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error: any) {
+      console.error('Error sending message:', error);
+      toast({
+        title: language === 'pt' ? '❌ Erro ao enviar mensagem' : '❌ Error sending message',
+        description: language === 'pt' 
+          ? 'Tente novamente mais tarde ou entre em contato por email.' 
+          : 'Please try again later or contact via email.',
+        variant: 'destructive'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

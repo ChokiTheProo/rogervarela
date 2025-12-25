@@ -3,25 +3,29 @@ import { useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const hardSkills = [
-  { name: 'HTML5', level: 90 },
-  { name: 'CSS3', level: 85 },
-  { name: 'JavaScript', level: 80 },
-  { name: 'React', level: 75 },
-  { name: 'TypeScript', level: 70 },
+  { name: 'React / Next.js', level: 85 },
+  { name: 'TypeScript', level: 85 },
+  { name: 'JavaScript', level: 90 },
+  { name: 'HTML5 / CSS3', level: 95 },
+  { name: 'Tailwind CSS', level: 90 },
+  { name: 'Node.js', level: 75 },
   { name: 'PHP', level: 75 },
-  { name: 'MySQL', level: 80 },
-  { name: 'PostgreSQL', level: 70 },
-  { name: 'Flutter/Dart', level: 70 },
+  { name: 'PostgreSQL / MySQL', level: 80 },
+  { name: 'Supabase', level: 85 },
+  { name: 'Flutter / Dart', level: 70 },
   { name: 'Kotlin', level: 65 },
-  { name: 'Git/GitHub', level: 85 },
-  { name: 'Linux', level: 75 },
-  { name: 'Windows Server', level: 70 },
-  { name: 'Networking', level: 75 },
-  { name: 'IoT', level: 65 },
+  { name: 'Git / GitHub', level: 90 },
+  { name: 'Linux', level: 80 },
+  { name: 'Windows Server', level: 75 },
+  { name: 'Networking / TCP-IP', level: 80 },
+  { name: 'IoT / Arduino', level: 75 },
+  { name: 'ERP Systems', level: 80 },
+  { name: 'HelpDesk / Suporte N1', level: 90 },
 ];
 
 const softSkills = {
   pt: [
+    'Liderança',
     'Comunicação Efetiva',
     'Trabalho em Equipe',
     'Resolução de Problemas',
@@ -32,8 +36,10 @@ const softSkills = {
     'Proatividade',
     'Aprendizado Contínuo',
     'Atenção aos Detalhes',
+    'Empreendedorismo',
   ],
   en: [
+    'Leadership',
     'Effective Communication',
     'Teamwork',
     'Problem Solving',
@@ -44,7 +50,23 @@ const softSkills = {
     'Proactivity',
     'Continuous Learning',
     'Attention to Detail',
+    'Entrepreneurship',
   ],
+};
+
+const categories = {
+  pt: {
+    frontend: 'Frontend',
+    backend: 'Backend',
+    infrastructure: 'Infraestrutura',
+    other: 'Outros',
+  },
+  en: {
+    frontend: 'Frontend',
+    backend: 'Backend',
+    infrastructure: 'Infrastructure',
+    other: 'Other',
+  },
 };
 
 export function SkillsSection() {
@@ -92,7 +114,7 @@ export function SkillsSection() {
                     <motion.div
                       initial={{ width: 0 }}
                       animate={isInView ? { width: `${skill.level}%` } : {}}
-                      transition={{ duration: 0.8, delay: 0.2 + index * 0.05 }}
+                      transition={{ duration: 0.8, delay: 0.2 + index * 0.03 }}
                       className="h-full rounded-full bg-gradient-primary"
                     />
                   </div>
@@ -126,11 +148,35 @@ export function SkillsSection() {
               ))}
             </div>
             
-            {/* Decorative Element */}
-            <div className="mt-12 p-6 rounded-2xl bg-gradient-card border border-border/50">
+            {/* CEO Badge */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="mt-8 p-6 rounded-2xl bg-gradient-card border border-primary/30"
+            >
               <div className="flex items-center gap-4">
                 <div className="w-16 h-16 rounded-xl bg-gradient-primary flex items-center justify-center text-3xl">
                   🚀
+                </div>
+                <div>
+                  <h4 className="font-heading font-semibold text-foreground">
+                    CEO @ REVYRA
+                  </h4>
+                  <p className="text-sm text-muted-foreground">
+                    {language === 'pt'
+                      ? 'Criando MicroSaaS e soluções inovadoras para o mercado'
+                      : 'Creating MicroSaaS and innovative solutions for the market'}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+            
+            {/* Decorative Element */}
+            <div className="mt-6 p-6 rounded-2xl bg-gradient-card border border-border/50">
+              <div className="flex items-center gap-4">
+                <div className="w-16 h-16 rounded-xl bg-accent/20 flex items-center justify-center text-3xl">
+                  📚
                 </div>
                 <div>
                   <h4 className="font-heading font-semibold text-foreground">

@@ -122,8 +122,8 @@ export function ContactSection() {
     {
       icon: Mail,
       label: t('contact.info.email'),
-      value: 'rogervarelav@gmail.com',
-      href: 'mailto:rogervarelav@gmail.com',
+      value: 'roger1robson2@gmail.com',
+      href: 'mailto:roger1robson2@gmail.com',
     },
     {
       icon: MapPin,

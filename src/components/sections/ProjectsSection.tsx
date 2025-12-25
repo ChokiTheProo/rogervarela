@@ -250,12 +250,16 @@ function ProjectCard({ project, index, isInView, language, t, techColors }: Proj
     }
   };
 
+  const handleVideoClick = () => {
+    window.open(project.github, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative p-6 rounded-2xl bg-gradient-card border border-border/50 hover:border-primary/30 transition-all duration-300 card-glow flex flex-col"
+      className="relative p-6 rounded-2xl bg-gradient-card border border-border/50 hover:border-primary/30 transition-all duration-300 card-glow flex flex-col"
     >
       {/* Category Badge */}
       {project.category === 'revyra' && (
@@ -274,7 +278,7 @@ function ProjectCard({ project, index, isInView, language, t, techColors }: Proj
       )}
 
       {/* Project Icon */}
-      <div className={`w-14 h-14 rounded-xl ${getIconBg()} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+      <div className={`w-14 h-14 rounded-xl ${getIconBg()} flex items-center justify-center mb-4 hover:scale-110 transition-transform`}>
         {getIcon()}
       </div>
 
@@ -301,26 +305,22 @@ function ProjectCard({ project, index, isInView, language, t, techColors }: Proj
       </div>
 
       {/* Actions */}
-      <div className="flex gap-3">
+      <div className="flex gap-3 relative z-20">
         {'isLive' in project && project.isLive ? (
           <a 
             href={project.github} 
             target="_blank" 
             rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            className="flex-1 inline-flex items-center justify-center gap-2 h-10 px-4 rounded-md text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 transition-all cursor-pointer z-10"
+            className="flex-1 inline-flex items-center justify-center gap-2 h-10 px-4 rounded-md text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 transition-all"
           >
             <ExternalLink className="w-4 h-4" />
             {language === 'pt' ? 'Ver Projeto' : 'View Project'}
           </a>
         ) : 'isVideo' in project && project.isVideo ? (
           <button 
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              window.open(project.github, '_blank', 'noopener,noreferrer');
-            }}
-            className="flex-1 inline-flex items-center justify-center gap-2 h-10 px-4 rounded-md text-sm font-medium border border-rose-500/30 text-rose-400 hover:bg-rose-500/10 transition-all cursor-pointer z-10"
+            type="button"
+            onClick={handleVideoClick}
+            className="flex-1 inline-flex items-center justify-center gap-2 h-10 px-4 rounded-md text-sm font-medium border border-rose-500/30 text-rose-400 hover:bg-rose-500/10 transition-all"
           >
             <Play className="w-4 h-4" />
             {language === 'pt' ? 'Assistir Vídeo' : 'Watch Video'}
@@ -330,8 +330,7 @@ function ProjectCard({ project, index, isInView, language, t, techColors }: Proj
             href={project.github} 
             target="_blank" 
             rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            className="flex-1 inline-flex items-center justify-center gap-2 h-10 px-4 rounded-md text-sm font-medium border border-border bg-transparent text-foreground hover:bg-secondary hover:border-primary/50 transition-all cursor-pointer z-10"
+            className="flex-1 inline-flex items-center justify-center gap-2 h-10 px-4 rounded-md text-sm font-medium border border-border bg-transparent text-foreground hover:bg-secondary hover:border-primary/50 transition-all"
           >
             <Github className="w-4 h-4" />
             {t('projects.viewGithub')}

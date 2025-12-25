@@ -92,7 +92,7 @@ export function HeroSection() {
             transition={{ duration: 0.6, delay: 0.25 }}
             className="text-lg text-primary font-medium mb-6"
           >
-            CEO & {language === 'pt' ? 'Co-fundador' : 'Co-founder'} @ <a href="https://revyera.lovable.app" target="_blank" rel="noopener noreferrer" className="text-gradient font-bold hover:opacity-80 transition-opacity">REVYRA</a>
+            CEO & {language === 'pt' ? 'Co-fundador' : 'Co-founder'} @ <a href="https://revyera.lovable.app" target="_blank" rel="noopener noreferrer" className="text-gradient font-bold hover:opacity-80 transition-opacity">REVYERA</a>
           </motion.p>
 
           <motion.p

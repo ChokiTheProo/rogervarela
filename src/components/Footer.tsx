@@ -1,4 +1,4 @@
-import { Heart, Github, Linkedin, Mail, ExternalLink, MapPin } from 'lucide-react';
+import { Heart, Github, Linkedin, ExternalLink, MapPin } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Logo3D } from '@/components/Logo3D';
@@ -200,15 +200,6 @@ export function Footer() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Github className="w-5 h-5" />
-              </motion.a>
-              <motion.a
-                href="mailto:rogervarelav@gmail.com"
-                className="p-2 rounded-lg bg-primary/10 text-primary"
-                aria-label="Email"
-                whileHover={{ scale: 1.1, backgroundColor: 'hsl(var(--primary) / 0.3)' }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Mail className="w-5 h-5" />
               </motion.a>
             </div>
           </motion.div>

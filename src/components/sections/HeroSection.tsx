@@ -1,61 +1,23 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowDown, Github, Mail, Briefcase, Download } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { ParticleBackground } from '@/components/ParticleBackground';
 import { Logo3D } from '@/components/Logo3D';
-import { useRef } from 'react';
 
 export function HeroSection() {
   const { t, language } = useLanguage();
-  const ref = useRef<HTMLElement>(null);
-  
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start start', 'end start'],
-  });
-
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
-  const textY = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
       {/* Particle Animation Background */}
       <ParticleBackground />
       
-      {/* Parallax Background Elements */}
-      <motion.div style={{ y: backgroundY }} className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-glow" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '1.5s' }} />
+      {/* Simplified Background - static elements for better performance */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
-        
-        {/* Floating Orbs */}
-        <motion.div
-          animate={{
-            y: [0, -30, 0],
-            x: [0, 15, 0],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-20 right-20 w-20 h-20 bg-gradient-to-br from-primary/30 to-accent/30 rounded-full blur-xl"
-        />
-        <motion.div
-          animate={{
-            y: [0, 20, 0],
-            x: [0, -20, 0],
-          }}
-          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-          className="absolute bottom-32 left-16 w-16 h-16 bg-gradient-to-br from-accent/40 to-primary/40 rounded-full blur-xl"
-        />
-        <motion.div
-          animate={{
-            y: [0, -25, 0],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-          className="absolute top-1/3 right-1/4 w-12 h-12 bg-primary/20 rounded-full blur-lg"
-        />
         
         {/* Grid Pattern */}
         <div className="absolute inset-0 opacity-5"
@@ -65,9 +27,9 @@ export function HeroSection() {
             backgroundSize: '60px 60px',
           }}
         />
-      </motion.div>
+      </div>
 
-      <motion.div style={{ y: textY, opacity, scale }} className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -179,7 +141,7 @@ export function HeroSection() {
             ))}
           </motion.div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Scroll Indicator */}
       <motion.div

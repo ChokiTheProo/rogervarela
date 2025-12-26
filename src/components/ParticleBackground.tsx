@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useCallback, memo } from 'react';
 
 interface Particle {
   x: number;
@@ -10,32 +10,34 @@ interface Particle {
   color: string;
 }
 
-export function ParticleBackground() {
+export const ParticleBackground = memo(function ParticleBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
-  const mouseRef = useRef({ x: 0, y: 0 });
   const animationRef = useRef<number>();
+  const lastTimeRef = useRef<number>(0);
+  const fpsInterval = 1000 / 30; // Limit to 30 FPS for better performance
 
   const colors = [
-    'rgba(168, 85, 247, ', // Primary purple
-    'rgba(34, 211, 238, ', // Cyan accent
-    'rgba(139, 92, 246, ', // Violet
+    'rgba(168, 85, 247, ',
+    'rgba(34, 211, 238, ',
+    'rgba(139, 92, 246, ',
   ];
 
   const createParticle = useCallback((width: number, height: number): Particle => {
     return {
       x: Math.random() * width,
       y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: (Math.random() - 0.5) * 0.5,
-      size: Math.random() * 3 + 1,
-      opacity: Math.random() * 0.5 + 0.2,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      size: Math.random() * 2 + 1,
+      opacity: Math.random() * 0.4 + 0.1,
       color: colors[Math.floor(Math.random() * colors.length)],
     };
   }, []);
 
   const initParticles = useCallback((width: number, height: number) => {
-    const particleCount = Math.min(80, Math.floor((width * height) / 15000));
+    // Reduced particle count for better performance
+    const particleCount = Math.min(40, Math.floor((width * height) / 25000));
     particlesRef.current = [];
     for (let i = 0; i < particleCount; i++) {
       particlesRef.current.push(createParticle(width, height));
@@ -46,7 +48,7 @@ export function ParticleBackground() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
 
     const handleResize = () => {
@@ -55,38 +57,31 @@ export function ParticleBackground() {
       initParticles(canvas.width, canvas.height);
     };
 
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseRef.current = { x: e.clientX, y: e.clientY };
-    };
-
     handleResize();
     window.addEventListener('resize', handleResize);
-    window.addEventListener('mousemove', handleMouseMove);
 
-    const animate = () => {
+    const animate = (currentTime: number) => {
       if (!ctx || !canvas) return;
+      
+      // Throttle to target FPS
+      const elapsed = currentTime - lastTimeRef.current;
+      if (elapsed < fpsInterval) {
+        animationRef.current = requestAnimationFrame(animate);
+        return;
+      }
+      lastTimeRef.current = currentTime - (elapsed % fpsInterval);
       
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      particlesRef.current.forEach((particle, i) => {
-        // Mouse interaction
-        const dx = mouseRef.current.x - particle.x;
-        const dy = mouseRef.current.y - particle.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        
-        if (dist < 150) {
-          const force = (150 - dist) / 150;
-          particle.vx -= (dx / dist) * force * 0.02;
-          particle.vy -= (dy / dist) * force * 0.02;
-        }
+      const particles = particlesRef.current;
+      const len = particles.length;
+
+      for (let i = 0; i < len; i++) {
+        const particle = particles[i];
 
         // Update position
         particle.x += particle.vx;
         particle.y += particle.vy;
-
-        // Friction
-        particle.vx *= 0.99;
-        particle.vy *= 0.99;
 
         // Boundaries
         if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
@@ -102,31 +97,32 @@ export function ParticleBackground() {
         ctx.fillStyle = `${particle.color}${particle.opacity})`;
         ctx.fill();
 
-        // Draw connections
-        particlesRef.current.slice(i + 1).forEach((otherParticle) => {
-          const dx = particle.x - otherParticle.x;
-          const dy = particle.y - otherParticle.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
+        // Draw connections (only check nearby particles)
+        for (let j = i + 1; j < len; j++) {
+          const other = particles[j];
+          const dx = particle.x - other.x;
+          const dy = particle.y - other.y;
+          const distSq = dx * dx + dy * dy;
 
-          if (distance < 120) {
+          if (distSq < 14400) { // 120^2 - avoid sqrt for performance
+            const distance = Math.sqrt(distSq);
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
-            ctx.lineTo(otherParticle.x, otherParticle.y);
-            ctx.strokeStyle = `rgba(168, 85, 247, ${0.15 * (1 - distance / 120)})`;
+            ctx.lineTo(other.x, other.y);
+            ctx.strokeStyle = `rgba(168, 85, 247, ${0.1 * (1 - distance / 120)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
-        });
-      });
+        }
+      }
 
       animationRef.current = requestAnimationFrame(animate);
     };
 
-    animate();
+    animationRef.current = requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener('resize', handleResize);
-      window.removeEventListener('mousemove', handleMouseMove);
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
@@ -140,4 +136,4 @@ export function ParticleBackground() {
       style={{ background: 'transparent' }}
     />
   );
-}
+});

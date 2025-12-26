@@ -1,6 +1,6 @@
-import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Terminal, ShoppingCart, Award, CheckCircle } from 'lucide-react';
+import { Rocket, ShoppingCart, Award, CheckCircle, Smartphone, BookOpen } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 
@@ -11,33 +11,25 @@ export function CoursesSection() {
 
   const courseFeatures = language === 'pt' 
     ? [
-        'Comandos essenciais do Windows',
-        'Automação de tarefas com scripts',
-        'Gerenciamento de arquivos e pastas',
-        'Configurações avançadas do sistema',
-        'Dicas de produtividade',
-        'Certificado de conclusão',
+        'Aplicativo completo de emagrecimento',
+        'E-book com dicas e receitas exclusivas',
+        'Jornada personalizada de perda de peso',
+        'Acompanhamento do progresso',
+        'Dietas e exercícios adaptados',
+        'Acesso vitalício ao conteúdo',
       ]
     : [
-        'Essential Windows commands',
-        'Task automation with scripts',
-        'File and folder management',
-        'Advanced system settings',
-        'Productivity tips',
-        'Completion certificate',
+        'Complete weight loss app',
+        'E-book with exclusive tips and recipes',
+        'Personalized weight loss journey',
+        'Progress tracking',
+        'Adapted diets and exercises',
+        'Lifetime access to content',
       ];
 
   const handleBuyClick = () => {
-    window.open('https://pay.hotmart.com/V99843637T?checkoutMode=10', '_blank', 'noopener,noreferrer');
+    window.open('https://pay.cakto.com.br/ao9jb7c_673490', '_blank', 'noopener,noreferrer');
   };
-
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start end', 'end start'],
-  });
-
-  const cardScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1, 0.9]);
-  const cardRotate = useTransform(scrollYProgress, [0, 0.5, 1], [-2, 0, 2]);
 
   return (
     <section id="courses" className="py-24 bg-gradient-to-b from-background to-secondary/20 overflow-hidden">
@@ -50,20 +42,19 @@ export function CoursesSection() {
         >
           <h2 className="section-title mb-4">
             <span className="text-gradient">
-              {language === 'pt' ? 'Meus Cursos' : 'My Courses'}
+              {language === 'pt' ? 'Meus Produtos' : 'My Products'}
             </span>
           </h2>
           <p className="section-subtitle mx-auto">
             {language === 'pt' 
-              ? 'Aprenda habilidades práticas com meus cursos online'
-              : 'Learn practical skills with my online courses'}
+              ? 'Transforme sua vida com meus produtos digitais'
+              : 'Transform your life with my digital products'}
           </p>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          style={{ scale: cardScale, rotate: cardRotate }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="max-w-4xl mx-auto"
         >
@@ -77,28 +68,39 @@ export function CoursesSection() {
               <div>
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 text-primary text-sm font-medium mb-4">
                   <Award className="w-4 h-4" />
-                  {language === 'pt' ? 'Curso Online' : 'Online Course'}
+                  {language === 'pt' ? 'App + E-book' : 'App + E-book'}
                 </div>
                 
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-violet-500 flex items-center justify-center">
-                    <Terminal className="w-8 h-8 text-primary-foreground" />
+                    <Rocket className="w-8 h-8 text-primary-foreground" />
                   </div>
                   <div>
                     <h3 className="font-heading font-bold text-2xl text-foreground">
-                      {language === 'pt' ? 'Comandos Windows' : 'Windows Commands'}
+                      Emagrio
                     </h3>
                     <p className="text-muted-foreground text-sm">
-                      {language === 'pt' ? 'Do básico ao avançado' : 'From basics to advanced'}
+                      {language === 'pt' ? 'Sua jornada de emagrecimento' : 'Your weight loss journey'}
                     </p>
                   </div>
                 </div>
 
-                <p className="text-muted-foreground mb-6">
+                <p className="text-muted-foreground mb-4">
                   {language === 'pt' 
-                    ? 'Domine o terminal do Windows e aumente sua produtividade. Aprenda comandos essenciais, automação de tarefas e técnicas avançadas de administração de sistemas.'
-                    : 'Master the Windows terminal and boost your productivity. Learn essential commands, task automation, and advanced system administration techniques.'}
+                    ? 'Transforme seu corpo e sua saúde com o Emagrio. Um aplicativo completo de emagrecimento combinado com um e-book exclusivo repleto de dicas, receitas e estratégias para alcançar seus objetivos.'
+                    : 'Transform your body and health with Emagrio. A complete weight loss app combined with an exclusive e-book full of tips, recipes, and strategies to achieve your goals.'}
                 </p>
+
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <Smartphone className="w-4 h-4 text-primary" />
+                    {language === 'pt' ? 'Aplicativo' : 'App'}
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <BookOpen className="w-4 h-4 text-primary" />
+                    {language === 'pt' ? 'E-book' : 'E-book'}
+                  </div>
+                </div>
 
                 <Button 
                   onClick={handleBuyClick}

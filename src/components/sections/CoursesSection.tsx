@@ -1,4 +1,4 @@
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { Terminal, ShoppingCart, Award, CheckCircle } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -31,8 +31,16 @@ export function CoursesSection() {
     window.open('https://pay.hotmart.com/V99843637T?checkoutMode=10', '_blank', 'noopener,noreferrer');
   };
 
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  });
+
+  const cardScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1, 0.9]);
+  const cardRotate = useTransform(scrollYProgress, [0, 0.5, 1], [-2, 0, 2]);
+
   return (
-    <section id="courses" className="py-24 bg-gradient-to-b from-background to-secondary/20">
+    <section id="courses" className="py-24 bg-gradient-to-b from-background to-secondary/20 overflow-hidden">
       <div className="container mx-auto px-4" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -55,6 +63,7 @@ export function CoursesSection() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
+          style={{ scale: cardScale, rotate: cardRotate }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="max-w-4xl mx-auto"
         >

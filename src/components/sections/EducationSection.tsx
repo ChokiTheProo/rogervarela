@@ -1,4 +1,4 @@
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { GraduationCap, Calendar, MapPin, Download } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -49,9 +49,16 @@ export function EducationSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  });
+
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ['-20%', '20%']);
+
   return (
-    <section id="education" className="py-24 relative">
-      <div className="absolute right-0 top-1/3 w-1/3 h-96 bg-gradient-glow opacity-20" />
+    <section id="education" className="py-24 relative overflow-hidden">
+      <motion.div style={{ y: backgroundY }} className="absolute right-0 top-1/3 w-1/3 h-96 bg-gradient-glow opacity-20" />
       
       <div className="container mx-auto px-4 relative z-10" ref={ref}>
         <motion.div

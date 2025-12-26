@@ -1,4 +1,4 @@
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { Github, Star, GitFork, Users, Code } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -24,9 +24,17 @@ export function GitHubSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  });
+
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ['-30%', '30%']);
+  const contentY = useTransform(scrollYProgress, [0, 1], [30, -30]);
+
   return (
     <section id="github" className="py-24 relative overflow-hidden">
-      <div className="absolute right-0 top-1/4 w-1/2 h-96 bg-gradient-glow opacity-20" />
+      <motion.div style={{ y: backgroundY }} className="absolute right-0 top-1/4 w-1/2 h-96 bg-gradient-glow opacity-20" />
       
       <div className="container mx-auto px-4 relative z-10" ref={ref}>
         <motion.div
@@ -41,7 +49,7 @@ export function GitHubSection() {
           <p className="section-subtitle mx-auto">{t('github.subtitle')}</p>
         </motion.div>
 
-        <div className="max-w-4xl mx-auto">
+        <motion.div style={{ y: contentY }} className="max-w-4xl mx-auto">
           {/* Profile Card */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -139,7 +147,7 @@ export function GitHubSection() {
               ))}
             </div>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

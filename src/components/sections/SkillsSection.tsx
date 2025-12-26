@@ -334,7 +334,7 @@ export function SkillsSection() {
                 </motion.div>
                 <div>
                   <h4 className="font-heading font-semibold text-foreground">
-                    CEO @ Rovr
+                    CEO @ RoVR
                   </h4>
                   <p className="text-sm text-muted-foreground">
                     {language === 'pt'

@@ -4,12 +4,12 @@ import { Github, ExternalLink, Code2, Play, Rocket, GraduationCap, Newspaper } f
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const projects = [
-  // Rovr Projects
+  // RoVR Projects
   {
     name: 'Klyexa',
     description: {
-      pt: 'Aplicativo inovador desenvolvido com IA pela Rovr - Plataforma inteligente para produtividade e automação.',
-      en: 'Innovative app developed with AI by Rovr - Intelligent platform for productivity and automation.',
+      pt: 'Aplicativo inovador desenvolvido com IA pela RoVR - Plataforma inteligente para produtividade e automação.',
+      en: 'Innovative app developed with AI by RoVR - Intelligent platform for productivity and automation.',
     },
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'AI', 'Lovable'],
     github: 'https://klyexa.lovable.app',
@@ -19,8 +19,8 @@ const projects = [
   {
     name: 'Emagrio Transforma Já',
     description: {
-      pt: 'Plataforma de transformação e bem-estar desenvolvida pela Rovr com foco em resultados.',
-      en: 'Transformation and wellness platform developed by Rovr focused on results.',
+      pt: 'Plataforma de transformação e bem-estar desenvolvida pela RoVR com foco em resultados.',
+      en: 'Transformation and wellness platform developed by RoVR focused on results.',
     },
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'AI', 'Lovable'],
     github: 'https://emagrio-transforma-ja.lovable.app',
@@ -30,8 +30,8 @@ const projects = [
   {
     name: 'Emagrio Journey',
     description: {
-      pt: 'Jornada de emagrecimento personalizada com onboarding inteligente pela Rovr.',
-      en: 'Personalized weight loss journey with intelligent onboarding by Rovr.',
+      pt: 'Jornada de emagrecimento personalizada com onboarding inteligente pela RoVR.',
+      en: 'Personalized weight loss journey with intelligent onboarding by RoVR.',
     },
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'UX/UI', 'Lovable'],
     github: 'https://emagrio-journey-unlocked.lovable.app/onboarding',
@@ -205,7 +205,7 @@ export function ProjectsSection() {
           <p className="section-subtitle mx-auto">{t('projects.subtitle')}</p>
         </motion.div>
 
-        {/* Rovr Projects */}
+        {/* RoVR Projects */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -222,7 +222,7 @@ export function ProjectsSection() {
             >
               <Rocket className="w-5 h-5" />
             </motion.div>
-            {language === 'pt' ? 'Projetos Rovr' : 'Rovr Projects'}
+            {language === 'pt' ? 'Projetos RoVR' : 'RoVR Projects'}
           </motion.h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.filter(p => p.category === 'rovr').map((project, index) => (
@@ -329,7 +329,7 @@ function ProjectCard({ project, index, isInView, language, t, techColors }: Proj
           animate={isHovered ? { scale: 1.1, rotate: 5 } : {}}
         >
           <span className="px-2 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary border border-primary/30">
-            Rovr
+            RoVR
           </span>
         </motion.div>
       )}

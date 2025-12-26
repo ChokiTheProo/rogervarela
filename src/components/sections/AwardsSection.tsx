@@ -1,4 +1,4 @@
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { Trophy, Medal, ExternalLink, Download } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -11,6 +11,15 @@ export function AwardsSection() {
   const { t, language } = useLanguage();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  });
+
+  const imageLeftX = useTransform(scrollYProgress, [0, 0.5, 1], [-50, 0, 50]);
+  const imageRightX = useTransform(scrollYProgress, [0, 0.5, 1], [50, 0, -50]);
+  const cardRotate = useTransform(scrollYProgress, [0, 0.5, 1], [2, 0, -2]);
 
   return (
     <section id="awards" className="py-24 bg-secondary/20">
@@ -33,6 +42,7 @@ export function AwardsSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="max-w-6xl mx-auto mb-12"
+          style={{ rotate: cardRotate }}
         >
           <div className="relative p-8 rounded-3xl bg-gradient-card border-2 border-primary/30 overflow-hidden">
             {/* Badge */}
@@ -50,6 +60,7 @@ export function AwardsSection() {
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
+                style={{ x: imageLeftX }}
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="relative"
               >
@@ -69,6 +80,7 @@ export function AwardsSection() {
               <motion.div
                 initial={{ opacity: 0, x: 30 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
+                style={{ x: imageRightX }}
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="relative"
               >

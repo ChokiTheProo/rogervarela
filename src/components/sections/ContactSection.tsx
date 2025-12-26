@@ -1,4 +1,4 @@
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { MapPin, Clock, Linkedin, Github, Send, CheckCircle } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -144,9 +144,18 @@ export function ContactSection() {
     },
   ];
 
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  });
+
+  const backgroundScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.2, 1, 1.2]);
+  const formX = useTransform(scrollYProgress, [0, 0.5, 1], [-30, 0, 30]);
+  const infoX = useTransform(scrollYProgress, [0, 0.5, 1], [30, 0, -30]);
+
   return (
     <section id="contact" className="py-24 bg-secondary/20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-glow opacity-10" />
+      <motion.div style={{ scale: backgroundScale }} className="absolute inset-0 bg-gradient-glow opacity-10" />
       
       <div className="container mx-auto px-4 relative z-10" ref={ref}>
         <motion.div
@@ -167,6 +176,7 @@ export function ContactSection() {
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
+            style={{ x: formX }}
             className="p-8 rounded-2xl bg-gradient-card border border-border/50"
           >
             {isSuccess ? (
@@ -258,6 +268,7 @@ export function ContactSection() {
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
+            style={{ x: infoX }}
             className="space-y-6"
           >
             {/* Info Cards */}

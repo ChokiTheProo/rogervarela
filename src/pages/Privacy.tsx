@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { PageTransition } from '@/components/PageTransition';
 
 export default function Privacy() {
   const { language } = useLanguage();
@@ -67,55 +68,57 @@ export default function Privacy() {
   const t = content[language];
 
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-      
-      <main className="pt-24 pb-16">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-8"
-          >
-            <Button variant="ghost" asChild className="mb-6">
-              <Link to="/">
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                {language === 'pt' ? 'Voltar' : 'Back'}
-              </Link>
-            </Button>
+    <PageTransition>
+      <div className="min-h-screen bg-background">
+        <Header />
+        
+        <main className="pt-24 pb-16">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="mb-8"
+            >
+              <Button variant="ghost" asChild className="mb-6">
+                <Link to="/">
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  {language === 'pt' ? 'Voltar' : 'Back'}
+                </Link>
+              </Button>
 
-            <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">
-              <span className="text-gradient">{t.title}</span>
-            </h1>
-            <p className="text-muted-foreground">{t.subtitle}</p>
-          </motion.div>
+              <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">
+                <span className="text-gradient">{t.title}</span>
+              </h1>
+              <p className="text-muted-foreground">{t.subtitle}</p>
+            </motion.div>
 
-          <div className="grid gap-6 max-w-4xl">
-            {t.sections.map((section, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-6 rounded-2xl bg-gradient-card border border-border/50"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-xl bg-primary/10 text-primary">
-                    <section.icon className="w-6 h-6" />
+            <div className="grid gap-6 max-w-4xl">
+              {t.sections.map((section, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="p-6 rounded-2xl bg-gradient-card border border-border/50"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="p-3 rounded-xl bg-primary/10 text-primary">
+                      <section.icon className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h2 className="text-xl font-heading font-semibold mb-2">{section.title}</h2>
+                      <p className="text-muted-foreground">{section.content}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h2 className="text-xl font-heading font-semibold mb-2">{section.title}</h2>
-                    <p className="text-muted-foreground">{section.content}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </div>
-      </main>
+        </main>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </PageTransition>
   );
 }

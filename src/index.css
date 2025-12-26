@@ -6,6 +6,61 @@
 
 @layer base {
   :root {
+    /* Light Theme */
+    --background: 0 0% 98%;
+    --foreground: 225 25% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 225 25% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 225 25% 10%;
+
+    --primary: 250 85% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 225 15% 92%;
+    --secondary-foreground: 225 25% 10%;
+
+    --muted: 225 15% 90%;
+    --muted-foreground: 225 15% 40%;
+
+    --accent: 195 85% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 225 15% 85%;
+    --input: 225 15% 85%;
+    --ring: 250 85% 55%;
+
+    --radius: 0.75rem;
+
+    /* Custom Design Tokens - Light */
+    --gradient-primary: linear-gradient(135deg, hsl(250, 85%, 55%) 0%, hsl(195, 85%, 45%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(0, 0%, 98%) 0%, hsl(225, 20%, 95%) 50%, hsl(250, 20%, 93%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0, 0%, 100%) 0%, hsl(225, 15%, 98%) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsl(250, 85%, 55%, 0.1) 0%, transparent 70%);
+    
+    --shadow-glow: 0 0 60px hsl(250, 85%, 55%, 0.2);
+    --shadow-card: 0 4px 24px hsl(0, 0%, 0%, 0.08);
+    --shadow-button: 0 4px 20px hsl(250, 85%, 55%, 0.3);
+
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 225 25% 10%;
+    --sidebar-primary: 250 85% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 225 15% 92%;
+    --sidebar-accent-foreground: 225 25% 10%;
+    --sidebar-border: 225 15% 85%;
+    --sidebar-ring: 250 85% 55%;
+  }
+
+  .dark {
     --background: 225 25% 6%;
     --foreground: 210 40% 98%;
 
@@ -34,9 +89,7 @@
     --input: 225 20% 18%;
     --ring: 250 85% 65%;
 
-    --radius: 0.75rem;
-
-    /* Custom Design Tokens */
+    /* Custom Design Tokens - Dark */
     --gradient-primary: linear-gradient(135deg, hsl(250, 85%, 65%) 0%, hsl(195, 85%, 50%) 100%);
     --gradient-hero: linear-gradient(180deg, hsl(225, 25%, 6%) 0%, hsl(225, 30%, 10%) 50%, hsl(250, 30%, 12%) 100%);
     --gradient-card: linear-gradient(145deg, hsl(225, 25%, 10%) 0%, hsl(225, 25%, 8%) 100%);
@@ -45,9 +98,6 @@
     --shadow-glow: 0 0 60px hsl(250, 85%, 65%, 0.3);
     --shadow-card: 0 4px 24px hsl(0, 0%, 0%, 0.4);
     --shadow-button: 0 4px 20px hsl(250, 85%, 65%, 0.4);
-
-    --font-heading: 'Outfit', sans-serif;
-    --font-body: 'Inter', sans-serif;
 
     --sidebar-background: 225 25% 8%;
     --sidebar-foreground: 210 40% 98%;
@@ -116,9 +166,7 @@
   }
 
   .glass {
-    @apply backdrop-blur-xl;
-    background: hsl(225, 25%, 8%, 0.8);
-    border: 1px solid hsl(225, 20%, 20%, 0.5);
+    @apply backdrop-blur-xl bg-card/80 border border-border/50;
   }
 
   .section-title {
@@ -129,22 +177,21 @@
     @apply text-muted-foreground text-lg md:text-xl max-w-2xl;
   }
 
-  /* Custom scrollbar */
+  /* Custom scrollbar - adapts to theme */
   ::-webkit-scrollbar {
     width: 8px;
   }
 
   ::-webkit-scrollbar-track {
-    background: hsl(225, 25%, 8%);
+    @apply bg-background;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: hsl(225, 20%, 20%);
-    border-radius: 4px;
+    @apply bg-border rounded;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(250, 85%, 65%);
+    @apply bg-primary;
   }
 }
 

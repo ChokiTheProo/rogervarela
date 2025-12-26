@@ -157,9 +157,9 @@ export default function Contact() {
                   </div>
                 </div>
 
-                {/* Rovr Promo */}
+                {/* RoVR Promo */}
                 <motion.a
-                  href="https://revyera.lovable.app"
+                  href="https://rovr.lovable.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.02 }}
@@ -168,7 +168,7 @@ export default function Contact() {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm text-primary-foreground/80 mb-1">{t.rovr}</p>
-                      <h4 className="text-2xl font-heading font-bold text-primary-foreground">Rovr</h4>
+                      <h4 className="text-2xl font-heading font-bold text-primary-foreground">RoVR</h4>
                       <p className="text-sm text-primary-foreground/70 mt-1">MicroSaaS & Web Apps</p>
                     </div>
                     <ExternalLink className="w-6 h-6 text-primary-foreground/70 group-hover:text-primary-foreground transition-colors" />

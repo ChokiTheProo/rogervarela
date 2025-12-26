@@ -82,8 +82,8 @@ export function Footer() {
             </div>
             <p className="text-muted-foreground mb-4 max-w-md">
               {language === 'pt' 
-                ? 'Desenvolvedor Full Stack apaixonado por criar soluções inovadoras. CEO & Co-fundador da Rovr.'
-                : 'Full Stack Developer passionate about creating innovative solutions. CEO & Co-founder of Rovr.'
+                ? 'Desenvolvedor Full Stack apaixonado por criar soluções inovadoras. CEO & Co-fundador da RoVR.'
+                : 'Full Stack Developer passionate about creating innovative solutions. CEO & Co-founder of RoVR.'
               }
             </p>
             
@@ -97,16 +97,16 @@ export function Footer() {
               <span>Brasil</span>
             </motion.div>
             
-            {/* Rovr Banner */}
+            {/* RoVR Banner */}
             <motion.a
-              href="https://revyera.lovable.app"
+              href="https://rovr.lovable.app/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-4 py-3 rounded-xl bg-gradient-primary group"
               whileHover={{ scale: 1.02, boxShadow: '0 0 30px hsl(var(--primary) / 0.4)' }}
               whileTap={{ scale: 0.98 }}
             >
-              <span className="text-primary-foreground font-bold">Rovr</span>
+              <span className="text-primary-foreground font-bold">RoVR</span>
               <span className="text-primary-foreground/70 text-sm">MicroSaaS & Apps</span>
               <ExternalLink className="w-4 h-4 text-primary-foreground/70 group-hover:text-primary-foreground transition-colors" />
             </motion.a>
@@ -231,12 +231,12 @@ export function Footer() {
                 <Heart className="w-4 h-4 text-red-500 fill-current" />
               </motion.div>
               <a 
-                href="https://revyera.lovable.app" 
+                href="https://rovr.lovable.app/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-gradient font-semibold hover:opacity-80 transition-opacity"
               >
-                Rovr
+                RoVR
               </a>
             </motion.div>
           </div>

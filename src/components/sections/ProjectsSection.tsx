@@ -302,7 +302,7 @@ const ProjectCard = memo(function ProjectCard({ project, index, isInView, langua
       />
       <div className="absolute inset-[1px] rounded-2xl bg-gradient-card" />
 
-      {/* Animated Preview Overlay */}
+      {/* Animated Preview Overlay - pointer-events-none to allow clicks */}
       <AnimatePresence>
         {isHovered && (
           <motion.div
@@ -310,7 +310,7 @@ const ProjectCard = memo(function ProjectCard({ project, index, isInView, langua
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="absolute inset-0 z-20 rounded-2xl overflow-hidden"
+            className="absolute inset-0 z-10 rounded-2xl overflow-hidden pointer-events-none"
           >
             {/* Animated gradient background */}
             <motion.div 
@@ -351,18 +351,6 @@ const ProjectCard = memo(function ProjectCard({ project, index, isInView, langua
               animate={{ top: ['0%', '100%'] }}
               transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
             />
-
-            {/* Center preview icon */}
-            <motion.div
-              className="absolute inset-0 flex items-center justify-center"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.1 }}
-            >
-              <div className={`p-4 rounded-2xl bg-gradient-to-br ${project.gradient} shadow-2xl`}>
-                <Eye className="w-8 h-8 text-white" />
-              </div>
-            </motion.div>
 
             {/* Corner sparkles */}
             <motion.div

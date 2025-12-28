@@ -65,7 +65,16 @@ const certifications: Certification[] = [
     type: { pt: 'Certificação', en: 'Certification' },
     category: 'programming',
     hours: '40h',
-    downloadUrl: '/downloads/certificado-javascript-40h.jpg',
+    downloadUrl: '/downloads/certificado-javascript-40h.pdf',
+  },
+  {
+    name: { pt: 'MySQL [40 Horas]', en: 'MySQL [40 Hours]' },
+    institution: 'Curso em Vídeo',
+    year: '2024',
+    type: { pt: 'Certificação', en: 'Certification' },
+    category: 'programming',
+    hours: '40h',
+    downloadUrl: '/downloads/certificado-mysql.pdf',
   },
   {
     name: { pt: 'Lógica de Programação', en: 'Programming Logic' },
@@ -205,16 +214,8 @@ export function CertificationsSection() {
     ? certifications 
     : certifications.filter(cert => cert.category === activeTab);
 
-  const handleDownload = (url: string, name: string) => {
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = name;
-    link.style.display = 'none';
-    document.body.appendChild(link);
-    link.click();
-    setTimeout(() => {
-      document.body.removeChild(link);
-    }, 100);
+  const handleDownload = (url: string) => {
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   const getCategoryIcon = (category: string) => {
@@ -318,7 +319,7 @@ export function CertificationsSection() {
                     variant="outline"
                     size="sm"
                     className="mt-4 w-full gap-2 hover:bg-primary hover:text-primary-foreground"
-                    onClick={() => handleDownload(cert.downloadUrl!, `${cert.name.pt}.pdf`)}
+                    onClick={() => handleDownload(cert.downloadUrl!)}
                   >
                     <Download className="w-4 h-4" />
                     {language === 'pt' ? 'Baixar Certificado' : 'Download Certificate'}

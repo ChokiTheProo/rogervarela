@@ -205,21 +205,16 @@ export function CertificationsSection() {
     ? certifications 
     : certifications.filter(cert => cert.category === activeTab);
 
-  const handleDownload = async (url: string, name: string) => {
-    try {
-      const response = await fetch(url);
-      const blob = await response.blob();
-      const blobUrl = window.URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = blobUrl;
-      link.download = name;
-      document.body.appendChild(link);
-      link.click();
+  const handleDownload = (url: string, name: string) => {
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = name;
+    link.style.display = 'none';
+    document.body.appendChild(link);
+    link.click();
+    setTimeout(() => {
       document.body.removeChild(link);
-      window.URL.revokeObjectURL(blobUrl);
-    } catch (error) {
-      window.open(url, '_blank');
-    }
+    }, 100);
   };
 
   const getCategoryIcon = (category: string) => {

@@ -107,7 +107,7 @@ export function HeroSection() {
               </a>
             </Button>
             <Button variant="glass" size="lg" asChild>
-              <a href="/downloads/curriculo-roger-varela.pdf" download>
+              <a href="/downloads/curriculo-roger-varela.pdf" target="_blank" rel="noopener noreferrer">
                 <Download className="w-5 h-5 mr-2" />
                 {language === 'pt' ? 'Baixar CV' : 'Download CV'}
               </a>

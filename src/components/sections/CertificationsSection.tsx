@@ -315,14 +315,31 @@ export function CertificationsSection() {
                 </div>
 
                 {cert.downloadUrl && (
-                  <a
-                    href={cert.downloadUrl}
-                    download
-                    className="mt-4 w-full gap-2 inline-flex items-center justify-center rounded-md text-sm font-medium border border-input bg-background hover:bg-primary hover:text-primary-foreground h-9 px-4 py-2 transition-colors cursor-pointer"
+                  <Button
+                    variant="outline"
+                    className="mt-4 w-full gap-2"
+                    onClick={async (e) => {
+                      e.preventDefault();
+                      try {
+                        const response = await fetch(cert.downloadUrl!);
+                        const blob = await response.blob();
+                        const url = window.URL.createObjectURL(blob);
+                        const link = document.createElement('a');
+                        link.href = url;
+                        link.download = cert.downloadUrl!.split('/').pop() || 'certificado.pdf';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        window.URL.revokeObjectURL(url);
+                      } catch (error) {
+                        console.error('Download error:', error);
+                        window.open(cert.downloadUrl!, '_blank');
+                      }
+                    }}
                   >
                     <Download className="w-4 h-4" />
                     {language === 'pt' ? 'Baixar Certificado' : 'Download Certificate'}
-                  </a>
+                  </Button>
                 )}
               </motion.div>
             );

@@ -1,9 +1,8 @@
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { Award, Calendar, Building, BookOpen, Download, GraduationCap, Code, Globe } from 'lucide-react';
+import { Award, Calendar, Building, BookOpen, GraduationCap, Code, Globe } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Button } from '@/components/ui/button';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 interface Certification {
   name: { pt: string; en: string };
@@ -141,15 +140,6 @@ export function CertificationsSection() {
     ? certifications 
     : certifications.filter(cert => cert.category === activeTab);
 
-  const handleDownload = (url: string, name: string) => {
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = name;
-    link.target = '_blank';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
 
   return (
     <section id="certifications" className="py-24 bg-secondary/20 overflow-hidden">
@@ -247,17 +237,6 @@ export function CertificationsSection() {
                 </div>
               </div>
 
-              {cert.downloadUrl && (
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="mt-4 w-full gap-2 hover:bg-primary hover:text-primary-foreground"
-                  onClick={() => handleDownload(cert.downloadUrl!, `${cert.name.pt}.jpg`)}
-                >
-                  <Download className="w-4 h-4" />
-                  {language === 'pt' ? 'Baixar Certificado' : 'Download Certificate'}
-                </Button>
-              )}
             </motion.div>
           ))}
         </motion.div>

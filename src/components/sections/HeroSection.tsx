@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { ParticleBackground } from '@/components/ParticleBackground';
 import { Logo3D } from '@/components/Logo3D';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
+import cvPreview from '@/assets/cv-preview.png';
 
 export function HeroSection() {
   const { t, language } = useLanguage();
@@ -116,17 +117,20 @@ export function HeroSection() {
                   </a>
                 </Button>
               </HoverCardTrigger>
-              <HoverCardContent className="w-64 p-4" side="top">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <Download className="w-6 h-6 text-primary" />
+              <HoverCardContent className="w-48 p-2" side="top">
+                <div className="space-y-2">
+                  <div className="rounded-lg overflow-hidden border border-border">
+                    <img 
+                      src={cvPreview} 
+                      alt="CV Preview" 
+                      className="w-full h-auto object-cover"
+                    />
                   </div>
-                  <div>
-                    <p className="text-sm font-medium">Roger Varela</p>
+                  <div className="text-center">
+                    <p className="text-xs font-medium">Roger Varela</p>
                     <p className="text-xs text-muted-foreground">
                       {language === 'pt' ? 'Currículo Profissional' : 'Professional Resume'}
                     </p>
-                    <p className="text-xs text-muted-foreground">PDF • 1 página</p>
                   </div>
                 </div>
               </HoverCardContent>

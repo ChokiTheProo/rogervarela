@@ -116,17 +116,17 @@ export function HeroSection() {
                   </a>
                 </Button>
               </HoverCardTrigger>
-              <HoverCardContent className="w-80 p-2" side="top">
-                <div className="space-y-2">
-                  <p className="text-sm font-medium text-center">
-                    {language === 'pt' ? 'Prévia do Currículo' : 'CV Preview'}
-                  </p>
-                  <div className="rounded-lg overflow-hidden border border-border bg-background">
-                    <iframe 
-                      src="/downloads/curriculo-roger-varela.pdf#toolbar=0&navpanes=0" 
-                      className="w-full h-64"
-                      title="CV Preview"
-                    />
+              <HoverCardContent className="w-64 p-4" side="top">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <Download className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium">Roger Varela</p>
+                    <p className="text-xs text-muted-foreground">
+                      {language === 'pt' ? 'Currículo Profissional' : 'Professional Resume'}
+                    </p>
+                    <p className="text-xs text-muted-foreground">PDF • 1 página</p>
                   </div>
                 </div>
               </HoverCardContent>

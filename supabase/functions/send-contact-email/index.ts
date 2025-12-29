@@ -14,6 +14,42 @@ interface ContactEmailRequest {
   message: string;
 }
 
+// In-memory rate limiting (per instance, resets on cold start)
+const rateLimits = new Map<string, { count: number; resetTime: number }>();
+
+function getClientIP(req: Request): string {
+  // Try various headers for IP detection
+  const forwarded = req.headers.get("x-forwarded-for");
+  if (forwarded) {
+    return forwarded.split(",")[0].trim();
+  }
+  const realIP = req.headers.get("x-real-ip");
+  if (realIP) {
+    return realIP;
+  }
+  // Fallback to a generic identifier
+  return "unknown";
+}
+
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now();
+  const limit = rateLimits.get(ip);
+  
+  // Reset after 1 hour (3600000 ms)
+  if (!limit || now > limit.resetTime) {
+    rateLimits.set(ip, { count: 1, resetTime: now + 3600000 });
+    return true;
+  }
+  
+  // Allow max 5 requests per hour per IP
+  if (limit.count >= 5) {
+    return false;
+  }
+  
+  limit.count++;
+  return true;
+}
+
 const handler = async (req: Request): Promise<Response> => {
   console.log("Received contact email request");
 
@@ -22,10 +58,23 @@ const handler = async (req: Request): Promise<Response> => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  // Rate limiting check
+  const clientIP = getClientIP(req);
+  if (!checkRateLimit(clientIP)) {
+    console.warn(`Rate limit exceeded for IP: ${clientIP}`);
+    return new Response(
+      JSON.stringify({ error: "Too many requests. Please try again later." }),
+      {
+        status: 429,
+        headers: { "Content-Type": "application/json", ...corsHeaders },
+      }
+    );
+  }
+
   try {
     const { name, email, message }: ContactEmailRequest = await req.json();
     
-    console.log(`Processing contact form from: ${name} (${email})`);
+    console.log(`Processing contact form from: ${name}`);
 
     // Validate inputs
     if (!name || !email || !message) {
@@ -118,9 +167,19 @@ const handler = async (req: Request): Promise<Response> => {
       }
     );
   } catch (error: any) {
-    console.error("Error in send-contact-email function:", error);
+    // Log detailed error internally for debugging
+    console.error("Error in send-contact-email function:", {
+      message: error.message,
+      stack: error.stack,
+      timestamp: new Date().toISOString()
+    });
+    
+    // Return generic error message to client (no internal details)
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ 
+        error: "An error occurred while sending your message. Please try again later.",
+        code: "EMAIL_SEND_FAILED"
+      }),
       {
         status: 500,
         headers: { "Content-Type": "application/json", ...corsHeaders },

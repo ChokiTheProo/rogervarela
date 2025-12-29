@@ -13,6 +13,7 @@ interface Certification {
   category: 'technical' | 'programming' | 'languages' | 'ai' | 'other';
   hours?: string;
   downloadUrl?: string;
+  imageUrl?: string;
 }
 
 const certifications: Certification[] = [
@@ -66,6 +67,7 @@ const certifications: Certification[] = [
     category: 'programming',
     hours: '40h',
     downloadUrl: '/downloads/certificado-javascript-40h.pdf',
+    imageUrl: '/downloads/certificado-javascript-40h.jpg',
   },
   {
     name: { pt: 'MySQL [40 Horas]', en: 'MySQL [40 Hours]' },
@@ -84,6 +86,7 @@ const certifications: Certification[] = [
     category: 'programming',
     hours: '48h',
     downloadUrl: '/downloads/certificado-logica-programacao.jpg',
+    imageUrl: '/downloads/certificado-logica-programacao.jpg',
   },
   {
     name: { pt: 'HTML5 e CSS3 - Módulo 1', en: 'HTML5 and CSS3 - Module 1' },
@@ -268,28 +271,34 @@ export function CertificationsSection() {
         <motion.div style={{ y: cardsY }} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredCertifications.map((cert, index) => {
             const CategoryIcon = getCategoryIcon(cert.category);
-            return (
-              <motion.div
-                key={`${cert.name.pt}-${index}`}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                layout
-                className="group relative p-6 rounded-2xl bg-gradient-card border border-border/50 hover:border-primary/30 transition-all duration-300 card-glow"
-              >
-                <div className="absolute top-4 right-4 flex gap-2">
-                  <span className="px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/20">
+            const cardContent = (
+              <>
+                {/* Certificate Preview Image */}
+                {cert.imageUrl && (
+                  <div className="mb-4 -mx-6 -mt-6 rounded-t-2xl overflow-hidden">
+                    <img 
+                      src={cert.imageUrl} 
+                      alt={cert.name[language]}
+                      className="w-full h-32 object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                )}
+
+                <div className="absolute top-4 right-4 flex gap-2 z-10">
+                  <span className="px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/20 backdrop-blur-sm">
                     {cert.type[language]}
                   </span>
                 </div>
                 
-                <div className="w-14 h-14 rounded-xl bg-gradient-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  {cert.type.pt === 'Formação Técnica' ? (
-                    <GraduationCap className="w-7 h-7 text-primary-foreground" />
-                  ) : (
-                    <CategoryIcon className="w-7 h-7 text-primary-foreground" />
-                  )}
-                </div>
+                {!cert.imageUrl && (
+                  <div className="w-14 h-14 rounded-xl bg-gradient-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    {cert.type.pt === 'Formação Técnica' ? (
+                      <GraduationCap className="w-7 h-7 text-primary-foreground" />
+                    ) : (
+                      <CategoryIcon className="w-7 h-7 text-primary-foreground" />
+                    )}
+                  </div>
+                )}
                 
                 <h3 className="font-heading font-semibold text-lg text-foreground mb-3 pr-20">
                   {cert.name[language]}
@@ -297,11 +306,11 @@ export function CertificationsSection() {
                 
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Building className="w-4 h-4" />
+                    <Building className="w-4 h-4 flex-shrink-0" />
                     <span>{cert.institution}</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Calendar className="w-4 h-4" />
+                    <Calendar className="w-4 h-4 flex-shrink-0" />
                     <span>{cert.year}</span>
                     {cert.hours && (
                       <span className="ml-2 px-2 py-0.5 text-xs rounded-full bg-accent/10 text-accent">
@@ -312,15 +321,35 @@ export function CertificationsSection() {
                 </div>
 
                 {cert.downloadUrl && (
+                  <div className="mt-4 w-full gap-2 inline-flex items-center justify-center rounded-md text-sm font-medium border border-input bg-background group-hover:bg-primary group-hover:text-primary-foreground h-9 px-4 py-2 transition-colors">
+                    <ExternalLink className="w-4 h-4" />
+                    {language === 'pt' ? 'Visualizar Certificado' : 'View Certificate'}
+                  </div>
+                )}
+              </>
+            );
+
+            return (
+              <motion.div
+                key={`${cert.name.pt}-${index}`}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                layout
+              >
+                {cert.downloadUrl ? (
                   <a
                     href={cert.downloadUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-4 w-full gap-2 inline-flex items-center justify-center rounded-md text-sm font-medium border border-input bg-background hover:bg-primary hover:text-primary-foreground h-9 px-4 py-2 transition-colors cursor-pointer"
+                    className="group relative block p-6 rounded-2xl bg-gradient-card border border-border/50 hover:border-primary/30 transition-all duration-300 card-glow cursor-pointer h-full"
                   >
-                    <ExternalLink className="w-4 h-4" />
-                    {language === 'pt' ? 'Visualizar Certificado' : 'View Certificate'}
+                    {cardContent}
                   </a>
+                ) : (
+                  <div className="group relative p-6 rounded-2xl bg-gradient-card border border-border/50 hover:border-primary/30 transition-all duration-300 card-glow h-full">
+                    {cardContent}
+                  </div>
                 )}
               </motion.div>
             );

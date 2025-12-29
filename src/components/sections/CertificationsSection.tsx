@@ -1,6 +1,6 @@
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { Award, Calendar, Building, BookOpen, Download, GraduationCap, Code, Globe, Brain, Wrench } from 'lucide-react';
+import { Award, Calendar, Building, BookOpen, ExternalLink, GraduationCap, Code, Globe, Brain, Wrench } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
@@ -214,9 +214,6 @@ export function CertificationsSection() {
     ? certifications 
     : certifications.filter(cert => cert.category === activeTab);
 
-  const handleDownload = (url: string) => {
-    window.open(url, '_blank', 'noopener,noreferrer');
-  };
 
   const getCategoryIcon = (category: string) => {
     switch (category) {
@@ -317,11 +314,12 @@ export function CertificationsSection() {
                 {cert.downloadUrl && (
                   <a
                     href={cert.downloadUrl}
-                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="mt-4 w-full gap-2 inline-flex items-center justify-center rounded-md text-sm font-medium border border-input bg-background hover:bg-primary hover:text-primary-foreground h-9 px-4 py-2 transition-colors cursor-pointer"
                   >
-                    <Download className="w-4 h-4" />
-                    {language === 'pt' ? 'Baixar Certificado' : 'Download Certificate'}
+                    <ExternalLink className="w-4 h-4" />
+                    {language === 'pt' ? 'Visualizar Certificado' : 'View Certificate'}
                   </a>
                 )}
               </motion.div>

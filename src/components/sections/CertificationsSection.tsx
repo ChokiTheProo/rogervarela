@@ -1,6 +1,6 @@
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { Award, Calendar, Building, BookOpen, ExternalLink, GraduationCap, Code, Globe, Brain, Wrench } from 'lucide-react';
+import { Award, Calendar, Building, BookOpen, FileDown, GraduationCap, Code, Globe, Brain, Wrench } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
@@ -322,8 +322,8 @@ export function CertificationsSection() {
 
                 {cert.downloadUrl && (
                   <div className="mt-4 w-full gap-2 inline-flex items-center justify-center rounded-md text-sm font-medium border border-input bg-background group-hover:bg-primary group-hover:text-primary-foreground h-9 px-4 py-2 transition-colors">
-                    <ExternalLink className="w-4 h-4" />
-                    {language === 'pt' ? 'Visualizar Certificado' : 'View Certificate'}
+                    <FileDown className="w-4 h-4" />
+                    {language === 'pt' ? 'Baixar Certificado' : 'Download Certificate'}
                   </div>
                 )}
               </>

@@ -4,8 +4,6 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { ParticleBackground } from '@/components/ParticleBackground';
 import { Logo3D } from '@/components/Logo3D';
-import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
-import cvPreview from '@/assets/cv-preview.png';
 
 export function HeroSection() {
   const { t, language } = useLanguage();
@@ -108,33 +106,12 @@ export function HeroSection() {
                 {t('hero.cta.contact')}
               </a>
             </Button>
-            <HoverCard openDelay={200}>
-              <HoverCardTrigger asChild>
-                <Button variant="glass" size="lg" asChild>
-                  <a href="/downloads/curriculo-roger-varela.pdf" target="_blank" rel="noopener noreferrer">
-                    <Download className="w-5 h-5 mr-2" />
-                    {language === 'pt' ? 'Baixar CV' : 'Download CV'}
-                  </a>
-                </Button>
-              </HoverCardTrigger>
-              <HoverCardContent className="w-48 p-2" side="top">
-                <div className="space-y-2">
-                  <div className="rounded-lg overflow-hidden border border-border">
-                    <img 
-                      src={cvPreview} 
-                      alt="CV Preview" 
-                      className="w-full h-auto object-cover"
-                    />
-                  </div>
-                  <div className="text-center">
-                    <p className="text-xs font-medium">Roger Varela</p>
-                    <p className="text-xs text-muted-foreground">
-                      {language === 'pt' ? 'Currículo Profissional' : 'Professional Resume'}
-                    </p>
-                  </div>
-                </div>
-              </HoverCardContent>
-            </HoverCard>
+            <Button variant="glass" size="lg" asChild>
+              <a href="/downloads/curriculo-roger-varela.pdf" download>
+                <Download className="w-5 h-5 mr-2" />
+                {language === 'pt' ? 'Baixar CV' : 'Download CV'}
+              </a>
+            </Button>
           </motion.div>
 
           {/* Stats */}

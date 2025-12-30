@@ -1,11 +1,13 @@
-import { motion } from 'framer-motion';
-import { ArrowLeft, HelpCircle, Sparkles, ChevronDown } from 'lucide-react';
+import { useState, useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowLeft, HelpCircle, Sparkles, Search, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { PageTransition } from '@/components/PageTransition';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import {
   Accordion,
   AccordionContent,
@@ -15,6 +17,7 @@ import {
 
 const FAQ = () => {
   const { language } = useLanguage();
+  const [searchQuery, setSearchQuery] = useState('');
 
   const content = {
     pt: {
@@ -24,6 +27,8 @@ const FAQ = () => {
       lastUpdated: 'Última atualização: Dezembro 2025',
       backButton: 'Voltar',
       footerNote: 'Não encontrou sua resposta? Entre em contato diretamente.',
+      searchPlaceholder: 'Buscar perguntas...',
+      noResults: 'Nenhuma pergunta encontrada para',
       faqs: [
         {
           question: 'Quais serviços você oferece?',
@@ -66,6 +71,8 @@ const FAQ = () => {
       lastUpdated: 'Last updated: December 2025',
       backButton: 'Back',
       footerNote: "Didn't find your answer? Contact me directly.",
+      searchPlaceholder: 'Search questions...',
+      noResults: 'No questions found for',
       faqs: [
         {
           question: 'What services do you offer?',
@@ -104,6 +111,16 @@ const FAQ = () => {
   };
 
   const t = content[language];
+
+  const filteredFaqs = useMemo(() => {
+    if (!searchQuery.trim()) return t.faqs;
+    const query = searchQuery.toLowerCase().trim();
+    return t.faqs.filter(
+      (faq) =>
+        faq.question.toLowerCase().includes(query) ||
+        faq.answer.toLowerCase().includes(query)
+    );
+  }, [searchQuery, t.faqs]);
 
   return (
     <PageTransition>
@@ -187,34 +204,83 @@ const FAQ = () => {
             </p>
           </motion.div>
 
+          {/* Search Bar */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mb-8"
+          >
+            <div className="relative max-w-md mx-auto">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground pointer-events-none" />
+              <Input
+                type="text"
+                placeholder={t.searchPlaceholder}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-12 pr-10 py-6 bg-card/50 border-border/50 rounded-xl focus:border-primary/50 focus:ring-primary/20 transition-all"
+              />
+              <AnimatePresence>
+                {searchQuery && (
+                  <motion.button
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    onClick={() => setSearchQuery('')}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-muted transition-colors"
+                  >
+                    <X className="w-4 h-4 text-muted-foreground" />
+                  </motion.button>
+                )}
+              </AnimatePresence>
+            </div>
+          </motion.div>
+
           {/* FAQ Accordion */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <Accordion type="single" collapsible className="space-y-4">
-              {t.faqs.map((faq, index) => (
+            <AnimatePresence mode="wait">
+              {filteredFaqs.length > 0 ? (
+                <Accordion type="single" collapsible className="space-y-4">
+                  {filteredFaqs.map((faq, index) => (
+                    <motion.div
+                      key={faq.question}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.3, delay: 0.05 * index }}
+                      layout
+                    >
+                      <AccordionItem 
+                        value={`item-${index}`}
+                        className="border border-border/50 rounded-xl px-6 bg-card/30 backdrop-blur-sm overflow-hidden group hover:border-primary/30 transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--primary)/0.1)]"
+                      >
+                        <AccordionTrigger className="text-left hover:no-underline py-5 group-hover:text-primary transition-colors">
+                          <span className="font-semibold pr-4">{faq.question}</span>
+                        </AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
+                          {faq.answer}
+                        </AccordionContent>
+                      </AccordionItem>
+                    </motion.div>
+                  ))}
+                </Accordion>
+              ) : (
                 <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.1 * index }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="text-center py-12"
                 >
-                  <AccordionItem 
-                    value={`item-${index}`}
-                    className="border border-border/50 rounded-xl px-6 bg-card/30 backdrop-blur-sm overflow-hidden group hover:border-primary/30 transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--primary)/0.1)]"
-                  >
-                    <AccordionTrigger className="text-left hover:no-underline py-5 group-hover:text-primary transition-colors">
-                      <span className="font-semibold pr-4">{faq.question}</span>
-                    </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
-                      {faq.answer}
-                    </AccordionContent>
-                  </AccordionItem>
+                  <HelpCircle className="w-12 h-12 text-muted-foreground/30 mx-auto mb-4" />
+                  <p className="text-muted-foreground">
+                    {t.noResults} "<span className="text-primary">{searchQuery}</span>"
+                  </p>
                 </motion.div>
-              ))}
-            </Accordion>
+              )}
+            </AnimatePresence>
           </motion.div>
 
           {/* Footer Note */}

@@ -39,6 +39,7 @@ export function Footer() {
   const legalLinks = [
     { href: '/terms', label: language === 'pt' ? 'Termos de Uso' : 'Terms of Use' },
     { href: '/privacy', label: language === 'pt' ? 'Privacidade' : 'Privacy' },
+    { href: '/faq', label: 'FAQ' },
     { href: '/contact', label: language === 'pt' ? 'Contato' : 'Contact' },
   ];
 

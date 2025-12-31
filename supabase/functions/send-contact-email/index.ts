@@ -14,6 +14,16 @@ interface ContactEmailRequest {
   message: string;
 }
 
+// HTML escape function to prevent XSS attacks
+function escapeHtml(unsafe: string): string {
+  return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
 // In-memory rate limiting (per instance, resets on cold start)
 const rateLimits = new Map<string, { count: number; resetTime: number }>();
 
@@ -88,6 +98,23 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
+    // Server-side length validation
+    if (name.length > 100 || email.length > 255 || message.length > 1000) {
+      console.error("Input too long");
+      return new Response(
+        JSON.stringify({ error: "Input too long" }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
+
+    // Sanitize user inputs to prevent XSS
+    const safeName = escapeHtml(name.trim());
+    const safeEmail = escapeHtml(email.trim());
+    const safeMessage = escapeHtml(message.trim()).replace(/\n/g, '<br>');
+
     // Send email to Roger (portfolio owner) - using roger1robson2@gmail.com as it's the verified Resend email
     const emailToOwnerResponse = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -98,7 +125,7 @@ const handler = async (req: Request): Promise<Response> => {
       body: JSON.stringify({
         from: "Portfolio Contact <onboarding@resend.dev>",
         to: ["roger1robson2@gmail.com"],
-        subject: `Nova mensagem de contato de ${name}`,
+        subject: `Nova mensagem de contato de ${safeName}`,
         html: `
           <!DOCTYPE html>
           <html>
@@ -124,15 +151,15 @@ const handler = async (req: Request): Promise<Response> => {
               <div class="content">
                 <div class="field">
                   <div class="label">Nome</div>
-                  <div class="value">${name}</div>
+                  <div class="value">${safeName}</div>
                 </div>
                 <div class="field">
                   <div class="label">Email</div>
-                  <div class="value"><a href="mailto:${email}" style="color: #a855f7;">${email}</a></div>
+                  <div class="value"><a href="mailto:${safeEmail}" style="color: #a855f7;">${safeEmail}</a></div>
                 </div>
                 <div class="field">
                   <div class="label">Mensagem</div>
-                  <div class="message-box">${message.replace(/\n/g, '<br>')}</div>
+                  <div class="message-box">${safeMessage}</div>
                 </div>
               </div>
               <div class="footer">

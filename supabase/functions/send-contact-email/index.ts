@@ -4,7 +4,6 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
-const RECAPTCHA_SECRET_KEY = Deno.env.get("RECAPTCHA_SECRET_KEY");
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -16,27 +15,7 @@ interface ContactEmailRequest {
   name: string;
   email: string;
   message: string;
-  recaptchaToken: string;
 }
-
-async function verifyRecaptcha(token: string, ip: string): Promise<boolean> {
-  try {
-    const response = await fetch("https://www.google.com/recaptcha/api/siteverify", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `secret=${RECAPTCHA_SECRET_KEY}&response=${token}&remoteip=${ip}`,
-    });
-    
-    const data = await response.json();
-    console.log("reCAPTCHA verification result:", { success: data.success, hostname: data.hostname });
-    return data.success === true;
-  } catch (error) {
-    console.error("reCAPTCHA verification error:", error);
-    return false;
-  }
-}
-
-// HTML escape function to prevent XSS attacks
 function escapeHtml(unsafe: string): string {
   return unsafe
     .replace(/&/g, "&amp;")
@@ -104,12 +83,12 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { name, email, message, recaptchaToken }: ContactEmailRequest = await req.json();
+    const { name, email, message }: ContactEmailRequest = await req.json();
     
     console.log(`Processing contact form from: ${name}`);
 
     // Validate inputs
-    if (!name || !email || !message || !recaptchaToken) {
+    if (!name || !email || !message) {
       console.error("Missing required fields");
       return new Response(
         JSON.stringify({ error: "Missing required fields" }),
@@ -119,20 +98,6 @@ const handler = async (req: Request): Promise<Response> => {
         }
       );
     }
-
-    // Verify reCAPTCHA
-    const isHuman = await verifyRecaptcha(recaptchaToken, clientIP);
-    if (!isHuman) {
-      console.warn(`reCAPTCHA verification failed for IP: ${clientIP}`);
-      return new Response(
-        JSON.stringify({ error: "CAPTCHA verification failed. Please try again." }),
-        {
-          status: 400,
-          headers: { "Content-Type": "application/json", ...corsHeaders },
-        }
-      );
-    }
-    console.log("reCAPTCHA verified successfully");
 
     // Server-side length validation
     if (name.length > 100 || email.length > 255 || message.length > 1000) {

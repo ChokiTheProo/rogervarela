@@ -1,7 +1,6 @@
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { MapPin, Clock, Linkedin, Github, Send, CheckCircle } from 'lucide-react';
-import ReCAPTCHA from 'react-google-recaptcha';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -9,17 +8,13 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 
-const RECAPTCHA_SITE_KEY = '6LcKbjwsAAAAAGFPyO-BZ8ojz-utpoy7VTJD90VS';
-
 export function ContactSection() {
   const { t, language } = useLanguage();
   const ref = useRef(null);
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -28,12 +23,11 @@ export function ContactSection() {
   const [errors, setErrors] = useState({
     name: '',
     email: '',
-    message: '',
-    recaptcha: ''
+    message: ''
   });
 
   const validateForm = () => {
-    const newErrors = { name: '', email: '', message: '', recaptcha: '' };
+    const newErrors = { name: '', email: '', message: '' };
     let isValid = true;
 
     if (!formData.name.trim()) {
@@ -66,11 +60,6 @@ export function ContactSection() {
       isValid = false;
     }
 
-    if (!recaptchaToken) {
-      newErrors.recaptcha = language === 'pt' ? 'Por favor, complete o CAPTCHA' : 'Please complete the CAPTCHA';
-      isValid = false;
-    }
-
     setErrors(newErrors);
     return isValid;
   };
@@ -89,8 +78,7 @@ export function ContactSection() {
         body: {
           name: formData.name.trim(),
           email: formData.email.trim(),
-          message: formData.message.trim(),
-          recaptchaToken
+          message: formData.message.trim()
         }
       });
 
@@ -107,8 +95,6 @@ export function ContactSection() {
       });
       
       setFormData({ name: '', email: '', message: '' });
-      setRecaptchaToken(null);
-      recaptchaRef.current?.reset();
     } catch (error: any) {
       console.error('Error sending message:', error);
       toast({
@@ -128,13 +114,6 @@ export function ContactSection() {
     setFormData(prev => ({ ...prev, [name]: value }));
     if (errors[name as keyof typeof errors]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
-    }
-  };
-
-  const handleRecaptchaChange = (token: string | null) => {
-    setRecaptchaToken(token);
-    if (token && errors.recaptcha) {
-      setErrors(prev => ({ ...prev, recaptcha: '' }));
     }
   };
 
@@ -266,18 +245,7 @@ export function ContactSection() {
                   {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
                 </div>
 
-                <div className="flex flex-col items-center">
-                  <ReCAPTCHA
-                    ref={recaptchaRef}
-                    sitekey={RECAPTCHA_SITE_KEY}
-                    onChange={handleRecaptchaChange}
-                    theme="dark"
-                    hl={language}
-                  />
-                  {errors.recaptcha && <p className="text-red-500 text-sm mt-2">{errors.recaptcha}</p>}
-                </div>
-                
-                <Button type="submit" variant="hero" size="lg" className="w-full" disabled={isSubmitting || !recaptchaToken}>
+                <Button type="submit" variant="hero" size="lg" className="w-full" disabled={isSubmitting}>
                   {isSubmitting ? (
                     <span className="flex items-center gap-2">
                       <span className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />

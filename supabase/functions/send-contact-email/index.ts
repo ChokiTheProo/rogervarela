@@ -1,6 +1,9 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
+const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -179,8 +182,30 @@ const handler = async (req: Request): Promise<Response> => {
       throw new Error(emailToOwnerData.message || "Failed to send email to owner");
     }
 
-    // Note: Confirmation email to sender is disabled because Resend requires a verified domain
-    // to send emails to addresses other than the account owner's email
+    // Save contact message to database
+    try {
+      const supabase = createClient(SUPABASE_URL!, SUPABASE_SERVICE_ROLE_KEY!);
+      
+      const { error: dbError } = await supabase
+        .from("contact_messages")
+        .insert({
+          name: name.trim(),
+          email: email.trim(),
+          message: message.trim(),
+          ip_address: clientIP !== "unknown" ? clientIP : null,
+        });
+
+      if (dbError) {
+        console.error("Failed to save message to database:", dbError);
+        // Don't fail the request - email was still sent successfully
+      } else {
+        console.log("Contact message saved to database");
+      }
+    } catch (dbSaveError) {
+      console.error("Database save error:", dbSaveError);
+      // Don't fail the request - email was still sent successfully
+    }
+
     console.log("Email sent successfully to owner. Confirmation email skipped (requires verified domain).");
 
     return new Response(

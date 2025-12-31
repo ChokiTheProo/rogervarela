@@ -65,6 +65,18 @@ const projects = [
     category: 'rovr',
     gradient: 'from-sky-500 via-blue-500 to-indigo-500',
   },
+  {
+    name: 'Fluxen',
+    description: {
+      pt: 'Sistema completo para controle de caixa e gestão financeira empresarial.',
+      en: 'Complete system for cash control and business financial management.',
+    },
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Finance', 'Lovable'],
+    github: 'https://fluxenbr.lovable.app',
+    isLive: true,
+    category: 'rovr',
+    gradient: 'from-lime-500 via-green-500 to-emerald-500',
+  },
   // Academic Projects
   {
     name: 'Sistema Operacional de Redes',
@@ -155,6 +167,7 @@ const techColors: Record<string, string> = {
   'UX/UI': 'bg-fuchsia-500/20 text-fuchsia-400 border-fuchsia-500/30',
   'Health': 'bg-rose-500/20 text-rose-400 border-rose-500/30',
   'Vercel': 'bg-slate-500/20 text-slate-300 border-slate-500/30',
+  'Finance': 'bg-lime-500/20 text-lime-400 border-lime-500/30',
 };
 
 export function ProjectsSection() {

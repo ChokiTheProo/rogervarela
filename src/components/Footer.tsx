@@ -163,23 +163,23 @@ export function Footer() {
             <div className="flex items-center gap-3 mb-5">
               <Logo3D size="sm" />
               <div>
-                <h3 className="text-xl font-heading font-bold">
+                <h3 className="text-xl font-heading font-bold tracking-tight">
                   Roger <span className="text-gradient">Varela</span>
                 </h3>
-                <p className="text-xs text-muted-foreground">Full Stack Developer</p>
+                <p className="text-xs text-muted-foreground font-medium tracking-wide uppercase">Full Stack Developer</p>
               </div>
             </div>
             
-            <p className="text-muted-foreground text-sm mb-5 max-w-xs leading-relaxed">
+            <p className="text-muted-foreground text-sm mb-5 max-w-xs leading-relaxed font-light">
               {language === 'pt' 
-                ? 'Transformando ideias em experiências digitais excepcionais. CEO & Co-fundador da RoVR.'
-                : 'Turning ideas into exceptional digital experiences. CEO & Co-founder of RoVR.'
+                ? 'Desenvolvedor apaixonado por criar soluções digitais inovadoras. CEO & Co-fundador da RoVR.'
+                : 'Developer passionate about creating innovative digital solutions. CEO & Co-founder of RoVR.'
               }
             </p>
             
             <div className="flex items-center gap-2 text-muted-foreground text-sm mb-6">
               <MapPin className="w-4 h-4 text-primary" />
-              <span>Brasil</span>
+              <span className="font-medium">Brasil</span>
             </div>
 
             {/* Social Links */}

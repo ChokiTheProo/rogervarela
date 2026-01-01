@@ -141,87 +141,91 @@ export function ImageZoom({ src, alt, className = "" }: ImageZoomProps) {
     };
   }, [isOpen]);
 
-  const modalContent = isOpen && (
+  const modalContent = (
     <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-md"
-        onClick={handleClose}
-        onWheel={handleWheel}
-        ref={containerRef}
-      >
-        {/* Controls */}
-        <div className="absolute top-4 right-4 flex items-center gap-2 z-[10000]">
-          <button
-            onClick={handleZoomOut}
-            className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-            title="Zoom out"
+      {isOpen && (
+        <motion.div
+          key="image-zoom-modal"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-md"
+          onClick={handleClose}
+          onWheel={handleWheel}
+          ref={containerRef}
+        >
+          {/* Controls */}
+          <div 
+            className="absolute top-4 right-4 flex items-center gap-2 z-[10000]"
+            onClick={(e) => e.stopPropagation()}
           >
-            <ZoomOut className="w-5 h-5 text-white" />
-          </button>
-          <span className="text-white font-medium min-w-[60px] text-center">
-            {Math.round(scale * 100)}%
-          </span>
-          <button
-            onClick={handleZoomIn}
-            className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-            title="Zoom in"
-          >
-            <ZoomIn className="w-5 h-5 text-white" />
-          </button>
-          <button
-            onClick={handleReset}
-            className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-            title="Reset"
-          >
-            <RotateCcw className="w-5 h-5 text-white" />
-          </button>
-          <button
-            onClick={(e) => { e.stopPropagation(); handleClose(); }}
-            className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors ml-2"
-            title="Close"
-          >
-            <X className="w-5 h-5 text-white" />
-          </button>
-        </div>
+            <button
+              onClick={handleZoomOut}
+              className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+              title="Zoom out"
+            >
+              <ZoomOut className="w-5 h-5 text-white" />
+            </button>
+            <span className="text-white font-medium min-w-[60px] text-center">
+              {Math.round(scale * 100)}%
+            </span>
+            <button
+              onClick={handleZoomIn}
+              className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+              title="Zoom in"
+            >
+              <ZoomIn className="w-5 h-5 text-white" />
+            </button>
+            <button
+              onClick={handleReset}
+              className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+              title="Reset"
+            >
+              <RotateCcw className="w-5 h-5 text-white" />
+            </button>
+            <button
+              onClick={handleClose}
+              className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors ml-2"
+              title="Close"
+            >
+              <X className="w-5 h-5 text-white" />
+            </button>
+          </div>
 
-        {/* Instructions */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/60 text-sm text-center z-[10000]">
-          <p>Scroll ou pinça para zoom • Duplo clique para alternar • Arraste para mover</p>
-        </div>
+          {/* Instructions */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/60 text-sm text-center z-[10000]">
+            <p>Scroll ou pinça para zoom • Duplo clique para alternar • Arraste para mover</p>
+          </div>
 
-        {/* Image */}
-        <motion.img
-          ref={imageRef}
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ 
-            scale: 1, 
-            opacity: 1,
-          }}
-          exit={{ scale: 0.9, opacity: 0 }}
-          transition={{ type: "spring", damping: 25, stiffness: 300 }}
-          src={src}
-          alt={alt}
-          className="max-w-[90vw] max-h-[85vh] object-contain rounded-lg shadow-2xl select-none"
-          style={{ 
-            transform: `scale(${scale}) translate(${position.x / scale}px, ${position.y / scale}px)`,
-            cursor: scale > 1 ? (isDragging ? 'grabbing' : 'grab') : 'zoom-in',
-            touchAction: 'none'
-          }}
-          onClick={(e) => e.stopPropagation()}
-          onDoubleClick={handleDoubleClick}
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseUp}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-          draggable={false}
-        />
-      </motion.div>
+          {/* Image Container */}
+          <div
+            className="relative max-w-[90vw] max-h-[85vh] overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            style={{ touchAction: 'none' }}
+          >
+            <img
+              ref={imageRef}
+              src={src}
+              alt={alt}
+              className="max-w-[90vw] max-h-[85vh] object-contain rounded-lg shadow-2xl select-none"
+              style={{ 
+                transform: `scale(${scale}) translate(${position.x / scale}px, ${position.y / scale}px)`,
+                cursor: scale > 1 ? (isDragging ? 'grabbing' : 'grab') : 'zoom-in',
+                transition: isDragging ? 'none' : 'transform 0.1s ease-out'
+              }}
+              onDoubleClick={handleDoubleClick}
+              draggable={false}
+            />
+          </div>
+        </motion.div>
+      )}
     </AnimatePresence>
   );
 

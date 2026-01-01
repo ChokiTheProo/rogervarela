@@ -115,20 +115,36 @@ export function AwardsSection() {
                 QI Faculdade e Escola Técnica
               </p>
               
-              <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
+              <p className="text-muted-foreground max-w-3xl mx-auto mb-4">
                 {language === 'pt' 
-                  ? 'Premiação de Bronze na feira de tecnologia QITEC 2023 pelo desenvolvimento de projeto inovador de IoT: "Tone para Coleta de Óleo com Alerta Automático de Nível para Condições Seguras". Solução criativa para automação e monitoramento em tempo real.'
-                  : 'Bronze Award at the QITEC 2023 technology fair for developing an innovative IoT project: "Oil Collection Tank with Automatic Level Alert for Safe Conditions". Creative solution for automation and real-time monitoring.'}
+                  ? 'Premiação de Bronze na feira de tecnologia QITEC 2023 pelo desenvolvimento de projeto inovador de IoT: "Tonel para Coleta de Óleo com Alerta Automático de Nível para Condições Seguras".'
+                  : 'Bronze Award at the QITEC 2023 technology fair for developing an innovative IoT project: "Oil Collection Tank with Automatic Level Alert for Safe Conditions".'}
+              </p>
+              
+              <p className="text-muted-foreground max-w-3xl mx-auto mb-4">
+                {language === 'pt' 
+                  ? 'O projeto utiliza Arduino e sensores de nível para monitorar tonéis de coleta de óleo usado. Quando o tonel atinge determinado nível, um alerta automático é enviado para a equipe de coleta da CODECA realizar a retirada de forma segura e eficiente.'
+                  : 'The project uses Arduino and level sensors to monitor used oil collection barrels. When the barrel reaches a certain level, an automatic alert is sent to the CODECA collection team to perform safe and efficient pickup.'}
+              </p>
+
+              <p className="text-muted-foreground max-w-3xl mx-auto mb-6">
+                {language === 'pt' 
+                  ? 'O óleo coletado pode ser transformado em diversos produtos sustentáveis como sabão, biodiesel, tintas e outros derivados. Os tonéis podem ser instalados em pontos estratégicos da cidade, facilitando o descarte correto e promovendo a economia circular.'
+                  : 'The collected oil can be transformed into various sustainable products such as soap, biodiesel, paints, and other derivatives. The barrels can be installed at strategic points in the city, facilitating proper disposal and promoting circular economy.'}
               </p>
 
               <div className="flex flex-wrap justify-center gap-3 mb-6">
                 <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">IoT</span>
                 <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">Arduino</span>
                 <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">
-                  {language === 'pt' ? 'Sensores' : 'Sensors'}
+                  {language === 'pt' ? 'Sensores de Nível' : 'Level Sensors'}
                 </span>
                 <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">
-                  {language === 'pt' ? 'Automação' : 'Automation'}
+                  {language === 'pt' ? 'Sustentabilidade' : 'Sustainability'}
+                </span>
+                <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">CODECA</span>
+                <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">
+                  {language === 'pt' ? 'Economia Circular' : 'Circular Economy'}
                 </span>
                 <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">SOLACYT</span>
                 <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">MOSTRATEC</span>

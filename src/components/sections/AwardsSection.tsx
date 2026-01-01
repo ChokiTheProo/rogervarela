@@ -115,36 +115,66 @@ export function AwardsSection() {
                 QI Faculdade e Escola Técnica
               </p>
               
-              <p className="text-muted-foreground max-w-3xl mx-auto mb-4">
-                {language === 'pt' 
-                  ? 'Premiação de Bronze na feira de tecnologia QITEC 2023 pelo desenvolvimento de projeto inovador de IoT: "Tonel para Coleta de Óleo com Alerta Automático de Nível para Condições Seguras".'
-                  : 'Bronze Award at the QITEC 2023 technology fair for developing an innovative IoT project: "Oil Collection Tank with Automatic Level Alert for Safe Conditions".'}
-              </p>
-              
-              <p className="text-muted-foreground max-w-3xl mx-auto mb-4">
-                {language === 'pt' 
-                  ? 'O projeto utiliza Arduino e sensores de nível para monitorar tonéis de coleta de óleo usado. Quando o tonel atinge determinado nível, um alerta automático é enviado para a equipe de coleta da CODECA realizar a retirada de forma segura e eficiente.'
-                  : 'The project uses Arduino and level sensors to monitor used oil collection barrels. When the barrel reaches a certain level, an automatic alert is sent to the CODECA collection team to perform safe and efficient pickup.'}
-              </p>
+              {/* Problema */}
+              <div className="mb-6">
+                <h4 className="font-heading font-semibold text-lg text-primary mb-2">
+                  {language === 'pt' ? 'Problema' : 'Problem'}
+                </h4>
+                <p className="text-muted-foreground max-w-3xl mx-auto text-sm">
+                  {language === 'pt' 
+                    ? 'O óleo de cozinha é um grave problema ambiental: 1 litro descartado incorretamente contamina até 25 mil litros de água. Hoje, estes óleos usados têm valor comercial e podem ser transformados em produtos de limpeza e biocombustível. Porém, são poucos pontos de coleta nas cidades e as pessoas não têm conhecimento sobre eles.'
+                    : 'Cooking oil is a serious environmental problem: 1 liter improperly disposed of contaminates up to 25,000 liters of water. Today, these used oils have commercial value and can be transformed into cleaning products and biofuel. However, there are few collection points in cities and people are unaware of them.'}
+                </p>
+              </div>
 
-              <p className="text-muted-foreground max-w-3xl mx-auto mb-6">
-                {language === 'pt' 
-                  ? 'O óleo coletado pode ser transformado em diversos produtos sustentáveis como sabão, biodiesel, tintas e outros derivados. Os tonéis podem ser instalados em pontos estratégicos da cidade, facilitando o descarte correto e promovendo a economia circular.'
-                  : 'The collected oil can be transformed into various sustainable products such as soap, biodiesel, paints, and other derivatives. The barrels can be installed at strategic points in the city, facilitating proper disposal and promoting circular economy.'}
-              </p>
+              {/* Relevância */}
+              <div className="mb-6">
+                <h4 className="font-heading font-semibold text-lg text-primary mb-2">
+                  {language === 'pt' ? 'Relevância' : 'Relevance'}
+                </h4>
+                <p className="text-muted-foreground max-w-3xl mx-auto text-sm">
+                  {language === 'pt' 
+                    ? 'A quantidade de água contaminada por apenas 1 litro de óleo seria suficiente para o uso de uma pessoa por 6 meses. Dos 3,9 bilhões de litros de óleo vegetal utilizado no Brasil por ano, apenas 30 milhões são reciclados (menos de 0,1%), implicando que 99,99% é descartado de formas não ideais.'
+                    : 'The amount of water contaminated by just 1 liter of oil would be enough for one person to use for 6 months. Of the 3.9 billion liters of vegetable oil used in Brazil per year, only 30 million are recycled (less than 0.1%), implying that 99.99% is disposed of in non-ideal ways.'}
+                </p>
+              </div>
+
+              {/* Explicação da ideia */}
+              <div className="mb-6">
+                <h4 className="font-heading font-semibold text-lg text-primary mb-2">
+                  {language === 'pt' ? 'Solução' : 'Solution'}
+                </h4>
+                <p className="text-muted-foreground max-w-3xl mx-auto text-sm">
+                  {language === 'pt' 
+                    ? 'Desenvolvimento de um tonel de recolhimento de óleo equipado com componentes eletrônicos de baixo custo: sensor de nível sem contato para identificar quando o recipiente está cheio, comunicação via rede LoRa para avisar a empresa coletora, e funcionamento garantido por Arduino alimentado por placa solar e bateria recarregável.'
+                    : 'Development of an oil collection barrel equipped with low-cost electronic components: non-contact level sensor to identify when the container is full, LoRa network communication to notify the collection company, and operation guaranteed by Arduino powered by solar panel and rechargeable battery.'}
+                </p>
+              </div>
+
+              {/* Trabalhos Futuros */}
+              <div className="mb-6">
+                <h4 className="font-heading font-semibold text-lg text-primary mb-2">
+                  {language === 'pt' ? 'Trabalhos Futuros' : 'Future Work'}
+                </h4>
+                <p className="text-muted-foreground max-w-3xl mx-auto text-sm">
+                  {language === 'pt' 
+                    ? 'Adaptar o sistema para containers, lixeiras de material sólido e ralos/bueiros. Assim, impactamos em logística e ambientalmente, evitando acúmulo de lixo e enchentes provocadas por entupimentos não identificados.'
+                    : 'Adapt the system for containers, solid waste bins and drains/manholes. This way, we impact logistics and the environment, avoiding waste accumulation and floods caused by unidentified blockages.'}
+                </p>
+              </div>
 
               <div className="flex flex-wrap justify-center gap-3 mb-6">
                 <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">IoT</span>
                 <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">Arduino</span>
+                <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">LoRa</span>
                 <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">
-                  {language === 'pt' ? 'Sensores de Nível' : 'Level Sensors'}
+                  {language === 'pt' ? 'Energia Solar' : 'Solar Power'}
+                </span>
+                <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">
+                  {language === 'pt' ? 'Sensores' : 'Sensors'}
                 </span>
                 <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">
                   {language === 'pt' ? 'Sustentabilidade' : 'Sustainability'}
-                </span>
-                <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">CODECA</span>
-                <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">
-                  {language === 'pt' ? 'Economia Circular' : 'Circular Economy'}
                 </span>
                 <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">SOLACYT</span>
                 <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">MOSTRATEC</span>
@@ -155,6 +185,12 @@ export function AwardsSection() {
                   <a href="https://qi.edu.br/qitec-2023/" target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="w-4 h-4 mr-2" />
                     {language === 'pt' ? 'Ver Evento QITEC' : 'View QITEC Event'}
+                  </a>
+                </Button>
+                <Button variant="glass" size="lg" asChild>
+                  <a href="/downloads/modelo-qitec.pdf" download>
+                    <Download className="w-4 h-4 mr-2" />
+                    {language === 'pt' ? 'Baixar Poster do Projeto' : 'Download Project Poster'}
                   </a>
                 </Button>
                 <Button variant="glass" size="lg" asChild>

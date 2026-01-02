@@ -276,7 +276,7 @@ interface ProjectCardProps {
   project: typeof projects[0];
   index: number;
   isInView: boolean;
-  language: 'pt' | 'en';
+  language: 'pt' | 'en' | 'es';
   t: (key: string) => string;
 }
 

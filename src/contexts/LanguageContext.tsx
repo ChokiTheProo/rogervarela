@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
-type Language = 'pt' | 'en';
+type Language = 'pt' | 'en' | 'es';
 
 interface LanguageContextType {
   language: Language;
@@ -158,6 +158,81 @@ const translations: Record<Language, Record<string, string>> = {
     // Footer
     'footer.rights': 'All rights reserved.',
     'footer.brand': 'Built with',
+  },
+  es: {
+    // Navigation
+    'nav.about': 'Sobre mí',
+    'nav.certifications': 'Certificaciones',
+    'nav.experience': 'Experiencia',
+    'nav.projects': 'Proyectos',
+    'nav.skills': 'Habilidades',
+    'nav.contact': 'Contacto',
+    
+    // Hero
+    'hero.greeting': 'Hola, soy',
+    'hero.title': 'Desarrollador Full Stack & Especialista en TI',
+    'hero.subtitle': 'Transformando desafíos tecnológicos en soluciones innovadoras. Especializado en desarrollo de sistemas, soporte técnico e infraestructura de redes.',
+    'hero.cta.projects': 'Ver Proyectos',
+    'hero.cta.github': 'GitHub',
+    'hero.cta.contact': 'Contacto',
+    
+    // About
+    'about.title': 'Sobre Mí',
+    'about.description': 'Profesional de tecnología apasionado por resolver problemas complejos y crear soluciones que marcan la diferencia. Con experiencia en desarrollo de aplicaciones, soporte técnico y administración de sistemas, busco constantemente mejorar mis habilidades y entregar resultados excepcionales.',
+    'about.highlight1.title': 'Aprendizaje Continuo',
+    'about.highlight1.desc': 'Siempre en busca de nuevas tecnologías y metodologías para entregar las mejores soluciones.',
+    'about.highlight2.title': 'Enfoque en Resultados',
+    'about.highlight2.desc': 'Comprometido con la entrega de proyectos de alta calidad dentro de los plazos establecidos.',
+    'about.highlight3.title': 'Trabajo en Equipo',
+    'about.highlight3.desc': 'Colaboración efectiva y comunicación clara para alcanzar objetivos en conjunto.',
+    
+    // Certifications
+    'certs.title': 'Certificaciones & Cursos',
+    'certs.subtitle': 'Trayectoria académica y certificaciones profesionales que respaldan mi experiencia técnica.',
+    
+    // Experience
+    'exp.title': 'Experiencia Profesional',
+    'exp.subtitle': 'Trayectoria profesional enfocada en tecnología, desarrollo y soporte técnico.',
+    
+    // Projects
+    'projects.title': 'Proyectos Desarrollados',
+    'projects.subtitle': 'Una selección de proyectos que demuestran mis habilidades técnicas y capacidad de resolución de problemas.',
+    'projects.viewGithub': 'Ver en GitHub',
+    'projects.viewDemo': 'Demo',
+    
+    // GitHub
+    'github.title': 'GitHub & Open Source',
+    'github.subtitle': 'Contribuciones y proyectos públicos que reflejan mi compromiso con la comunidad de desarrollo.',
+    'github.repos': 'Repositorios',
+    'github.followers': 'Seguidores',
+    'github.following': 'Siguiendo',
+    'github.viewProfile': 'Ver Perfil Completo',
+    
+    // Awards
+    'awards.title': 'Premios & Reconocimientos',
+    'awards.subtitle': 'Reconocimientos que validan mi compromiso con la excelencia profesional.',
+    
+    // Skills
+    'skills.title': 'Habilidades Técnicas',
+    'skills.subtitle': 'Conjunto de competencias técnicas e interpersonales desarrolladas a lo largo de mi carrera.',
+    'skills.hard': 'Hard Skills',
+    'skills.soft': 'Soft Skills',
+    
+    // Contact
+    'contact.title': '¿Construyamos Algo Increíble Juntos?',
+    'contact.subtitle': 'Estoy disponible para nuevos proyectos, oportunidades de trabajo y colaboraciones. ¡Contáctame!',
+    'contact.form.name': 'Nombre',
+    'contact.form.email': 'Correo',
+    'contact.form.message': 'Mensaje',
+    'contact.form.send': 'Enviar Mensaje',
+    'contact.info.email': 'Correo',
+    'contact.info.location': 'Ubicación',
+    'contact.info.availability': 'Disponibilidad',
+    'contact.info.available': 'Disponible para nuevas oportunidades',
+    
+    // Footer
+    'footer.rights': 'Todos los derechos reservados.',
+    'footer.brand': 'Desarrollado con',
   },
 };
 

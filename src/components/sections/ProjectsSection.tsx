@@ -176,7 +176,7 @@ export function ProjectsSection() {
   const isInView = useInView(ref, { once: true, margin: '-50px' });
 
   return (
-    <section id="projects" className="py-24 bg-secondary/20 relative overflow-hidden">
+    <section id="projects" className="py-16 sm:py-24 bg-secondary/20 relative overflow-hidden">
       {/* Optimized Background - fewer elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div 
@@ -187,17 +187,17 @@ export function ProjectsSection() {
         />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10" ref={ref}>
+      <div className="container mx-auto px-3 sm:px-4 relative z-10" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.4 }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
           <h2 className="section-title mb-4">
             <span className="text-gradient">{t('projects.title')}</span>
           </h2>
-          <p className="section-subtitle mx-auto">{t('projects.subtitle')}</p>
+          <p className="section-subtitle mx-auto px-2">{t('projects.subtitle')}</p>
         </motion.div>
 
         {/* RoVR Projects */}
@@ -205,26 +205,26 @@ export function ProjectsSection() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.3, delay: 0.1 }}
-          className="mb-16"
+          className="mb-10 sm:mb-16"
         >
           <motion.h3 
-            className="text-xl font-heading font-semibold text-primary flex items-center gap-3 mb-8"
+            className="text-lg sm:text-xl font-heading font-semibold text-primary flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8"
             initial={{ opacity: 0, x: -20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
           >
-            <div className="p-2 rounded-lg bg-primary/20">
-              <Rocket className="w-5 h-5" />
+            <div className="p-1.5 sm:p-2 rounded-lg bg-primary/20">
+              <Rocket className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
             {language === 'pt' ? 'Projetos RoVR' : 'RoVR Projects'}
             <motion.span 
-              className="ml-2 px-2 py-0.5 text-xs rounded-full bg-accent/20 text-accent"
+              className="ml-1 sm:ml-2 px-2 py-0.5 text-[10px] sm:text-xs rounded-full bg-accent/20 text-accent"
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
               Live
             </motion.span>
           </motion.h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
             {projects.filter(p => p.category === 'rovr').map((project, index) => (
               <ProjectCard 
                 key={project.name} 
@@ -245,16 +245,16 @@ export function ProjectsSection() {
           transition={{ duration: 0.3, delay: 0.2 }}
         >
           <motion.h3 
-            className="text-xl font-heading font-semibold text-emerald-400 flex items-center gap-3 mb-8"
+            className="text-lg sm:text-xl font-heading font-semibold text-emerald-400 flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8"
             initial={{ opacity: 0, x: -20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
           >
-            <div className="p-2 rounded-lg bg-emerald-500/20">
-              <GraduationCap className="w-5 h-5" />
+            <div className="p-1.5 sm:p-2 rounded-lg bg-emerald-500/20">
+              <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
             {language === 'pt' ? 'Projetos Acadêmicos' : 'Academic Projects'}
           </motion.h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
             {projects.filter(p => p.category === 'academic').map((project, index) => (
               <ProjectCard 
                 key={project.name} 
@@ -385,11 +385,11 @@ const ProjectCard = memo(function ProjectCard({ project, index, isInView, langua
       </AnimatePresence>
 
       {/* Card Content */}
-      <div className="relative z-10 p-6 flex flex-col h-full">
+      <div className="relative z-10 p-4 sm:p-6 flex flex-col h-full">
         {/* Header */}
-        <div className="flex items-start justify-between mb-4">
+        <div className="flex items-start justify-between mb-3 sm:mb-4">
           <motion.div 
-            className={`p-3 rounded-xl bg-gradient-to-br ${project.gradient} text-white shadow-lg`}
+            className={`p-2 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-br ${project.gradient} text-white shadow-lg`}
             animate={isHovered ? { 
               scale: 1.1,
               rotate: [0, -10, 10, 0],
@@ -402,21 +402,21 @@ const ProjectCard = memo(function ProjectCard({ project, index, isInView, langua
           {project.category === 'rovr' && (
             <motion.div
               animate={isHovered ? { scale: 1.1, y: -2 } : { scale: 1, y: 0 }}
-              className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary/20 border border-primary/30"
+              className="flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-primary/20 border border-primary/30"
             >
               <motion.span 
-                className="w-1.5 h-1.5 rounded-full bg-accent"
+                className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-accent"
                 animate={{ opacity: [1, 0.5, 1] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
               />
-              <span className="text-xs font-medium text-primary">RoVR</span>
+              <span className="text-[10px] sm:text-xs font-medium text-primary">RoVR</span>
             </motion.div>
           )}
         </div>
 
         {/* Title */}
         <motion.h3 
-          className="font-heading font-semibold text-lg text-foreground mb-2"
+          className="font-heading font-semibold text-base sm:text-lg text-foreground mb-1.5 sm:mb-2"
           animate={isHovered ? { x: 5 } : { x: 0 }}
           transition={{ duration: 0.2 }}
         >
@@ -425,18 +425,18 @@ const ProjectCard = memo(function ProjectCard({ project, index, isInView, langua
 
         {/* Description */}
         <motion.p 
-          className="text-sm text-muted-foreground mb-4 flex-grow line-clamp-2"
+          className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 flex-grow line-clamp-2"
           animate={isHovered ? { opacity: 0.8 } : { opacity: 1 }}
         >
           {project.description[language]}
         </motion.p>
 
         {/* Technologies */}
-        <div className="flex flex-wrap gap-1.5 mb-5">
-          {project.technologies.slice(0, 4).map((tech, i) => (
+        <div className="flex flex-wrap gap-1 sm:gap-1.5 mb-4 sm:mb-5">
+          {project.technologies.slice(0, 3).map((tech, i) => (
             <motion.span
               key={tech}
-              className={`px-2 py-0.5 text-xs rounded-md border ${
+              className={`px-1.5 sm:px-2 py-0.5 text-[10px] sm:text-xs rounded-md border ${
                 techColors[tech] || 'bg-primary/20 text-primary border-primary/30'
               }`}
               animate={isHovered ? { 
@@ -447,9 +447,9 @@ const ProjectCard = memo(function ProjectCard({ project, index, isInView, langua
               {tech}
             </motion.span>
           ))}
-          {project.technologies.length > 4 && (
-            <span className="px-2 py-0.5 text-xs rounded-md bg-muted text-muted-foreground">
-              +{project.technologies.length - 4}
+          {project.technologies.length > 3 && (
+            <span className="px-1.5 sm:px-2 py-0.5 text-[10px] sm:text-xs rounded-md bg-muted text-muted-foreground">
+              +{project.technologies.length - 3}
             </span>
           )}
         </div>

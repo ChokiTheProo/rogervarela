@@ -35,6 +35,11 @@ const languageSkills = {
     { name: 'English - Basic', level: 'A1-A2' },
     { name: 'English - Intermediate', level: 'B1' },
   ],
+  es: [
+    { name: 'Portugués', level: 'Nativo' },
+    { name: 'Inglés - Básico', level: 'A1-A2' },
+    { name: 'Inglés - Intermedio', level: 'B1' },
+  ],
 };
 
 const softSkills = {
@@ -65,6 +70,20 @@ const softSkills = {
     'Continuous Learning',
     'Attention to Detail',
     'Entrepreneurship',
+  ],
+  es: [
+    'Liderazgo',
+    'Comunicación Efectiva',
+    'Trabajo en Equipo',
+    'Resolución de Problemas',
+    'Pensamiento Crítico',
+    'Adaptabilidad',
+    'Gestión del Tiempo',
+    'Organización',
+    'Proactividad',
+    'Aprendizaje Continuo',
+    'Atención al Detalle',
+    'Emprendimiento',
   ],
 };
 
@@ -284,7 +303,7 @@ export function SkillsSection() {
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 2, repeat: Infinity, delay: 1 }}
               />
-              {language === 'pt' ? 'Idiomas' : 'Languages'}
+              {language === 'pt' ? 'Idiomas' : language === 'es' ? 'Idiomas' : 'Languages'}
             </motion.h3>
             
             <div className="flex flex-wrap gap-3 mb-8">
@@ -339,6 +358,8 @@ export function SkillsSection() {
                   <p className="text-sm text-muted-foreground">
                     {language === 'pt'
                       ? 'Criando MicroSaaS e soluções inovadoras para o mercado'
+                      : language === 'es'
+                      ? 'Creando MicroSaaS y soluciones innovadoras para el mercado'
                       : 'Creating MicroSaaS and innovative solutions for the market'}
                   </p>
                 </div>
@@ -374,11 +395,13 @@ export function SkillsSection() {
                 </motion.div>
                 <div>
                   <h4 className="font-heading font-semibold text-foreground">
-                    {language === 'pt' ? 'Sempre Evoluindo' : 'Always Evolving'}
+                    {language === 'pt' ? 'Sempre Evoluindo' : language === 'es' ? 'Siempre Evolucionando' : 'Always Evolving'}
                   </h4>
                   <p className="text-sm text-muted-foreground">
                     {language === 'pt'
                       ? 'Constantemente aprendendo novas tecnologias e metodologias'
+                      : language === 'es'
+                      ? 'Constantemente aprendiendo nuevas tecnologías y metodologías'
                       : 'Constantly learning new technologies and methodologies'}
                   </p>
                 </div>

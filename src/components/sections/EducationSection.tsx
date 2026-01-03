@@ -6,40 +6,43 @@ import { Button } from '@/components/ui/button';
 
 const education = [
   {
-    degree: { pt: 'Análise e Desenvolvimento de Sistemas', en: 'Systems Analysis and Development' },
+    degree: { pt: 'Análise e Desenvolvimento de Sistemas', en: 'Systems Analysis and Development', es: 'Análisis y Desarrollo de Sistemas' },
     institution: 'Uninter',
     location: 'EAD',
     period: '2024 - 2027',
-    status: { pt: 'Em andamento', en: 'In progress' },
+    status: { pt: 'Em andamento', en: 'In progress', es: 'En curso' },
     current: true,
     description: {
       pt: 'Graduação tecnológica com foco em desenvolvimento de software, banco de dados e gestão de projetos.',
       en: 'Technology degree focused on software development, databases, and project management.',
+      es: 'Grado tecnológico enfocado en desarrollo de software, bases de datos y gestión de proyectos.',
     },
   },
   {
-    degree: { pt: 'Técnico em Informática para Internet', en: 'Internet Computing Technician' },
+    degree: { pt: 'Técnico em Informática para Internet', en: 'Internet Computing Technician', es: 'Técnico en Informática para Internet' },
     institution: 'QI Faculdade e Escola Técnica',
     location: 'Caxias do Sul, RS',
     period: '2021 - 2023',
-    status: { pt: 'Concluído', en: 'Completed' },
+    status: { pt: 'Concluído', en: 'Completed', es: 'Completado' },
     current: false,
     description: {
       pt: 'Formação técnica de 1000 horas com foco em desenvolvimento web, redes, sistemas operacionais e segurança da informação.',
       en: '1000-hour technical training focused on web development, networking, operating systems, and information security.',
+      es: 'Formación técnica de 1000 horas enfocada en desarrollo web, redes, sistemas operativos y seguridad de la información.',
     },
     certificate: true,
   },
   {
-    degree: { pt: 'Ensino Médio', en: 'High School' },
+    degree: { pt: 'Ensino Médio', en: 'High School', es: 'Educación Secundaria' },
     institution: 'E.E.E.M. Prof. Apolinário Alves dos Santos',
     location: 'Caxias do Sul, RS',
     period: '2017 - 2019',
-    status: { pt: 'Concluído', en: 'Completed' },
+    status: { pt: 'Concluído', en: 'Completed', es: 'Completado' },
     current: false,
     description: {
       pt: 'Ensino médio completo com base sólida em ciências exatas e linguagens.',
       en: 'Complete high school education with a solid foundation in exact sciences and languages.',
+      es: 'Educación secundaria completa con una base sólida en ciencias exactas y lenguajes.',
     },
   },
 ];
@@ -69,12 +72,14 @@ export function EducationSection() {
         >
           <h2 className="section-title mb-4">
             <span className="text-gradient">
-              {language === 'pt' ? 'Formação Acadêmica' : 'Education'}
+              {language === 'pt' ? 'Formação Acadêmica' : language === 'es' ? 'Formación Académica' : 'Education'}
             </span>
           </h2>
           <p className="section-subtitle mx-auto">
             {language === 'pt' 
               ? 'Minha jornada educacional em tecnologia e desenvolvimento'
+              : language === 'es'
+              ? 'Mi trayectoria educativa en tecnología y desarrollo'
               : 'My educational journey in technology and development'}
           </p>
         </motion.div>
@@ -136,7 +141,7 @@ export function EducationSection() {
                       <Button variant="glass" size="sm" asChild>
                         <a href="/downloads/certificado-roger.pdf" download>
                           <Download className="w-4 h-4 mr-2" />
-                          {language === 'pt' ? 'Baixar Certificado' : 'Download Certificate'}
+                          {language === 'pt' ? 'Baixar Certificado' : language === 'es' ? 'Descargar Certificado' : 'Download Certificate'}
                         </a>
                       </Button>
                     </div>

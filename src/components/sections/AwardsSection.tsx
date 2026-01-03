@@ -50,7 +50,7 @@ export function AwardsSection() {
               <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/20 border border-amber-500/40">
                 <Medal className="w-5 h-5 text-amber-400" />
                 <span className="text-amber-400 font-bold text-sm">
-                  {language === 'pt' ? 'Medalha de Bronze' : 'Bronze Medal'}
+                  {language === 'pt' ? 'Medalha de Bronze' : language === 'es' ? 'Medalla de Bronce' : 'Bronze Medal'}
                 </span>
               </div>
             </div>
@@ -72,7 +72,7 @@ export function AwardsSection() {
                   />
                 </div>
                 <p className="text-center text-sm text-muted-foreground mt-3">
-                  {language === 'pt' ? 'Apresentação do projeto na QITEC 2023' : 'Project presentation at QITEC 2023'}
+                  {language === 'pt' ? 'Apresentação do projeto na QITEC 2023' : language === 'es' ? 'Presentación del proyecto en QITEC 2023' : 'Project presentation at QITEC 2023'}
                 </p>
               </motion.div>
 
@@ -92,7 +92,7 @@ export function AwardsSection() {
                   />
                 </div>
                 <p className="text-center text-sm text-muted-foreground mt-3">
-                  {language === 'pt' ? 'Cerimônia de premiação - Medalha de Bronze' : 'Award ceremony - Bronze Medal'}
+                  {language === 'pt' ? 'Cerimônia de premiação - Medalha de Bronze' : language === 'es' ? 'Ceremonia de premiación - Medalla de Bronce' : 'Award ceremony - Bronze Medal'}
                 </p>
               </motion.div>
             </div>
@@ -118,47 +118,52 @@ export function AwardsSection() {
               {/* Problema */}
               <div className="mb-6">
                 <h4 className="font-heading font-semibold text-lg text-primary mb-2">
-                  {language === 'pt' ? 'Problema' : 'Problem'}
+                  {language === 'pt' ? 'Problema' : language === 'es' ? 'Problema' : 'Problem'}
                 </h4>
                 <p className="text-muted-foreground max-w-3xl mx-auto text-sm">
                   {language === 'pt' 
                     ? 'O óleo de cozinha é um grave problema ambiental: 1 litro descartado incorretamente contamina até 25 mil litros de água. Hoje, estes óleos usados têm valor comercial e podem ser transformados em produtos de limpeza e biocombustível. Porém, são poucos pontos de coleta nas cidades e as pessoas não têm conhecimento sobre eles.'
+                    : language === 'es'
+                    ? 'El aceite de cocina es un grave problema ambiental: 1 litro desechado incorrectamente contamina hasta 25 mil litros de agua. Hoy, estos aceites usados tienen valor comercial y pueden transformarse en productos de limpieza y biocombustible. Sin embargo, hay pocos puntos de recolección en las ciudades y las personas desconocen su existencia.'
                     : 'Cooking oil is a serious environmental problem: 1 liter improperly disposed of contaminates up to 25,000 liters of water. Today, these used oils have commercial value and can be transformed into cleaning products and biofuel. However, there are few collection points in cities and people are unaware of them.'}
                 </p>
               </div>
 
-              {/* Relevância */}
               <div className="mb-6">
                 <h4 className="font-heading font-semibold text-lg text-primary mb-2">
-                  {language === 'pt' ? 'Relevância' : 'Relevance'}
+                  {language === 'pt' ? 'Relevância' : language === 'es' ? 'Relevancia' : 'Relevance'}
                 </h4>
                 <p className="text-muted-foreground max-w-3xl mx-auto text-sm">
                   {language === 'pt' 
                     ? 'A quantidade de água contaminada por apenas 1 litro de óleo seria suficiente para o uso de uma pessoa por 6 meses. Dos 3,9 bilhões de litros de óleo vegetal utilizado no Brasil por ano, apenas 30 milhões são reciclados (menos de 0,1%), implicando que 99,99% é descartado de formas não ideais.'
+                    : language === 'es'
+                    ? 'La cantidad de agua contaminada por solo 1 litro de aceite sería suficiente para el uso de una persona durante 6 meses. De los 3,9 mil millones de litros de aceite vegetal utilizado en Brasil por año, solo 30 millones son reciclados (menos del 0,1%), lo que implica que el 99,99% se desecha de formas no ideales.'
                     : 'The amount of water contaminated by just 1 liter of oil would be enough for one person to use for 6 months. Of the 3.9 billion liters of vegetable oil used in Brazil per year, only 30 million are recycled (less than 0.1%), implying that 99.99% is disposed of in non-ideal ways.'}
                 </p>
               </div>
 
-              {/* Explicação da ideia */}
               <div className="mb-6">
                 <h4 className="font-heading font-semibold text-lg text-primary mb-2">
-                  {language === 'pt' ? 'Solução' : 'Solution'}
+                  {language === 'pt' ? 'Solução' : language === 'es' ? 'Solución' : 'Solution'}
                 </h4>
                 <p className="text-muted-foreground max-w-3xl mx-auto text-sm">
                   {language === 'pt' 
                     ? 'Desenvolvimento de um tonel de recolhimento de óleo equipado com componentes eletrônicos de baixo custo: sensor de nível sem contato para identificar quando o recipiente está cheio, comunicação via rede LoRa para avisar a empresa coletora, e funcionamento garantido por Arduino alimentado por placa solar e bateria recarregável.'
+                    : language === 'es'
+                    ? 'Desarrollo de un barril de recolección de aceite equipado con componentes electrónicos de bajo costo: sensor de nivel sin contacto para identificar cuándo el recipiente está lleno, comunicación vía red LoRa para avisar a la empresa recolectora, y funcionamiento garantizado por Arduino alimentado por panel solar y batería recargable.'
                     : 'Development of an oil collection barrel equipped with low-cost electronic components: non-contact level sensor to identify when the container is full, LoRa network communication to notify the collection company, and operation guaranteed by Arduino powered by solar panel and rechargeable battery.'}
                 </p>
               </div>
 
-              {/* Trabalhos Futuros */}
               <div className="mb-6">
                 <h4 className="font-heading font-semibold text-lg text-primary mb-2">
-                  {language === 'pt' ? 'Trabalhos Futuros' : 'Future Work'}
+                  {language === 'pt' ? 'Trabalhos Futuros' : language === 'es' ? 'Trabajos Futuros' : 'Future Work'}
                 </h4>
                 <p className="text-muted-foreground max-w-3xl mx-auto text-sm">
                   {language === 'pt' 
                     ? 'Adaptar o sistema para containers, lixeiras de material sólido e ralos/bueiros. Assim, impactamos em logística e ambientalmente, evitando acúmulo de lixo e enchentes provocadas por entupimentos não identificados.'
+                    : language === 'es'
+                    ? 'Adaptar el sistema para contenedores, basureros de material sólido y desagües/alcantarillas. Así, impactamos en logística y ambientalmente, evitando acumulación de basura e inundaciones provocadas por obstrucciones no identificadas.'
                     : 'Adapt the system for containers, solid waste bins and drains/manholes. This way, we impact logistics and the environment, avoiding waste accumulation and floods caused by unidentified blockages.'}
                 </p>
               </div>
@@ -168,13 +173,13 @@ export function AwardsSection() {
                 <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">Arduino</span>
                 <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">LoRa</span>
                 <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">
-                  {language === 'pt' ? 'Energia Solar' : 'Solar Power'}
+                  {language === 'pt' ? 'Energia Solar' : language === 'es' ? 'Energía Solar' : 'Solar Power'}
                 </span>
                 <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">
-                  {language === 'pt' ? 'Sensores' : 'Sensors'}
+                  {language === 'pt' ? 'Sensores' : language === 'es' ? 'Sensores' : 'Sensors'}
                 </span>
                 <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">
-                  {language === 'pt' ? 'Sustentabilidade' : 'Sustainability'}
+                  {language === 'pt' ? 'Sustentabilidade' : language === 'es' ? 'Sostenibilidad' : 'Sustainability'}
                 </span>
                 <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">SOLACYT</span>
                 <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">MOSTRATEC</span>
@@ -184,19 +189,19 @@ export function AwardsSection() {
                 <Button variant="heroOutline" size="lg" asChild>
                   <a href="https://qi.edu.br/qitec-2023/" target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="w-4 h-4 mr-2" />
-                    {language === 'pt' ? 'Ver Evento QITEC' : 'View QITEC Event'}
+                    {language === 'pt' ? 'Ver Evento QITEC' : language === 'es' ? 'Ver Evento QITEC' : 'View QITEC Event'}
                   </a>
                 </Button>
                 <Button variant="glass" size="lg" asChild>
                   <a href="/downloads/modelo-qitec.pdf" download>
                     <Download className="w-4 h-4 mr-2" />
-                    {language === 'pt' ? 'Baixar Poster do Projeto' : 'Download Project Poster'}
+                    {language === 'pt' ? 'Baixar Poster do Projeto' : language === 'es' ? 'Descargar Póster del Proyecto' : 'Download Project Poster'}
                   </a>
                 </Button>
                 <Button variant="glass" size="lg" asChild>
                   <a href="/downloads/certificado-qitec.pdf" download>
                     <Download className="w-4 h-4 mr-2" />
-                    {language === 'pt' ? 'Baixar Certificado' : 'Download Certificate'}
+                    {language === 'pt' ? 'Baixar Certificado' : language === 'es' ? 'Descargar Certificado' : 'Download Certificate'}
                   </a>
                 </Button>
               </div>

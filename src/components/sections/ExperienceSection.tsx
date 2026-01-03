@@ -5,7 +5,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 
 const experiences = [
   {
-    role: { pt: 'CEO & Co-fundador', en: 'CEO & Co-founder' },
+    role: { pt: 'CEO & Co-fundador', en: 'CEO & Co-founder', es: 'CEO & Cofundador' },
     company: 'RoVR',
     companyUrl: 'https://rovr.lovable.app/',
     location: 'Remoto',
@@ -24,10 +24,16 @@ const experiences = [
         'Technical leadership and product strategy',
         'Scalable systems architecture with React, TypeScript, and Supabase',
       ],
+      es: [
+        'Creación y gestión de MicroSaaS y aplicaciones web innovadoras',
+        'Desarrollo de soluciones personalizadas para clientes',
+        'Liderazgo técnico y estrategia de producto',
+        'Arquitectura de sistemas escalables con React, TypeScript y Supabase',
+      ],
     },
   },
   {
-    role: { pt: 'Suporte N1', en: 'N1 Support Analyst' },
+    role: { pt: 'Suporte N1', en: 'N1 Support Analyst', es: 'Analista de Soporte N1' },
     company: 'Windel Sistemas',
     location: 'Caxias do Sul, RS',
     period: 'Mar 2025 - Presente',
@@ -45,10 +51,16 @@ const experiences = [
         'Management of bank titles and financial integrations',
         'ERP system installation and configuration',
       ],
+      es: [
+        'Soporte técnico para facturas electrónicas',
+        'Desarrollo y mantenimiento de scripts de automatización',
+        'Gestión de títulos bancarios e integraciones financieras',
+        'Instalación y configuración de sistemas ERP',
+      ],
     },
   },
   {
-    role: { pt: 'Técnico em Informática - HelpDesk', en: 'IT Technician - HelpDesk' },
+    role: { pt: 'Técnico em Informática - HelpDesk', en: 'IT Technician - HelpDesk', es: 'Técnico en Informática - HelpDesk' },
     company: 'Cruzeiro Automação',
     location: 'Caxias do Sul, RS',
     period: 'Out 2023 - Nov 2024',
@@ -66,10 +78,16 @@ const experiences = [
         'Technical support for POS system',
         'User training and technical documentation',
       ],
+      es: [
+        'Mantenimiento preventivo y correctivo de equipos',
+        'Instalación y configuración de sistemas ERP',
+        'Soporte técnico para sistema de caja',
+        'Capacitación de usuarios y documentación técnica',
+      ],
     },
   },
   {
-    role: { pt: 'Auxiliar de Produção', en: 'Production Assistant' },
+    role: { pt: 'Auxiliar de Produção', en: 'Production Assistant', es: 'Auxiliar de Producción' },
     company: 'Moon',
     location: 'Caxias do Sul, RS',
     period: 'Jul 2021 - Mar 2023',
@@ -86,6 +104,12 @@ const experiences = [
         'Product quality control',
         'Teamwork and meeting targets',
         'Organization and maintenance of the work environment',
+      ],
+      es: [
+        'Producción de embutidos de techo',
+        'Control de calidad de productos',
+        'Trabajo en equipo y cumplimiento de metas',
+        'Organización y mantenimiento del ambiente de trabajo',
       ],
     },
   },
@@ -233,7 +257,7 @@ export function ExperienceSection() {
                         transition={{ duration: 2, repeat: Infinity }}
                         style={{ transform: 'translateZ(30px)' }}
                       >
-                        {language === 'pt' ? 'Atual' : 'Current'}
+                        {language === 'pt' ? 'Atual' : language === 'es' ? 'Actual' : 'Current'}
                       </motion.span>
                     )}
                   </div>

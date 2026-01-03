@@ -70,7 +70,7 @@ export function HeroSection() {
             transition={{ duration: 0.6, delay: 0.25 }}
             className="text-lg text-primary font-medium mb-6"
           >
-            CEO & {language === 'pt' ? 'Co-fundador' : 'Co-founder'} @ <a href="https://rovr.lovable.app/" target="_blank" rel="noopener noreferrer" className="text-gradient font-bold hover:opacity-80 transition-opacity">RoVR</a>
+            CEO & {language === 'pt' ? 'Co-fundador' : language === 'es' ? 'Cofundador' : 'Co-founder'} @ <a href="https://rovr.lovable.app/" target="_blank" rel="noopener noreferrer" className="text-gradient font-bold hover:opacity-80 transition-opacity">RoVR</a>
           </motion.p>
 
           <motion.p
@@ -109,7 +109,7 @@ export function HeroSection() {
             <Button variant="glass" size="lg" asChild>
               <a href="/downloads/curriculo-roger-varela.pdf" download>
                 <Download className="w-5 h-5 mr-2" />
-                {language === 'pt' ? 'Baixar CV' : 'Download CV'}
+                {language === 'pt' ? 'Baixar CV' : language === 'es' ? 'Descargar CV' : 'Download CV'}
               </a>
             </Button>
           </motion.div>
@@ -122,10 +122,10 @@ export function HeroSection() {
             className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto"
           >
             {[
-              { value: '6+', label: language === 'pt' ? 'Projetos' : 'Projects' },
-              { value: '10+', label: language === 'pt' ? 'Tecnologias' : 'Technologies' },
-              { value: '3+', label: language === 'pt' ? 'Anos Exp.' : 'Years Exp.' },
-              { value: '🏆', label: language === 'pt' ? 'Premiado' : 'Award Winner' },
+              { value: '6+', label: language === 'pt' ? 'Projetos' : language === 'es' ? 'Proyectos' : 'Projects' },
+              { value: '10+', label: language === 'pt' ? 'Tecnologias' : language === 'es' ? 'Tecnologías' : 'Technologies' },
+              { value: '3+', label: language === 'pt' ? 'Anos Exp.' : language === 'es' ? 'Años Exp.' : 'Years Exp.' },
+              { value: '🏆', label: language === 'pt' ? 'Premiado' : language === 'es' ? 'Premiado' : 'Award Winner' },
             ].map((stat, index) => (
               <motion.div 
                 key={index} 

@@ -29,15 +29,15 @@ export function HeroSection() {
         />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 pt-20 sm:pt-16">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-6"
+            className="mb-4 sm:mb-6"
           >
-            <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
+            <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs sm:text-sm font-medium">
               {t('hero.greeting')}
             </span>
           </motion.div>
@@ -46,10 +46,10 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="flex items-center justify-center gap-4 mb-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-4"
           >
             <Logo3D size="lg" />
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold">
               <span className="text-foreground">Roger </span>
               <span className="text-gradient">Varela</span>
             </h1>
@@ -59,7 +59,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl md:text-2xl lg:text-3xl font-heading font-medium text-muted-foreground mb-2"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-heading font-medium text-muted-foreground mb-2 px-2"
           >
             {t('hero.title')}
           </motion.h2>
@@ -68,7 +68,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.25 }}
-            className="text-lg text-primary font-medium mb-6"
+            className="text-base sm:text-lg text-primary font-medium mb-4 sm:mb-6"
           >
             CEO & {language === 'pt' ? 'Co-fundador' : language === 'es' ? 'Cofundador' : 'Co-founder'} @ <a href="https://rovr.lovable.app/" target="_blank" rel="noopener noreferrer" className="text-gradient font-bold hover:opacity-80 transition-opacity">RoVR</a>
           </motion.p>
@@ -77,7 +77,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10"
+            className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-8 sm:mb-10 px-2"
           >
             {t('hero.subtitle')}
           </motion.p>
@@ -86,29 +86,29 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 flex-wrap"
+            className="grid grid-cols-2 sm:flex sm:flex-row items-center justify-center gap-2 sm:gap-4 px-2 sm:px-0"
           >
-            <Button variant="hero" size="lg" asChild>
+            <Button variant="hero" size="default" className="sm:size-lg w-full sm:w-auto text-sm sm:text-base" asChild>
               <a href="#projects">
-                <Briefcase className="w-5 h-5 mr-2" />
+                <Briefcase className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2" />
                 {t('hero.cta.projects')}
               </a>
             </Button>
-            <Button variant="heroOutline" size="lg" asChild>
+            <Button variant="heroOutline" size="default" className="sm:size-lg w-full sm:w-auto text-sm sm:text-base" asChild>
               <a href="https://github.com/ChokiTheProo" target="_blank" rel="noopener noreferrer">
-                <Github className="w-5 h-5 mr-2" />
+                <Github className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2" />
                 {t('hero.cta.github')}
               </a>
             </Button>
-            <Button variant="glass" size="lg" asChild>
+            <Button variant="glass" size="default" className="sm:size-lg w-full sm:w-auto text-sm sm:text-base" asChild>
               <a href="#contact">
-                <Mail className="w-5 h-5 mr-2" />
+                <Mail className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2" />
                 {t('hero.cta.contact')}
               </a>
             </Button>
-            <Button variant="glass" size="lg" asChild>
+            <Button variant="glass" size="default" className="sm:size-lg w-full sm:w-auto text-sm sm:text-base" asChild>
               <a href="/downloads/curriculo-roger-varela.pdf" download>
-                <Download className="w-5 h-5 mr-2" />
+                <Download className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2" />
                 {language === 'pt' ? 'Baixar CV' : language === 'es' ? 'Descargar CV' : 'Download CV'}
               </a>
             </Button>
@@ -119,7 +119,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto"
+            className="mt-10 sm:mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 max-w-2xl mx-auto px-4 sm:px-0"
           >
             {[
               { value: '6+', label: language === 'pt' ? 'Projetos' : language === 'es' ? 'Proyectos' : 'Projects' },
@@ -129,14 +129,14 @@ export function HeroSection() {
             ].map((stat, index) => (
               <motion.div 
                 key={index} 
-                className="text-center"
+                className="text-center p-3 sm:p-0 rounded-xl bg-card/30 sm:bg-transparent border border-border/20 sm:border-0"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                <div className="text-3xl md:text-4xl font-heading font-bold text-gradient">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-gradient">
                   {stat.value}
                 </div>
-                <div className="text-sm text-muted-foreground mt-1">{stat.label}</div>
+                <div className="text-xs sm:text-sm text-muted-foreground mt-1">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>

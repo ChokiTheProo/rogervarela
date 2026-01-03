@@ -53,7 +53,7 @@ const logoVariants = {
 };
 
 export function Header() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -142,12 +142,12 @@ export function Header() {
         />
       </motion.div>
 
-      <div className="container mx-auto px-4 flex items-center justify-between relative">
+      <div className="container mx-auto px-3 sm:px-4 flex items-center justify-between relative">
         {/* Animated Logo */}
         <motion.a
           href="/"
           onClick={handleLogoClick}
-          className="relative group"
+          className="relative group flex-shrink-0"
           variants={logoVariants}
           initial="initial"
           animate="animate"
@@ -239,11 +239,12 @@ export function Header() {
           </motion.div>
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 sm:gap-2">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5, duration: 0.5 }}
+            className="hidden sm:block"
           >
             <ThemeToggle />
           </motion.div>
@@ -264,7 +265,7 @@ export function Header() {
             <Button
               variant="ghost"
               size="icon"
-              className="lg:hidden relative overflow-hidden group"
+              className="lg:hidden relative overflow-hidden group h-9 w-9"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               <motion.div
@@ -289,9 +290,14 @@ export function Header() {
             animate={{ opacity: 1, height: 'auto', y: 0 }}
             exit={{ opacity: 0, height: 0, y: -20 }}
             transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="lg:hidden glass mt-2 mx-4 rounded-xl overflow-hidden border border-primary/10"
+            className="lg:hidden glass mt-2 mx-3 sm:mx-4 rounded-xl overflow-hidden border border-primary/10"
           >
-            <nav className="flex flex-col p-4 gap-1">
+            <nav className="flex flex-col p-3 sm:p-4 gap-1">
+              {/* Theme toggle for mobile */}
+              <div className="flex items-center justify-between px-3 py-2 mb-2 border-b border-border/30 sm:hidden">
+                <span className="text-sm text-muted-foreground">{language === 'pt' ? 'Tema' : language === 'es' ? 'Tema' : 'Theme'}</span>
+                <ThemeToggle />
+              </div>
               {navItems.map((item, index) => (
                 <motion.a
                   key={item.key}
@@ -310,7 +316,7 @@ export function Header() {
                     backgroundColor: 'hsl(var(--primary) / 0.1)'
                   }}
                   whileTap={{ scale: 0.98 }}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground px-4 py-3 rounded-lg transition-colors cursor-pointer relative overflow-hidden group"
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg transition-colors cursor-pointer relative overflow-hidden group"
                 >
                   <motion.span
                     className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-primary rounded-r-full"

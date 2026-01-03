@@ -20,9 +20,8 @@ export function AwardsSection() {
   });
 
   // Desativar animações de parallax no mobile para evitar layout "torto"
-  const imageLeftX = useTransform(scrollYProgress, [0, 0.5, 1], isMobile ? [0, 0, 0] : [-50, 0, 50]);
-  const imageRightX = useTransform(scrollYProgress, [0, 0.5, 1], isMobile ? [0, 0, 0] : [50, 0, -50]);
-  const cardRotate = useTransform(scrollYProgress, [0, 0.5, 1], isMobile ? [0, 0, 0] : [2, 0, -2]);
+  const imageLeftX = useTransform(scrollYProgress, [0, 0.5, 1], isMobile ? [0, 0, 0] : [-30, 0, 30]);
+  const imageRightX = useTransform(scrollYProgress, [0, 0.5, 1], isMobile ? [0, 0, 0] : [30, 0, -30]);
 
   return (
     <section id="awards" className="py-24 bg-secondary/20">
@@ -45,7 +44,6 @@ export function AwardsSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="max-w-6xl mx-auto mb-12"
-          style={{ rotate: cardRotate }}
         >
           <div className="relative p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-gradient-card border-2 border-primary/30 overflow-hidden">
             {/* Badge */}

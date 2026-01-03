@@ -18,6 +18,15 @@ export function CoursesSection() {
         'Dicas de produtividade',
         'Certificado de conclusão',
       ]
+    : language === 'es'
+    ? [
+        'Comandos esenciales de Windows',
+        'Automatización de tareas con scripts',
+        'Gestión de archivos y carpetas',
+        'Configuraciones avanzadas del sistema',
+        'Consejos de productividad',
+        'Certificado de finalización',
+      ]
     : [
         'Essential Windows commands',
         'Task automation with scripts',
@@ -50,12 +59,14 @@ export function CoursesSection() {
         >
           <h2 className="section-title mb-4">
             <span className="text-gradient">
-              {language === 'pt' ? 'Meus Cursos' : 'My Courses'}
+              {language === 'pt' ? 'Meus Cursos' : language === 'es' ? 'Mis Cursos' : 'My Courses'}
             </span>
           </h2>
           <p className="section-subtitle mx-auto">
             {language === 'pt' 
               ? 'Aprenda habilidades práticas com meus cursos online'
+              : language === 'es'
+              ? 'Aprende habilidades prácticas con mis cursos en línea'
               : 'Learn practical skills with my online courses'}
           </p>
         </motion.div>
@@ -77,7 +88,7 @@ export function CoursesSection() {
               <div>
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 text-primary text-sm font-medium mb-4">
                   <Award className="w-4 h-4" />
-                  {language === 'pt' ? 'Curso Online' : 'Online Course'}
+                  {language === 'pt' ? 'Curso Online' : language === 'es' ? 'Curso en Línea' : 'Online Course'}
                 </div>
                 
                 <div className="flex items-center gap-4 mb-4">
@@ -86,10 +97,10 @@ export function CoursesSection() {
                   </div>
                   <div>
                     <h3 className="font-heading font-bold text-2xl text-foreground">
-                      {language === 'pt' ? 'Comandos Windows' : 'Windows Commands'}
+                      {language === 'pt' ? 'Comandos Windows' : language === 'es' ? 'Comandos de Windows' : 'Windows Commands'}
                     </h3>
                     <p className="text-muted-foreground text-sm">
-                      {language === 'pt' ? 'Do básico ao avançado' : 'From basics to advanced'}
+                      {language === 'pt' ? 'Do básico ao avançado' : language === 'es' ? 'De lo básico a lo avanzado' : 'From basics to advanced'}
                     </p>
                   </div>
                 </div>
@@ -97,6 +108,8 @@ export function CoursesSection() {
                 <p className="text-muted-foreground mb-6">
                   {language === 'pt' 
                     ? 'Domine o terminal do Windows e aumente sua produtividade. Aprenda comandos essenciais, automação de tarefas e técnicas avançadas de administração de sistemas.'
+                    : language === 'es'
+                    ? 'Domina la terminal de Windows y aumenta tu productividad. Aprende comandos esenciales, automatización de tareas y técnicas avanzadas de administración de sistemas.'
                     : 'Master the Windows terminal and boost your productivity. Learn essential commands, task automation, and advanced system administration techniques.'}
                 </p>
 
@@ -106,7 +119,7 @@ export function CoursesSection() {
                   className="w-full md:w-auto gap-2 bg-gradient-to-r from-primary to-violet-500 hover:from-primary/90 hover:to-violet-500/90 shadow-lg shadow-primary/25"
                 >
                   <ShoppingCart className="w-5 h-5" />
-                  {language === 'pt' ? 'Comprar Agora' : 'Buy Now'}
+                  {language === 'pt' ? 'Comprar Agora' : language === 'es' ? 'Comprar Ahora' : 'Buy Now'}
                 </Button>
               </div>
 

@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import { BookOpen, Target, Users } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { ImageZoom } from '@/components/ui/image-zoom';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const highlights = [
   { icon: BookOpen, titleKey: 'about.highlight1.title', descKey: 'about.highlight1.desc' },
@@ -16,8 +17,10 @@ export function AboutSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const isMobile = useIsMobile();
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isMobile) return;
     const rect = e.currentTarget.getBoundingClientRect();
     const x = (e.clientX - rect.left - rect.width / 2) / 20;
     const y = (e.clientY - rect.top - rect.height / 2) / 20;
@@ -29,7 +32,7 @@ export function AboutSection() {
   };
 
   return (
-    <section id="about" className="py-24 relative overflow-hidden">
+    <section id="about" className="py-12 md:py-24 relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
@@ -55,55 +58,59 @@ export function AboutSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-8 md:mb-16"
         >
           <motion.h2 
-            className="section-title mb-4"
-            whileHover={{ scale: 1.02 }}
+            className="section-title mb-4 text-2xl md:text-4xl"
+            whileHover={isMobile ? {} : { scale: 1.02 }}
           >
             <span className="text-gradient">{t('about.title')}</span>
           </motion.h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* 3D Image Section */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: isMobile ? 0 : -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative"
+            className="relative order-first lg:order-none"
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            style={{ perspective: '1000px' }}
+            style={{ perspective: isMobile ? 'none' : '1000px' }}
           >
             <motion.div 
-              className="relative w-80 h-80 mx-auto"
-              animate={{
+              className="relative w-56 h-56 md:w-80 md:h-80 mx-auto"
+              animate={isMobile ? {} : {
                 rotateY: mousePosition.x,
                 rotateX: -mousePosition.y,
               }}
               transition={{ type: 'spring', stiffness: 100, damping: 15 }}
-              style={{ transformStyle: 'preserve-3d' }}
+              style={{ transformStyle: isMobile ? 'flat' : 'preserve-3d' }}
             >
-              {/* 3D Shadow Layers */}
-              <motion.div 
-                className="absolute inset-0 bg-gradient-primary rounded-2xl"
-                style={{ transform: 'translateZ(-60px) rotateZ(12deg)', opacity: 0.1 }}
-              />
-              <motion.div 
-                className="absolute inset-0 bg-gradient-primary rounded-2xl"
-                style={{ transform: 'translateZ(-40px) rotateZ(8deg)', opacity: 0.15 }}
-              />
-              <motion.div 
-                className="absolute inset-0 bg-gradient-primary rounded-2xl"
-                style={{ transform: 'translateZ(-20px) rotateZ(4deg)', opacity: 0.2 }}
-              />
+              {/* 3D Shadow Layers - hidden on mobile */}
+              {!isMobile && (
+                <>
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-primary rounded-2xl"
+                    style={{ transform: 'translateZ(-60px) rotateZ(12deg)', opacity: 0.1 }}
+                  />
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-primary rounded-2xl"
+                    style={{ transform: 'translateZ(-40px) rotateZ(8deg)', opacity: 0.15 }}
+                  />
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-primary rounded-2xl"
+                    style={{ transform: 'translateZ(-20px) rotateZ(4deg)', opacity: 0.2 }}
+                  />
+                </>
+              )}
               
               {/* Main Image Container */}
               <div 
                 className="absolute inset-0 bg-gradient-card rounded-2xl border border-border overflow-hidden"
                 style={{ 
-                  transform: 'translateZ(0px)',
+                  transform: isMobile ? 'none' : 'translateZ(0px)',
                   boxShadow: '0 25px 50px -12px hsl(var(--primary) / 0.25)'
                 }}
               >
@@ -114,28 +121,28 @@ export function AboutSection() {
                 />
               </div>
               
-              {/* Floating Glow Effects */}
+              {/* Floating Glow Effects - simplified on mobile */}
               <motion.div 
-                animate={{
+                animate={isMobile ? {} : {
                   y: [0, -20, 0],
                   opacity: [0.5, 1, 0.5],
                 }}
                 transition={{ duration: 3, repeat: Infinity }}
-                className="absolute -top-4 -right-4 w-24 h-24 bg-primary/30 rounded-full blur-2xl"
-                style={{ transform: 'translateZ(30px)' }}
+                className="absolute -top-4 -right-4 w-16 md:w-24 h-16 md:h-24 bg-primary/30 rounded-full blur-2xl"
+                style={{ transform: isMobile ? 'none' : 'translateZ(30px)' }}
               />
               <motion.div 
-                animate={{
+                animate={isMobile ? {} : {
                   y: [0, 20, 0],
                   opacity: [0.5, 1, 0.5],
                 }}
                 transition={{ duration: 4, repeat: Infinity, delay: 1 }}
-                className="absolute -bottom-4 -left-4 w-32 h-32 bg-accent/30 rounded-full blur-2xl"
-                style={{ transform: 'translateZ(30px)' }}
+                className="absolute -bottom-4 -left-4 w-20 md:w-32 h-20 md:h-32 bg-accent/30 rounded-full blur-2xl"
+                style={{ transform: isMobile ? 'none' : 'translateZ(30px)' }}
               />
 
-              {/* Floating Particles */}
-              {[...Array(5)].map((_, i) => (
+              {/* Floating Particles - hidden on mobile */}
+              {!isMobile && [...Array(5)].map((_, i) => (
                 <motion.div
                   key={i}
                   className="absolute w-2 h-2 bg-primary rounded-full"
@@ -162,12 +169,12 @@ export function AboutSection() {
 
           {/* Content Section */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: isMobile ? 0 : 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <motion.p 
-              className="text-lg text-muted-foreground leading-relaxed mb-8"
+              className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6 md:mb-8 text-center lg:text-left"
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.4 }}
@@ -175,33 +182,33 @@ export function AboutSection() {
               {t('about.description')}
             </motion.p>
 
-            <div className="space-y-6">
+            <div className="space-y-4 md:space-y-6">
               {highlights.map((item, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20, rotateX: -15 }}
+                  initial={{ opacity: 0, y: 20, rotateX: isMobile ? 0 : -15 }}
                   animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                  whileHover={{ 
+                  whileHover={isMobile ? {} : { 
                     scale: 1.02, 
                     x: 10,
                     boxShadow: '0 10px 40px -10px hsl(var(--primary) / 0.3)'
                   }}
-                  className="flex gap-4 p-4 rounded-xl bg-secondary/30 border border-border/50 hover:border-primary/50 transition-all duration-300 group cursor-pointer"
-                  style={{ perspective: '1000px' }}
+                  className="flex gap-3 md:gap-4 p-3 md:p-4 rounded-xl bg-secondary/30 border border-border/50 hover:border-primary/50 transition-all duration-300 group cursor-pointer"
+                  style={{ perspective: isMobile ? 'none' : '1000px' }}
                 >
                   <motion.div 
-                    className="flex-shrink-0 w-12 h-12 rounded-lg bg-gradient-primary flex items-center justify-center"
-                    whileHover={{ rotateY: 180 }}
+                    className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-lg bg-gradient-primary flex items-center justify-center"
+                    whileHover={isMobile ? {} : { rotateY: 180 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <item.icon className="w-6 h-6 text-primary-foreground" />
+                    <item.icon className="w-5 h-5 md:w-6 md:h-6 text-primary-foreground" />
                   </motion.div>
                   <div>
-                    <h3 className="font-heading font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
+                    <h3 className="font-heading font-semibold text-sm md:text-base text-foreground mb-1 group-hover:text-primary transition-colors">
                       {t(item.titleKey)}
                     </h3>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-xs md:text-sm text-muted-foreground">
                       {t(item.descKey)}
                     </p>
                   </div>

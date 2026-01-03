@@ -5,10 +5,10 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 interface Certification {
-  name: { pt: string; en: string };
+  name: { pt: string; en: string; es: string };
   institution: string;
   year: string;
-  type: { pt: string; en: string };
+  type: { pt: string; en: string; es: string };
   category: 'technical' | 'programming' | 'languages' | 'other';
   hours?: string;
   downloadUrl?: string;
@@ -17,110 +17,110 @@ interface Certification {
 
 const certifications: Certification[] = [
   {
-    name: { pt: 'Técnico em Informática para Internet', en: 'Internet Computing Technician' },
+    name: { pt: 'Técnico em Informática para Internet', en: 'Internet Computing Technician', es: 'Técnico en Informática para Internet' },
     institution: 'QI Faculdade e Escola Técnica',
     year: '2023',
-    type: { pt: 'Formação Técnica', en: 'Technical Degree' },
+    type: { pt: 'Formação Técnica', en: 'Technical Degree', es: 'Formación Técnica' },
     category: 'technical',
     hours: '1000h',
   },
   {
-    name: { pt: 'JavaScript [40 Horas]', en: 'JavaScript [40 Hours]' },
+    name: { pt: 'JavaScript [40 Horas]', en: 'JavaScript [40 Hours]', es: 'JavaScript [40 Horas]' },
     institution: 'Curso em Vídeo',
     year: '2024',
-    type: { pt: 'Certificação', en: 'Certification' },
+    type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'programming',
     hours: '40h',
     downloadUrl: '/downloads/certificado-javascript-40h.jpg',
     previewImage: '/downloads/certificado-javascript-40h.jpg',
   },
   {
-    name: { pt: 'Lógica de Programação', en: 'Programming Logic' },
+    name: { pt: 'Lógica de Programação', en: 'Programming Logic', es: 'Lógica de Programación' },
     institution: 'Flexxo Centro de Capacitação em TI',
     year: '2024',
-    type: { pt: 'Certificação', en: 'Certification' },
+    type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'programming',
     hours: '48h',
     downloadUrl: '/downloads/certificado-logica-programacao.jpg',
     previewImage: '/downloads/certificado-logica-programacao.jpg',
   },
   {
-    name: { pt: 'Marketing Digital', en: 'Digital Marketing' },
+    name: { pt: 'Marketing Digital', en: 'Digital Marketing', es: 'Marketing Digital' },
     institution: 'Curso em Vídeo',
     year: '2022',
-    type: { pt: 'Certificação', en: 'Certification' },
+    type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'other',
     hours: '40h',
   },
   {
-    name: { pt: 'Inglês Nível Básico', en: 'Basic English' },
+    name: { pt: 'Inglês Nível Básico', en: 'Basic English', es: 'Inglés Nivel Básico' },
     institution: 'Curso em Vídeo',
     year: '2022',
-    type: { pt: 'Certificação', en: 'Certification' },
+    type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'languages',
     hours: '40h',
   },
   {
-    name: { pt: 'Inglês Nível Médio', en: 'Intermediate English' },
+    name: { pt: 'Inglês Nível Médio', en: 'Intermediate English', es: 'Inglés Nivel Intermedio' },
     institution: 'Curso em Vídeo',
     year: '2023',
-    type: { pt: 'Certificação', en: 'Certification' },
+    type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'languages',
     hours: '40h',
   },
   {
-    name: { pt: 'Informática Básica', en: 'Basic Computing' },
+    name: { pt: 'Informática Básica', en: 'Basic Computing', es: 'Informática Básica' },
     institution: 'Cooperativa RioGrandense',
     year: '2020',
-    type: { pt: 'Certificação', en: 'Certification' },
+    type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'technical',
     hours: '75h',
   },
   {
-    name: { pt: 'Git e GitHub', en: 'Git and GitHub' },
+    name: { pt: 'Git e GitHub', en: 'Git and GitHub', es: 'Git y GitHub' },
     institution: 'Curso em Vídeo',
     year: '2022',
-    type: { pt: 'Certificação', en: 'Certification' },
+    type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'programming',
     hours: '20h',
   },
   {
-    name: { pt: 'Java Completo', en: 'Complete Java' },
+    name: { pt: 'Java Completo', en: 'Complete Java', es: 'Java Completo' },
     institution: 'Curso em Vídeo',
     year: '2023',
-    type: { pt: 'Certificação', en: 'Certification' },
+    type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'programming',
     hours: '40h',
   },
   {
-    name: { pt: 'Desenvolvimento de Aplicativos Mobile', en: 'Mobile App Development' },
+    name: { pt: 'Desenvolvimento de Aplicativos Mobile', en: 'Mobile App Development', es: 'Desarrollo de Aplicaciones Móviles' },
     institution: 'QI Faculdade',
     year: '2024',
-    type: { pt: 'Certificação', en: 'Certification' },
+    type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'programming',
   },
   {
-    name: { pt: 'Sistemas Operacionais de Redes', en: 'Network Operating Systems' },
+    name: { pt: 'Sistemas Operacionais de Redes', en: 'Network Operating Systems', es: 'Sistemas Operativos de Redes' },
     institution: 'QI Faculdade',
     year: '2023',
-    type: { pt: 'Certificação', en: 'Certification' },
+    type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'technical',
   },
   {
-    name: { pt: 'Internet das Coisas (IoT)', en: 'Internet of Things (IoT)' },
+    name: { pt: 'Internet das Coisas (IoT)', en: 'Internet of Things (IoT)', es: 'Internet de las Cosas (IoT)' },
     institution: 'QI Faculdade',
     year: '2024',
-    type: { pt: 'Certificação', en: 'Certification' },
+    type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'technical',
   },
 ];
 
 const categories = [
-  { id: 'all', label: { pt: 'Todos', en: 'All' }, icon: Award },
-  { id: 'programming', label: { pt: 'Programação', en: 'Programming' }, icon: Code },
-  { id: 'technical', label: { pt: 'Técnico', en: 'Technical' }, icon: GraduationCap },
-  { id: 'languages', label: { pt: 'Idiomas', en: 'Languages' }, icon: Globe },
-  { id: 'other', label: { pt: 'Outros', en: 'Other' }, icon: BookOpen },
+  { id: 'all', label: { pt: 'Todos', en: 'All', es: 'Todos' }, icon: Award },
+  { id: 'programming', label: { pt: 'Programação', en: 'Programming', es: 'Programación' }, icon: Code },
+  { id: 'technical', label: { pt: 'Técnico', en: 'Technical', es: 'Técnico' }, icon: GraduationCap },
+  { id: 'languages', label: { pt: 'Idiomas', en: 'Languages', es: 'Idiomas' }, icon: Globe },
+  { id: 'other', label: { pt: 'Outros', en: 'Other', es: 'Otros' }, icon: BookOpen },
 ];
 
 export function CertificationsSection() {
@@ -247,7 +247,7 @@ export function CertificationsSection() {
             animate={{ opacity: 1 }}
             className="text-center text-muted-foreground py-12"
           >
-            {language === 'pt' ? 'Nenhuma certificação encontrada nesta categoria.' : 'No certifications found in this category.'}
+            {language === 'pt' ? 'Nenhuma certificação encontrada nesta categoria.' : language === 'es' ? 'No se encontraron certificaciones en esta categoría.' : 'No certifications found in this category.'}
           </motion.p>
         )}
       </div>

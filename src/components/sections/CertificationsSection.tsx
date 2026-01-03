@@ -3,6 +3,7 @@ import { useRef, useState } from 'react';
 import { Award, Calendar, Building, BookOpen, GraduationCap, Code, Globe } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface Certification {
   name: { pt: string; en: string; es: string };
@@ -128,13 +129,15 @@ export function CertificationsSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [activeTab, setActiveTab] = useState('all');
+  const isMobile = useIsMobile();
 
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'end start'],
   });
 
-  const cardsY = useTransform(scrollYProgress, [0, 1], [50, -50]);
+  // Desativar parallax no mobile
+  const cardsY = useTransform(scrollYProgress, [0, 1], isMobile ? [0, 0] : [50, -50]);
 
   const filteredCertifications = activeTab === 'all' 
     ? certifications 
@@ -142,37 +145,37 @@ export function CertificationsSection() {
 
 
   return (
-    <section id="certifications" className="py-24 bg-secondary/20 overflow-hidden">
-      <div className="container mx-auto px-4" ref={ref}>
+    <section id="certifications" className="py-16 sm:py-24 bg-secondary/20 overflow-hidden">
+      <div className="container mx-auto px-3 sm:px-4" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
           <h2 className="section-title mb-4">
             <span className="text-gradient">{t('certs.title')}</span>
           </h2>
-          <p className="section-subtitle mx-auto">{t('certs.subtitle')}</p>
+          <p className="section-subtitle mx-auto px-2">{t('certs.subtitle')}</p>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mb-10"
+          className="mb-6 sm:mb-10 overflow-x-auto pb-2"
         >
           <Tabs defaultValue="all" value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="flex flex-wrap justify-center gap-2 bg-transparent h-auto p-0">
+            <TabsList className="flex flex-nowrap sm:flex-wrap justify-start sm:justify-center gap-2 bg-transparent h-auto p-0 min-w-max sm:min-w-0">
               {categories.map((category) => {
                 const IconComponent = category.icon;
                 return (
                   <TabsTrigger
                     key={category.id}
                     value={category.id}
-                    className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground px-4 py-2 rounded-full border border-border/50 bg-card/50 hover:border-primary/50 transition-all"
+                    className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-border/50 bg-card/50 hover:border-primary/50 transition-all text-xs sm:text-sm whitespace-nowrap"
                   >
-                    <IconComponent className="w-4 h-4 mr-2" />
+                    <IconComponent className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" />
                     {category.label[language]}
                   </TabsTrigger>
                 );
@@ -181,7 +184,7 @@ export function CertificationsSection() {
           </Tabs>
         </motion.div>
 
-        <motion.div style={{ y: cardsY }} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div style={{ y: cardsY }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {filteredCertifications.map((cert, index) => (
             <motion.div
               key={`${cert.name.pt}-${index}`}
@@ -189,48 +192,48 @@ export function CertificationsSection() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.05 }}
               layout
-              className="group relative p-6 rounded-2xl bg-gradient-card border border-border/50 hover:border-primary/30 transition-all duration-300 card-glow"
+              className="group relative p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-gradient-card border border-border/50 hover:border-primary/30 transition-all duration-300 card-glow"
             >
-              <div className="absolute top-4 right-4 flex gap-2">
-                <span className="px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/20">
+              <div className="absolute top-3 sm:top-4 right-3 sm:right-4 flex gap-2">
+                <span className="px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/20">
                   {cert.type[language]}
                 </span>
               </div>
               
               {cert.previewImage && (
-                <div className="mb-4 rounded-lg overflow-hidden border border-border/30">
+                <div className="mb-3 sm:mb-4 rounded-lg overflow-hidden border border-border/30">
                   <img 
                     src={cert.previewImage} 
                     alt={cert.name[language]} 
-                    className="w-full h-32 object-cover object-top hover:scale-105 transition-transform duration-300"
+                    className="w-full h-24 sm:h-32 object-cover object-top hover:scale-105 transition-transform duration-300"
                   />
                 </div>
               )}
               
               {!cert.previewImage && (
-                <div className="w-14 h-14 rounded-xl bg-gradient-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-gradient-primary flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform">
                   {cert.type.pt === 'Formação Técnica' ? (
-                    <Award className="w-7 h-7 text-primary-foreground" />
+                    <Award className="w-5 h-5 sm:w-7 sm:h-7 text-primary-foreground" />
                   ) : (
-                    <BookOpen className="w-7 h-7 text-primary-foreground" />
+                    <BookOpen className="w-5 h-5 sm:w-7 sm:h-7 text-primary-foreground" />
                   )}
                 </div>
               )}
               
-              <h3 className="font-heading font-semibold text-lg text-foreground mb-3 pr-20">
+              <h3 className="font-heading font-semibold text-base sm:text-lg text-foreground mb-2 sm:mb-3 pr-16 sm:pr-20">
                 {cert.name[language]}
               </h3>
               
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Building className="w-4 h-4" />
-                  <span>{cert.institution}</span>
+              <div className="space-y-1.5 sm:space-y-2">
+                <div className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
+                  <Building className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
+                  <span className="truncate">{cert.institution}</span>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Calendar className="w-4 h-4" />
+                <div className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
+                  <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
                   <span>{cert.year}</span>
                   {cert.hours && (
-                    <span className="ml-2 px-2 py-0.5 text-xs rounded-full bg-accent/10 text-accent">
+                    <span className="ml-2 px-1.5 sm:px-2 py-0.5 text-[10px] sm:text-xs rounded-full bg-accent/10 text-accent">
                       {cert.hours}
                     </span>
                   )}

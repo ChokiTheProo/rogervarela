@@ -49,13 +49,13 @@ export function CoursesSection() {
   const cardRotate = useTransform(scrollYProgress, [0, 0.5, 1], [-2, 0, 2]);
 
   return (
-    <section id="courses" className="py-24 bg-gradient-to-b from-background to-secondary/20 overflow-hidden">
+    <section id="courses" className="py-16 md:py-24 bg-gradient-to-b from-background to-secondary/20 overflow-hidden">
       <div className="container mx-auto px-4" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
           <h2 className="section-title mb-4">
             <span className="text-gradient">
@@ -74,43 +74,42 @@ export function CoursesSection() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          style={{ scale: cardScale, rotate: cardRotate }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="max-w-4xl mx-auto"
         >
-          <div className="relative p-8 rounded-3xl bg-gradient-card border border-primary/30 overflow-hidden">
+          <div className="relative p-5 md:p-8 rounded-2xl md:rounded-3xl bg-gradient-card border border-primary/30 overflow-hidden">
             {/* Background decoration */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-violet-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+            <div className="absolute top-0 right-0 w-32 md:w-64 h-32 md:h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-24 md:w-48 h-24 md:h-48 bg-violet-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
             
-            <div className="relative z-10 grid md:grid-cols-2 gap-8 items-center">
+            <div className="relative z-10 grid md:grid-cols-2 gap-6 md:gap-8 items-center">
               {/* Left side - Course info */}
-              <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 text-primary text-sm font-medium mb-4">
-                  <Award className="w-4 h-4" />
+              <div className="text-center md:text-left">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 text-primary text-xs md:text-sm font-medium mb-3 md:mb-4">
+                  <Award className="w-3 h-3 md:w-4 md:h-4" />
                   {language === 'pt' ? 'Curso Online' : language === 'es' ? 'Curso en Línea' : 'Online Course'}
                 </div>
                 
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-violet-500 flex items-center justify-center">
-                    <Terminal className="w-8 h-8 text-primary-foreground" />
+                <div className="flex flex-col md:flex-row items-center md:items-start gap-3 md:gap-4 mb-4">
+                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-gradient-to-br from-primary to-violet-500 flex items-center justify-center flex-shrink-0">
+                    <Terminal className="w-7 h-7 md:w-8 md:h-8 text-primary-foreground" />
                   </div>
                   <div>
-                    <h3 className="font-heading font-bold text-2xl text-foreground">
+                    <h3 className="font-heading font-bold text-xl md:text-2xl text-foreground">
                       {language === 'pt' ? 'Comandos Windows' : language === 'es' ? 'Comandos de Windows' : 'Windows Commands'}
                     </h3>
-                    <p className="text-muted-foreground text-sm">
+                    <p className="text-muted-foreground text-xs md:text-sm">
                       {language === 'pt' ? 'Do básico ao avançado' : language === 'es' ? 'De lo básico a lo avanzado' : 'From basics to advanced'}
                     </p>
                   </div>
                 </div>
 
-                <p className="text-muted-foreground mb-6">
+                <p className="text-muted-foreground text-sm md:text-base mb-5 md:mb-6">
                   {language === 'pt' 
-                    ? 'Domine o terminal do Windows e aumente sua produtividade. Aprenda comandos essenciais, automação de tarefas e técnicas avançadas de administração de sistemas.'
+                    ? 'Domine o terminal do Windows e aumente sua produtividade. Aprenda comandos essenciais, automação de tarefas e técnicas avanzadas.'
                     : language === 'es'
-                    ? 'Domina la terminal de Windows y aumenta tu productividad. Aprende comandos esenciales, automatización de tareas y técnicas avanzadas de administración de sistemas.'
-                    : 'Master the Windows terminal and boost your productivity. Learn essential commands, task automation, and advanced system administration techniques.'}
+                    ? 'Domina la terminal de Windows y aumenta tu productividad. Aprende comandos esenciales, automatización de tareas y técnicas avanzadas.'
+                    : 'Master the Windows terminal and boost your productivity. Learn essential commands, task automation, and advanced techniques.'}
                 </p>
 
                 <Button 
@@ -124,17 +123,17 @@ export function CoursesSection() {
               </div>
 
               {/* Right side - Features */}
-              <div className="space-y-3">
+              <div className="space-y-2 md:space-y-3 mt-4 md:mt-0">
                 {courseFeatures.map((feature, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, x: 20 }}
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                    className="flex items-center gap-3 p-3 rounded-xl bg-secondary/50 border border-border/50"
+                    className="flex items-center gap-2 md:gap-3 p-2 md:p-3 rounded-lg md:rounded-xl bg-secondary/50 border border-border/50"
                   >
-                    <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
-                    <span className="text-foreground text-sm">{feature}</span>
+                    <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-primary flex-shrink-0" />
+                    <span className="text-foreground text-xs md:text-sm">{feature}</span>
                   </motion.div>
                 ))}
               </div>

@@ -4,6 +4,7 @@ import { Trophy, Medal, ExternalLink, Download } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { ImageZoom } from '@/components/ui/image-zoom';
+import { useIsMobile } from '@/hooks/use-mobile';
 import qitecProject from '@/assets/qitec-project.png';
 import qitecAward from '@/assets/qitec-award.png';
 
@@ -11,15 +12,17 @@ export function AwardsSection() {
   const { t, language } = useLanguage();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isMobile = useIsMobile();
 
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'end start'],
   });
 
-  const imageLeftX = useTransform(scrollYProgress, [0, 0.5, 1], [-50, 0, 50]);
-  const imageRightX = useTransform(scrollYProgress, [0, 0.5, 1], [50, 0, -50]);
-  const cardRotate = useTransform(scrollYProgress, [0, 0.5, 1], [2, 0, -2]);
+  // Desativar animações de parallax no mobile para evitar layout "torto"
+  const imageLeftX = useTransform(scrollYProgress, [0, 0.5, 1], isMobile ? [0, 0, 0] : [-50, 0, 50]);
+  const imageRightX = useTransform(scrollYProgress, [0, 0.5, 1], isMobile ? [0, 0, 0] : [50, 0, -50]);
+  const cardRotate = useTransform(scrollYProgress, [0, 0.5, 1], isMobile ? [0, 0, 0] : [2, 0, -2]);
 
   return (
     <section id="awards" className="py-24 bg-secondary/20">
@@ -44,12 +47,12 @@ export function AwardsSection() {
           className="max-w-6xl mx-auto mb-12"
           style={{ rotate: cardRotate }}
         >
-          <div className="relative p-8 rounded-3xl bg-gradient-card border-2 border-primary/30 overflow-hidden">
+          <div className="relative p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-gradient-card border-2 border-primary/30 overflow-hidden">
             {/* Badge */}
-            <div className="absolute top-4 right-4 z-10">
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/20 border border-amber-500/40">
-                <Medal className="w-5 h-5 text-amber-400" />
-                <span className="text-amber-400 font-bold text-sm">
+            <div className="flex justify-center sm:absolute sm:top-4 sm:right-4 z-10 mb-4 sm:mb-0">
+              <div className="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-amber-500/20 border border-amber-500/40">
+                <Medal className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400" />
+                <span className="text-amber-400 font-bold text-xs sm:text-sm">
                   {language === 'pt' ? 'Medalha de Bronze' : language === 'es' ? 'Medalla de Bronce' : 'Bronze Medal'}
                 </span>
               </div>
@@ -185,20 +188,20 @@ export function AwardsSection() {
                 <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">MOSTRATEC</span>
               </div>
 
-              <div className="flex flex-wrap justify-center gap-4">
-                <Button variant="heroOutline" size="lg" asChild>
+              <div className="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-3 sm:gap-4">
+                <Button variant="heroOutline" size="default" className="w-full sm:w-auto" asChild>
                   <a href="https://qi.edu.br/qitec-2023/" target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="w-4 h-4 mr-2" />
                     {language === 'pt' ? 'Ver Evento QITEC' : language === 'es' ? 'Ver Evento QITEC' : 'View QITEC Event'}
                   </a>
                 </Button>
-                <Button variant="glass" size="lg" asChild>
+                <Button variant="glass" size="default" className="w-full sm:w-auto" asChild>
                   <a href="/downloads/modelo-qitec.pdf" download>
                     <Download className="w-4 h-4 mr-2" />
                     {language === 'pt' ? 'Baixar Poster do Projeto' : language === 'es' ? 'Descargar Póster del Proyecto' : 'Download Project Poster'}
                   </a>
                 </Button>
-                <Button variant="glass" size="lg" asChild>
+                <Button variant="glass" size="default" className="w-full sm:w-auto" asChild>
                   <a href="/downloads/certificado-qitec.pdf" download>
                     <Download className="w-4 h-4 mr-2" />
                     {language === 'pt' ? 'Baixar Certificado' : language === 'es' ? 'Descargar Certificado' : 'Download Certificate'}

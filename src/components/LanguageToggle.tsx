@@ -14,45 +14,45 @@ export function LanguageToggle() {
   };
 
   return (
-    <div className="relative flex items-center gap-0.5 rounded-full bg-secondary/50 p-1 backdrop-blur-sm border border-border/50">
+    <div className="relative flex items-center gap-1 rounded-full bg-secondary/50 p-1.5 backdrop-blur-sm border border-border/50">
       <motion.div
-        className="absolute top-1 bottom-1 bg-gradient-primary rounded-full"
+        className="absolute top-1.5 bottom-1.5 bg-gradient-primary rounded-full"
         initial={false}
         animate={{
           x: getXPosition(),
-          width: '36px',
+          width: '52px',
         }}
         transition={{ type: 'spring', stiffness: 500, damping: 30 }}
       />
       <button
         onClick={() => setLanguage('pt')}
-        className={`relative z-10 px-2.5 py-1 text-xs font-medium rounded-full transition-all duration-200 flex items-center gap-1 ${
+        className={`relative z-10 flex flex-col items-center justify-center w-[52px] py-1 rounded-full transition-all duration-200 ${
           language === 'pt' ? 'text-primary-foreground' : 'text-muted-foreground hover:text-foreground'
         }`}
         title="Português"
       >
-        <span className="text-[10px]">🇧🇷</span>
-        BR
+        <span className="text-lg leading-none">🇧🇷</span>
+        <span className="text-[9px] font-semibold mt-0.5">PT</span>
       </button>
       <button
         onClick={() => setLanguage('en')}
-        className={`relative z-10 px-2.5 py-1 text-xs font-medium rounded-full transition-all duration-200 flex items-center gap-1 ${
+        className={`relative z-10 flex flex-col items-center justify-center w-[52px] py-1 rounded-full transition-all duration-200 ${
           language === 'en' ? 'text-primary-foreground' : 'text-muted-foreground hover:text-foreground'
         }`}
         title="English"
       >
-        <span className="text-[10px]">🇺🇸</span>
-        US
+        <span className="text-lg leading-none">🇺🇸</span>
+        <span className="text-[9px] font-semibold mt-0.5">EN</span>
       </button>
       <button
         onClick={() => setLanguage('es')}
-        className={`relative z-10 px-2.5 py-1 text-xs font-medium rounded-full transition-all duration-200 flex items-center gap-1 ${
+        className={`relative z-10 flex flex-col items-center justify-center w-[52px] py-1 rounded-full transition-all duration-200 ${
           language === 'es' ? 'text-primary-foreground' : 'text-muted-foreground hover:text-foreground'
         }`}
         title="Español"
       >
-        <span className="text-[10px]">🇪🇸</span>
-        ES
+        <span className="text-lg leading-none">🇪🇸</span>
+        <span className="text-[9px] font-semibold mt-0.5">ES</span>
       </button>
     </div>
   );

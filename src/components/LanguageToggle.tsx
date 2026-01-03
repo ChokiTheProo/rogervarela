@@ -26,29 +26,32 @@ export function LanguageToggle() {
       />
       <button
         onClick={() => setLanguage('pt')}
-        className={`relative z-10 px-2.5 py-1 text-xs font-medium rounded-full transition-all duration-200 ${
+        className={`relative z-10 px-2.5 py-1 text-xs font-medium rounded-full transition-all duration-200 flex items-center gap-1 ${
           language === 'pt' ? 'text-primary-foreground' : 'text-muted-foreground hover:text-foreground'
         }`}
         title="Português"
       >
+        <span className="text-[10px]">🇧🇷</span>
         BR
       </button>
       <button
         onClick={() => setLanguage('en')}
-        className={`relative z-10 px-2.5 py-1 text-xs font-medium rounded-full transition-all duration-200 ${
+        className={`relative z-10 px-2.5 py-1 text-xs font-medium rounded-full transition-all duration-200 flex items-center gap-1 ${
           language === 'en' ? 'text-primary-foreground' : 'text-muted-foreground hover:text-foreground'
         }`}
         title="English"
       >
+        <span className="text-[10px]">🇺🇸</span>
         US
       </button>
       <button
         onClick={() => setLanguage('es')}
-        className={`relative z-10 px-2.5 py-1 text-xs font-medium rounded-full transition-all duration-200 ${
+        className={`relative z-10 px-2.5 py-1 text-xs font-medium rounded-full transition-all duration-200 flex items-center gap-1 ${
           language === 'es' ? 'text-primary-foreground' : 'text-muted-foreground hover:text-foreground'
         }`}
         title="Español"
       >
+        <span className="text-[10px]">🇪🇸</span>
         ES
       </button>
     </div>

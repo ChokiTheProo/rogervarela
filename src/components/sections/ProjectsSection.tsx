@@ -1,16 +1,35 @@
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { useRef, useState, memo } from 'react';
-import { Github, ExternalLink, Code2, Rocket, GraduationCap, Newspaper, Eye, Sparkles, Zap, ArrowUpRight } from 'lucide-react';
+import { Github, ExternalLink, Code2, Rocket, GraduationCap, Newspaper, Eye, Sparkles, Zap, ArrowUpRight, Target, Lightbulb, TrendingUp, Wrench } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
+interface ProjectStory {
+  problem: { pt: string; en: string; es: string };
+  solution: { pt: string; en: string; es: string };
+  result: { pt: string; en: string; es: string };
+}
+
 const projects = [
-  // RoVR Projects
+  // RoVR Projects with storytelling
   {
     name: 'Klyexa',
-    description: {
-      pt: 'Aplicativo inovador desenvolvido com IA pela RoVR - Plataforma inteligente para produtividade e automação.',
-      en: 'Innovative app developed with AI by RoVR - Intelligent platform for productivity and automation.',
-    },
+    story: {
+      problem: {
+        pt: 'Profissionais gastam horas em tarefas repetitivas e perdem produtividade.',
+        en: 'Professionals spend hours on repetitive tasks and lose productivity.',
+        es: 'Los profesionales pierden horas en tareas repetitivas y productividad.',
+      },
+      solution: {
+        pt: 'Plataforma de IA que automatiza fluxos de trabalho e aumenta a produtividade.',
+        en: 'AI platform that automates workflows and boosts productivity.',
+        es: 'Plataforma de IA que automatiza flujos de trabajo y aumenta la productividad.',
+      },
+      result: {
+        pt: 'MVP funcional com onboarding inteligente e integração de IA.',
+        en: 'Functional MVP with smart onboarding and AI integration.',
+        es: 'MVP funcional con onboarding inteligente e integración de IA.',
+      },
+    } as ProjectStory,
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'AI', 'Lovable'],
     github: 'https://klyexa.lovable.app',
     isLive: true,
@@ -19,10 +38,23 @@ const projects = [
   },
   {
     name: 'Emagrio Transforma Já',
-    description: {
-      pt: 'Plataforma de transformação e bem-estar desenvolvida pela RoVR com foco em resultados.',
-      en: 'Transformation and wellness platform developed by RoVR focused on results.',
-    },
+    story: {
+      problem: {
+        pt: 'Pessoas desistem de dietas por falta de acompanhamento personalizado.',
+        en: 'People give up on diets due to lack of personalized tracking.',
+        es: 'Las personas abandonan dietas por falta de seguimiento personalizado.',
+      },
+      solution: {
+        pt: 'Plataforma de transformação com planos personalizados e gamificação.',
+        en: 'Transformation platform with personalized plans and gamification.',
+        es: 'Plataforma de transformación con planes personalizados y gamificación.',
+      },
+      result: {
+        pt: 'Landing page de alta conversão com sistema de leads ativo.',
+        en: 'High-conversion landing page with active lead system.',
+        es: 'Landing page de alta conversión con sistema de leads activo.',
+      },
+    } as ProjectStory,
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'AI', 'Lovable'],
     github: 'https://emagrio-transforma-ja.lovable.app',
     isLive: true,
@@ -31,10 +63,23 @@ const projects = [
   },
   {
     name: 'Emagrio Journey',
-    description: {
-      pt: 'Jornada de emagrecimento personalizada com onboarding inteligente pela RoVR.',
-      en: 'Personalized weight loss journey with intelligent onboarding by RoVR.',
-    },
+    story: {
+      problem: {
+        pt: 'Onboardings genéricos não engajam e têm alta taxa de abandono.',
+        en: 'Generic onboardings don\'t engage and have high abandonment rates.',
+        es: 'Los onboardings genéricos no enganchan y tienen alta tasa de abandono.',
+      },
+      solution: {
+        pt: 'Jornada interativa com perguntas personalizadas e experiência imersiva.',
+        en: 'Interactive journey with personalized questions and immersive experience.',
+        es: 'Jornada interactiva con preguntas personalizadas y experiencia inmersiva.',
+      },
+      result: {
+        pt: 'Fluxo completo de onboarding com UX otimizada e animações.',
+        en: 'Complete onboarding flow with optimized UX and animations.',
+        es: 'Flujo completo de onboarding con UX optimizada y animaciones.',
+      },
+    } as ProjectStory,
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'UX/UI', 'Lovable'],
     github: 'https://emagrio-journey-unlocked.lovable.app/onboarding',
     isLive: true,
@@ -43,10 +88,23 @@ const projects = [
   },
   {
     name: 'Tratamento Gastrite',
-    description: {
-      pt: 'Aplicativo de acompanhamento diário para tratamento de gastrite e saúde digestiva.',
-      en: 'Daily tracking app for gastritis treatment and digestive health.',
-    },
+    story: {
+      problem: {
+        pt: 'Pacientes esquecem medicamentos e não acompanham evolução do tratamento.',
+        en: 'Patients forget medications and don\'t track treatment progress.',
+        es: 'Pacientes olvidan medicamentos y no siguen la evolución del tratamiento.',
+      },
+      solution: {
+        pt: 'App de acompanhamento diário com lembretes e histórico de sintomas.',
+        en: 'Daily tracking app with reminders and symptom history.',
+        es: 'App de seguimiento diario con recordatorios e historial de síntomas.',
+      },
+      result: {
+        pt: 'Sistema funcional de tarefas diárias com persistência de dados.',
+        en: 'Functional daily task system with data persistence.',
+        es: 'Sistema funcional de tareas diarias con persistencia de datos.',
+      },
+    } as ProjectStory,
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Health', 'Lovable'],
     github: 'https://tratamentodiario.lovable.app/tasks',
     isLive: true,
@@ -55,10 +113,23 @@ const projects = [
   },
   {
     name: 'DentiFlow',
-    description: {
-      pt: 'Assistente dental inteligente para gestão de clínicas e atendimento odontológico.',
-      en: 'Intelligent dental assistant for clinic management and dental care.',
-    },
+    story: {
+      problem: {
+        pt: 'Clínicas dentárias usam sistemas ultrapassados e perdem agendamentos.',
+        en: 'Dental clinics use outdated systems and lose appointments.',
+        es: 'Clínicas dentales usan sistemas obsoletos y pierden citas.',
+      },
+      solution: {
+        pt: 'Assistente dental inteligente com gestão de pacientes e agendas.',
+        en: 'Intelligent dental assistant with patient and schedule management.',
+        es: 'Asistente dental inteligente con gestión de pacientes y agendas.',
+      },
+      result: {
+        pt: 'MVP com fluxo completo de agendamento e dashboard operacional.',
+        en: 'MVP with complete scheduling flow and operational dashboard.',
+        es: 'MVP con flujo completo de agendamiento y dashboard operacional.',
+      },
+    } as ProjectStory,
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'AI', 'Vercel'],
     github: 'https://v0-dental-assistant-app.vercel.app/',
     isLive: true,
@@ -67,10 +138,23 @@ const projects = [
   },
   {
     name: 'Fluxen',
-    description: {
-      pt: 'Sistema completo para controle de caixa e gestão financeira empresarial.',
-      en: 'Complete system for cash control and business financial management.',
-    },
+    story: {
+      problem: {
+        pt: 'Pequenos negócios não têm controle financeiro e perdem dinheiro.',
+        en: 'Small businesses lack financial control and lose money.',
+        es: 'Pequeños negocios no tienen control financiero y pierden dinero.',
+      },
+      solution: {
+        pt: 'Sistema completo de controle de caixa com relatórios e dashboards.',
+        en: 'Complete cash control system with reports and dashboards.',
+        es: 'Sistema completo de control de caja con informes y dashboards.',
+      },
+      result: {
+        pt: 'App funcional com gestão de entradas, saídas e visão financeira.',
+        en: 'Functional app with income, expense management and financial overview.',
+        es: 'App funcional con gestión de ingresos, gastos y visión financiera.',
+      },
+    } as ProjectStory,
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Finance', 'Lovable'],
     github: 'https://fluxenbr.lovable.app',
     isLive: true,
@@ -83,6 +167,7 @@ const projects = [
     description: {
       pt: 'Projeto completo de configuração e administração de sistemas operacionais de rede.',
       en: 'Complete project for configuring and managing network operating systems.',
+      es: 'Proyecto completo de configuración y administración de sistemas operativos de red.',
     },
     technologies: ['Windows Server', 'Linux', 'Networking', 'DNS', 'DHCP'],
     github: 'https://github.com/ChokiTheProo/SISTEMA-OPERACIONAL-DE-REDES',
@@ -94,6 +179,7 @@ const projects = [
     description: {
       pt: 'Desenvolvimento de soluções IoT utilizando sensores e microcontroladores.',
       en: 'Development of IoT solutions using sensors and microcontrollers.',
+      es: 'Desarrollo de soluciones IoT utilizando sensores y microcontroladores.',
     },
     technologies: ['Arduino', 'Sensors', 'IoT', 'C++', 'ESP32'],
     github: 'https://github.com/ChokiTheProo/INTERNET-DAS-COISAS',
@@ -105,6 +191,7 @@ const projects = [
     description: {
       pt: 'Aplicação backend robusta desenvolvida com Java e Spring Boot.',
       en: 'Robust backend application developed with Java and Spring Boot.',
+      es: 'Aplicación backend robusta desarrollada con Java y Spring Boot.',
     },
     technologies: ['Java', 'Spring Boot', 'SQL', 'Python', 'REST API'],
     github: 'https://github.com/ChokiTheProo',
@@ -116,6 +203,7 @@ const projects = [
     description: {
       pt: 'Projeto focado em metodologias de teste e garantia de qualidade.',
       en: 'Project focused on software testing and quality assurance.',
+      es: 'Proyecto enfocado en metodologías de prueba y garantía de calidad.',
     },
     technologies: ['Testing', 'QA', 'Documentation', 'Agile'],
     github: 'https://github.com/ChokiTheProo/ANALISE-E-QUALIDADE-DE-SOFTWARE',
@@ -127,6 +215,7 @@ const projects = [
     description: {
       pt: 'Criação de aplicativos mobile com Flutter, Dart e Kotlin.',
       en: 'Mobile applications with Flutter, Dart and Kotlin.',
+      es: 'Aplicaciones móviles con Flutter, Dart y Kotlin.',
     },
     technologies: ['Dart', 'Flutter', 'Kotlin', 'Android', 'Firebase'],
     github: 'https://github.com/ChokiTheProo/DESENVOLVIMENTO-DE-APLICATIVOS-I-',
@@ -138,6 +227,7 @@ const projects = [
     description: {
       pt: 'Projeto avançado de desenvolvimento web com boas práticas.',
       en: 'Advanced web development with best practices.',
+      es: 'Desarrollo web avanzado con buenas prácticas.',
     },
     technologies: ['HTML5', 'CSS3', 'JavaScript', 'PHP', 'MySQL'],
     github: 'https://github.com/ChokiTheProo/DESENVOLVIMENTO-DE-SISTEMAS-WEB-III',
@@ -200,7 +290,7 @@ export function ProjectsSection() {
           <p className="section-subtitle mx-auto px-2">{t('projects.subtitle')}</p>
         </motion.div>
 
-        {/* RoVR Projects */}
+        {/* RoVR Projects - Storytelling Cards */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
@@ -215,7 +305,7 @@ export function ProjectsSection() {
             <div className="p-1.5 sm:p-2 rounded-lg bg-primary/20">
               <Rocket className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
-            {language === 'pt' ? 'Projetos RoVR' : 'RoVR Projects'}
+            {language === 'pt' ? 'Projetos RoVR' : language === 'es' ? 'Proyectos RoVR' : 'RoVR Projects'}
             <motion.span 
               className="ml-1 sm:ml-2 px-2 py-0.5 text-[10px] sm:text-xs rounded-full bg-accent/20 text-accent"
               animate={{ scale: [1, 1.05, 1] }}
@@ -224,9 +314,9 @@ export function ProjectsSection() {
               Live
             </motion.span>
           </motion.h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             {projects.filter(p => p.category === 'rovr').map((project, index) => (
-              <ProjectCard 
+              <StoryCard 
                 key={project.name} 
                 project={project} 
                 index={index} 
@@ -252,11 +342,11 @@ export function ProjectsSection() {
             <div className="p-1.5 sm:p-2 rounded-lg bg-emerald-500/20">
               <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
-            {language === 'pt' ? 'Projetos Acadêmicos' : 'Academic Projects'}
+            {language === 'pt' ? 'Projetos Acadêmicos' : language === 'es' ? 'Proyectos Académicos' : 'Academic Projects'}
           </motion.h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {projects.filter(p => p.category === 'academic').map((project, index) => (
-              <ProjectCard 
+              <AcademicCard 
                 key={project.name} 
                 project={project} 
                 index={index} 
@@ -272,7 +362,8 @@ export function ProjectsSection() {
   );
 }
 
-interface ProjectCardProps {
+// StoryCard for RoVR projects with storytelling
+interface StoryCardProps {
   project: typeof projects[0];
   index: number;
   isInView: boolean;
@@ -280,16 +371,166 @@ interface ProjectCardProps {
   t: (key: string) => string;
 }
 
-const ProjectCard = memo(function ProjectCard({ project, index, isInView, language, t }: ProjectCardProps) {
+const StoryCard = memo(function StoryCard({ project, index, isInView, language, t }: StoryCardProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const story = project.story as ProjectStory;
 
-  const getIcon = () => {
-    switch (project.category) {
-      case 'rovr': return <Rocket className="w-6 h-6" />;
-      case 'journalism': return <Newspaper className="w-6 h-6" />;
-      default: return <Code2 className="w-6 h-6" />;
-    }
-  };
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ 
+        duration: 0.4, 
+        delay: index * 0.1,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="group relative rounded-2xl overflow-hidden"
+    >
+      {/* Card Background with animated gradient border */}
+      <div className="absolute inset-0 rounded-2xl bg-gradient-card border border-border/50 transition-all duration-500 group-hover:border-transparent" />
+      
+      {/* Animated gradient border on hover */}
+      <motion.div
+        className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${project.gradient} opacity-0 blur-sm`}
+        animate={{ opacity: isHovered ? 0.5 : 0 }}
+        transition={{ duration: 0.3 }}
+      />
+      <div className="absolute inset-[1px] rounded-2xl bg-gradient-card" />
+
+      {/* Card Content */}
+      <div className="relative z-10 p-4 sm:p-6">
+        {/* Header */}
+        <div className="flex items-start justify-between mb-4">
+          <div className="flex items-center gap-3">
+            <motion.div 
+              className={`p-2 sm:p-3 rounded-xl bg-gradient-to-br ${project.gradient} text-white shadow-lg`}
+              animate={isHovered ? { scale: 1.05, rotate: [0, -5, 5, 0] } : { scale: 1, rotate: 0 }}
+              transition={{ duration: 0.4 }}
+            >
+              <Rocket className="w-5 h-5 sm:w-6 sm:h-6" />
+            </motion.div>
+            <div>
+              <motion.h3 
+                className="font-heading font-bold text-lg sm:text-xl text-foreground"
+                animate={isHovered ? { x: 3 } : { x: 0 }}
+              >
+                {project.name}
+              </motion.h3>
+              <div className="flex items-center gap-1.5 mt-0.5">
+                <motion.span 
+                  className="w-1.5 h-1.5 rounded-full bg-accent"
+                  animate={{ opacity: [1, 0.5, 1] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                />
+                <span className="text-xs font-medium text-primary">RoVR</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Storytelling Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-4">
+          {/* Problem */}
+          <div className="p-3 rounded-xl bg-destructive/10 border border-destructive/20">
+            <div className="flex items-center gap-2 mb-2">
+              <Target className="w-4 h-4 text-destructive" />
+              <span className="text-xs font-semibold text-destructive uppercase tracking-wide">
+                {language === 'pt' ? 'Problema' : language === 'es' ? 'Problema' : 'Problem'}
+              </span>
+            </div>
+            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              {story.problem[language]}
+            </p>
+          </div>
+
+          {/* Solution */}
+          <div className="p-3 rounded-xl bg-primary/10 border border-primary/20">
+            <div className="flex items-center gap-2 mb-2">
+              <Lightbulb className="w-4 h-4 text-primary" />
+              <span className="text-xs font-semibold text-primary uppercase tracking-wide">
+                {language === 'pt' ? 'Solução' : language === 'es' ? 'Solución' : 'Solution'}
+              </span>
+            </div>
+            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              {story.solution[language]}
+            </p>
+          </div>
+
+          {/* Result */}
+          <div className="p-3 rounded-xl bg-accent/10 border border-accent/20">
+            <div className="flex items-center gap-2 mb-2">
+              <TrendingUp className="w-4 h-4 text-accent" />
+              <span className="text-xs font-semibold text-accent uppercase tracking-wide">
+                {language === 'pt' ? 'Resultado' : language === 'es' ? 'Resultado' : 'Result'}
+              </span>
+            </div>
+            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              {story.result[language]}
+            </p>
+          </div>
+        </div>
+
+        {/* Technologies & Action */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          {/* Technologies */}
+          <div className="flex items-center gap-2 flex-wrap">
+            <Wrench className="w-3.5 h-3.5 text-muted-foreground" />
+            <div className="flex flex-wrap gap-1.5">
+              {project.technologies.slice(0, 4).map((tech, i) => (
+                <motion.span
+                  key={tech}
+                  className={`px-2 py-0.5 text-[10px] sm:text-xs rounded-md border ${
+                    techColors[tech] || 'bg-primary/20 text-primary border-primary/30'
+                  }`}
+                  animate={isHovered ? { 
+                    y: [0, -2, 0],
+                    transition: { delay: i * 0.05, duration: 0.3 }
+                  } : {}}
+                >
+                  {tech}
+                </motion.span>
+              ))}
+            </div>
+          </div>
+
+          {/* Action Button */}
+          <motion.a 
+            href={project.github} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className={`inline-flex items-center justify-center gap-2 h-10 px-4 rounded-xl text-sm font-medium bg-gradient-to-r ${project.gradient} text-white shadow-lg hover:shadow-xl transition-shadow`}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <span>{language === 'pt' ? 'Ver Projeto' : language === 'es' ? 'Ver Proyecto' : 'View Project'}</span>
+            <ArrowUpRight className="w-4 h-4" />
+          </motion.a>
+        </div>
+      </div>
+
+      {/* Bottom glow effect */}
+      <motion.div
+        className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-1 rounded-full bg-gradient-to-r ${project.gradient} blur-md`}
+        animate={{ opacity: isHovered ? 0.8 : 0, scaleX: isHovered ? 1 : 0.5 }}
+        transition={{ duration: 0.3 }}
+      />
+    </motion.div>
+  );
+});
+
+// AcademicCard for academic projects (simpler style)
+interface AcademicCardProps {
+  project: typeof projects[0];
+  index: number;
+  isInView: boolean;
+  language: 'pt' | 'en' | 'es';
+  t: (key: string) => string;
+}
+
+const AcademicCard = memo(function AcademicCard({ project, index, isInView, language, t }: AcademicCardProps) {
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.div
@@ -302,153 +543,60 @@ const ProjectCard = memo(function ProjectCard({ project, index, isInView, langua
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="group relative rounded-2xl overflow-hidden cursor-pointer"
+      className="group relative rounded-2xl overflow-hidden"
     >
-      {/* Card Background with animated gradient border */}
+      {/* Card Background */}
       <div className="absolute inset-0 rounded-2xl bg-gradient-card border border-border/50 transition-all duration-500 group-hover:border-transparent" />
       
       {/* Animated gradient border on hover */}
       <motion.div
         className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${project.gradient} opacity-0 blur-sm`}
-        animate={{ opacity: isHovered ? 0.6 : 0 }}
+        animate={{ opacity: isHovered ? 0.4 : 0 }}
         transition={{ duration: 0.3 }}
       />
       <div className="absolute inset-[1px] rounded-2xl bg-gradient-card" />
 
-      {/* Animated Preview Overlay - pointer-events-none to allow clicks */}
-      <AnimatePresence>
-        {isHovered && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="absolute inset-0 z-10 rounded-2xl overflow-hidden pointer-events-none"
-          >
-            {/* Animated gradient background */}
-            <motion.div 
-              className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-20`}
-              animate={{ 
-                scale: [1, 1.1, 1],
-                rotate: [0, 2, 0]
-              }}
-              transition={{ duration: 3, repeat: Infinity }}
-            />
-            
-            {/* Floating particles */}
-            {[...Array(6)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-2 h-2 rounded-full bg-white/30"
-                style={{
-                  left: `${20 + i * 15}%`,
-                  top: `${30 + (i % 3) * 20}%`,
-                }}
-                animate={{
-                  y: [-10, 10, -10],
-                  x: [-5, 5, -5],
-                  opacity: [0.3, 0.7, 0.3],
-                  scale: [0.8, 1.2, 0.8],
-                }}
-                transition={{
-                  duration: 2 + i * 0.3,
-                  repeat: Infinity,
-                  delay: i * 0.15,
-                }}
-              />
-            ))}
-
-            {/* Scan line effect */}
-            <motion.div
-              className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-white/40 to-transparent"
-              animate={{ top: ['0%', '100%'] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
-            />
-
-            {/* Corner sparkles */}
-            <motion.div
-              className="absolute top-4 right-4"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
-            >
-              <Sparkles className="w-5 h-5 text-white/60" />
-            </motion.div>
-            <motion.div
-              className="absolute bottom-4 left-4"
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            >
-              <Zap className="w-5 h-5 text-white/60" />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       {/* Card Content */}
-      <div className="relative z-10 p-4 sm:p-6 flex flex-col h-full">
+      <div className="relative z-10 p-4 sm:p-5 flex flex-col h-full">
         {/* Header */}
-        <div className="flex items-start justify-between mb-3 sm:mb-4">
+        <div className="flex items-start justify-between mb-3">
           <motion.div 
-            className={`p-2 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-br ${project.gradient} text-white shadow-lg`}
-            animate={isHovered ? { 
-              scale: 1.1,
-              rotate: [0, -10, 10, 0],
-            } : { scale: 1, rotate: 0 }}
+            className={`p-2 rounded-lg bg-gradient-to-br ${project.gradient} text-white shadow-lg`}
+            animate={isHovered ? { scale: 1.1, rotate: [0, -5, 5, 0] } : { scale: 1, rotate: 0 }}
             transition={{ duration: 0.4 }}
           >
-            {getIcon()}
+            <Code2 className="w-5 h-5" />
           </motion.div>
-          
-          {project.category === 'rovr' && (
-            <motion.div
-              animate={isHovered ? { scale: 1.1, y: -2 } : { scale: 1, y: 0 }}
-              className="flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-primary/20 border border-primary/30"
-            >
-              <motion.span 
-                className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-accent"
-                animate={{ opacity: [1, 0.5, 1] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              />
-              <span className="text-[10px] sm:text-xs font-medium text-primary">RoVR</span>
-            </motion.div>
-          )}
         </div>
 
         {/* Title */}
         <motion.h3 
-          className="font-heading font-semibold text-base sm:text-lg text-foreground mb-1.5 sm:mb-2"
-          animate={isHovered ? { x: 5 } : { x: 0 }}
+          className="font-heading font-semibold text-base sm:text-lg text-foreground mb-2"
+          animate={isHovered ? { x: 3 } : { x: 0 }}
           transition={{ duration: 0.2 }}
         >
           {project.name}
         </motion.h3>
 
         {/* Description */}
-        <motion.p 
-          className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 flex-grow line-clamp-2"
-          animate={isHovered ? { opacity: 0.8 } : { opacity: 1 }}
-        >
-          {project.description[language]}
-        </motion.p>
+        <p className="text-xs sm:text-sm text-muted-foreground mb-3 flex-grow line-clamp-2">
+          {project.description?.[language] || ''}
+        </p>
 
         {/* Technologies */}
-        <div className="flex flex-wrap gap-1 sm:gap-1.5 mb-4 sm:mb-5">
-          {project.technologies.slice(0, 3).map((tech, i) => (
-            <motion.span
+        <div className="flex flex-wrap gap-1.5 mb-4">
+          {project.technologies.slice(0, 3).map((tech) => (
+            <span
               key={tech}
-              className={`px-1.5 sm:px-2 py-0.5 text-[10px] sm:text-xs rounded-md border ${
+              className={`px-2 py-0.5 text-[10px] sm:text-xs rounded-md border ${
                 techColors[tech] || 'bg-primary/20 text-primary border-primary/30'
               }`}
-              animate={isHovered ? { 
-                y: [0, -3, 0],
-                transition: { delay: i * 0.05, duration: 0.3 }
-              } : {}}
             >
               {tech}
-            </motion.span>
+            </span>
           ))}
           {project.technologies.length > 3 && (
-            <span className="px-1.5 sm:px-2 py-0.5 text-[10px] sm:text-xs rounded-md bg-muted text-muted-foreground">
+            <span className="px-2 py-0.5 text-[10px] sm:text-xs rounded-md bg-muted text-muted-foreground">
               +{project.technologies.length - 3}
             </span>
           )}
@@ -459,46 +607,19 @@ const ProjectCard = memo(function ProjectCard({ project, index, isInView, langua
           href={project.github} 
           target="_blank" 
           rel="noopener noreferrer"
-          className={`relative overflow-hidden inline-flex items-center justify-center gap-2 h-11 px-5 rounded-xl text-sm font-medium transition-all duration-300 ${
-            'isLive' in project && project.isLive
-              ? `bg-gradient-to-r ${project.gradient} text-white shadow-lg`
-              : 'border border-border bg-secondary/50 text-foreground hover:border-primary/50'
-          }`}
+          className="inline-flex items-center justify-center gap-2 h-10 px-4 rounded-xl text-sm font-medium border border-border bg-secondary/50 text-foreground hover:border-primary/50 transition-colors"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
-          {/* Button shine effect */}
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-            animate={isHovered ? { x: ['-100%', '100%'] } : { x: '-100%' }}
-            transition={{ duration: 0.6, ease: 'easeInOut' }}
-          />
-          
-          <span className="relative z-10 flex items-center gap-2">
-            {'isLive' in project && project.isLive ? (
-              <>
-                <span>{language === 'pt' ? 'Ver Projeto' : 'View Project'}</span>
-                <motion.div
-                  animate={isHovered ? { x: 3, y: -3 } : { x: 0, y: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <ArrowUpRight className="w-4 h-4" />
-                </motion.div>
-              </>
-            ) : (
-              <>
-                <Github className="w-4 h-4" />
-                <span>{t('projects.viewGithub')}</span>
-              </>
-            )}
-          </span>
+          <Github className="w-4 h-4" />
+          <span>{t('projects.viewGithub')}</span>
         </motion.a>
       </div>
 
       {/* Bottom glow effect */}
       <motion.div
         className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-1 rounded-full bg-gradient-to-r ${project.gradient} blur-md`}
-        animate={{ opacity: isHovered ? 0.8 : 0, scaleX: isHovered ? 1 : 0.5 }}
+        animate={{ opacity: isHovered ? 0.6 : 0, scaleX: isHovered ? 1 : 0.5 }}
         transition={{ duration: 0.3 }}
       />
     </motion.div>

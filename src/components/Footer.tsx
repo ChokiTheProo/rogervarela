@@ -33,18 +33,18 @@ export function Footer() {
   };
 
   const quickLinks = [
-    { href: '#about', label: language === 'pt' ? 'Sobre' : 'About' },
-    { href: '#experience', label: language === 'pt' ? 'Experiência' : 'Experience' },
-    { href: '#projects', label: language === 'pt' ? 'Projetos' : 'Projects' },
-    { href: '#skills', label: language === 'pt' ? 'Habilidades' : 'Skills' },
-    { href: '#awards', label: language === 'pt' ? 'Prêmios' : 'Awards' },
+    { href: '#about', label: language === 'pt' ? 'Sobre' : language === 'es' ? 'Sobre mí' : 'About' },
+    { href: '#experience', label: language === 'pt' ? 'Experiência' : language === 'es' ? 'Experiencia' : 'Experience' },
+    { href: '#projects', label: language === 'pt' ? 'Projetos' : language === 'es' ? 'Proyectos' : 'Projects' },
+    { href: '#skills', label: language === 'pt' ? 'Habilidades' : language === 'es' ? 'Habilidades' : 'Skills' },
+    { href: '#awards', label: language === 'pt' ? 'Prêmios' : language === 'es' ? 'Premios' : 'Awards' },
   ];
 
   const legalLinks = [
-    { href: '/terms', label: language === 'pt' ? 'Termos' : 'Terms' },
-    { href: '/privacy', label: language === 'pt' ? 'Privacidade' : 'Privacy' },
+    { href: '/terms', label: language === 'pt' ? 'Termos' : language === 'es' ? 'Términos' : 'Terms' },
+    { href: '/privacy', label: language === 'pt' ? 'Privacidade' : language === 'es' ? 'Privacidad' : 'Privacy' },
     { href: '/faq', label: 'FAQ' },
-    { href: '/contact', label: language === 'pt' ? 'Contato' : 'Contact' },
+    { href: '/contact', label: language === 'pt' ? 'Contato' : language === 'es' ? 'Contacto' : 'Contact' },
   ];
 
   const containerVariants = {
@@ -119,16 +119,18 @@ export function Footer() {
           >
             <Sparkles className="w-4 h-4 text-primary" />
             <span className="text-sm text-primary font-medium">
-              {language === 'pt' ? 'Vamos criar algo incrível juntos' : "Let's build something amazing together"}
+              {language === 'pt' ? 'Vamos criar algo incrível juntos' : language === 'es' ? 'Construyamos algo increíble juntos' : "Let's build something amazing together"}
             </span>
           </motion.div>
           
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-            {language === 'pt' ? 'Pronto para começar?' : 'Ready to start?'}
+            {language === 'pt' ? 'Pronto para começar?' : language === 'es' ? '¿Listo para comenzar?' : 'Ready to start?'}
           </h2>
           <p className="text-muted-foreground max-w-md mx-auto mb-8">
             {language === 'pt' 
               ? 'Entre em contato e vamos transformar suas ideias em realidade.'
+              : language === 'es'
+              ? 'Contáctame y transformemos tus ideas en realidad.'
               : "Get in touch and let's turn your ideas into reality."
             }
           </p>
@@ -138,7 +140,7 @@ export function Footer() {
               to="/contact"
               className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-primary text-primary-foreground font-semibold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-shadow"
             >
-              <span>{language === 'pt' ? 'Iniciar Conversa' : 'Start Conversation'}</span>
+              <span>{language === 'pt' ? 'Iniciar Conversa' : language === 'es' ? 'Iniciar Conversación' : 'Start Conversation'}</span>
               <ArrowUpRight className="w-5 h-5" />
             </Link>
           </motion.div>
@@ -173,6 +175,8 @@ export function Footer() {
             <p className="text-muted-foreground text-sm mb-5 max-w-xs leading-relaxed font-light">
               {language === 'pt' 
                 ? 'Desenvolvedor apaixonado por criar soluções digitais inovadoras. CEO & Co-fundador da RoVR.'
+                : language === 'es'
+                ? 'Desarrollador apasionado por crear soluciones digitales innovadoras. CEO & Cofundador de RoVR.'
                 : 'Developer passionate about creating innovative digital solutions. CEO & Co-founder of RoVR.'
               }
             </p>
@@ -212,7 +216,7 @@ export function Footer() {
           {/* Navigation Column */}
           <motion.div variants={itemVariants}>
             <h4 className="font-heading font-semibold mb-5 text-sm uppercase tracking-wider text-foreground/80">
-              {language === 'pt' ? 'Navegação' : 'Navigation'}
+              {language === 'pt' ? 'Navegação' : language === 'es' ? 'Navegación' : 'Navigation'}
             </h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
@@ -270,10 +274,10 @@ export function Footer() {
                 <span className="font-semibold text-primary">RoVR</span>
               </div>
               <p className="text-xs text-muted-foreground mb-3">
-                {language === 'pt' ? 'MicroSaaS & Aplicativos' : 'MicroSaaS & Apps'}
+                {language === 'pt' ? 'MicroSaaS & Aplicativos' : language === 'es' ? 'MicroSaaS & Aplicaciones' : 'MicroSaaS & Apps'}
               </p>
               <div className="flex items-center gap-1 text-xs text-primary/70 group-hover:text-primary transition-colors">
-                <span>{language === 'pt' ? 'Visitar' : 'Visit'}</span>
+                <span>{language === 'pt' ? 'Visitar' : language === 'es' ? 'Visitar' : 'Visit'}</span>
                 <ExternalLink className="w-3 h-3" />
               </div>
             </motion.a>
@@ -299,14 +303,14 @@ export function Footer() {
               <motion.div 
                 className="flex items-center gap-2 text-sm text-muted-foreground"
               >
-                <span>{language === 'pt' ? 'Feito com' : 'Made with'}</span>
+                <span>{language === 'pt' ? 'Feito com' : language === 'es' ? 'Hecho con' : 'Made with'}</span>
                 <motion.div
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
                 >
                   <Heart className="w-4 h-4 text-red-500 fill-current" />
                 </motion.div>
-                <span>{language === 'pt' ? 'por' : 'by'}</span>
+                <span>{language === 'pt' ? 'por' : language === 'es' ? 'por' : 'by'}</span>
                 <a 
                   href="https://rovr.lovable.app/" 
                   target="_blank" 

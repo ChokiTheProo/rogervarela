@@ -67,7 +67,11 @@ export function HeroSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-base sm:text-xl md:text-2xl lg:text-3xl font-heading font-medium text-muted-foreground mb-2 px-2"
           >
-            {t('hero.title')}
+            {language === 'pt' 
+              ? 'Transformando ideias em Micro-SaaS funcionais' 
+              : language === 'es' 
+                ? 'Transformando ideas en Micro-SaaS funcionales' 
+                : 'Turning ideas into functional Micro-SaaS'}
           </motion.h2>
 
           <motion.p

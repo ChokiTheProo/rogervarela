@@ -31,32 +31,32 @@ export function ContactSection() {
     let isValid = true;
 
     if (!formData.name.trim()) {
-      newErrors.name = language === 'pt' ? 'Nome é obrigatório' : 'Name is required';
+      newErrors.name = language === 'pt' ? 'Nome é obrigatório' : language === 'es' ? 'Nombre es obligatorio' : 'Name is required';
       isValid = false;
     } else if (formData.name.trim().length > 100) {
-      newErrors.name = language === 'pt' ? 'Nome muito longo (máx 100 caracteres)' : 'Name too long (max 100 characters)';
+      newErrors.name = language === 'pt' ? 'Nome muito longo (máx 100 caracteres)' : language === 'es' ? 'Nombre muy largo (máx 100 caracteres)' : 'Name too long (max 100 characters)';
       isValid = false;
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = language === 'pt' ? 'Email é obrigatório' : 'Email is required';
+      newErrors.email = language === 'pt' ? 'Email é obrigatório' : language === 'es' ? 'Correo es obligatorio' : 'Email is required';
       isValid = false;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = language === 'pt' ? 'Email inválido' : 'Invalid email';
+      newErrors.email = language === 'pt' ? 'Email inválido' : language === 'es' ? 'Correo inválido' : 'Invalid email';
       isValid = false;
     } else if (formData.email.trim().length > 255) {
-      newErrors.email = language === 'pt' ? 'Email muito longo' : 'Email too long';
+      newErrors.email = language === 'pt' ? 'Email muito longo' : language === 'es' ? 'Correo muy largo' : 'Email too long';
       isValid = false;
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = language === 'pt' ? 'Mensagem é obrigatória' : 'Message is required';
+      newErrors.message = language === 'pt' ? 'Mensagem é obrigatória' : language === 'es' ? 'Mensaje es obligatorio' : 'Message is required';
       isValid = false;
     } else if (formData.message.trim().length < 10) {
-      newErrors.message = language === 'pt' ? 'Mensagem muito curta (mínimo 10 caracteres)' : 'Message too short (min 10 characters)';
+      newErrors.message = language === 'pt' ? 'Mensagem muito curta (mínimo 10 caracteres)' : language === 'es' ? 'Mensaje muy corto (mínimo 10 caracteres)' : 'Message too short (min 10 characters)';
       isValid = false;
     } else if (formData.message.trim().length > 1000) {
-      newErrors.message = language === 'pt' ? 'Mensagem muito longa (máx 1000 caracteres)' : 'Message too long (max 1000 characters)';
+      newErrors.message = language === 'pt' ? 'Mensagem muito longa (máx 1000 caracteres)' : language === 'es' ? 'Mensaje muy largo (máx 1000 caracteres)' : 'Message too long (max 1000 characters)';
       isValid = false;
     }
 
@@ -88,9 +88,11 @@ export function ContactSection() {
       
       setIsSuccess(true);
       toast({
-        title: language === 'pt' ? '✅ Mensagem enviada com sucesso!' : '✅ Message sent successfully!',
+        title: language === 'pt' ? '✅ Mensagem enviada com sucesso!' : language === 'es' ? '✅ ¡Mensaje enviado con éxito!' : '✅ Message sent successfully!',
         description: language === 'pt' 
           ? 'Obrigado pelo contato. Retornarei em breve!' 
+          : language === 'es'
+          ? '¡Gracias por contactarme! Responderé pronto.'
           : 'Thank you for reaching out. I will get back to you soon!',
       });
       
@@ -98,9 +100,11 @@ export function ContactSection() {
     } catch (error: any) {
       console.error('Error sending message:', error);
       toast({
-        title: language === 'pt' ? '❌ Erro ao enviar mensagem' : '❌ Error sending message',
+        title: language === 'pt' ? '❌ Erro ao enviar mensagem' : language === 'es' ? '❌ Error al enviar mensaje' : '❌ Error sending message',
         description: language === 'pt' 
           ? 'Tente novamente mais tarde ou entre em contato por email.' 
+          : language === 'es'
+          ? 'Inténtalo de nuevo más tarde o contáctame por correo.'
           : 'Please try again later or contact via email.',
         variant: 'destructive'
       });
@@ -188,11 +192,13 @@ export function ContactSection() {
                   <CheckCircle className="w-10 h-10 text-green-500" />
                 </div>
                 <h3 className="text-xl font-heading font-semibold text-foreground mb-2">
-                  {language === 'pt' ? 'Mensagem Enviada!' : 'Message Sent!'}
+                  {language === 'pt' ? 'Mensagem Enviada!' : language === 'es' ? '¡Mensaje Enviado!' : 'Message Sent!'}
                 </h3>
                 <p className="text-muted-foreground">
                   {language === 'pt' 
                     ? 'Obrigado pelo contato. Retornarei em breve!' 
+                    : language === 'es'
+                    ? '¡Gracias por contactarme! Responderé pronto.'
                     : 'Thank you for reaching out. I will get back to you soon!'}
                 </p>
               </motion.div>
@@ -207,7 +213,7 @@ export function ContactSection() {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    placeholder={language === 'pt' ? 'Seu nome completo' : 'Your full name'}
+                    placeholder={language === 'pt' ? 'Seu nome completo' : language === 'es' ? 'Tu nombre completo' : 'Your full name'}
                     className={`bg-secondary/50 border-border/50 focus:border-primary ${errors.name ? 'border-red-500' : ''}`}
                   />
                   {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
@@ -223,7 +229,7 @@ export function ContactSection() {
                     type="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    placeholder={language === 'pt' ? 'seu@email.com' : 'your@email.com'}
+                    placeholder={language === 'pt' ? 'seu@email.com' : language === 'es' ? 'tu@correo.com' : 'your@email.com'}
                     className={`bg-secondary/50 border-border/50 focus:border-primary ${errors.email ? 'border-red-500' : ''}`}
                   />
                   {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
@@ -239,7 +245,7 @@ export function ContactSection() {
                     value={formData.message}
                     onChange={handleInputChange}
                     rows={5}
-                    placeholder={language === 'pt' ? 'Sua mensagem... (mínimo 10 caracteres)' : 'Your message... (min 10 characters)'}
+                    placeholder={language === 'pt' ? 'Sua mensagem... (mínimo 10 caracteres)' : language === 'es' ? 'Tu mensaje... (mínimo 10 caracteres)' : 'Your message... (min 10 characters)'}
                     className={`bg-secondary/50 border-border/50 focus:border-primary resize-none ${errors.message ? 'border-red-500' : ''}`}
                   />
                   {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
@@ -249,7 +255,7 @@ export function ContactSection() {
                   {isSubmitting ? (
                     <span className="flex items-center gap-2">
                       <span className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
-                      {language === 'pt' ? 'Enviando...' : 'Sending...'}
+                      {language === 'pt' ? 'Enviando...' : language === 'es' ? 'Enviando...' : 'Sending...'}
                     </span>
                   ) : (
                     <>
@@ -299,7 +305,7 @@ export function ContactSection() {
               className="p-6 rounded-xl bg-gradient-card border border-border/50"
             >
               <p className="text-sm text-muted-foreground mb-4">
-                {language === 'pt' ? 'Me encontre nas redes' : 'Find me on social media'}
+                {language === 'pt' ? 'Me encontre nas redes' : language === 'es' ? 'Encuéntrame en redes sociales' : 'Find me on social media'}
               </p>
               <div className="flex gap-4">
                 {socialLinks.map((social, index) => (

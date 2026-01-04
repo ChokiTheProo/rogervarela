@@ -4,6 +4,7 @@ import { Menu, X, Sparkles } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { LanguageToggle } from './LanguageToggle';
 import { ThemeToggle } from './ThemeToggle';
+import { ContrastToggle } from './ContrastToggle';
 import { Button } from './ui/button';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -246,6 +247,14 @@ export function Header() {
             transition={{ delay: 0.5, duration: 0.5 }}
             className="hidden sm:block"
           >
+            <ContrastToggle />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.55, duration: 0.5 }}
+            className="hidden sm:block"
+          >
             <ThemeToggle />
           </motion.div>
           <motion.div
@@ -293,10 +302,13 @@ export function Header() {
             className="lg:hidden glass mt-2 mx-3 sm:mx-4 rounded-xl overflow-hidden border border-primary/10"
           >
             <nav className="flex flex-col p-3 sm:p-4 gap-1">
-              {/* Theme toggle for mobile */}
+              {/* Theme and contrast toggle for mobile */}
               <div className="flex items-center justify-between px-3 py-2 mb-2 border-b border-border/30 sm:hidden">
-                <span className="text-sm text-muted-foreground">{language === 'pt' ? 'Tema' : language === 'es' ? 'Tema' : 'Theme'}</span>
-                <ThemeToggle />
+                <span className="text-sm text-muted-foreground">{language === 'pt' ? 'Acessibilidade' : language === 'es' ? 'Accesibilidad' : 'Accessibility'}</span>
+                <div className="flex items-center gap-1">
+                  <ContrastToggle />
+                  <ThemeToggle />
+                </div>
               </div>
               {navItems.map((item, index) => (
                 <motion.a

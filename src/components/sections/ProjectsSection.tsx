@@ -31,7 +31,7 @@ const projects = [
       },
     } as ProjectStory,
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'AI', 'Lovable'],
-    github: 'https://klyexa.lovable.app',
+    github: 'https://klyexavenda.lovable.app',
     isLive: true,
     category: 'rovr',
     gradient: 'from-violet-500 via-purple-500 to-fuchsia-500',

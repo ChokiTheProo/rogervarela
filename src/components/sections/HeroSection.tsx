@@ -80,7 +80,11 @@ export function HeroSection() {
             transition={{ duration: 0.6, delay: 0.25 }}
             className="text-sm sm:text-lg text-primary font-medium mb-3 sm:mb-6"
           >
-            CEO & {language === 'pt' ? 'Co-fundador' : language === 'es' ? 'Cofundador' : 'Co-founder'} @ <a href="https://rovr.lovable.app/" target="_blank" rel="noopener noreferrer" className="text-gradient font-bold hover:opacity-80 transition-opacity">RoVR</a>
+            {language === 'pt' 
+              ? 'Desenvolvedor Low-Code & No-Code' 
+              : language === 'es' 
+                ? 'Desarrollador Low-Code & No-Code' 
+                : 'Low-Code & No-Code Developer'} | CEO & {language === 'pt' ? 'Co-fundador' : language === 'es' ? 'Cofundador' : 'Co-founder'} @ <a href="https://rovr.lovable.app/" target="_blank" rel="noopener noreferrer" className="text-gradient font-bold hover:opacity-80 transition-opacity">RoVR</a>
           </motion.p>
 
           <motion.p

@@ -87,31 +87,6 @@ const projects = [
     gradient: 'from-orange-500 via-amber-500 to-yellow-500',
   },
   {
-    name: 'Tratamento Gastrite',
-    story: {
-      problem: {
-        pt: 'Pacientes esquecem medicamentos e não acompanham evolução do tratamento.',
-        en: 'Patients forget medications and don\'t track treatment progress.',
-        es: 'Pacientes olvidan medicamentos y no siguen la evolución del tratamiento.',
-      },
-      solution: {
-        pt: 'App de acompanhamento diário com lembretes e histórico de sintomas.',
-        en: 'Daily tracking app with reminders and symptom history.',
-        es: 'App de seguimiento diario con recordatorios e historial de síntomas.',
-      },
-      result: {
-        pt: 'Sistema funcional de tarefas diárias com persistência de dados.',
-        en: 'Functional daily task system with data persistence.',
-        es: 'Sistema funcional de tareas diarias con persistencia de datos.',
-      },
-    } as ProjectStory,
-    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Health', 'Lovable'],
-    github: 'https://tramentodiario.lovable.app',
-    isLive: true,
-    category: 'rovr',
-    gradient: 'from-rose-500 via-pink-500 to-red-500',
-  },
-  {
     name: 'DentiFlow',
     story: {
       problem: {

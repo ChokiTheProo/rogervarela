@@ -234,7 +234,9 @@ export function Footer() {
                 <h3 className="text-xl font-heading font-bold tracking-tight text-foreground">
                   Roger <span className="text-gradient">Varela</span>
                 </h3>
-                <p className="text-xs text-foreground/70 font-semibold tracking-widest uppercase">Full Stack Developer</p>
+                <p className="text-xs text-foreground/70 font-semibold tracking-widest uppercase">
+                  {language === 'pt' ? 'Desenvolvedor Low-Code & No-Code' : language === 'es' ? 'Desarrollador Low-Code & No-Code' : 'Low-Code & No-Code Developer'}
+                </p>
               </div>
             </div>
             

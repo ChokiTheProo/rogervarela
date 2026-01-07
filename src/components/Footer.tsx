@@ -203,12 +203,35 @@ export function Footer() {
             href="https://wa.me/5554991710543"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-[#25D366] text-white font-semibold shadow-lg shadow-[#25D366]/30 hover:shadow-xl hover:shadow-[#25D366]/40 hover:bg-[#22c55e] transition-all duration-300"
-            whileHover={{ scale: 1.05 }}
+            className="group mt-8 relative inline-flex items-center gap-4 px-10 py-5 rounded-2xl bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white font-bold text-lg shadow-2xl shadow-[#25D366]/40 hover:shadow-[#25D366]/60 transition-all duration-500 overflow-hidden"
+            whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
           >
-            <MessageCircle className="w-5 h-5" />
-            <span>{language === 'pt' ? 'Falar no WhatsApp' : language === 'es' ? 'Hablar por WhatsApp' : 'Chat on WhatsApp'}</span>
+            {/* Animated shine effect */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full"
+              animate={{ translateX: ['100%', '-100%'] }}
+              transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
+            />
+            {/* Pulse ring */}
+            <motion.div
+              className="absolute inset-0 rounded-2xl border-2 border-white/30"
+              animate={{ scale: [1, 1.05, 1], opacity: [0.5, 0, 0.5] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
+            <motion.div
+              animate={{ rotate: [0, 10, -10, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <MessageCircle className="w-7 h-7 drop-shadow-lg" />
+            </motion.div>
+            <span className="relative z-10 tracking-wide">{language === 'pt' ? 'Falar no WhatsApp' : language === 'es' ? 'Hablar por WhatsApp' : 'Chat on WhatsApp'}</span>
+            <motion.div
+              animate={{ x: [0, 4, 0] }}
+              transition={{ duration: 1, repeat: Infinity }}
+            >
+              <ArrowUpRight className="w-6 h-6" />
+            </motion.div>
           </motion.a>
         </motion.div>
 

@@ -10,6 +10,7 @@ import { ThemeProvider } from "next-themes";
 import { AnimatePresence } from "framer-motion";
 import { LoadingScreen } from "@/components/LoadingScreen";
 import { AnimatedRoutes } from "@/components/AnimatedRoutes";
+import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 
 // Create query client outside component to prevent recreation
 const queryClient = new QueryClient({
@@ -48,6 +49,7 @@ const App = () => {
               <Sonner />
               <BrowserRouter>
                 <AnimatedRoutes />
+                <FloatingWhatsApp />
               </BrowserRouter>
             </TooltipProvider>
           </LanguageProvider>

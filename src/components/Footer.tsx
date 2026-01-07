@@ -221,13 +221,13 @@ export function Footer() {
                 <h3 className="text-xl font-heading font-bold tracking-tight text-foreground">
                   Roger <span className="text-gradient">Varela</span>
                 </h3>
-                <p className="text-xs text-foreground/70 font-semibold tracking-widest uppercase">
+                <p className="text-xs text-foreground font-bold tracking-widest uppercase">
                   {language === 'pt' ? 'Desenvolvedor Low-Code & No-Code' : language === 'es' ? 'Desarrollador Low-Code & No-Code' : 'Low-Code & No-Code Developer'}
                 </p>
               </div>
             </div>
             
-            <p className="text-foreground/80 text-sm mb-5 max-w-xs leading-relaxed font-normal">
+            <p className="text-foreground text-sm mb-5 max-w-xs leading-relaxed font-medium">
               {language === 'pt' 
                 ? 'Desenvolvedor apaixonado por criar soluções digitais inovadoras. CEO & Co-fundador da RoVR.'
                 : language === 'es'
@@ -236,9 +236,9 @@ export function Footer() {
               }
             </p>
             
-            <div className="flex items-center gap-2 text-foreground/70 text-sm mb-6">
+            <div className="flex items-center gap-2 text-foreground text-sm mb-6">
               <MapPin className="w-4 h-4 text-primary" />
-              <span className="font-semibold">Brasil</span>
+              <span className="font-bold">Brasil</span>
             </div>
 
             {/* Social Links */}
@@ -279,7 +279,7 @@ export function Footer() {
                   <motion.a 
                     href={link.href}
                     onClick={(e) => handleSectionClick(e, link.href)}
-                    className="text-foreground/70 hover:text-primary transition-colors cursor-pointer text-sm font-medium inline-flex items-center gap-1 group"
+                    className="text-foreground hover:text-primary transition-colors cursor-pointer text-sm font-semibold inline-flex items-center gap-1 group"
                     whileHover={{ x: 3 }}
                   >
                     <span className="w-0 group-hover:w-2 h-px bg-primary transition-all duration-300" />
@@ -301,7 +301,7 @@ export function Footer() {
                   <motion.div whileHover={{ x: 3 }}>
                     <Link 
                       to={link.href}
-                      className="text-foreground/70 hover:text-primary transition-colors text-sm font-medium inline-flex items-center gap-1 group"
+                      className="text-foreground hover:text-primary transition-colors text-sm font-semibold inline-flex items-center gap-1 group"
                     >
                       <span className="w-0 group-hover:w-2 h-px bg-primary transition-all duration-300" />
                       {link.label}
@@ -328,7 +328,7 @@ export function Footer() {
                 <Code2 className="w-5 h-5 text-primary" />
                 <span className="font-bold text-primary">RoVR</span>
               </div>
-              <p className="text-xs text-foreground/70 font-medium mb-3">
+              <p className="text-xs text-foreground font-semibold mb-3">
                 {language === 'pt' ? 'MicroSaaS & Aplicativos' : language === 'es' ? 'MicroSaaS & Aplicaciones' : 'MicroSaaS & Apps'}
               </p>
               <div className="flex items-center gap-1 text-xs text-primary/70 group-hover:text-primary transition-colors">
@@ -348,7 +348,7 @@ export function Footer() {
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2 text-foreground/70 text-sm font-medium">
+            <div className="flex items-center gap-2 text-foreground text-sm font-semibold">
               <span>© {currentYear} Roger Varela.</span>
               <span className="hidden sm:inline">•</span>
               <span className="hidden sm:inline">{t('footer.rights')}</span>
@@ -356,7 +356,7 @@ export function Footer() {
             
             <div className="flex items-center gap-6">
               <motion.div 
-                className="flex items-center gap-2 text-sm text-foreground/70 font-medium"
+                className="flex items-center gap-2 text-sm text-foreground font-semibold"
               >
                 <span>{language === 'pt' ? 'Feito com' : language === 'es' ? 'Hecho con' : 'Made with'}</span>
                 <motion.div

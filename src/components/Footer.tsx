@@ -111,22 +111,51 @@ export function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-16 relative"
         >
+          {/* Animated glow behind CTA */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <motion.div
+              className="w-[500px] h-[300px] rounded-full blur-[100px]"
+              style={{
+                background: 'linear-gradient(135deg, hsl(var(--primary) / 0.3), hsl(var(--accent) / 0.2), hsl(280 100% 70% / 0.2))',
+              }}
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0.3, 0.5, 0.3],
+              }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </div>
+
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"
-            whileHover={{ scale: 1.02 }}
+            className="relative inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-primary/20 via-accent/10 to-primary/20 border border-primary/30 mb-6 overflow-hidden"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
-            <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-sm text-primary font-medium">
+            {/* Shimmer effect */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12"
+              animate={{ x: ['-200%', '200%'] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.div
+              animate={{ rotate: [0, 180, 360] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+            >
+              <Sparkles className="w-4 h-4 text-primary" />
+            </motion.div>
+            <span className="text-sm text-primary font-semibold relative z-10">
               {language === 'pt' ? 'Vamos criar algo incrível juntos' : language === 'es' ? 'Construyamos algo increíble juntos' : "Let's build something amazing together"}
             </span>
           </motion.div>
           
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-            {language === 'pt' ? 'Pronto para começar?' : language === 'es' ? '¿Listo para comenzar?' : 'Ready to start?'}
+          <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4 relative">
+            <span className="bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent bg-[length:200%_auto] animate-[gradient-shift_3s_ease-in-out_infinite]">
+              {language === 'pt' ? 'Pronto para começar?' : language === 'es' ? '¿Listo para comenzar?' : 'Ready to start?'}
+            </span>
           </h2>
-          <p className="text-muted-foreground max-w-md mx-auto mb-8">
+          <p className="text-foreground/70 max-w-md mx-auto mb-10 text-lg font-medium relative">
             {language === 'pt' 
               ? 'Entre em contato e vamos transformar suas ideias em realidade.'
               : language === 'es'
@@ -135,13 +164,37 @@ export function Footer() {
             }
           </p>
           
-          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+          <motion.div 
+            whileHover={{ scale: 1.05 }} 
+            whileTap={{ scale: 0.95 }}
+            className="relative inline-block"
+          >
+            {/* Animated border glow */}
+            <motion.div
+              className="absolute -inset-1 rounded-2xl opacity-75 blur-sm"
+              style={{
+                background: 'linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)), hsl(280 100% 70%), hsl(var(--primary)))',
+                backgroundSize: '300% 100%',
+              }}
+              animate={{
+                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+              }}
+              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            />
             <Link
               to="/contact"
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-primary text-primary-foreground font-semibold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-shadow"
+              className="relative inline-flex items-center gap-3 px-10 py-5 rounded-2xl bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] text-primary-foreground font-bold text-lg shadow-2xl shadow-primary/40 hover:shadow-primary/50 transition-all duration-300"
+              style={{
+                animation: 'gradient-x 3s ease infinite',
+              }}
             >
               <span>{language === 'pt' ? 'Iniciar Conversa' : language === 'es' ? 'Iniciar Conversación' : 'Start Conversation'}</span>
-              <ArrowUpRight className="w-5 h-5" />
+              <motion.div
+                animate={{ x: [0, 4, 0], y: [0, -4, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
+                <ArrowUpRight className="w-6 h-6" />
+              </motion.div>
             </Link>
           </motion.div>
         </motion.div>

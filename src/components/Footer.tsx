@@ -321,19 +321,42 @@ export function Footer() {
               href="https://rovr.lovable.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group block p-4 rounded-2xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20 hover:border-primary/40 transition-colors"
-              whileHover={{ scale: 1.02 }}
+              className="group relative block p-5 rounded-2xl bg-gradient-to-br from-card via-card to-primary/5 border border-primary/30 hover:border-primary/60 transition-all duration-300 overflow-hidden"
+              whileHover={{ scale: 1.03, y: -2 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <div className="flex items-center gap-2 mb-2">
-                <Code2 className="w-5 h-5 text-primary" />
-                <span className="font-bold text-primary">RoVR</span>
-              </div>
-              <p className="text-xs text-foreground font-semibold mb-3">
-                {language === 'pt' ? 'MicroSaaS & Aplicativos' : language === 'es' ? 'MicroSaaS & Aplicaciones' : 'MicroSaaS & Apps'}
-              </p>
-              <div className="flex items-center gap-1 text-xs text-primary/70 group-hover:text-primary transition-colors">
-                <span>{language === 'pt' ? 'Visitar' : language === 'es' ? 'Visitar' : 'Visit'}</span>
-                <ExternalLink className="w-3 h-3" />
+              {/* Animated background glow */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+              />
+              
+              {/* Shimmer effect on hover */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 opacity-0 group-hover:opacity-100"
+                initial={{ x: '-200%' }}
+                whileHover={{ x: '200%' }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+              />
+
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="p-2 rounded-lg bg-primary/20 border border-primary/30">
+                    <Code2 className="w-5 h-5 text-primary" />
+                  </div>
+                  <span className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">&lt;/&gt; RoVR</span>
+                </div>
+                <p className="text-sm text-foreground/90 font-semibold mb-4">
+                  {language === 'pt' ? 'MicroSaaS & Aplicativos' : language === 'es' ? 'MicroSaaS & Aplicaciones' : 'MicroSaaS & Apps'}
+                </p>
+                <div className="flex items-center gap-2 text-sm font-bold text-primary group-hover:gap-3 transition-all duration-300">
+                  <span>{language === 'pt' ? 'Visitar' : language === 'es' ? 'Visitar' : 'Visit'}</span>
+                  <motion.div
+                    animate={{ x: [0, 3, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                  </motion.div>
+                </div>
               </div>
             </motion.a>
           </motion.div>

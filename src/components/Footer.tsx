@@ -279,8 +279,8 @@ export function Footer() {
                   <motion.a 
                     href={link.href}
                     onClick={(e) => handleSectionClick(e, link.href)}
-                    className="text-foreground hover:text-primary transition-colors cursor-pointer text-sm font-semibold inline-flex items-center gap-1 group"
-                    whileHover={{ x: 3 }}
+                    className="text-foreground hover:text-primary hover:bg-primary/10 px-2 py-1 -mx-2 rounded-md transition-all duration-300 cursor-pointer text-sm font-semibold inline-flex items-center gap-1 group"
+                    whileHover={{ x: 5, scale: 1.02 }}
                   >
                     <span className="w-0 group-hover:w-2 h-px bg-primary transition-all duration-300" />
                     {link.label}
@@ -298,10 +298,10 @@ export function Footer() {
             <ul className="space-y-3">
               {legalLinks.map((link) => (
                 <li key={link.href}>
-                  <motion.div whileHover={{ x: 3 }}>
+                  <motion.div whileHover={{ x: 5, scale: 1.02 }}>
                     <Link 
                       to={link.href}
-                      className="text-foreground hover:text-primary transition-colors text-sm font-semibold inline-flex items-center gap-1 group"
+                      className="text-foreground hover:text-primary hover:bg-primary/10 px-2 py-1 -mx-2 rounded-md transition-all duration-300 text-sm font-semibold inline-flex items-center gap-1 group"
                     >
                       <span className="w-0 group-hover:w-2 h-px bg-primary transition-all duration-300" />
                       {link.label}

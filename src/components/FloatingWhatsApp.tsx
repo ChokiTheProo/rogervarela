@@ -23,8 +23,8 @@ export const FloatingWhatsApp = () => {
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
     >
-      {/* Tooltip */}
-      <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-4 py-2 rounded-xl bg-background/95 backdrop-blur-sm border border-border text-foreground text-sm font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg">
+      {/* Tooltip - hidden on mobile */}
+      <span className="hidden md:block absolute right-full mr-3 top-1/2 -translate-y-1/2 px-4 py-2 rounded-xl bg-background/95 backdrop-blur-sm border border-border text-foreground text-sm font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg">
         {tooltip[language]}
       </span>
 

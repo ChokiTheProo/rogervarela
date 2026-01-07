@@ -156,7 +156,7 @@ const projects = [
       },
     } as ProjectStory,
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Finance', 'Lovable'],
-    github: 'https://fluxenbr.lovable.app',
+    github: 'https://fluxenvenda.lovable.app',
     isLive: true,
     category: 'rovr',
     gradient: 'from-lime-500 via-green-500 to-emerald-500',

@@ -161,6 +161,31 @@ const projects = [
     category: 'rovr',
     gradient: 'from-lime-500 via-green-500 to-emerald-500',
   },
+  {
+    name: 'CuidaBem',
+    story: {
+      problem: {
+        pt: 'Famílias têm dificuldade em acompanhar a saúde e rotina de idosos.',
+        en: 'Families struggle to track elderly health and daily routines.',
+        es: 'Las familias tienen dificultad para seguir la salud y rutina de ancianos.',
+      },
+      solution: {
+        pt: 'Aplicativo de cuidado ao idoso com lembretes, medicamentos e acompanhamento.',
+        en: 'Elderly care app with reminders, medications and health tracking.',
+        es: 'Aplicación de cuidado al anciano con recordatorios, medicamentos y seguimiento.',
+      },
+      result: {
+        pt: 'Plataforma funcional para gestão do cuidado com interface acessível.',
+        en: 'Functional platform for care management with accessible interface.',
+        es: 'Plataforma funcional para gestión del cuidado con interfaz accesible.',
+      },
+    } as ProjectStory,
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Health', 'Lovable'],
+    github: 'https://cuidadem-facil.lovable.app',
+    isLive: true,
+    category: 'rovr',
+    gradient: 'from-amber-500 via-orange-500 to-red-400',
+  },
   // Academic Projects
   {
     name: 'Sistema Operacional de Redes',

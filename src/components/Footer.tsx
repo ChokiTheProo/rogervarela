@@ -1,4 +1,4 @@
-import { Heart, Github, Linkedin, ExternalLink, MapPin, ArrowUpRight, Code2, Sparkles } from 'lucide-react';
+import { Heart, Github, Linkedin, ExternalLink, MapPin, ArrowUpRight, Code2, Sparkles, MessageCircle } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Logo3D } from '@/components/Logo3D';
@@ -197,6 +197,19 @@ export function Footer() {
               </motion.div>
             </Link>
           </motion.div>
+
+          {/* WhatsApp Button */}
+          <motion.a
+            href="https://wa.me/5554991710543"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-[#25D366] text-white font-semibold shadow-lg shadow-[#25D366]/30 hover:shadow-xl hover:shadow-[#25D366]/40 hover:bg-[#22c55e] transition-all duration-300"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <MessageCircle className="w-5 h-5" />
+            <span>{language === 'pt' ? 'Falar no WhatsApp' : language === 'es' ? 'Hablar por WhatsApp' : 'Chat on WhatsApp'}</span>
+          </motion.a>
         </motion.div>
 
         {/* Divider */}

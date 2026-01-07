@@ -62,31 +62,6 @@ const projects = [
     gradient: 'from-emerald-500 via-teal-500 to-cyan-500',
   },
   {
-    name: 'Emagrio Journey',
-    story: {
-      problem: {
-        pt: 'Onboardings genéricos não engajam e têm alta taxa de abandono.',
-        en: 'Generic onboardings don\'t engage and have high abandonment rates.',
-        es: 'Los onboardings genéricos no enganchan y tienen alta tasa de abandono.',
-      },
-      solution: {
-        pt: 'Jornada interativa com perguntas personalizadas e experiência imersiva.',
-        en: 'Interactive journey with personalized questions and immersive experience.',
-        es: 'Jornada interactiva con preguntas personalizadas y experiencia inmersiva.',
-      },
-      result: {
-        pt: 'Fluxo completo de onboarding com UX otimizada e animações.',
-        en: 'Complete onboarding flow with optimized UX and animations.',
-        es: 'Flujo completo de onboarding con UX optimizada y animaciones.',
-      },
-    } as ProjectStory,
-    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'UX/UI', 'Lovable'],
-    github: 'https://emagrio-journey-unlocked.lovable.app/onboarding',
-    isLive: true,
-    category: 'rovr',
-    gradient: 'from-orange-500 via-amber-500 to-yellow-500',
-  },
-  {
     name: 'Tratamento Gastrite',
     story: {
       problem: {

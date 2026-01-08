@@ -6,6 +6,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { useIsMobile } from '@/hooks/use-mobile';
+
 const BrazilFlag = () => (
   <svg viewBox="0 0 512 512" className="w-5 h-5 rounded-sm shadow-sm">
     <rect fill="#009739" width="512" height="512"/>
@@ -84,8 +86,60 @@ const SpainFlag = () => (
   </svg>
 );
 
+interface LanguageButtonProps {
+  lang: 'pt' | 'en' | 'es';
+  currentLang: string;
+  onClick: () => void;
+  Flag: React.FC;
+  label: string;
+  tooltipText: string;
+  isMobile: boolean;
+}
+
+const LanguageButton = ({ lang, currentLang, onClick, Flag, label, tooltipText, isMobile }: LanguageButtonProps) => {
+  const handleClick = (e: React.MouseEvent | React.TouchEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onClick();
+  };
+
+  const button = (
+    <motion.button
+      onClick={handleClick}
+      onTouchEnd={handleClick}
+      className={`relative z-10 flex flex-col items-center justify-center w-[52px] py-1.5 rounded-full transition-colors duration-200 touch-manipulation ${
+        currentLang === lang ? 'text-primary-foreground' : 'text-muted-foreground hover:text-foreground'
+      }`}
+      whileHover={{ scale: 1.08 }}
+      whileTap={{ scale: 0.95 }}
+    >
+      <Flag />
+      <span className="text-[9px] font-semibold mt-1">{label}</span>
+    </motion.button>
+  );
+
+  if (isMobile) {
+    return button;
+  }
+
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        {button}
+      </TooltipTrigger>
+      <TooltipContent 
+        side="bottom" 
+        className="bg-background/95 backdrop-blur-sm border-border/50 animate-in fade-in-0 zoom-in-95"
+      >
+        <p className="text-xs font-medium">{tooltipText}</p>
+      </TooltipContent>
+    </Tooltip>
+  );
+};
+
 export function LanguageToggle() {
   const { language, setLanguage } = useLanguage();
+  const isMobile = useIsMobile();
 
   const getXPosition = () => {
     switch (language) {
@@ -96,85 +150,57 @@ export function LanguageToggle() {
     }
   };
 
+  const content = (
+    <div className="relative flex items-center gap-1 rounded-full bg-secondary/50 p-1.5 backdrop-blur-sm border border-border/50">
+      <motion.div
+        className="absolute top-1.5 bottom-1.5 bg-gradient-primary rounded-full"
+        initial={false}
+        animate={{
+          x: getXPosition(),
+          width: '52px',
+        }}
+        transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+      />
+      
+      <LanguageButton
+        lang="pt"
+        currentLang={language}
+        onClick={() => setLanguage('pt')}
+        Flag={BrazilFlag}
+        label="PT"
+        tooltipText="Português (Brasil)"
+        isMobile={isMobile}
+      />
+
+      <LanguageButton
+        lang="en"
+        currentLang={language}
+        onClick={() => setLanguage('en')}
+        Flag={USAFlag}
+        label="EN"
+        tooltipText="English (US)"
+        isMobile={isMobile}
+      />
+
+      <LanguageButton
+        lang="es"
+        currentLang={language}
+        onClick={() => setLanguage('es')}
+        Flag={SpainFlag}
+        label="ES"
+        tooltipText="Español"
+        isMobile={isMobile}
+      />
+    </div>
+  );
+
+  if (isMobile) {
+    return content;
+  }
+
   return (
     <TooltipProvider delayDuration={200}>
-      <div className="relative flex items-center gap-1 rounded-full bg-secondary/50 p-1.5 backdrop-blur-sm border border-border/50">
-        <motion.div
-          className="absolute top-1.5 bottom-1.5 bg-gradient-primary rounded-full"
-          initial={false}
-          animate={{
-            x: getXPosition(),
-            width: '52px',
-          }}
-          transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-        />
-        
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <motion.button
-              onClick={() => setLanguage('pt')}
-              className={`relative z-10 flex flex-col items-center justify-center w-[52px] py-1.5 rounded-full transition-colors duration-200 ${
-                language === 'pt' ? 'text-primary-foreground' : 'text-muted-foreground hover:text-foreground'
-              }`}
-              whileHover={{ scale: 1.08 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <BrazilFlag />
-              <span className="text-[9px] font-semibold mt-1">PT</span>
-            </motion.button>
-          </TooltipTrigger>
-          <TooltipContent 
-            side="bottom" 
-            className="bg-background/95 backdrop-blur-sm border-border/50 animate-in fade-in-0 zoom-in-95"
-          >
-            <p className="text-xs font-medium">Português (Brasil)</p>
-          </TooltipContent>
-        </Tooltip>
-
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <motion.button
-              onClick={() => setLanguage('en')}
-              className={`relative z-10 flex flex-col items-center justify-center w-[52px] py-1.5 rounded-full transition-colors duration-200 ${
-                language === 'en' ? 'text-primary-foreground' : 'text-muted-foreground hover:text-foreground'
-              }`}
-              whileHover={{ scale: 1.08 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <USAFlag />
-              <span className="text-[9px] font-semibold mt-1">EN</span>
-            </motion.button>
-          </TooltipTrigger>
-          <TooltipContent 
-            side="bottom" 
-            className="bg-background/95 backdrop-blur-sm border-border/50 animate-in fade-in-0 zoom-in-95"
-          >
-            <p className="text-xs font-medium">English (US)</p>
-          </TooltipContent>
-        </Tooltip>
-
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <motion.button
-              onClick={() => setLanguage('es')}
-              className={`relative z-10 flex flex-col items-center justify-center w-[52px] py-1.5 rounded-full transition-colors duration-200 ${
-                language === 'es' ? 'text-primary-foreground' : 'text-muted-foreground hover:text-foreground'
-              }`}
-              whileHover={{ scale: 1.08 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <SpainFlag />
-              <span className="text-[9px] font-semibold mt-1">ES</span>
-            </motion.button>
-          </TooltipTrigger>
-          <TooltipContent 
-            side="bottom" 
-            className="bg-background/95 backdrop-blur-sm border-border/50 animate-in fade-in-0 zoom-in-95"
-          >
-            <p className="text-xs font-medium">Español</p>
-          </TooltipContent>
-        </Tooltip>
-      </div>
+      {content}
     </TooltipProvider>
   );
 }

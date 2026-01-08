@@ -428,28 +428,28 @@ const StoryCard = memo(function StoryCard({ project, index, isInView, language, 
         {/* Project Image */}
         {projectImages[project.name] && (
           <motion.div 
-            className="relative mb-4 rounded-xl overflow-hidden border border-border/30 group/image"
+            className="relative mb-4 rounded-xl overflow-hidden border border-border/30 group/image shadow-lg"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="aspect-[16/10] relative">
+            <div className="aspect-[4/3] relative bg-muted/20">
               <img 
                 src={projectImages[project.name]} 
                 alt={project.name}
-                className="w-full h-full object-cover object-top transition-transform duration-500 group-hover/image:scale-105"
+                className="w-full h-full object-contain object-center transition-transform duration-500 group-hover/image:scale-105"
               />
               {/* Gradient overlay */}
-              <div className={`absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover/image:opacity-40 transition-opacity`} />
+              <div className={`absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-50 group-hover/image:opacity-30 transition-opacity`} />
               
               {/* Badge and rating */}
-              <div className="absolute top-3 left-3 flex items-center gap-2">
-                <span className="px-2 py-1 text-[10px] font-bold rounded-md bg-accent/90 text-white uppercase tracking-wide">
+              <div className="absolute top-2 left-2 sm:top-3 sm:left-3 flex items-center gap-2">
+                <span className="px-2 py-1 text-[10px] font-bold rounded-md bg-accent/90 text-white uppercase tracking-wide shadow-md">
                   {language === 'pt' ? 'Disponível' : language === 'es' ? 'Disponible' : 'Available'}
                 </span>
               </div>
               
               {project.rating && (
-                <div className="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 rounded-md bg-black/50 backdrop-blur-sm">
+                <div className="absolute top-2 right-2 sm:top-3 sm:right-3 flex items-center gap-1 px-2 py-1 rounded-md bg-black/60 backdrop-blur-sm shadow-md">
                   <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" />
                   <span className="text-xs font-bold text-white">{project.rating}</span>
                 </div>

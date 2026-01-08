@@ -9,6 +9,7 @@ import projectKlyexa from '@/assets/project-klyexa.png';
 import projectCuidabem from '@/assets/project-cuidabem.png';
 import projectTratamento from '@/assets/project-tratamento.png';
 import projectEmagrio from '@/assets/project-emagrio.png';
+import projectDentiflow from '@/assets/project-dentiflow.png';
 
 interface ProjectStory {
   problem: { pt: string; en: string; es: string };
@@ -23,6 +24,7 @@ const projectImages: Record<string, string> = {
   'Tratamento Gastrite': projectTratamento,
   'Fluxen': projectFluxen,
   'CuidaBem': projectCuidabem,
+  'DentiFlow': projectDentiflow,
 };
 
 const projects = [

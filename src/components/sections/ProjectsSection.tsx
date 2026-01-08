@@ -1,6 +1,7 @@
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { useRef, useState, memo } from 'react';
 import { Github, ExternalLink, Code2, Rocket, GraduationCap, Newspaper, Eye, Sparkles, Zap, ArrowUpRight, Target, Lightbulb, TrendingUp, Wrench, Star } from 'lucide-react';
+import { LazyImage } from '@/components/ui/lazy-image';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 // Project images
@@ -433,9 +434,11 @@ const StoryCard = memo(function StoryCard({ project, index, isInView, language, 
             transition={{ duration: 0.3 }}
           >
             <div className="aspect-[4/3] relative bg-muted/20">
-              <img 
+              <LazyImage 
                 src={projectImages[project.name]} 
                 alt={project.name}
+                containerClassName="w-full h-full"
+                skeletonClassName="rounded-lg"
                 className="w-full h-full object-contain object-center transition-transform duration-500 group-hover/image:scale-105"
               />
               {/* Gradient overlay */}

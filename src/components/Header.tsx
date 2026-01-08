@@ -305,7 +305,7 @@ export function Header() {
               {/* Theme and contrast toggle for mobile */}
               <div className="flex items-center justify-between px-3 py-2 mb-2 border-b border-border/30 sm:hidden">
                 <span className="text-sm text-muted-foreground">{language === 'pt' ? 'Acessibilidade' : language === 'es' ? 'Accesibilidad' : 'Accessibility'}</span>
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
                   <ContrastToggle />
                   <ThemeToggle />
                 </div>

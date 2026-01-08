@@ -8,6 +8,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const translations = {
   pt: {
@@ -27,33 +28,50 @@ const translations = {
 export function ContrastToggle() {
   const { highContrast, toggleContrast } = useContrast();
   const { language } = useLanguage();
+  const isMobile = useIsMobile();
   const t = translations[language];
+
+  const handleClick = (e: React.MouseEvent | React.TouchEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleContrast();
+  };
+
+  const button = (
+    <Button
+      variant="ghost"
+      size="icon"
+      onClick={handleClick}
+      onTouchEnd={handleClick}
+      className="relative overflow-hidden touch-manipulation"
+      aria-label={highContrast ? t.disable : t.enable}
+    >
+      <motion.div
+        initial={false}
+        animate={{
+          scale: highContrast ? [1, 1.2, 1] : 1,
+        }}
+        transition={{ duration: 0.3, ease: 'easeInOut' }}
+      >
+        {highContrast ? (
+          <Eye className="h-5 w-5" />
+        ) : (
+          <EyeOff className="h-5 w-5" />
+        )}
+      </motion.div>
+      <span className="sr-only">{highContrast ? t.disable : t.enable}</span>
+    </Button>
+  );
+
+  // On mobile, render without tooltip to avoid touch issues
+  if (isMobile) {
+    return button;
+  }
 
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={toggleContrast}
-          className="relative overflow-hidden"
-          aria-label={highContrast ? t.disable : t.enable}
-        >
-          <motion.div
-            initial={false}
-            animate={{
-              scale: highContrast ? [1, 1.2, 1] : 1,
-            }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-          >
-            {highContrast ? (
-              <Eye className="h-5 w-5" />
-            ) : (
-              <EyeOff className="h-5 w-5" />
-            )}
-          </motion.div>
-          <span className="sr-only">{highContrast ? t.disable : t.enable}</span>
-        </Button>
+        {button}
       </TooltipTrigger>
       <TooltipContent 
         side="bottom" 

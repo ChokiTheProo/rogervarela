@@ -6,12 +6,19 @@ import { motion } from 'framer-motion';
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
 
+  const handleClick = (e: React.MouseEvent | React.TouchEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
   return (
     <Button
       variant="ghost"
       size="icon"
-      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="relative overflow-hidden"
+      onClick={handleClick}
+      onTouchEnd={handleClick}
+      className="relative overflow-hidden touch-manipulation"
     >
       <motion.div
         initial={false}

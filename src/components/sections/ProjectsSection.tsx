@@ -1,13 +1,29 @@
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { useRef, useState, memo } from 'react';
-import { Github, ExternalLink, Code2, Rocket, GraduationCap, Newspaper, Eye, Sparkles, Zap, ArrowUpRight, Target, Lightbulb, TrendingUp, Wrench } from 'lucide-react';
+import { Github, ExternalLink, Code2, Rocket, GraduationCap, Newspaper, Eye, Sparkles, Zap, ArrowUpRight, Target, Lightbulb, TrendingUp, Wrench, Star } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+
+// Project images
+import projectFluxen from '@/assets/project-fluxen.png';
+import projectKlyexa from '@/assets/project-klyexa.png';
+import projectCuidabem from '@/assets/project-cuidabem.png';
+import projectTratamento from '@/assets/project-tratamento.png';
+import projectEmagrio from '@/assets/project-emagrio.png';
 
 interface ProjectStory {
   problem: { pt: string; en: string; es: string };
   solution: { pt: string; en: string; es: string };
   result: { pt: string; en: string; es: string };
 }
+
+// Project image mapping
+const projectImages: Record<string, string> = {
+  'Klyexa': projectKlyexa,
+  'Emagrio Transforma Já': projectEmagrio,
+  'Tratamento Gastrite': projectTratamento,
+  'Fluxen': projectFluxen,
+  'CuidaBem': projectCuidabem,
+};
 
 const projects = [
   // RoVR Projects with storytelling
@@ -35,6 +51,7 @@ const projects = [
     isLive: true,
     category: 'rovr',
     gradient: 'from-violet-500 via-purple-500 to-fuchsia-500',
+    rating: 4.8,
   },
   {
     name: 'Emagrio Transforma Já',
@@ -60,6 +77,7 @@ const projects = [
     isLive: true,
     category: 'rovr',
     gradient: 'from-emerald-500 via-teal-500 to-cyan-500',
+    rating: 4.8,
   },
   {
     name: 'Tratamento Gastrite',
@@ -85,6 +103,7 @@ const projects = [
     isLive: true,
     category: 'rovr',
     gradient: 'from-rose-500 via-pink-500 to-red-500',
+    rating: 4.9,
   },
   {
     name: 'DentiFlow',
@@ -110,6 +129,7 @@ const projects = [
     isLive: true,
     category: 'rovr',
     gradient: 'from-sky-500 via-blue-500 to-indigo-500',
+    rating: 4.7,
   },
   {
     name: 'Fluxen',
@@ -135,6 +155,7 @@ const projects = [
     isLive: true,
     category: 'rovr',
     gradient: 'from-lime-500 via-green-500 to-emerald-500',
+    rating: 4.9,
   },
   {
     name: 'CuidaBem',
@@ -160,6 +181,7 @@ const projects = [
     isLive: true,
     category: 'rovr',
     gradient: 'from-amber-500 via-orange-500 to-red-400',
+    rating: 5.0,
   },
   // Academic Projects
   {
@@ -401,6 +423,39 @@ const StoryCard = memo(function StoryCard({ project, index, isInView, language, 
 
       {/* Card Content */}
       <div className="relative z-10 p-4 sm:p-6">
+        {/* Project Image */}
+        {projectImages[project.name] && (
+          <motion.div 
+            className="relative mb-4 rounded-xl overflow-hidden border border-border/30 group/image"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="aspect-[16/10] relative">
+              <img 
+                src={projectImages[project.name]} 
+                alt={project.name}
+                className="w-full h-full object-cover object-top transition-transform duration-500 group-hover/image:scale-105"
+              />
+              {/* Gradient overlay */}
+              <div className={`absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover/image:opacity-40 transition-opacity`} />
+              
+              {/* Badge and rating */}
+              <div className="absolute top-3 left-3 flex items-center gap-2">
+                <span className="px-2 py-1 text-[10px] font-bold rounded-md bg-accent/90 text-white uppercase tracking-wide">
+                  {language === 'pt' ? 'Disponível' : language === 'es' ? 'Disponible' : 'Available'}
+                </span>
+              </div>
+              
+              {project.rating && (
+                <div className="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 rounded-md bg-black/50 backdrop-blur-sm">
+                  <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" />
+                  <span className="text-xs font-bold text-white">{project.rating}</span>
+                </div>
+              )}
+            </div>
+          </motion.div>
+        )}
+
         {/* Header */}
         <div className="flex items-start justify-between mb-4">
           <div className="flex items-center gap-3">

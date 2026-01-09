@@ -291,62 +291,61 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0, y: -20 }}
-            animate={{ opacity: 1, height: 'auto', y: 0 }}
-            exit={{ opacity: 0, height: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="lg:hidden glass mt-2 mx-3 sm:mx-4 rounded-xl overflow-hidden border border-primary/10"
-          >
-            <nav className="flex flex-col p-3 sm:p-4 gap-1">
-              {/* Theme and contrast toggle for mobile */}
-              <div className="flex items-center justify-between px-3 py-2 mb-2 border-b border-border/30 sm:hidden">
-                <span className="text-sm text-muted-foreground">{language === 'pt' ? 'Acessibilidade' : language === 'es' ? 'Accesibilidad' : 'Accessibility'}</span>
-                <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
-                  <ContrastToggle />
-                  <ThemeToggle />
-                </div>
+      {/* Mobile Menu - Simplified for touch reliability */}
+      {isMobileMenuOpen && (
+        <div className="lg:hidden glass mt-2 mx-3 sm:mx-4 rounded-xl overflow-hidden border border-primary/10">
+          <nav className="flex flex-col p-3 sm:p-4 gap-1">
+            {/* Theme and contrast toggle for mobile */}
+            <div className="flex items-center justify-between px-3 py-2 mb-2 border-b border-border/30 sm:hidden">
+              <span className="text-sm text-muted-foreground">{language === 'pt' ? 'Acessibilidade' : language === 'es' ? 'Accesibilidad' : 'Accessibility'}</span>
+              <div className="flex items-center gap-2">
+                <ContrastToggle />
+                <ThemeToggle />
               </div>
-              {navItems.map((item) => (
-                <button
+            </div>
+            {navItems.map((item) => {
+              const scrollToSection = () => {
+                setIsMobileMenuOpen(false);
+                const targetId = item.href;
+                
+                if (location.pathname !== '/') {
+                  navigate('/');
+                  setTimeout(() => {
+                    const element = document.querySelector(targetId);
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }, 200);
+                } else {
+                  setTimeout(() => {
+                    const element = document.querySelector(targetId);
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }, 50);
+                }
+              };
+              
+              return (
+                <div
                   key={item.key}
-                  type="button"
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg transition-colors cursor-pointer relative overflow-hidden group active:bg-primary/10 text-left w-full"
-                  style={{ WebkitTapHighlightColor: 'transparent' }}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setIsMobileMenuOpen(false);
-                    const targetId = item.href;
-                    
-                    if (location.pathname !== '/') {
-                      navigate('/');
-                      setTimeout(() => {
-                        const element = document.querySelector(targetId);
-                        if (element) {
-                          element.scrollIntoView({ behavior: 'smooth' });
-                        }
-                      }, 150);
-                    } else {
-                      const element = document.querySelector(targetId);
-                      if (element) {
-                        element.scrollIntoView({ behavior: 'smooth' });
-                      }
+                  role="button"
+                  tabIndex={0}
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground active:text-foreground px-3 sm:px-4 py-3 sm:py-4 rounded-lg transition-colors cursor-pointer active:bg-primary/20 text-left w-full select-none"
+                  onClick={scrollToSection}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      scrollToSection();
                     }
                   }}
                 >
-                  <span
-                    className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-primary rounded-r-full opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity"
-                  />
                   {t(`nav.${item.key}`)}
-                </button>
-              ))}
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                </div>
+              );
+            })}
+          </nav>
+        </div>
+      )}
     </motion.header>
   );
 }

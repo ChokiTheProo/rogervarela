@@ -310,43 +310,38 @@ export function Header() {
                   <ThemeToggle />
                 </div>
               </div>
-              {navItems.map((item, index) => (
-                <motion.button
+              {navItems.map((item) => (
+                <button
                   key={item.key}
                   type="button"
-                  onClick={() => {
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg transition-colors cursor-pointer relative overflow-hidden group active:bg-primary/10 text-left w-full"
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
+                  onClick={(e) => {
+                    e.stopPropagation();
                     setIsMobileMenuOpen(false);
+                    const targetId = item.href;
+                    
                     if (location.pathname !== '/') {
                       navigate('/');
                       setTimeout(() => {
-                        const element = document.querySelector(item.href);
+                        const element = document.querySelector(targetId);
                         if (element) {
                           element.scrollIntoView({ behavior: 'smooth' });
                         }
-                      }, 100);
+                      }, 150);
                     } else {
-                      const element = document.querySelector(item.href);
+                      const element = document.querySelector(targetId);
                       if (element) {
                         element.scrollIntoView({ behavior: 'smooth' });
                       }
                     }
                   }}
-                  initial={{ opacity: 0, x: -30, scale: 0.9 }}
-                  animate={{ opacity: 1, x: 0, scale: 1 }}
-                  exit={{ opacity: 0, x: -30, scale: 0.9 }}
-                  transition={{
-                    delay: index * 0.05,
-                    duration: 0.3,
-                    ease: [0.25, 0.46, 0.45, 0.94]
-                  }}
-                  whileTap={{ scale: 0.98 }}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg transition-colors cursor-pointer relative overflow-hidden group active:bg-primary/10 text-left"
                 >
                   <span
                     className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-primary rounded-r-full opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity"
                   />
                   {t(`nav.${item.key}`)}
-                </motion.button>
+                </button>
               ))}
             </nav>
           </motion.div>

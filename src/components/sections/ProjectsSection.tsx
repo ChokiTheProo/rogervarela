@@ -25,7 +25,7 @@ const projectImages: Record<string, string> = {
   'Tratamento Gastrite': projectTratamento,
   'Fluxen': projectFluxen,
   'CuidaBem': projectCuidabem,
-  'DentiFlow': projectDentiflow,
+  'DentFlow': projectDentiflow,
 };
 
 const projects = [
@@ -109,7 +109,7 @@ const projects = [
     rating: 4.9,
   },
   {
-    name: 'DentiFlow',
+    name: 'DentFlow',
     story: {
       problem: {
         pt: 'Clínicas dentárias usam sistemas ultrapassados e perdem agendamentos.',
@@ -127,8 +127,8 @@ const projects = [
         es: 'MVP con flujo completo de agendamiento y dashboard operacional.',
       },
     } as ProjectStory,
-    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'AI', 'Vercel'],
-    github: 'https://v0-dental-assistant-app.vercel.app/',
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'AI', 'Lovable'],
+    github: 'https://dentflowbr.lovable.app',
     isLive: true,
     category: 'rovr',
     gradient: 'from-sky-500 via-blue-500 to-indigo-500',

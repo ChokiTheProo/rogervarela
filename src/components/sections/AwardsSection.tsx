@@ -117,11 +117,11 @@ export function AwardsSection() {
               </p>
               
               {/* Problema */}
-              <div className="mb-6">
-                <h4 className="font-heading font-semibold text-lg text-primary mb-2">
+              <div className="mb-8">
+                <h4 className="font-heading font-bold text-xl sm:text-2xl text-primary mb-3">
                   {language === 'pt' ? 'Problema' : language === 'es' ? 'Problema' : 'Problem'}
                 </h4>
-                <p className="text-muted-foreground max-w-3xl mx-auto text-sm">
+                <p className="text-muted-foreground max-w-3xl mx-auto text-base sm:text-lg leading-relaxed">
                   {language === 'pt' 
                     ? 'O óleo de cozinha é um grave problema ambiental: 1 litro descartado incorretamente contamina até 25 mil litros de água. Hoje, estes óleos usados têm valor comercial e podem ser transformados em produtos de limpeza e biocombustível. Porém, são poucos pontos de coleta nas cidades e as pessoas não têm conhecimento sobre eles.'
                     : language === 'es'
@@ -130,11 +130,11 @@ export function AwardsSection() {
                 </p>
               </div>
 
-              <div className="mb-6">
-                <h4 className="font-heading font-semibold text-lg text-primary mb-2">
+              <div className="mb-8">
+                <h4 className="font-heading font-bold text-xl sm:text-2xl text-primary mb-3">
                   {language === 'pt' ? 'Relevância' : language === 'es' ? 'Relevancia' : 'Relevance'}
                 </h4>
-                <p className="text-muted-foreground max-w-3xl mx-auto text-sm">
+                <p className="text-muted-foreground max-w-3xl mx-auto text-base sm:text-lg leading-relaxed">
                   {language === 'pt' 
                     ? 'A quantidade de água contaminada por apenas 1 litro de óleo seria suficiente para o uso de uma pessoa por 6 meses. Dos 3,9 bilhões de litros de óleo vegetal utilizado no Brasil por ano, apenas 30 milhões são reciclados (menos de 0,1%), implicando que 99,99% é descartado de formas não ideais.'
                     : language === 'es'
@@ -143,11 +143,11 @@ export function AwardsSection() {
                 </p>
               </div>
 
-              <div className="mb-6">
-                <h4 className="font-heading font-semibold text-lg text-primary mb-2">
+              <div className="mb-8">
+                <h4 className="font-heading font-bold text-xl sm:text-2xl text-primary mb-3">
                   {language === 'pt' ? 'Solução' : language === 'es' ? 'Solución' : 'Solution'}
                 </h4>
-                <p className="text-muted-foreground max-w-3xl mx-auto text-sm">
+                <p className="text-muted-foreground max-w-3xl mx-auto text-base sm:text-lg leading-relaxed">
                   {language === 'pt' 
                     ? 'Desenvolvimento de um tonel de recolhimento de óleo equipado com componentes eletrônicos de baixo custo: sensor de nível sem contato para identificar quando o recipiente está cheio, comunicação via rede LoRa para avisar a empresa coletora, e funcionamento garantido por Arduino alimentado por placa solar e bateria recarregável.'
                     : language === 'es'
@@ -156,11 +156,11 @@ export function AwardsSection() {
                 </p>
               </div>
 
-              <div className="mb-6">
-                <h4 className="font-heading font-semibold text-lg text-primary mb-2">
+              <div className="mb-8">
+                <h4 className="font-heading font-bold text-xl sm:text-2xl text-primary mb-3">
                   {language === 'pt' ? 'Trabalhos Futuros' : language === 'es' ? 'Trabajos Futuros' : 'Future Work'}
                 </h4>
-                <p className="text-muted-foreground max-w-3xl mx-auto text-sm">
+                <p className="text-muted-foreground max-w-3xl mx-auto text-base sm:text-lg leading-relaxed">
                   {language === 'pt' 
                     ? 'Adaptar o sistema para containers, lixeiras de material sólido e ralos/bueiros. Assim, impactamos em logística e ambientalmente, evitando acúmulo de lixo e enchentes provocadas por entupimentos não identificados.'
                     : language === 'es'
@@ -169,21 +169,21 @@ export function AwardsSection() {
                 </p>
               </div>
 
-              <div className="flex flex-wrap justify-center gap-3 mb-6">
-                <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">IoT</span>
-                <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">Arduino</span>
-                <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">LoRa</span>
-                <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">
+              <div className="flex flex-wrap justify-center gap-3 mb-8">
+                <span className="px-4 py-1.5 text-sm font-medium rounded-full bg-primary/10 text-primary border border-primary/20">IoT</span>
+                <span className="px-4 py-1.5 text-sm font-medium rounded-full bg-primary/10 text-primary border border-primary/20">Arduino</span>
+                <span className="px-4 py-1.5 text-sm font-medium rounded-full bg-primary/10 text-primary border border-primary/20">LoRa</span>
+                <span className="px-4 py-1.5 text-sm font-medium rounded-full bg-primary/10 text-primary border border-primary/20">
                   {language === 'pt' ? 'Energia Solar' : language === 'es' ? 'Energía Solar' : 'Solar Power'}
                 </span>
-                <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">
+                <span className="px-4 py-1.5 text-sm font-medium rounded-full bg-primary/10 text-primary border border-primary/20">
                   {language === 'pt' ? 'Sensores' : language === 'es' ? 'Sensores' : 'Sensors'}
                 </span>
-                <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">
+                <span className="px-4 py-1.5 text-sm font-medium rounded-full bg-primary/10 text-primary border border-primary/20">
                   {language === 'pt' ? 'Sustentabilidade' : language === 'es' ? 'Sostenibilidad' : 'Sustainability'}
                 </span>
-                <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">SOLACYT</span>
-                <span className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20">MOSTRATEC</span>
+                <span className="px-4 py-1.5 text-sm font-medium rounded-full bg-primary/10 text-primary border border-primary/20">SOLACYT</span>
+                <span className="px-4 py-1.5 text-sm font-medium rounded-full bg-primary/10 text-primary border border-primary/20">MOSTRATEC</span>
               </div>
 
               <div className="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-3 sm:gap-4">

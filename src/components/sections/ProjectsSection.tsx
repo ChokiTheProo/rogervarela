@@ -473,60 +473,60 @@ const StoryCard = memo(function StoryCard({ project, index, isInView, language, 
             </motion.div>
             <div>
               <motion.h3 
-                className="font-heading font-bold text-lg sm:text-xl text-foreground"
+                className="font-heading font-bold text-xl sm:text-2xl text-foreground"
                 animate={isHovered ? { x: 3 } : { x: 0 }}
               >
                 {project.name}
               </motion.h3>
-              <div className="flex items-center gap-1.5 mt-0.5">
+              <div className="flex items-center gap-1.5 mt-1">
                 <motion.span 
-                  className="w-1.5 h-1.5 rounded-full bg-accent"
+                  className="w-2 h-2 rounded-full bg-accent"
                   animate={{ opacity: [1, 0.5, 1] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
                 />
-                <span className="text-xs font-medium text-primary">RoVR</span>
+                <span className="text-sm font-semibold text-primary">RoVR</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Storytelling Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-5">
           {/* Problem */}
-          <div className="p-3 rounded-xl bg-destructive/10 border border-destructive/20">
-            <div className="flex items-center gap-2 mb-2">
-              <Target className="w-4 h-4 text-destructive" />
-              <span className="text-xs font-semibold text-destructive uppercase tracking-wide">
+          <div className="p-4 rounded-xl bg-destructive/10 border border-destructive/20">
+            <div className="flex items-center gap-2 mb-3">
+              <Target className="w-5 h-5 text-destructive" />
+              <span className="text-sm font-bold text-destructive uppercase tracking-wide">
                 {language === 'pt' ? 'Problema' : language === 'es' ? 'Problema' : 'Problem'}
               </span>
             </div>
-            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
               {story.problem[language]}
             </p>
           </div>
 
           {/* Solution */}
-          <div className="p-3 rounded-xl bg-primary/10 border border-primary/20">
-            <div className="flex items-center gap-2 mb-2">
-              <Lightbulb className="w-4 h-4 text-primary" />
-              <span className="text-xs font-semibold text-primary uppercase tracking-wide">
+          <div className="p-4 rounded-xl bg-primary/10 border border-primary/20">
+            <div className="flex items-center gap-2 mb-3">
+              <Lightbulb className="w-5 h-5 text-primary" />
+              <span className="text-sm font-bold text-primary uppercase tracking-wide">
                 {language === 'pt' ? 'Solução' : language === 'es' ? 'Solución' : 'Solution'}
               </span>
             </div>
-            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
               {story.solution[language]}
             </p>
           </div>
 
           {/* Result */}
-          <div className="p-3 rounded-xl bg-accent/10 border border-accent/20">
-            <div className="flex items-center gap-2 mb-2">
-              <TrendingUp className="w-4 h-4 text-accent" />
-              <span className="text-xs font-semibold text-accent uppercase tracking-wide">
+          <div className="p-4 rounded-xl bg-accent/10 border border-accent/20">
+            <div className="flex items-center gap-2 mb-3">
+              <TrendingUp className="w-5 h-5 text-accent" />
+              <span className="text-sm font-bold text-accent uppercase tracking-wide">
                 {language === 'pt' ? 'Resultado' : language === 'es' ? 'Resultado' : 'Result'}
               </span>
             </div>
-            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
               {story.result[language]}
             </p>
           </div>
@@ -537,11 +537,11 @@ const StoryCard = memo(function StoryCard({ project, index, isInView, language, 
           {/* Technologies */}
           <div className="flex items-center gap-2 flex-wrap">
             <Wrench className="w-3.5 h-3.5 text-muted-foreground" />
-            <div className="flex flex-wrap gap-1.5">
+            <div className="flex flex-wrap gap-2">
               {project.technologies.slice(0, 4).map((tech, i) => (
                 <motion.span
                   key={tech}
-                  className={`px-2 py-0.5 text-[10px] sm:text-xs rounded-md border ${
+                  className={`px-3 py-1 text-xs sm:text-sm font-medium rounded-md border ${
                     techColors[tech] || 'bg-primary/20 text-primary border-primary/30'
                   }`}
                   animate={isHovered ? { 
@@ -631,7 +631,7 @@ const AcademicCard = memo(function AcademicCard({ project, index, isInView, lang
 
         {/* Title */}
         <motion.h3 
-          className="font-heading font-semibold text-base sm:text-lg text-foreground mb-2"
+          className="font-heading font-bold text-lg sm:text-xl text-foreground mb-2"
           animate={isHovered ? { x: 3 } : { x: 0 }}
           transition={{ duration: 0.2 }}
         >
@@ -639,16 +639,16 @@ const AcademicCard = memo(function AcademicCard({ project, index, isInView, lang
         </motion.h3>
 
         {/* Description */}
-        <p className="text-xs sm:text-sm text-muted-foreground mb-3 flex-grow line-clamp-2">
+        <p className="text-sm sm:text-base text-muted-foreground mb-4 flex-grow line-clamp-2 leading-relaxed">
           {project.description?.[language] || ''}
         </p>
 
         {/* Technologies */}
-        <div className="flex flex-wrap gap-1.5 mb-4">
+        <div className="flex flex-wrap gap-2 mb-4">
           {project.technologies.slice(0, 3).map((tech) => (
             <span
               key={tech}
-              className={`px-2 py-0.5 text-[10px] sm:text-xs rounded-md border ${
+              className={`px-3 py-1 text-xs sm:text-sm font-medium rounded-md border ${
                 techColors[tech] || 'bg-primary/20 text-primary border-primary/30'
               }`}
             >
@@ -656,7 +656,7 @@ const AcademicCard = memo(function AcademicCard({ project, index, isInView, lang
             </span>
           ))}
           {project.technologies.length > 3 && (
-            <span className="px-2 py-0.5 text-[10px] sm:text-xs rounded-md bg-muted text-muted-foreground">
+            <span className="px-3 py-1 text-xs sm:text-sm font-medium rounded-md bg-muted text-muted-foreground">
               +{project.technologies.length - 3}
             </span>
           )}

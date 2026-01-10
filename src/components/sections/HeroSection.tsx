@@ -5,10 +5,40 @@ import { Button } from '@/components/ui/button';
 import { ParticleBackground } from '@/components/ParticleBackground';
 import { Logo3D } from '@/components/Logo3D';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useTypewriter } from '@/hooks/use-typewriter';
+import { useMemo } from 'react';
 
 export function HeroSection() {
   const { t, language } = useLanguage();
   const isMobile = useIsMobile();
+
+  const typewriterWords = useMemo(() => {
+    if (language === 'pt') {
+      return [
+        'Transformando ideias em Micro-SaaS funcionais',
+        'Criando soluções digitais inovadoras',
+        'Desenvolvendo produtos que impactam',
+      ];
+    } else if (language === 'es') {
+      return [
+        'Transformando ideas en Micro-SaaS funcionales',
+        'Creando soluciones digitales innovadoras',
+        'Desarrollando productos que impactan',
+      ];
+    }
+    return [
+      'Turning ideas into functional Micro-SaaS',
+      'Creating innovative digital solutions',
+      'Building products that make an impact',
+    ];
+  }, [language]);
+
+  const { text: typewriterText } = useTypewriter({
+    words: typewriterWords,
+    typeSpeed: 80,
+    deleteSpeed: 40,
+    delayBetweenWords: 2500,
+  });
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
@@ -65,13 +95,12 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-base sm:text-xl md:text-2xl lg:text-3xl font-heading font-medium text-muted-foreground mb-2 px-2"
+            className="text-base sm:text-xl md:text-2xl lg:text-3xl font-heading font-medium text-muted-foreground mb-2 px-2 h-[1.5em] sm:h-[1.4em]"
           >
-            {language === 'pt' 
-              ? 'Transformando ideias em Micro-SaaS funcionais' 
-              : language === 'es' 
-                ? 'Transformando ideas en Micro-SaaS funcionales' 
-                : 'Turning ideas into functional Micro-SaaS'}
+            <span className="inline-block min-w-[1ch]">
+              {typewriterText}
+              <span className="inline-block w-[2px] h-[1em] bg-primary ml-1 animate-pulse" />
+            </span>
           </motion.h2>
 
           <motion.p

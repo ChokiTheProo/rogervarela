@@ -1,16 +1,18 @@
 import { motion } from 'framer-motion';
-import { ArrowDown, Github, Mail, Briefcase, Download } from 'lucide-react';
+import { ArrowDown, Github, Mail, Briefcase, Download, Play } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { ParticleBackground } from '@/components/ParticleBackground';
 import { Logo3D } from '@/components/Logo3D';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useTypewriter } from '@/hooks/use-typewriter';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
+import { VideoModal } from '@/components/VideoModal';
 
 export function HeroSection() {
   const { t, language } = useLanguage();
   const isMobile = useIsMobile();
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
   const typewriterWords = useMemo(() => {
     if (language === 'pt') {
@@ -129,33 +131,73 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="grid grid-cols-2 gap-2 sm:flex sm:flex-row sm:items-center sm:justify-center sm:gap-4 px-2 sm:px-0"
+            className="flex flex-col items-center gap-4"
           >
-            <Button variant="hero" size="sm" className="sm:size-lg w-full sm:w-auto text-xs sm:text-base" asChild>
-              <a href="#projects">
-                <Briefcase className="w-3.5 h-3.5 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
-                {t('hero.cta.projects')}
-              </a>
-            </Button>
-            <Button variant="heroOutline" size="sm" className="sm:size-lg w-full sm:w-auto text-xs sm:text-base" asChild>
-              <a href="https://github.com/ChokiTheProo" target="_blank" rel="noopener noreferrer">
-                <Github className="w-3.5 h-3.5 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
-                {t('hero.cta.github')}
-              </a>
-            </Button>
-            <Button variant="glass" size="sm" className="sm:size-lg w-full sm:w-auto text-xs sm:text-base" asChild>
-              <a href="#contact">
-                <Mail className="w-3.5 h-3.5 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
-                {t('hero.cta.contact')}
-              </a>
-            </Button>
-            <Button variant="glass" size="sm" className="sm:size-lg w-full sm:w-auto text-xs sm:text-base" asChild>
-              <a href="/downloads/curriculo-roger-varela.pdf" download>
-                <Download className="w-3.5 h-3.5 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
-                {language === 'pt' ? 'Baixar CV' : language === 'es' ? 'Descargar CV' : 'Download CV'}
-              </a>
-            </Button>
+            {/* Video Presentation Button */}
+            <motion.button
+              onClick={() => setIsVideoModalOpen(true)}
+              className="group relative inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 border border-primary/30 hover:border-primary/50 transition-all duration-300"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <motion.div
+                className="relative flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-primary to-accent"
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                <Play className="w-4 h-4 text-white ml-0.5 fill-white" />
+                {/* Pulse ring */}
+                <motion.div
+                  className="absolute inset-0 rounded-full bg-primary/30"
+                  animate={{ scale: [1, 1.5], opacity: [0.5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                />
+              </motion.div>
+              <span className="text-sm sm:text-base font-medium text-foreground">
+                {language === 'pt' 
+                  ? 'Assistir Apresentação' 
+                  : language === 'es' 
+                    ? 'Ver Presentación' 
+                    : 'Watch Presentation'}
+              </span>
+            </motion.button>
+
+            {/* Action Buttons Grid */}
+            <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-row sm:items-center sm:justify-center sm:gap-4 px-2 sm:px-0 w-full sm:w-auto">
+              <Button variant="hero" size="sm" className="sm:size-lg w-full sm:w-auto text-xs sm:text-base" asChild>
+                <a href="#projects">
+                  <Briefcase className="w-3.5 h-3.5 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
+                  {t('hero.cta.projects')}
+                </a>
+              </Button>
+              <Button variant="heroOutline" size="sm" className="sm:size-lg w-full sm:w-auto text-xs sm:text-base" asChild>
+                <a href="https://github.com/ChokiTheProo" target="_blank" rel="noopener noreferrer">
+                  <Github className="w-3.5 h-3.5 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
+                  {t('hero.cta.github')}
+                </a>
+              </Button>
+              <Button variant="glass" size="sm" className="sm:size-lg w-full sm:w-auto text-xs sm:text-base" asChild>
+                <a href="#contact">
+                  <Mail className="w-3.5 h-3.5 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
+                  {t('hero.cta.contact')}
+                </a>
+              </Button>
+              <Button variant="glass" size="sm" className="sm:size-lg w-full sm:w-auto text-xs sm:text-base" asChild>
+                <a href="/downloads/curriculo-roger-varela.pdf" download>
+                  <Download className="w-3.5 h-3.5 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
+                  {language === 'pt' ? 'Baixar CV' : language === 'es' ? 'Descargar CV' : 'Download CV'}
+                </a>
+              </Button>
+            </div>
           </motion.div>
+
+          {/* Video Modal */}
+          <VideoModal 
+            isOpen={isVideoModalOpen} 
+            onClose={() => setIsVideoModalOpen(false)}
+            // Para adicionar seu vídeo, use uma URL do YouTube embed:
+            // videoUrl="https://www.youtube.com/embed/SEU_VIDEO_ID"
+          />
 
           {/* Stats */}
           <motion.div

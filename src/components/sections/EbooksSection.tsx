@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Globe, ExternalLink, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
-import blogsSitesShowcase from '@/assets/blogs-sites-showcase.jpg';
+import blogsSitesHero from '@/assets/blogs-sites-hero.jpg';
 
 const translations = {
   pt: {
@@ -78,7 +78,7 @@ export const EbooksSection = () => {
               {/* Image */}
               <div className="relative aspect-video overflow-hidden">
                 <img 
-                  src={blogsSitesShowcase} 
+                  src={blogsSitesHero} 
                   alt="Blogs & Sites Showcase" 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />

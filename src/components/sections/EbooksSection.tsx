@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Globe, ExternalLink, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
+import blogsSitesShowcase from '@/assets/blogs-sites-showcase.jpg';
 
 const translations = {
   pt: {
@@ -73,51 +74,59 @@ export const EbooksSection = () => {
             {/* Glow effect */}
             <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500" />
             
-            <div className="relative bg-card/80 backdrop-blur-xl border border-border/50 rounded-2xl p-8 md:p-10">
-              {/* Icon */}
-              <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                <Globe className="w-8 h-8 text-primary-foreground" />
+            <div className="relative bg-card/80 backdrop-blur-xl border border-border/50 rounded-2xl overflow-hidden">
+              {/* Image */}
+              <div className="relative aspect-video overflow-hidden">
+                <img 
+                  src={blogsSitesShowcase} 
+                  alt="Blogs & Sites Showcase" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card/90 via-card/20 to-transparent" />
               </div>
 
-              {/* Highlight badge */}
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-medium mb-6">
-                <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                {t.highlight}
-              </div>
+              {/* Content overlay */}
+              <div className="p-8 md:p-10 text-center -mt-16 relative z-10">
+                {/* Highlight badge */}
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-medium mb-6 backdrop-blur-sm">
+                  <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                  {t.highlight}
+                </div>
 
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  asChild
-                  variant="hero"
-                  size="lg"
-                  className="gap-2"
-                >
-                  <a
-                    href="https://sitesrovr.lovable.app"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                {/* CTAs */}
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button
+                    asChild
+                    variant="hero"
+                    size="lg"
+                    className="gap-2"
                   >
-                    <ExternalLink className="w-4 h-4" />
-                    {t.cta}
-                  </a>
-                </Button>
+                    <a
+                      href="https://sitesrovr.lovable.app"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      {t.cta}
+                    </a>
+                  </Button>
 
-                <Button
-                  asChild
-                  variant="heroOutline"
-                  size="lg"
-                  className="gap-2"
-                >
-                  <a
-                    href="https://wa.me/5554991710543"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Button
+                    asChild
+                    variant="heroOutline"
+                    size="lg"
+                    className="gap-2"
                   >
-                    <MessageCircle className="w-4 h-4" />
-                    {t.contact}
-                  </a>
-                </Button>
+                    <a
+                      href="https://wa.me/5554991710543"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <MessageCircle className="w-4 h-4" />
+                      {t.contact}
+                    </a>
+                  </Button>
+                </div>
               </div>
             </div>
           </div>

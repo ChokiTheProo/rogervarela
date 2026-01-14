@@ -15,6 +15,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.certifications': 'Certificações',
     'nav.experience': 'Experiência',
     'nav.projects': 'Projetos',
+    'nav.ebooks': 'eBooks',
     'nav.skills': 'Habilidades',
     'nav.contact': 'Contato',
     
@@ -90,6 +91,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.certifications': 'Certifications',
     'nav.experience': 'Experience',
     'nav.projects': 'Projects',
+    'nav.ebooks': 'eBooks',
     'nav.skills': 'Skills',
     'nav.contact': 'Contact',
     
@@ -165,6 +167,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.certifications': 'Certificaciones',
     'nav.experience': 'Experiencia',
     'nav.projects': 'Proyectos',
+    'nav.ebooks': 'eBooks',
     'nav.skills': 'Habilidades',
     'nav.contact': 'Contacto',
     

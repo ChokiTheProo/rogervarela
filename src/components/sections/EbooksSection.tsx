@@ -1,32 +1,32 @@
 import { motion } from 'framer-motion';
-import { BookOpen, ExternalLink, MessageCircle } from 'lucide-react';
+import { Globe, ExternalLink, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const translations = {
   pt: {
-    badge: 'Conteúdo Digital',
-    title: 'eBooks & Materiais',
-    description: 'Compartilho conhecimento através de eBooks e materiais digitais sobre tecnologia, desenvolvimento e produtividade.',
-    cta: 'Acessar Conteúdos',
+    badge: 'Portfólio Digital',
+    title: 'Blogs & Sites',
+    description: 'Confira os blogs e sites que já desenvolvi para clientes e projetos pessoais.',
+    cta: 'Ver Meus Sites',
     contact: 'Falar Comigo',
-    highlight: 'Novos materiais em breve!',
+    highlight: 'Projetos reais em produção!',
   },
   en: {
-    badge: 'Digital Content',
-    title: 'eBooks & Materials',
-    description: 'I share knowledge through eBooks and digital materials about technology, development and productivity.',
-    cta: 'Access Content',
+    badge: 'Digital Portfolio',
+    title: 'Blogs & Sites',
+    description: 'Check out the blogs and websites I have developed for clients and personal projects.',
+    cta: 'View My Sites',
     contact: 'Contact Me',
-    highlight: 'New materials coming soon!',
+    highlight: 'Real projects in production!',
   },
   es: {
-    badge: 'Contenido Digital',
-    title: 'eBooks y Materiales',
-    description: 'Comparto conocimiento a través de eBooks y materiales digitales sobre tecnología, desarrollo y productividad.',
-    cta: 'Acceder al Contenido',
+    badge: 'Portafolio Digital',
+    title: 'Blogs y Sitios',
+    description: 'Descubre los blogs y sitios web que he desarrollado para clientes y proyectos personales.',
+    cta: 'Ver Mis Sitios',
     contact: 'Hablar Conmigo',
-    highlight: '¡Nuevos materiales próximamente!',
+    highlight: '¡Proyectos reales en producción!',
   },
 };
 
@@ -35,7 +35,7 @@ export const EbooksSection = () => {
   const t = translations[language];
 
   return (
-    <section id="ebooks" className="py-20 md:py-32 relative overflow-hidden">
+    <section id="sites" className="py-20 md:py-32 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
@@ -51,7 +51,7 @@ export const EbooksSection = () => {
           className="text-center mb-12"
         >
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            <BookOpen className="w-4 h-4" />
+            <Globe className="w-4 h-4" />
             {t.badge}
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
@@ -76,7 +76,7 @@ export const EbooksSection = () => {
             <div className="relative bg-card/80 backdrop-blur-xl border border-border/50 rounded-2xl p-8 md:p-10">
               {/* Icon */}
               <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                <BookOpen className="w-8 h-8 text-primary-foreground" />
+                <Globe className="w-8 h-8 text-primary-foreground" />
               </div>
 
               {/* Highlight badge */}

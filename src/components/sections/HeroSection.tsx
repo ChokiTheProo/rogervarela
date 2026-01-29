@@ -113,7 +113,7 @@ export function HeroSection() {
               ? 'Desenvolvedor Low-Code & No-Code' 
               : language === 'es' 
                 ? 'Desarrollador Low-Code & No-Code' 
-                : 'Low-Code & No-Code Developer'} | CEO & {language === 'pt' ? 'Co-fundador' : language === 'es' ? 'Cofundador' : 'Co-founder'} @ <a href="https://rovr.lovable.app/" target="_blank" rel="noopener noreferrer" className="text-gradient font-bold hover:opacity-80 transition-opacity">RoVR</a>
+                : 'Low-Code & No-Code Developer'}
           </motion.p>
 
           <motion.p

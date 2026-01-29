@@ -6,34 +6,6 @@ import { useIsMobile } from '@/hooks/use-mobile';
 
 const experiences = [
   {
-    role: { pt: 'CEO & Co-fundador', en: 'CEO & Co-founder', es: 'CEO & Cofundador' },
-    company: 'RoVR',
-    companyUrl: 'https://rovr.lovable.app/',
-    location: 'Remoto',
-    period: '2024 - 2025',
-    current: true,
-    responsibilities: {
-      pt: [
-        'Criação e gestão de MicroSaaS e aplicações web inovadoras',
-        'Desenvolvimento de soluções personalizadas para clientes',
-        'Liderança técnica e estratégia de produto',
-        'Arquitetura de sistemas escaláveis com React, TypeScript e Supabase',
-      ],
-      en: [
-        'Creation and management of MicroSaaS and innovative web applications',
-        'Development of customized solutions for clients',
-        'Technical leadership and product strategy',
-        'Scalable systems architecture with React, TypeScript, and Supabase',
-      ],
-      es: [
-        'Creación y gestión de MicroSaaS y aplicaciones web innovadoras',
-        'Desarrollo de soluciones personalizadas para clientes',
-        'Liderazgo técnico y estrategia de producto',
-        'Arquitectura de sistemas escalables con React, TypeScript y Supabase',
-      ],
-    },
-  },
-  {
     role: { pt: 'Suporte N1', en: 'N1 Support Analyst', es: 'Analista de Soporte N1' },
     company: 'Windel Sistemas',
     location: 'Caxias do Sul, RS',
@@ -228,9 +200,9 @@ export function ExperienceSection() {
                       </motion.h3>
                       <p className="text-primary font-medium flex items-center gap-2 text-sm sm:text-base">
                         {exp.company}
-                        {exp.companyUrl && (
+                        {'companyUrl' in exp && exp.companyUrl && (
                           <a 
-                            href={exp.companyUrl} 
+                            href={exp.companyUrl as string} 
                             target="_blank" 
                             rel="noopener noreferrer"
                             className="hover:text-primary/80 transition-colors"

@@ -330,50 +330,7 @@ export function SkillsSection() {
               ))}
             </div>
             
-            {/* CEO Badge with 3D Effect */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20, rotateX: isMobile ? 0 : -30 }}
-              animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              whileHover={isMobile ? {} : { 
-                scale: 1.02, 
-                rotateY: 5,
-                boxShadow: '0 20px 40px -15px hsl(var(--primary) / 0.4)'
-              }}
-              className="mt-6 md:mt-8 p-4 md:p-6 rounded-2xl bg-gradient-card border border-primary/30 cursor-pointer transition-all"
-              style={{ 
-                perspective: isMobile ? 'none' : '1000px',
-                transformStyle: isMobile ? 'flat' : 'preserve-3d'
-              }}
-            >
-              <div className="flex items-center gap-3 md:gap-4">
-                <motion.div 
-                  className="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-gradient-primary flex items-center justify-center text-2xl md:text-3xl"
-                  animate={isMobile ? {} : { rotateY: [0, 360] }}
-                  transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-                  style={{ transformStyle: isMobile ? 'flat' : 'preserve-3d' }}
-                >
-                  💻
-                </motion.div>
-                <div>
-                  <h4 className="font-heading font-semibold text-sm md:text-base text-foreground">
-                    {language === 'pt'
-                      ? 'Desenvolvedor Full Stack'
-                      : language === 'es'
-                      ? 'Desarrollador Full Stack'
-                      : 'Full Stack Developer'}
-                  </h4>
-                  <p className="text-xs md:text-sm text-muted-foreground">
-                    {language === 'pt'
-                      ? 'Criando soluções inovadoras para o mercado'
-                      : language === 'es'
-                      ? 'Creando soluciones innovadoras para el mercado'
-                      : 'Creating innovative solutions for the market'}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-            
+
             {/* Decorative Element with Animation */}
             <motion.div 
               initial={{ opacity: 0, y: 20, rotateX: isMobile ? 0 : -30 }}

@@ -353,18 +353,22 @@ export function SkillsSection() {
                   transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
                   style={{ transformStyle: isMobile ? 'flat' : 'preserve-3d' }}
                 >
-                  🚀
+                  💻
                 </motion.div>
                 <div>
                   <h4 className="font-heading font-semibold text-sm md:text-base text-foreground">
-                    CEO @ RoVR
+                    {language === 'pt'
+                      ? 'Desenvolvedor Full Stack'
+                      : language === 'es'
+                      ? 'Desarrollador Full Stack'
+                      : 'Full Stack Developer'}
                   </h4>
                   <p className="text-xs md:text-sm text-muted-foreground">
                     {language === 'pt'
-                      ? 'Criando MicroSaaS e soluções inovadoras para o mercado'
+                      ? 'Criando soluções inovadoras para o mercado'
                       : language === 'es'
-                      ? 'Creando MicroSaaS y soluciones innovadoras para el mercado'
-                      : 'Creating MicroSaaS and innovative solutions for the market'}
+                      ? 'Creando soluciones innovadoras para el mercado'
+                      : 'Creating innovative solutions for the market'}
                   </p>
                 </div>
               </div>

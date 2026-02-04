@@ -11,6 +11,7 @@ import projectCuidabem from '@/assets/project-cuidabem.png';
 import projectTratamento from '@/assets/project-tratamento.png';
 import projectEmagrio from '@/assets/project-emagrio.png';
 import projectDentiflow from '@/assets/project-dentiflow.png';
+import projectRovrcont from '@/assets/project-rovrcont.png';
 
 interface ProjectStory {
   problem: { pt: string; en: string; es: string };
@@ -20,6 +21,7 @@ interface ProjectStory {
 
 // Project image mapping
 const projectImages: Record<string, string> = {
+  'RoVRCont': projectRovrcont,
   'Klyexa': projectKlyexa,
   'Emagrio Transforma Já': projectEmagrio,
   'Tratamento Gastrite': projectTratamento,
@@ -30,6 +32,33 @@ const projectImages: Record<string, string> = {
 
 const projects = [
   // RoVR Projects with storytelling
+  {
+    name: 'RoVRCont',
+    story: {
+      problem: {
+        pt: 'Contadores e empresas perdem tempo com cálculos fiscais manuais e sistemas fragmentados.',
+        en: 'Accountants and businesses waste time with manual tax calculations and fragmented systems.',
+        es: 'Contadores y empresas pierden tiempo con cálculos fiscales manuales y sistemas fragmentados.',
+      },
+      solution: {
+        pt: 'Plataforma completa de contabilidade com módulos integrados: Fiscal, Tributário, DP, Controle de Ponto e NFe.',
+        en: 'Complete accounting platform with integrated modules: Tax, Payroll, Time Control and NFe.',
+        es: 'Plataforma completa de contabilidad con módulos integrados: Fiscal, Tributario, DP, Control de Punto y NFe.',
+      },
+      result: {
+        pt: 'SaaS funcional com cálculos automáticos de impostos, folha de pagamento e assistente de NFe inteligente.',
+        en: 'Functional SaaS with automatic tax calculations, payroll and intelligent NFe assistant.',
+        es: 'SaaS funcional con cálculos automáticos de impuestos, nómina y asistente de NFe inteligente.',
+      },
+    } as ProjectStory,
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'AI', 'Lovable', 'Finance'],
+    github: 'https://rovrcont.com.br',
+    isLive: true,
+    category: 'rovr',
+    gradient: 'from-cyan-500 via-teal-500 to-emerald-500',
+    rating: 5.0,
+    featured: true,
+  },
   {
     name: 'Klyexa',
     story: {

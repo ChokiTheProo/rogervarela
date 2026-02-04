@@ -368,12 +368,26 @@ export function ProjectsSection() {
               Live
             </motion.span>
           </motion.h3>
+          {/* Featured Project - RoVRCont */}
+          {projects.filter(p => p.category === 'rovr' && p.featured).map((project, index) => (
+            <div key={project.name} className="mb-6 sm:mb-8">
+              <FeaturedStoryCard 
+                project={project} 
+                index={index} 
+                isInView={isInView} 
+                language={language} 
+                t={t} 
+              />
+            </div>
+          ))}
+          
+          {/* Other RoVR Projects */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-            {projects.filter(p => p.category === 'rovr').map((project, index) => (
+            {projects.filter(p => p.category === 'rovr' && !p.featured).map((project, index) => (
               <StoryCard 
                 key={project.name} 
                 project={project} 
-                index={index} 
+                index={index + 1} 
                 isInView={isInView} 
                 language={language} 
                 t={t} 
@@ -603,6 +617,206 @@ const StoryCard = memo(function StoryCard({ project, index, isInView, language, 
       <motion.div
         className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-1 rounded-full bg-gradient-to-r ${project.gradient} blur-md`}
         animate={{ opacity: isHovered ? 0.8 : 0, scaleX: isHovered ? 1 : 0.5 }}
+        transition={{ duration: 0.3 }}
+      />
+    </motion.div>
+  );
+});
+
+// FeaturedStoryCard for the main highlighted project (RoVRCont)
+const FeaturedStoryCard = memo(function FeaturedStoryCard({ project, index, isInView, language, t }: StoryCardProps) {
+  const [isHovered, setIsHovered] = useState(false);
+  const story = project.story as ProjectStory;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ 
+        duration: 0.5, 
+        delay: index * 0.1,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="group relative rounded-2xl overflow-hidden"
+    >
+      {/* Card Background with animated gradient border */}
+      <div className="absolute inset-0 rounded-2xl bg-gradient-card border-2 border-primary/30 transition-all duration-500 group-hover:border-transparent" />
+      
+      {/* Animated gradient border on hover */}
+      <motion.div
+        className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${project.gradient} opacity-0 blur-sm`}
+        animate={{ opacity: isHovered ? 0.6 : 0.2 }}
+        transition={{ duration: 0.3 }}
+      />
+      <div className="absolute inset-[2px] rounded-2xl bg-gradient-card" />
+
+      {/* Featured Badge */}
+      <div className="absolute top-4 right-4 z-20">
+        <motion.div 
+          className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/90 text-primary-foreground text-xs font-bold uppercase tracking-wide shadow-lg"
+          animate={{ scale: [1, 1.05, 1] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <Sparkles className="w-3.5 h-3.5" />
+          {language === 'pt' ? 'Projeto Principal' : language === 'es' ? 'Proyecto Principal' : 'Featured Project'}
+        </motion.div>
+      </div>
+
+      {/* Card Content - Featured Layout (image side by side with content on larger screens) */}
+      <div className="relative z-10 p-4 sm:p-6 lg:p-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+          {/* Project Image - Left side */}
+          {projectImages[project.name] && (
+            <motion.div 
+              className="relative rounded-xl overflow-hidden border-2 border-primary/30 group/image shadow-xl"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="aspect-[4/3] relative bg-muted/20">
+                <LazyImage 
+                  src={projectImages[project.name]} 
+                  alt={project.name}
+                  containerClassName="w-full h-full"
+                  skeletonClassName="rounded-lg"
+                  className="w-full h-full object-contain object-center transition-transform duration-500 group-hover/image:scale-105"
+                />
+                {/* Gradient overlay */}
+                <div className={`absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-40 group-hover/image:opacity-20 transition-opacity`} />
+                
+                {/* Badge and rating */}
+                <div className="absolute top-3 left-3 flex items-center gap-2">
+                  <span className="px-3 py-1.5 text-xs font-bold rounded-md bg-accent/90 text-white uppercase tracking-wide shadow-md">
+                    {language === 'pt' ? 'Disponível' : language === 'es' ? 'Disponible' : 'Available'}
+                  </span>
+                </div>
+                
+                {project.rating && (
+                  <div className="absolute top-3 right-3 flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-black/70 backdrop-blur-sm shadow-md">
+                    <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                    <span className="text-sm font-bold text-white">{project.rating}</span>
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          )}
+
+          {/* Content - Right side */}
+          <div className="flex flex-col justify-center">
+            {/* Header */}
+            <div className="flex items-start gap-4 mb-6">
+              <motion.div 
+                className={`p-3 sm:p-4 rounded-xl bg-gradient-to-br ${project.gradient} text-white shadow-xl`}
+                animate={isHovered ? { scale: 1.05, rotate: [0, -5, 5, 0] } : { scale: 1, rotate: 0 }}
+                transition={{ duration: 0.4 }}
+              >
+                <Rocket className="w-6 h-6 sm:w-8 sm:h-8" />
+              </motion.div>
+              <div>
+                <motion.h3 
+                  className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-foreground"
+                  animate={isHovered ? { x: 3 } : { x: 0 }}
+                >
+                  {project.name}
+                </motion.h3>
+                <div className="flex items-center gap-2 mt-2">
+                  <motion.span 
+                    className="w-2.5 h-2.5 rounded-full bg-accent"
+                    animate={{ opacity: [1, 0.5, 1] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  />
+                  <span className="text-base font-semibold text-primary">CEO & Co-fundador @ RoVR</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Storytelling Grid - Vertical on featured */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+              {/* Problem */}
+              <div className="p-4 rounded-xl bg-destructive/10 border border-destructive/20">
+                <div className="flex items-center gap-2 mb-2">
+                  <Target className="w-5 h-5 text-destructive" />
+                  <span className="text-sm font-bold text-destructive uppercase tracking-wide">
+                    {language === 'pt' ? 'Problema' : language === 'es' ? 'Problema' : 'Problem'}
+                  </span>
+                </div>
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  {story.problem[language]}
+                </p>
+              </div>
+
+              {/* Solution */}
+              <div className="p-4 rounded-xl bg-primary/10 border border-primary/20">
+                <div className="flex items-center gap-2 mb-2">
+                  <Lightbulb className="w-5 h-5 text-primary" />
+                  <span className="text-sm font-bold text-primary uppercase tracking-wide">
+                    {language === 'pt' ? 'Solução' : language === 'es' ? 'Solución' : 'Solution'}
+                  </span>
+                </div>
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  {story.solution[language]}
+                </p>
+              </div>
+
+              {/* Result */}
+              <div className="p-4 rounded-xl bg-accent/10 border border-accent/20">
+                <div className="flex items-center gap-2 mb-2">
+                  <TrendingUp className="w-5 h-5 text-accent" />
+                  <span className="text-sm font-bold text-accent uppercase tracking-wide">
+                    {language === 'pt' ? 'Resultado' : language === 'es' ? 'Resultado' : 'Result'}
+                  </span>
+                </div>
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  {story.result[language]}
+                </p>
+              </div>
+            </div>
+
+            {/* Technologies & Action */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              {/* Technologies */}
+              <div className="flex items-center gap-2 flex-wrap">
+                <Wrench className="w-4 h-4 text-muted-foreground" />
+                <div className="flex flex-wrap gap-2">
+                  {project.technologies.map((tech, i) => (
+                    <motion.span
+                      key={tech}
+                      className={`px-3 py-1.5 text-xs sm:text-sm font-medium rounded-md border ${
+                        techColors[tech] || 'bg-primary/20 text-primary border-primary/30'
+                      }`}
+                      animate={isHovered ? { 
+                        y: [0, -2, 0],
+                        transition: { delay: i * 0.05, duration: 0.3 }
+                      } : {}}
+                    >
+                      {tech}
+                    </motion.span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Action Button */}
+              <motion.a 
+                href={project.github} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={`inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl text-base font-bold bg-gradient-to-r ${project.gradient} text-white shadow-xl hover:shadow-2xl transition-shadow`}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <span>{language === 'pt' ? 'Acessar Plataforma' : language === 'es' ? 'Acceder Plataforma' : 'Access Platform'}</span>
+                <ArrowUpRight className="w-5 h-5" />
+              </motion.a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom glow effect - Enhanced for featured */}
+      <motion.div
+        className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-1.5 rounded-full bg-gradient-to-r ${project.gradient} blur-md`}
+        animate={{ opacity: isHovered ? 1 : 0.5, scaleX: isHovered ? 1 : 0.7 }}
         transition={{ duration: 0.3 }}
       />
     </motion.div>

@@ -13,7 +13,7 @@ import { SkillsSection } from '@/components/sections/SkillsSection';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { Footer } from '@/components/Footer';
 import { PageTransition } from '@/components/PageTransition';
-import { ProgressiveBlur } from '@/components/ProgressiveBlur';
+
 
 const Index = () => {
   return (
@@ -35,7 +35,6 @@ const Index = () => {
           <ContactSection />
         </main>
         <Footer />
-        <ProgressiveBlur />
       </div>
     </PageTransition>
   );

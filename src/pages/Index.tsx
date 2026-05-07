@@ -35,6 +35,7 @@ const Index = () => {
           <ContactSection />
         </main>
         <Footer />
+        <ProgressiveBlur />
       </div>
     </PageTransition>
   );

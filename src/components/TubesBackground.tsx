@@ -34,10 +34,10 @@ export function TubesBackground({
     const init = async () => {
       if (!canvasRef.current) return;
       try {
+        const url =
+          'https://cdn.jsdelivr.net/npm/threejs-components@0.0.19/build/cursors/tubes1.min.js';
         // @ts-ignore - external ESM module
-        const mod = await import(
-          /* @vite-ignore */ 'https://cdn.jsdelivr.net/npm/threejs-components@0.0.19/build/cursors/tubes1.min.js'
-        );
+        const mod: any = await import(/* @vite-ignore */ url);
         if (!mounted || !canvasRef.current) return;
         const TubesCursor = mod.default;
         const app = TubesCursor(canvasRef.current, {

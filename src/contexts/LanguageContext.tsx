@@ -18,60 +18,60 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.sites': 'Blogs & Sites',
     'nav.skills': 'Habilidades',
     'nav.contact': 'Contato',
-    
+
     // Hero
     'hero.greeting': 'Olá, eu sou',
-    'hero.title': 'Desenvolvedor Full Stack & Especialista em TI',
-    'hero.subtitle': 'Transformando desafios tecnológicos em soluções inovadoras. Especializado em desenvolvimento de sistemas, suporte técnico e infraestrutura de redes.',
+    'hero.title': 'Desenvolvedor Low-Code & No-Code',
+    'hero.subtitle': 'Tiro ideias do papel rápido. Construo sites, landing pages e Micro-SaaS com Low-Code, No-Code e IA — do MVP à versão que vende.',
     'hero.cta.projects': 'Ver Projetos',
     'hero.cta.github': 'GitHub',
     'hero.cta.contact': 'Contato',
-    
+
     // About
     'about.title': 'Sobre Mim',
-    'about.description': 'Profissional de tecnologia apaixonado por resolver problemas complexos e criar soluções que fazem a diferença. Com experiência em desenvolvimento de aplicações, suporte técnico e administração de sistemas, busco constantemente aprimorar minhas habilidades e entregar resultados excepcionais.',
-    'about.highlight1.title': 'Aprendizado Contínuo',
-    'about.highlight1.desc': 'Sempre em busca de novas tecnologias e metodologias para entregar as melhores soluções.',
-    'about.highlight2.title': 'Foco em Resultados',
-    'about.highlight2.desc': 'Comprometido com a entrega de projetos de alta qualidade dentro dos prazos estabelecidos.',
-    'about.highlight3.title': 'Trabalho em Equipe',
-    'about.highlight3.desc': 'Colaboração efetiva e comunicação clara para alcançar objetivos em conjunto.',
-    
+    'about.description': 'Construo produtos digitais que resolvem dor real — sem perder semanas em código boilerplate. Foco em entregar MVP funcional, página que converte e SaaS no ar em dias, não em meses. Stack moderna, decisão rápida, resultado mensurável.',
+    'about.highlight1.title': 'Velocidade de Execução',
+    'about.highlight1.desc': 'MVP no ar em dias. Iteração rápida, validação real e ciclo curto até o primeiro usuário pagante.',
+    'about.highlight2.title': 'Foco em Resultado',
+    'about.highlight2.desc': 'Cada projeto começa com um problema claro e termina com algo que vende, converte ou economiza tempo.',
+    'about.highlight3.title': 'Stack Low-Code + IA',
+    'about.highlight3.desc': 'React, TypeScript, Lovable, Supabase e IA aplicada. Tecnologia moderna sem complicação desnecessária.',
+
     // Certifications
     'certs.title': 'Certificações & Cursos',
-    'certs.subtitle': 'Trajetória acadêmica e qualificações profissionais que sustentam minha atuação no mercado.',
-    
+    'certs.subtitle': 'Base técnica que sustenta cada projeto entregue — formação contínua, não diploma de parede.',
+
     // Experience
     'exp.title': 'Experiência Profissional',
-    'exp.subtitle': 'Trajetória profissional focada em tecnologia, desenvolvimento e suporte técnico.',
-    
+    'exp.subtitle': 'Trajetória prática em tecnologia, desenvolvimento e suporte — sempre com mão na massa.',
+
     // Projects
-    'projects.title': 'Projetos Desenvolvidos',
-    'projects.subtitle': 'Uma seleção de projetos que demonstram minhas habilidades técnicas e capacidade de resolução de problemas.',
+    'projects.title': 'Projetos no Ar',
+    'projects.subtitle': 'SaaS, landing pages e ferramentas que já estão rodando — clique e veja funcionando.',
     'projects.viewGithub': 'Ver no GitHub',
-    'projects.viewDemo': 'Demo',
-    
+    'projects.viewDemo': 'Ver ao Vivo',
+
     // GitHub
-    'github.title': 'GitHub & Open Source',
-    'github.subtitle': 'Contribuições e projetos públicos que refletem meu compromisso com a comunidade de desenvolvimento.',
+    'github.title': 'GitHub',
+    'github.subtitle': 'Código aberto, projetos públicos e o que aprendo construindo.',
     'github.repos': 'Repositórios',
     'github.followers': 'Seguidores',
     'github.following': 'Seguindo',
     'github.viewProfile': 'Ver Perfil Completo',
-    
+
     // Awards
-    'awards.title': 'Premiações & Reconhecimentos',
-    'awards.subtitle': 'Reconhecimentos que validam meu compromisso com a excelência profissional.',
-    
+    'awards.title': 'Premiações',
+    'awards.subtitle': 'Reconhecimentos que vieram do trabalho — não da auto-promoção.',
+
     // Skills
-    'skills.title': 'Habilidades Técnicas',
-    'skills.subtitle': 'Conjunto de competências técnicas e interpessoais desenvolvidas ao longo da minha carreira.',
+    'skills.title': 'Stack & Habilidades',
+    'skills.subtitle': 'Ferramentas que uso pra entregar produto pronto, rápido e estável.',
     'skills.hard': 'Hard Skills',
     'skills.soft': 'Soft Skills',
-    
+
     // Contact
-    'contact.title': 'Vamos Construir Algo Incrível Juntos?',
-    'contact.subtitle': 'Estou disponível para novos projetos, oportunidades de trabalho e colaborações. Entre em contato!',
+    'contact.title': 'Tem uma ideia? Vamos colocar no ar.',
+    'contact.subtitle': 'Sites, landing pages, Micro-SaaS ou automação com IA — me conta o que precisa e eu volto com proposta no mesmo dia.',
     'contact.form.name': 'Nome',
     'contact.form.email': 'E-mail',
     'contact.form.message': 'Mensagem',
@@ -79,11 +79,11 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.info.email': 'E-mail',
     'contact.info.location': 'Localização',
     'contact.info.availability': 'Disponibilidade',
-    'contact.info.available': 'Disponível para novas oportunidades',
-    
+    'contact.info.available': 'Aceitando novos projetos',
+
     // Footer
     'footer.rights': 'Todos os direitos reservados.',
-    'footer.brand': 'Desenvolvido com',
+    'footer.brand': 'Construído com',
   },
   en: {
     // Navigation
@@ -94,60 +94,60 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.sites': 'Blogs & Sites',
     'nav.skills': 'Skills',
     'nav.contact': 'Contact',
-    
+
     // Hero
     'hero.greeting': 'Hello, I am',
-    'hero.title': 'Full Stack Developer & IT Specialist',
-    'hero.subtitle': 'Transforming technological challenges into innovative solutions. Specialized in systems development, technical support, and network infrastructure.',
+    'hero.title': 'Low-Code & No-Code Developer',
+    'hero.subtitle': 'I take ideas from sketch to live product fast. Sites, landing pages and Micro-SaaS built with Low-Code, No-Code and AI — from MVP to the version that actually sells.',
     'hero.cta.projects': 'View Projects',
     'hero.cta.github': 'GitHub',
     'hero.cta.contact': 'Contact',
-    
+
     // About
     'about.title': 'About Me',
-    'about.description': 'Technology professional passionate about solving complex problems and creating solutions that make a difference. With experience in application development, technical support, and system administration, I constantly seek to improve my skills and deliver exceptional results.',
-    'about.highlight1.title': 'Continuous Learning',
-    'about.highlight1.desc': 'Always seeking new technologies and methodologies to deliver the best solutions.',
-    'about.highlight2.title': 'Results-Oriented',
-    'about.highlight2.desc': 'Committed to delivering high-quality projects within established deadlines.',
-    'about.highlight3.title': 'Team Collaboration',
-    'about.highlight3.desc': 'Effective collaboration and clear communication to achieve goals together.',
-    
+    'about.description': 'I build digital products that solve real pain — without spending weeks on boilerplate. Focus on shipping a working MVP, a page that converts, and SaaS live in days, not months. Modern stack, fast decisions, measurable outcomes.',
+    'about.highlight1.title': 'Execution Speed',
+    'about.highlight1.desc': 'MVPs live in days. Fast iteration, real validation, short loop to the first paying user.',
+    'about.highlight2.title': 'Outcome-Focused',
+    'about.highlight2.desc': 'Every project starts with a clear problem and ends with something that sells, converts or saves time.',
+    'about.highlight3.title': 'Low-Code + AI Stack',
+    'about.highlight3.desc': 'React, TypeScript, Lovable, Supabase and applied AI. Modern tech without unnecessary complexity.',
+
     // Certifications
     'certs.title': 'Certifications & Courses',
-    'certs.subtitle': 'Academic background and professional certifications that underpin my technical expertise.',
-    
+    'certs.subtitle': 'Technical foundation behind every project I ship — continuous learning, not wall decoration.',
+
     // Experience
     'exp.title': 'Professional Experience',
-    'exp.subtitle': 'Professional journey focused on technology, development, and technical support.',
-    
+    'exp.subtitle': 'Hands-on track record in technology, development and technical support.',
+
     // Projects
-    'projects.title': 'Developed Projects',
-    'projects.subtitle': 'A selection of projects that demonstrate my technical skills and problem-solving abilities.',
+    'projects.title': 'Projects Live',
+    'projects.subtitle': 'SaaS, landing pages and tools already running — click and see them working.',
     'projects.viewGithub': 'View on GitHub',
-    'projects.viewDemo': 'Demo',
-    
+    'projects.viewDemo': 'View Live',
+
     // GitHub
-    'github.title': 'GitHub & Open Source',
-    'github.subtitle': 'Contributions and public projects that reflect my commitment to the development community.',
+    'github.title': 'GitHub',
+    'github.subtitle': 'Open source, public projects and what I learn while building.',
     'github.repos': 'Repositories',
     'github.followers': 'Followers',
     'github.following': 'Following',
     'github.viewProfile': 'View Full Profile',
-    
+
     // Awards
-    'awards.title': 'Awards & Recognition',
-    'awards.subtitle': 'Recognitions that validate my commitment to professional excellence.',
-    
+    'awards.title': 'Awards',
+    'awards.subtitle': 'Recognition earned from the work — not from self-promotion.',
+
     // Skills
-    'skills.title': 'Technical Skills',
-    'skills.subtitle': 'Set of technical and interpersonal competencies developed throughout my career.',
+    'skills.title': 'Stack & Skills',
+    'skills.subtitle': 'The tools I use to ship product fast and keep it stable.',
     'skills.hard': 'Hard Skills',
     'skills.soft': 'Soft Skills',
-    
+
     // Contact
-    'contact.title': "Let's Build Something Amazing Together?",
-    'contact.subtitle': "I'm available for new projects, job opportunities, and collaborations. Get in touch!",
+    'contact.title': "Got an idea? Let's ship it.",
+    'contact.subtitle': 'Sites, landing pages, Micro-SaaS or AI automation — tell me what you need and I come back with a proposal the same day.',
     'contact.form.name': 'Name',
     'contact.form.email': 'Email',
     'contact.form.message': 'Message',
@@ -155,8 +155,8 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.info.email': 'Email',
     'contact.info.location': 'Location',
     'contact.info.availability': 'Availability',
-    'contact.info.available': 'Available for new opportunities',
-    
+    'contact.info.available': 'Taking on new projects',
+
     // Footer
     'footer.rights': 'All rights reserved.',
     'footer.brand': 'Built with',
@@ -170,60 +170,60 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.sites': 'Blogs y Sitios',
     'nav.skills': 'Habilidades',
     'nav.contact': 'Contacto',
-    
+
     // Hero
     'hero.greeting': 'Hola, soy',
-    'hero.title': 'Desarrollador Full Stack & Especialista en TI',
-    'hero.subtitle': 'Transformando desafíos tecnológicos en soluciones innovadoras. Especializado en desarrollo de sistemas, soporte técnico e infraestructura de redes.',
+    'hero.title': 'Desarrollador Low-Code & No-Code',
+    'hero.subtitle': 'Saco ideas del papel rápido. Construyo sitios, landing pages y Micro-SaaS con Low-Code, No-Code e IA — del MVP a la versión que vende.',
     'hero.cta.projects': 'Ver Proyectos',
     'hero.cta.github': 'GitHub',
     'hero.cta.contact': 'Contacto',
-    
+
     // About
     'about.title': 'Sobre Mí',
-    'about.description': 'Profesional de tecnología apasionado por resolver problemas complejos y crear soluciones que marcan la diferencia. Con experiencia en desarrollo de aplicaciones, soporte técnico y administración de sistemas, busco constantemente mejorar mis habilidades y entregar resultados excepcionales.',
-    'about.highlight1.title': 'Aprendizaje Continuo',
-    'about.highlight1.desc': 'Siempre en busca de nuevas tecnologías y metodologías para entregar las mejores soluciones.',
-    'about.highlight2.title': 'Enfoque en Resultados',
-    'about.highlight2.desc': 'Comprometido con la entrega de proyectos de alta calidad dentro de los plazos establecidos.',
-    'about.highlight3.title': 'Trabajo en Equipo',
-    'about.highlight3.desc': 'Colaboración efectiva y comunicación clara para alcanzar objetivos en conjunto.',
-    
+    'about.description': 'Construyo productos digitales que resuelven dolor real — sin gastar semanas en código boilerplate. Foco en entregar MVP funcional, página que convierte y SaaS en producción en días, no meses. Stack moderno, decisión rápida, resultado medible.',
+    'about.highlight1.title': 'Velocidad de Ejecución',
+    'about.highlight1.desc': 'MVP en producción en días. Iteración rápida, validación real, ciclo corto hasta el primer usuario que paga.',
+    'about.highlight2.title': 'Enfoque en Resultado',
+    'about.highlight2.desc': 'Cada proyecto empieza con un problema claro y termina con algo que vende, convierte o ahorra tiempo.',
+    'about.highlight3.title': 'Stack Low-Code + IA',
+    'about.highlight3.desc': 'React, TypeScript, Lovable, Supabase e IA aplicada. Tecnología moderna sin complicación innecesaria.',
+
     // Certifications
     'certs.title': 'Certificaciones & Cursos',
-    'certs.subtitle': 'Trayectoria académica y certificaciones profesionales que respaldan mi experiencia técnica.',
-    
+    'certs.subtitle': 'Base técnica detrás de cada proyecto entregado — formación continua, no diploma de pared.',
+
     // Experience
     'exp.title': 'Experiencia Profesional',
-    'exp.subtitle': 'Trayectoria profesional enfocada en tecnología, desarrollo y soporte técnico.',
-    
+    'exp.subtitle': 'Trayectoria práctica en tecnología, desarrollo y soporte técnico.',
+
     // Projects
-    'projects.title': 'Proyectos Desarrollados',
-    'projects.subtitle': 'Una selección de proyectos que demuestran mis habilidades técnicas y capacidad de resolución de problemas.',
+    'projects.title': 'Proyectos en Producción',
+    'projects.subtitle': 'SaaS, landing pages y herramientas que ya están corriendo — haz clic y míralos funcionando.',
     'projects.viewGithub': 'Ver en GitHub',
-    'projects.viewDemo': 'Demo',
-    
+    'projects.viewDemo': 'Ver en Vivo',
+
     // GitHub
-    'github.title': 'GitHub & Open Source',
-    'github.subtitle': 'Contribuciones y proyectos públicos que reflejan mi compromiso con la comunidad de desarrollo.',
+    'github.title': 'GitHub',
+    'github.subtitle': 'Código abierto, proyectos públicos y lo que aprendo construyendo.',
     'github.repos': 'Repositorios',
     'github.followers': 'Seguidores',
     'github.following': 'Siguiendo',
     'github.viewProfile': 'Ver Perfil Completo',
-    
+
     // Awards
-    'awards.title': 'Premios & Reconocimientos',
-    'awards.subtitle': 'Reconocimientos que validan mi compromiso con la excelencia profesional.',
-    
+    'awards.title': 'Premios',
+    'awards.subtitle': 'Reconocimientos que vinieron del trabajo — no de la auto-promoción.',
+
     // Skills
-    'skills.title': 'Habilidades Técnicas',
-    'skills.subtitle': 'Conjunto de competencias técnicas e interpersonales desarrolladas a lo largo de mi carrera.',
+    'skills.title': 'Stack & Habilidades',
+    'skills.subtitle': 'Las herramientas que uso para entregar producto rápido y estable.',
     'skills.hard': 'Hard Skills',
     'skills.soft': 'Soft Skills',
-    
+
     // Contact
-    'contact.title': '¿Construyamos Algo Increíble Juntos?',
-    'contact.subtitle': 'Estoy disponible para nuevos proyectos, oportunidades de trabajo y colaboraciones. ¡Contáctame!',
+    'contact.title': '¿Tienes una idea? Vamos a lanzarla.',
+    'contact.subtitle': 'Sitios, landing pages, Micro-SaaS o automatización con IA — cuéntame qué necesitas y vuelvo con propuesta el mismo día.',
     'contact.form.name': 'Nombre',
     'contact.form.email': 'Correo',
     'contact.form.message': 'Mensaje',
@@ -231,11 +231,11 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.info.email': 'Correo',
     'contact.info.location': 'Ubicación',
     'contact.info.availability': 'Disponibilidad',
-    'contact.info.available': 'Disponible para nuevas oportunidades',
-    
+    'contact.info.available': 'Aceptando nuevos proyectos',
+
     // Footer
     'footer.rights': 'Todos los derechos reservados.',
-    'footer.brand': 'Desarrollado con',
+    'footer.brand': 'Construido con',
   },
 };
 

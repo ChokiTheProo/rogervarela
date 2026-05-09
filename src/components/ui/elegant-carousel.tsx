@@ -168,18 +168,23 @@ export default function ElegantCarousel({
         </div>
 
         {/* Right: Image */}
-        <div className="relative order-1 lg:order-2 aspect-[4/3] sm:aspect-[5/4] lg:aspect-[4/5]">
-          <div className={`${fadeBase} ${fadeState} relative w-full h-full overflow-hidden rounded-xl sm:rounded-2xl border border-border/50 shadow-2xl`}>
+        <div className="relative order-1 lg:order-2 aspect-[16/10] sm:aspect-[4/3] lg:aspect-[4/5]">
+          <div
+            className={`${fadeBase} ${fadeState} relative w-full h-full overflow-hidden rounded-xl sm:rounded-2xl border border-border/50 shadow-2xl`}
+            style={{
+              background: `linear-gradient(135deg, ${currentSlide.accent}1f 0%, hsl(var(--background)) 100%)`,
+            }}
+          >
             <img
               src={currentSlide.imageUrl}
               alt={currentSlide.title}
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-contain p-2 sm:p-3"
               loading="lazy"
             />
             <div
-              className="absolute inset-0"
+              className="absolute inset-0 pointer-events-none"
               style={{
-                background: `linear-gradient(135deg, ${currentSlide.accent}33 0%, transparent 55%)`,
+                background: `linear-gradient(135deg, ${currentSlide.accent}1a 0%, transparent 60%)`,
               }}
             />
           </div>

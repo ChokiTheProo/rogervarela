@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import { BookOpen, Target, Users } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { ImageZoom } from '@/components/ui/image-zoom';
+import { LampContainer } from '@/components/ui/lamp';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const highlights = [
@@ -79,8 +80,9 @@ export function AboutSection() {
             onMouseLeave={handleMouseLeave}
             style={{ perspective: isMobile ? 'none' : '1000px' }}
           >
+            <LampContainer className="min-h-[420px] md:min-h-[520px] bg-transparent">
             <motion.div 
-              className="relative w-56 h-56 md:w-80 md:h-80 mx-auto"
+              className="relative w-56 h-56 md:w-80 md:h-80 mx-auto -mt-20 md:-mt-32"
               animate={isMobile ? {} : {
                 rotateY: mousePosition.x,
                 rotateX: -mousePosition.y,

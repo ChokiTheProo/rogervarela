@@ -167,6 +167,7 @@ export function AboutSection() {
                 />
               ))}
             </motion.div>
+            </LampContainer>
           </motion.div>
 
           {/* Content Section */}

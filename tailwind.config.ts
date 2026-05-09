@@ -17,6 +17,9 @@ export default {
         heading: ['Outfit', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
       },
+      backgroundImage: {
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

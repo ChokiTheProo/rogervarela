@@ -13,12 +13,14 @@ import { SkillsSection } from '@/components/sections/SkillsSection';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { Footer } from '@/components/Footer';
 import { PageTransition } from '@/components/PageTransition';
+import { ParallaxStarsBackground } from '@/components/ParallaxStarsBackground';
 
 
 const Index = () => {
   return (
     <PageTransition>
-      <div className="min-h-screen bg-background">
+      <ParallaxStarsBackground />
+      <div className="min-h-screen bg-transparent relative">
         <Header />
         <main>
           <HeroSection />

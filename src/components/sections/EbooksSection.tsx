@@ -3,6 +3,7 @@ import { Globe, ExternalLink, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import blogsSitesHero from '@/assets/blogs-sites-hero.jpg';
+import { LazyImage } from '@/components/ui/lazy-image';
 
 const translations = {
   pt: {
@@ -76,13 +77,16 @@ export const EbooksSection = () => {
             
             <div className="relative bg-card/80 backdrop-blur-xl border border-border/50 rounded-2xl overflow-hidden">
               {/* Image */}
-              <div className="relative aspect-video overflow-hidden">
-                <img 
-                  src={blogsSitesHero} 
-                  alt="Blogs & Sites Showcase" 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              <div className="relative aspect-[4/3] sm:aspect-[16/10] overflow-hidden bg-background">
+                <LazyImage
+                  src={blogsSitesHero}
+                  alt="Sites e blogs reais em produção - showcase RoVR"
+                  width={1280}
+                  height={768}
+                  containerClassName="absolute inset-0 w-full h-full"
+                  className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-card/90 via-card/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent pointer-events-none" />
               </div>
 
               {/* Content overlay */}

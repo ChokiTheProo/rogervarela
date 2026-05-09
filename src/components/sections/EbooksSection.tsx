@@ -3,6 +3,7 @@ import { Globe, ExternalLink, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import blogsSitesHero from '@/assets/blogs-sites-hero.jpg';
+import { LazyImage } from '@/components/ui/lazy-image';
 
 const translations = {
   pt: {

@@ -16,21 +16,24 @@ export function HeroSection() {
   const typewriterWords = useMemo(() => {
     if (language === 'pt') {
       return [
-        'Transformando ideias em Micro-SaaS funcionais',
-        'Criando soluções digitais inovadoras',
-        'Desenvolvendo produtos que impactam',
+        'Sites e SaaS no ar em dias, não em meses',
+        'Micro-SaaS funcionais com Low-Code e IA',
+        'Landing pages que convertem de verdade',
+        'Do MVP à versão que vende',
       ];
     } else if (language === 'es') {
       return [
-        'Transformando ideas en Micro-SaaS funcionales',
-        'Creando soluciones digitales innovadoras',
-        'Desarrollando productos que impactan',
+        'Sitios y SaaS en producción en días, no meses',
+        'Micro-SaaS funcionales con Low-Code e IA',
+        'Landing pages que convierten de verdad',
+        'Del MVP a la versión que vende',
       ];
     }
     return [
-      'Turning ideas into functional Micro-SaaS',
-      'Creating innovative digital solutions',
-      'Building products that make an impact',
+      'Sites and SaaS shipped in days, not months',
+      'Functional Micro-SaaS with Low-Code and AI',
+      'Landing pages that actually convert',
+      'From MVP to the version that sells',
     ];
   }, [language]);
 

@@ -52,7 +52,7 @@ const rovrProjects: RoVRProject[] = [
     },
     accent: '#a855f7',
     image: projectKlyexa,
-    href: 'https://klyexavenda.lovable.app',
+    href: 'https://klyexa.lovable.app/',
   },
   {
     name: 'Emagrio',

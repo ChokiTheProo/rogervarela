@@ -3,6 +3,7 @@ import { ArrowDown, Github, Mail, Briefcase, Download } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { ParticleBackground } from '@/components/ParticleBackground';
+import { TubesBackground } from '@/components/TubesBackground';
 import { Logo3D } from '@/components/Logo3D';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useTypewriter } from '@/hooks/use-typewriter';
@@ -42,6 +43,13 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
+      {/* Interactive 3D Tubes Background - desktop only */}
+      {!isMobile && (
+        <div className="absolute inset-0 z-0 opacity-60 mix-blend-screen pointer-events-auto">
+          <TubesBackground />
+        </div>
+      )}
+
       {/* Particle Animation Background */}
       <ParticleBackground />
       

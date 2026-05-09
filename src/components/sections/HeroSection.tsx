@@ -3,6 +3,7 @@ import { ArrowDown, Github, Mail, Briefcase, Download } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { ParticleBackground } from '@/components/ParticleBackground';
+import { TubesBackground } from '@/components/TubesBackground';
 import { Logo3D } from '@/components/Logo3D';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useTypewriter } from '@/hooks/use-typewriter';

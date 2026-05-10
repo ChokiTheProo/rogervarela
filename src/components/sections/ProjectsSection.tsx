@@ -10,7 +10,7 @@ import projectKlyexa from '@/assets/project-klyexa.jpg';
 import projectTratamento from '@/assets/project-tratamento.jpg';
 import projectEmagrio from '@/assets/project-emagrio.jpg';
 import projectDentiflow from '@/assets/project-dentiflow.jpg';
-import projectRovrcont from '@/assets/project-rovrcont.png';
+import projectRovrcont from '@/assets/project-rovrcont.webp';
 
 interface RoVRProject {
   name: string;

@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import blogsSitesHero from '@/assets/blogs-sites-hero.jpg';
 import { LazyImage } from '@/components/ui/lazy-image';
+import { HorizonBackground } from '@/components/ui/horizon-hero-section';
 
 const translations = {
   pt: {

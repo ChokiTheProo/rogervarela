@@ -131,9 +131,11 @@ export function CoursesSection() {
                     initial={{ opacity: 0, x: 20 }}
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                    className="flex items-center gap-2 md:gap-3 p-2 md:p-3 rounded-lg md:rounded-xl bg-secondary/50 border border-border/50"
+                    className="group flex items-center gap-2 md:gap-3 p-2 md:p-3 rounded-lg md:rounded-xl bg-secondary/40 border border-primary/15 hover:border-primary/40 hover:bg-secondary/60 transition-all"
                   >
-                    <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-primary flex-shrink-0" />
+                    <div className="glow-icon w-7 h-7 md:w-8 md:h-8 flex-shrink-0" style={{ backgroundImage: 'linear-gradient(135deg, hsl(var(--primary)) 0%, #22d3ee 100%)' }}>
+                      <CheckCircle className="w-4 h-4 md:w-5 md:h-5" strokeWidth={2.4} />
+                    </div>
                     <span className="text-foreground text-xs md:text-sm">{feature}</span>
                   </motion.div>
                 ))}

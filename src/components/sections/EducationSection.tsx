@@ -95,16 +95,18 @@ export function EducationSection() {
                 initial={{ opacity: 0, x: -30 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="relative pl-20 pb-12 last:pb-0"
+                className="relative pl-20 pb-12 last:pb-0 group"
               >
                 {/* Timeline Dot */}
-                <div className={`absolute left-5 top-2 w-6 h-6 rounded-full border-4 border-background flex items-center justify-center ${
-                  edu.current ? 'bg-gradient-to-br from-accent to-primary animate-pulse-glow' : 'bg-accent/50'
-                }`}>
-                  <GraduationCap className="w-3 h-3 text-accent-foreground" />
+                <div className={`absolute left-3 top-1 w-12 h-12 rounded-2xl border-4 border-background flex items-center justify-center glow-icon ${
+                  edu.current ? '' : 'opacity-90'
+                }`}
+                style={edu.current ? undefined : { backgroundImage: 'linear-gradient(135deg, hsl(var(--accent) / 0.6) 0%, hsl(var(--primary) / 0.5) 100%)' }}>
+                  <GraduationCap className="w-5 h-5" strokeWidth={2.4} />
                 </div>
 
-                <div className="p-6 rounded-2xl bg-gradient-card border border-border/50 hover:border-accent/30 transition-all duration-300">
+                <div className="glow-card">
+                  <div className="glow-card-inner p-6">
                   <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
                     <div>
                       <h3 className="font-heading font-semibold text-xl text-foreground">
@@ -146,6 +148,7 @@ export function EducationSection() {
                       </Button>
                     </div>
                   )}
+                  </div>
                 </div>
               </motion.div>
             ))}

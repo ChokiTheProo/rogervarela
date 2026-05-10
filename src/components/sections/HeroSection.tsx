@@ -63,16 +63,7 @@ export function HeroSection() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
         )}
         
-        {/* Grid Pattern - hidden on mobile for performance */}
-        {!isMobile && (
-          <div className="absolute inset-0 opacity-5"
-            style={{
-              backgroundImage: `linear-gradient(hsl(var(--primary)) 1px, transparent 1px),
-                               linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)`,
-              backgroundSize: '60px 60px',
-            }}
-          />
-        )}
+        {/* Grid Pattern removed */}
       </div>
 
       <div className="container mx-auto px-4 relative z-10 pt-20 sm:pt-16">

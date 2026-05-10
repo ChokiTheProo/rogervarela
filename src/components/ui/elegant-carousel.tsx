@@ -174,7 +174,9 @@ export default function ElegantCarousel({
               src={currentSlide.imageUrl}
               alt={currentSlide.title}
               className="absolute inset-0 w-full h-full object-cover"
-              loading="lazy"
+              loading={currentIndex === 0 ? 'eager' : 'lazy'}
+              decoding="async"
+              fetchPriority={currentIndex === 0 ? 'high' : 'auto'}
             />
             <div
               className="absolute inset-0"

@@ -30,7 +30,7 @@ export const LazyImage = memo(function LazyImage({
           observer.disconnect();
         }
       },
-      { rootMargin: '100px', threshold: 0.01 }
+      { rootMargin: '500px 0px', threshold: 0.01 }
     );
 
     if (imgRef.current) {

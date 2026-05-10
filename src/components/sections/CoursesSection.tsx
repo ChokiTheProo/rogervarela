@@ -77,10 +77,11 @@ export function CoursesSection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="max-w-4xl mx-auto"
         >
-          <div className="relative p-5 md:p-8 rounded-2xl md:rounded-3xl bg-gradient-card border border-primary/30 overflow-hidden">
+          <div className="glow-card group">
+            <div className="glow-card-inner p-5 md:p-8">
             {/* Background decoration */}
-            <div className="absolute top-0 right-0 w-32 md:w-64 h-32 md:h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-24 md:w-48 h-24 md:h-48 bg-violet-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+            <div className="absolute top-0 right-0 w-32 md:w-64 h-32 md:h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-24 md:w-48 h-24 md:h-48 bg-violet-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
             
             <div className="relative z-10 grid md:grid-cols-2 gap-6 md:gap-8 items-center">
               {/* Left side - Course info */}
@@ -91,8 +92,8 @@ export function CoursesSection() {
                 </div>
                 
                 <div className="flex flex-col md:flex-row items-center md:items-start gap-3 md:gap-4 mb-4">
-                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-gradient-to-br from-primary to-violet-500 flex items-center justify-center flex-shrink-0">
-                    <Terminal className="w-7 h-7 md:w-8 md:h-8 text-primary-foreground" />
+                  <div className="glow-icon w-14 h-14 md:w-16 md:h-16 flex-shrink-0" style={{ backgroundImage: 'linear-gradient(135deg, hsl(var(--primary)) 0%, #8b5cf6 100%)' }}>
+                    <Terminal className="w-7 h-7 md:w-8 md:h-8" strokeWidth={2.4} />
                   </div>
                   <div>
                     <h3 className="font-heading font-bold text-xl md:text-2xl text-foreground">

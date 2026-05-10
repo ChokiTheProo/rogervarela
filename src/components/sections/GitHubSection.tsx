@@ -107,14 +107,15 @@ export function GitHubSection() {
             className="grid grid-cols-3 gap-2 md:gap-4 mb-6 md:mb-8"
           >
             {stats.map((stat, index) => (
-              <div
-                key={index}
-                className="p-3 md:p-6 rounded-lg md:rounded-xl bg-gradient-card border border-border/50 text-center hover:border-primary/30 transition-colors"
-              >
-                <stat.icon className="w-5 h-5 md:w-6 md:h-6 text-primary mx-auto mb-1 md:mb-2" />
-                <div className="text-lg md:text-2xl font-heading font-bold text-foreground">{stat.value}</div>
-                <div className="text-xs md:text-sm text-muted-foreground">
-                  {language === 'pt' ? stat.labelPt : language === 'es' ? stat.labelEs : stat.labelEn}
+              <div key={index} className="glow-card group">
+                <div className="glow-card-inner p-3 md:p-6 text-center">
+                  <div className="glow-icon w-10 h-10 md:w-12 md:h-12 mx-auto mb-1 md:mb-2">
+                    <stat.icon className="w-5 h-5 md:w-6 md:h-6" strokeWidth={2.4} />
+                  </div>
+                  <div className="text-lg md:text-2xl font-heading font-bold text-foreground">{stat.value}</div>
+                  <div className="text-xs md:text-sm text-muted-foreground">
+                    {language === 'pt' ? stat.labelPt : language === 'es' ? stat.labelEs : stat.labelEn}
+                  </div>
                 </div>
               </div>
             ))}
@@ -125,8 +126,9 @@ export function GitHubSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="p-4 md:p-6 rounded-lg md:rounded-xl bg-gradient-card border border-border/50"
+            className="glow-card"
           >
+            <div className="glow-card-inner p-4 md:p-6">
             <h4 className="font-heading font-semibold text-foreground text-sm md:text-base mb-3 md:mb-4">
               {language === 'pt' ? 'Linguagens Mais Usadas' : language === 'es' ? 'Lenguajes Más Usados' : 'Most Used Languages'}
             </h4>
@@ -149,6 +151,7 @@ export function GitHubSection() {
                   </div>
                 </div>
               ))}
+            </div>
             </div>
           </motion.div>
         </motion.div>

@@ -470,5 +470,46 @@
     color: white;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
   }
+
+  /* ============================================================
+     CURSOR-TRACKING GLOW for buttons
+     The Button component sets --mouse-x / --mouse-y on hover.
+     ============================================================ */
+  .btn-cursor-glow {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+  }
+  .btn-cursor-glow::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      180px circle at var(--mouse-x) var(--mouse-y),
+      hsl(var(--primary) / 0.45),
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .btn-cursor-glow:hover::before {
+    opacity: 1;
+  }
+  .btn-cursor-glow > * {
+    position: relative;
+    z-index: 1;
+  }
+  /* Animated arrow inside .btn-arrow buttons */
+  .btn-arrow [data-arrow] {
+    transition: transform 0.3s ease;
+  }
+  .btn-arrow:hover [data-arrow] {
+    transform: translateX(4px);
+  }
 }
 

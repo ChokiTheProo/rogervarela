@@ -33,7 +33,7 @@ const certifications: Certification[] = [
     category: 'programming',
     hours: '40h',
     downloadUrl: '/downloads/certificado-javascript-40h.jpg',
-    previewImage: '/downloads/certificado-javascript-40h.jpg',
+    previewImage: '/downloads/certificado-javascript-40h-thumb.webp',
   },
   {
     name: { pt: 'Lógica de Programação', en: 'Programming Logic', es: 'Lógica de Programación' },
@@ -43,7 +43,7 @@ const certifications: Certification[] = [
     category: 'programming',
     hours: '48h',
     downloadUrl: '/downloads/certificado-logica-programacao.jpg',
-    previewImage: '/downloads/certificado-logica-programacao.jpg',
+    previewImage: '/downloads/certificado-logica-programacao-thumb.webp',
   },
   {
     name: { pt: 'Marketing Digital', en: 'Digital Marketing', es: 'Marketing Digital' },
@@ -205,6 +205,8 @@ export function CertificationsSection() {
                   <img 
                     src={cert.previewImage} 
                     alt={cert.name[language]} 
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-24 sm:h-32 object-cover object-top hover:scale-105 transition-transform duration-300"
                   />
                 </div>

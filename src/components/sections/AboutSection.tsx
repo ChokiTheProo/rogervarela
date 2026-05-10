@@ -1,15 +1,15 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { BookOpen, Target, Users } from 'lucide-react';
+import { Rocket, Target, Sparkles } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { ImageZoom } from '@/components/ui/image-zoom';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const highlights = [
-  { icon: BookOpen, titleKey: 'about.highlight1.title', descKey: 'about.highlight1.desc' },
+  { icon: Rocket, titleKey: 'about.highlight1.title', descKey: 'about.highlight1.desc' },
   { icon: Target, titleKey: 'about.highlight2.title', descKey: 'about.highlight2.desc' },
-  { icon: Users, titleKey: 'about.highlight3.title', descKey: 'about.highlight3.desc' },
+  { icon: Sparkles, titleKey: 'about.highlight3.title', descKey: 'about.highlight3.desc' },
 ];
 
 export function AboutSection() {
@@ -203,23 +203,25 @@ export function AboutSection() {
                     x: 10,
                     boxShadow: '0 10px 40px -10px hsl(var(--primary) / 0.3)'
                   }}
-                  className="flex gap-3 md:gap-4 p-3 md:p-4 rounded-xl bg-secondary/30 border border-border/50 hover:border-primary/50 transition-all duration-300 group cursor-pointer"
+                  className="glow-card group cursor-pointer"
                   style={{ perspective: isMobile ? 'none' : '1000px' }}
                 >
-                  <motion.div 
-                    className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-lg bg-gradient-primary flex items-center justify-center"
-                    whileHover={isMobile ? {} : { rotateY: 180 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <item.icon className="w-5 h-5 md:w-6 md:h-6 text-primary-foreground" />
-                  </motion.div>
-                  <div>
-                    <h3 className="font-heading font-semibold text-sm md:text-base text-foreground mb-1 group-hover:text-primary transition-colors">
-                      {t(item.titleKey)}
-                    </h3>
-                    <p className="text-xs md:text-sm text-muted-foreground">
-                      {t(item.descKey)}
-                    </p>
+                  <div className="glow-card-inner flex gap-3 md:gap-4 p-3 md:p-4">
+                    <motion.div
+                      className="glow-icon flex-shrink-0 w-11 h-11 md:w-14 md:h-14 rounded-xl flex items-center justify-center"
+                      whileHover={isMobile ? {} : { rotateY: 180, scale: 1.05 }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      <item.icon className="w-5 h-5 md:w-7 md:h-7 text-primary-foreground relative z-10" strokeWidth={2.25} />
+                    </motion.div>
+                    <div className="min-w-0">
+                      <h3 className="font-heading font-semibold text-sm md:text-base text-foreground mb-1 group-hover:text-primary transition-colors">
+                        {t(item.titleKey)}
+                      </h3>
+                      <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
+                        {t(item.descKey)}
+                      </p>
+                    </div>
                   </div>
                 </motion.div>
               ))}

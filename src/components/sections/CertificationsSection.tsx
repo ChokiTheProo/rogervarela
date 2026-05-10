@@ -1,6 +1,6 @@
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { Award, Calendar, Building, BookOpen, GraduationCap, Code, Globe } from 'lucide-react';
+import { Award, Calendar, Building, BookOpen, GraduationCap, Code, Globe, Languages, Megaphone, Network, Cpu, Smartphone, GitBranch, Coffee, Monitor, FileCode } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -124,6 +124,53 @@ const categories = [
   { id: 'other', label: { pt: 'Outros', en: 'Other', es: 'Otros' }, icon: BookOpen },
 ];
 
+function getCertTheme(cert: Certification) {
+  const name = cert.name.pt.toLowerCase();
+  const inst = cert.institution.toLowerCase();
+
+  // Specific matches first
+  if (name.includes('javascript')) {
+    return { icon: FileCode, iconGradient: 'linear-gradient(135deg, #f7df1e 0%, #f0a500 100%)', borderGradient: 'linear-gradient(135deg, #f7df1e55, #f0a50033, transparent 70%)', shadowColor: '#f7df1e66' };
+  }
+  if (name.includes('java') && !name.includes('javascript')) {
+    return { icon: Coffee, iconGradient: 'linear-gradient(135deg, #f89820 0%, #e76f00 100%)', borderGradient: 'linear-gradient(135deg, #f8982055, #e76f0033, transparent 70%)', shadowColor: '#f8982066' };
+  }
+  if (name.includes('git')) {
+    return { icon: GitBranch, iconGradient: 'linear-gradient(135deg, #f05033 0%, #b34329 100%)', borderGradient: 'linear-gradient(135deg, #f0503355, #b3432933, transparent 70%)', shadowColor: '#f0503366' };
+  }
+  if (name.includes('mobile') || name.includes('aplicativ')) {
+    return { icon: Smartphone, iconGradient: 'linear-gradient(135deg, #06b6d4 0%, #2563eb 100%)', borderGradient: 'linear-gradient(135deg, #06b6d455, #2563eb33, transparent 70%)', shadowColor: '#06b6d466' };
+  }
+  if (name.includes('iot') || name.includes('coisas')) {
+    return { icon: Cpu, iconGradient: 'linear-gradient(135deg, #14b8a6 0%, #0ea5e9 100%)', borderGradient: 'linear-gradient(135deg, #14b8a655, #0ea5e933, transparent 70%)', shadowColor: '#14b8a666' };
+  }
+  if (name.includes('rede') || name.includes('sistemas operacionais') || name.includes('network')) {
+    return { icon: Network, iconGradient: 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)', borderGradient: 'linear-gradient(135deg, #6366f155, #4f46e533, transparent 70%)', shadowColor: '#6366f166' };
+  }
+  if (name.includes('lógica') || name.includes('logic') || name.includes('lógica de programação')) {
+    return { icon: Code, iconGradient: 'linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%)', borderGradient: 'linear-gradient(135deg, #8b5cf655, #6366f133, transparent 70%)', shadowColor: '#8b5cf666' };
+  }
+  if (name.includes('marketing')) {
+    return { icon: Megaphone, iconGradient: 'linear-gradient(135deg, #ec4899 0%, #f43f5e 100%)', borderGradient: 'linear-gradient(135deg, #ec489955, #f43f5e33, transparent 70%)', shadowColor: '#ec489966' };
+  }
+  if (cert.category === 'languages') {
+    return { icon: Languages, iconGradient: 'linear-gradient(135deg, #10b981 0%, #059669 100%)', borderGradient: 'linear-gradient(135deg, #10b98155, #05966933, transparent 70%)', shadowColor: '#10b98166' };
+  }
+  if (name.includes('informática básica') || name.includes('básica')) {
+    return { icon: Monitor, iconGradient: 'linear-gradient(135deg, #64748b 0%, #475569 100%)', borderGradient: 'linear-gradient(135deg, #64748b55, #47556933, transparent 70%)', shadowColor: '#64748b66' };
+  }
+  if (cert.type.pt === 'Formação Técnica') {
+    return { icon: GraduationCap, iconGradient: 'linear-gradient(135deg, #a855f7 0%, #6366f1 100%)', borderGradient: 'linear-gradient(135deg, #a855f755, #6366f133, transparent 70%)', shadowColor: '#a855f766' };
+  }
+  if (cert.category === 'technical') {
+    return { icon: Cpu, iconGradient: 'linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%)', borderGradient: 'linear-gradient(135deg, #0ea5e955, #6366f133, transparent 70%)', shadowColor: '#0ea5e966' };
+  }
+  if (cert.category === 'programming') {
+    return { icon: Code, iconGradient: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)', borderGradient: 'linear-gradient(135deg, #8b5cf655, #ec489933, transparent 70%)', shadowColor: '#8b5cf666' };
+  }
+  return { icon: BookOpen, iconGradient: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)', borderGradient: 'linear-gradient(135deg, #6366f155, #8b5cf633, transparent 70%)', shadowColor: '#6366f166' };
+}
+
 export function CertificationsSection() {
   const { t, language } = useLanguage();
   const ref = useRef(null);
@@ -185,17 +232,24 @@ export function CertificationsSection() {
         </motion.div>
 
         <motion.div style={{ y: cardsY }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {filteredCertifications.map((cert, index) => (
+          {filteredCertifications.map((cert, index) => {
+            const theme = getCertTheme(cert);
+            const Icon = theme.icon;
+            return (
             <motion.div
               key={`${cert.name.pt}-${index}`}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.05 }}
               layout
-              className="group relative p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-gradient-card border border-border/50 hover:border-primary/30 transition-all duration-300 card-glow"
+              whileHover={{ y: -4 }}
+              className="group relative rounded-xl sm:rounded-2xl p-[1.5px] transition-all duration-300"
+              style={{ backgroundImage: theme.borderGradient }}
             >
+              <div className="absolute -inset-px rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-60 blur-xl transition-opacity duration-500 -z-10" style={{ backgroundImage: theme.borderGradient }} />
+              <div className="relative h-full rounded-[10px] sm:rounded-[14px] bg-card/90 backdrop-blur-sm p-4 sm:p-6">
               <div className="absolute top-3 sm:top-4 right-3 sm:right-4 flex gap-2">
-                <span className="px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/20">
+                <span className="px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs font-medium rounded-full" style={{ backgroundColor: `hsl(var(--primary) / 0.1)`, color: `hsl(var(--primary))`, border: `1px solid hsl(var(--primary) / 0.2)` }}>
                   {cert.type[language]}
                 </span>
               </div>
@@ -213,12 +267,12 @@ export function CertificationsSection() {
               )}
               
               {!cert.previewImage && (
-                <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-gradient-primary flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform">
-                  {cert.type.pt === 'Formação Técnica' ? (
-                    <Award className="w-5 h-5 sm:w-7 sm:h-7 text-primary-foreground" />
-                  ) : (
-                    <BookOpen className="w-5 h-5 sm:w-7 sm:h-7 text-primary-foreground" />
-                  )}
+                <div
+                  className="relative w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg"
+                  style={{ backgroundImage: theme.iconGradient, boxShadow: `0 8px 24px -8px ${theme.shadowColor}` }}
+                >
+                  <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-white relative z-10" strokeWidth={2.2} />
                 </div>
               )}
               
@@ -241,9 +295,10 @@ export function CertificationsSection() {
                   )}
                 </div>
               </div>
-
+              </div>
             </motion.div>
-          ))}
+            );
+          })}
         </motion.div>
 
         {filteredCertifications.length === 0 && (

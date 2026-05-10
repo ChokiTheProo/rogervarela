@@ -210,9 +210,9 @@ export function ProjectsSection() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mb-12 sm:mb-20"
         >
-          <h3 className="text-lg sm:text-xl font-heading font-semibold text-primary flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
-            <div className="p-1.5 sm:p-2 rounded-lg bg-primary/20">
-              <Rocket className="w-4 h-4 sm:w-5 sm:h-5" />
+          <h3 className="text-lg sm:text-xl font-heading font-semibold text-primary flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8 group">
+            <div className="glow-icon w-9 h-9 sm:w-11 sm:h-11">
+              <Rocket className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2.4} />
             </div>
             {language === 'pt' ? 'Projetos RoVR' : language === 'es' ? 'Proyectos RoVR' : 'RoVR Projects'}
             <span className="ml-1 sm:ml-2 px-2 py-0.5 text-[10px] sm:text-xs rounded-full bg-accent/20 text-accent animate-pulse">
@@ -229,9 +229,12 @@ export function ProjectsSection() {
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <h3 className="text-lg sm:text-xl font-heading font-semibold text-emerald-400 flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
-            <div className="p-1.5 sm:p-2 rounded-lg bg-emerald-500/20">
-              <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5" />
+          <h3 className="text-lg sm:text-xl font-heading font-semibold text-emerald-400 flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8 group">
+            <div
+              className="glow-icon w-9 h-9 sm:w-11 sm:h-11"
+              style={{ backgroundImage: 'linear-gradient(135deg, #10b981 0%, #059669 100%)', boxShadow: '0 10px 30px -8px rgba(16,185,129,0.55), inset 0 1px 0 0 rgba(255,255,255,0.28), 0 0 0 1px rgba(255,255,255,0.18)' }}
+            >
+              <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2.4} />
             </div>
             {language === 'pt' ? 'Projetos Acadêmicos' : language === 'es' ? 'Proyectos Académicos' : 'Academic Projects'}
           </h3>

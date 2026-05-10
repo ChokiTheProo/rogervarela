@@ -246,24 +246,28 @@ export function ProjectsSection() {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative p-5 rounded-2xl border border-border/50 bg-card/40 backdrop-blur-sm hover:border-primary/40 transition-all"
+                className="glow-card group block"
               >
-                <div className="flex items-center justify-between mb-3">
-                  <Github className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                </div>
-                <h4 className="font-heading font-semibold text-foreground mb-2">{project.name}</h4>
-                <p className="text-xs sm:text-sm text-muted-foreground mb-4 leading-relaxed">
-                  {project.description[language]}
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {project.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2 py-0.5 text-[10px] rounded-full bg-secondary/60 text-muted-foreground border border-border/40"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+                <div className="glow-card-inner p-5">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="glow-icon w-10 h-10" style={{ backgroundImage: 'linear-gradient(135deg, #1f2937 0%, #0f172a 100%)' }}>
+                      <Github className="w-5 h-5" strokeWidth={2.2} />
+                    </div>
+                  </div>
+                  <h4 className="font-heading font-semibold text-foreground mb-2">{project.name}</h4>
+                  <p className="text-xs sm:text-sm text-muted-foreground mb-4 leading-relaxed">
+                    {project.description[language]}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-0.5 text-[10px] rounded-full bg-secondary/60 text-muted-foreground border border-border/40"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </a>
             ))}

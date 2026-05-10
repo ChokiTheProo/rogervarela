@@ -303,12 +303,26 @@ export function CertificationsSection() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.05 }}
               layout
-              whileHover={{ y: -4 }}
-              className="group relative rounded-xl sm:rounded-2xl p-[1.5px] transition-all duration-300"
-              style={{ backgroundImage: theme.borderGradient }}
+              whileHover={{ y: -6 }}
+              className="group relative rounded-2xl p-[2px] transition-all duration-500"
+              style={{
+                backgroundImage: `conic-gradient(from var(--angle, 0deg) at 50% 50%, ${theme.shadowColor}, transparent 35%, ${theme.shadowColor} 60%, transparent 85%, ${theme.shadowColor})`,
+                animation: 'spin-border 8s linear infinite',
+              }}
             >
-              <div className="absolute -inset-px rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-60 blur-xl transition-opacity duration-500 -z-10" style={{ backgroundImage: theme.borderGradient }} />
-              <div className="relative h-full rounded-[10px] sm:rounded-[14px] bg-card/90 backdrop-blur-sm p-4 sm:p-6">
+              {/* Outer glow on hover */}
+              <div
+                className="absolute -inset-2 rounded-2xl opacity-0 group-hover:opacity-70 blur-2xl transition-opacity duration-700 -z-10"
+                style={{ backgroundImage: theme.borderGradient }}
+              />
+              {/* Static gradient overlay */}
+              <div
+                className="absolute inset-0 rounded-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+                style={{ backgroundImage: theme.borderGradient }}
+              />
+              <div className="relative h-full rounded-[14px] bg-card/95 backdrop-blur-md p-4 sm:p-6 overflow-hidden">
+              {/* Subtle shine on hover */}
+              <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: `radial-gradient(circle at 30% 0%, ${theme.shadowColor}, transparent 60%)` }} />
               <div className="absolute top-3 sm:top-4 right-3 sm:right-4 flex gap-2">
                 <span className="px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs font-medium rounded-full" style={{ backgroundColor: `hsl(var(--primary) / 0.1)`, color: `hsl(var(--primary))`, border: `1px solid hsl(var(--primary) / 0.2)` }}>
                   {cert.type[language]}

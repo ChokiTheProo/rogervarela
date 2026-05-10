@@ -1,6 +1,6 @@
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { Award, Calendar, Building, BookOpen, GraduationCap, Code, Globe } from 'lucide-react';
+import { Award, Calendar, Building, BookOpen, GraduationCap, Code, Globe, Languages, Megaphone, Network, Cpu, Smartphone, GitBranch, Coffee, Monitor, FileCode } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useIsMobile } from '@/hooks/use-mobile';

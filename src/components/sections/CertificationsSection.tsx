@@ -185,17 +185,24 @@ export function CertificationsSection() {
         </motion.div>
 
         <motion.div style={{ y: cardsY }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {filteredCertifications.map((cert, index) => (
+          {filteredCertifications.map((cert, index) => {
+            const theme = getCertTheme(cert);
+            const Icon = theme.icon;
+            return (
             <motion.div
               key={`${cert.name.pt}-${index}`}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.05 }}
               layout
-              className="group relative p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-gradient-card border border-border/50 hover:border-primary/30 transition-all duration-300 card-glow"
+              whileHover={{ y: -4 }}
+              className="group relative rounded-xl sm:rounded-2xl p-[1.5px] transition-all duration-300"
+              style={{ backgroundImage: theme.borderGradient }}
             >
+              <div className="absolute -inset-px rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-60 blur-xl transition-opacity duration-500 -z-10" style={{ backgroundImage: theme.borderGradient }} />
+              <div className="relative h-full rounded-[10px] sm:rounded-[14px] bg-card/90 backdrop-blur-sm p-4 sm:p-6">
               <div className="absolute top-3 sm:top-4 right-3 sm:right-4 flex gap-2">
-                <span className="px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/20">
+                <span className="px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs font-medium rounded-full" style={{ backgroundColor: `hsl(var(--primary) / 0.1)`, color: `hsl(var(--primary))`, border: `1px solid hsl(var(--primary) / 0.2)` }}>
                   {cert.type[language]}
                 </span>
               </div>
@@ -213,11 +220,12 @@ export function CertificationsSection() {
               )}
               
               {!cert.previewImage && (
-                <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-gradient-primary flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform">
-                  {cert.type.pt === 'Formação Técnica' ? (
-                    <Award className="w-5 h-5 sm:w-7 sm:h-7 text-primary-foreground" />
-                  ) : (
-                    <BookOpen className="w-5 h-5 sm:w-7 sm:h-7 text-primary-foreground" />
+                <div
+                  className="relative w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg"
+                  style={{ backgroundImage: theme.iconGradient, boxShadow: `0 8px 24px -8px ${theme.shadowColor}` }}
+                >
+                  <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-white relative z-10" strokeWidth={2.2} />
                   )}
                 </div>
               )}

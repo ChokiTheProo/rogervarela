@@ -174,7 +174,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Hero
     'hero.greeting': 'Hola, soy',
     'hero.title': 'Desarrollador Low-Code & No-Code',
-    'hero.subtitle': 'Saco ideas del papel rápido. Construyo sitios, landing pages y Micro-SaaS con Low-Code, No-Code e IA — del MVP a la versión que vende.',
+    'hero.subtitle': 'Desarrollo sitios, landing pages y Micro-SaaS a medida con Low-Code, No-Code e IA. Del MVP a la versión de mercado — entrega ágil, código sostenible y enfoque en conversión.',
     'hero.cta.projects': 'Ver Proyectos',
     'hero.cta.github': 'GitHub',
     'hero.cta.contact': 'Contacto',

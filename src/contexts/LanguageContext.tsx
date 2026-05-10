@@ -123,7 +123,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Projects
     'projects.title': 'Projects Live',
-    'projects.subtitle': 'SaaS, landing pages and tools already running — click and see them working.',
+    'projects.subtitle': 'Live solutions: SaaS, landing pages and tools running for real clients. Click any project to open it.',
     'projects.viewGithub': 'View on GitHub',
     'projects.viewDemo': 'View Live',
 

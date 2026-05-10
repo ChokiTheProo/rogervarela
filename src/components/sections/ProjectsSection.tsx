@@ -5,11 +5,11 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import ElegantCarousel, { type ElegantSlide } from '@/components/ui/elegant-carousel';
 import { LazyImage } from '@/components/ui/lazy-image';
 
-import projectFluxen from '@/assets/project-fluxen.png';
-import projectKlyexa from '@/assets/project-klyexa.png';
-import projectTratamento from '@/assets/project-tratamento.png';
-import projectEmagrio from '@/assets/project-emagrio.png';
-import projectDentiflow from '@/assets/project-dentiflow.png';
+import projectFluxen from '@/assets/project-fluxen.jpg';
+import projectKlyexa from '@/assets/project-klyexa.jpg';
+import projectTratamento from '@/assets/project-tratamento.jpg';
+import projectEmagrio from '@/assets/project-emagrio.jpg';
+import projectDentiflow from '@/assets/project-dentiflow.jpg';
 import projectRovrcont from '@/assets/project-rovrcont.png';
 
 interface RoVRProject {

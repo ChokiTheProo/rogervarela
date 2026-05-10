@@ -47,7 +47,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Projects
     'projects.title': 'Projetos no Ar',
-    'projects.subtitle': 'SaaS, landing pages e ferramentas que já estão rodando — clique e veja funcionando.',
+    'projects.subtitle': 'Soluções em produção: SaaS, landing pages e ferramentas operando para clientes reais. Clique em qualquer projeto para acessar.',
     'projects.viewGithub': 'Ver no GitHub',
     'projects.viewDemo': 'Ver ao Vivo',
 

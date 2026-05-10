@@ -139,6 +139,7 @@ export function CoursesSection() {
                 ))}
               </div>
             </div>
+            </div>
           </div>
         </motion.div>
       </div>

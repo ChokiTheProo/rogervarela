@@ -45,7 +45,7 @@ export function HeroSection() {
   });
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Interactive 3D Tubes Background - desktop only */}
       {!isMobile && (
         <div className="absolute inset-0 z-0 opacity-60 mix-blend-screen pointer-events-auto">

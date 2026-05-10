@@ -49,7 +49,7 @@ export function CoursesSection() {
   const cardRotate = useTransform(scrollYProgress, [0, 0.5, 1], [-2, 0, 2]);
 
   return (
-    <section id="courses" className="py-16 md:py-24 bg-gradient-to-b from-background to-secondary/20 overflow-hidden">
+    <section id="courses" className="py-16 md:py-24 relative overflow-hidden">
       <div className="container mx-auto px-4" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}

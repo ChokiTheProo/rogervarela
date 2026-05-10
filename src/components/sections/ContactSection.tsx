@@ -267,6 +267,7 @@ export function ContactSection() {
                 </Button>
               </form>
             )}
+            </div>
           </motion.div>
 
           {/* Contact Info */}

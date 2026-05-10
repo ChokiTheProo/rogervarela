@@ -181,13 +181,13 @@ const translations: Record<Language, Record<string, string>> = {
 
     // About
     'about.title': 'Sobre Mí',
-    'about.description': 'Construyo productos digitales que resuelven dolor real — sin gastar semanas en código boilerplate. Foco en entregar MVP funcional, página que convierte y SaaS en producción en días, no meses. Stack moderno, decisión rápida, resultado medible.',
-    'about.highlight1.title': 'Velocidad de Ejecución',
-    'about.highlight1.desc': 'MVP en producción en días. Iteración rápida, validación real, ciclo corto hasta el primer usuario que paga.',
-    'about.highlight2.title': 'Enfoque en Resultado',
-    'about.highlight2.desc': 'Cada proyecto empieza con un problema claro y termina con algo que vende, convierte o ahorra tiempo.',
-    'about.highlight3.title': 'Stack Low-Code + IA',
-    'about.highlight3.desc': 'React, TypeScript, Lovable, Supabase e IA aplicada. Tecnología moderna sin complicación innecesaria.',
+    'about.description': 'Desarrollo productos digitales a medida — desde landing pages de alta conversión hasta Micro-SaaS completos. Combino Low-Code, No-Code e IA para entregar soluciones funcionales en plazos cortos, con calidad técnica y foco en resultados de negocio.',
+    'about.highlight1.title': 'Entrega Ágil',
+    'about.highlight1.desc': 'MVPs en producción en pocos días. Ciclos cortos de iteración y validación continua hasta el primer resultado medible.',
+    'about.highlight2.title': 'Enfoque en Resultados',
+    'about.highlight2.desc': 'Cada proyecto parte de un objetivo de negocio claro y termina en una solución que vende, convierte u optimiza operaciones.',
+    'about.highlight3.title': 'Stack Moderno + IA',
+    'about.highlight3.desc': 'React, TypeScript, Lovable, Supabase e IA aplicada — tecnología actual, arquitectura escalable y cero complejidad innecesaria.',
 
     // Certifications
     'certs.title': 'Certificaciones & Cursos',

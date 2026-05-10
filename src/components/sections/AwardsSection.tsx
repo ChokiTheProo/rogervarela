@@ -208,6 +208,7 @@ export function AwardsSection() {
                 </Button>
               </div>
             </motion.div>
+            </div>
           </div>
         </motion.div>
       </div>

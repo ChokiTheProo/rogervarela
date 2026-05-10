@@ -55,8 +55,9 @@ export function GitHubSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="p-5 md:p-8 rounded-xl md:rounded-2xl bg-gradient-card border border-border/50 mb-6 md:mb-8"
+            className="glow-card group mb-6 md:mb-8"
           >
+            <div className="glow-card-inner p-5 md:p-8">
             <div className="flex flex-col items-center gap-4 md:gap-6 md:flex-row">
               <div className="relative">
                 <div className="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-4 border-primary/30">
@@ -66,8 +67,8 @@ export function GitHubSection() {
                     className="w-full h-full"
                   />
                 </div>
-                <div className="absolute -bottom-2 -right-2 w-7 h-7 md:w-8 md:h-8 rounded-full bg-gradient-primary flex items-center justify-center pointer-events-none">
-                  <Github className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary-foreground" />
+                <div className="absolute -bottom-2 -right-2 w-8 h-8 md:w-9 md:h-9 rounded-xl glow-icon pointer-events-none">
+                  <Github className="w-4 h-4 md:w-5 md:h-5" strokeWidth={2.4} />
                 </div>
               </div>
               
@@ -94,6 +95,7 @@ export function GitHubSection() {
                 <Github className="w-4 h-4 md:w-5 md:h-5" />
                 {t('github.viewProfile')}
               </a>
+            </div>
             </div>
           </motion.div>
 

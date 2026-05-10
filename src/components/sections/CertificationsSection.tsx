@@ -342,12 +342,24 @@ export function CertificationsSection() {
               )}
               
               {!cert.previewImage && (
-                <div
-                  className="relative w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg"
-                  style={{ backgroundImage: theme.iconGradient, boxShadow: `0 8px 24px -8px ${theme.shadowColor}` }}
-                >
-                  <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-white relative z-10" strokeWidth={2.2} />
+                <div className="relative mb-3 sm:mb-4 inline-block">
+                  {/* Glow halo */}
+                  <div
+                    className="absolute -inset-2 rounded-2xl blur-xl opacity-50 group-hover:opacity-90 transition-opacity duration-500"
+                    style={{ backgroundImage: theme.iconGradient }}
+                  />
+                  {/* Icon container */}
+                  <div
+                    className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500 ring-1 ring-white/20"
+                    style={{
+                      backgroundImage: theme.iconGradient,
+                      boxShadow: `0 10px 30px -8px ${theme.shadowColor}, inset 0 1px 0 0 rgba(255,255,255,0.25)`,
+                    }}
+                  >
+                    {/* Glossy highlight */}
+                    <div className="absolute inset-x-1 top-1 h-1/3 rounded-t-xl bg-gradient-to-b from-white/30 to-transparent pointer-events-none" />
+                    <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-white relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.35)]" strokeWidth={2.4} />
+                  </div>
                 </div>
               )}
               

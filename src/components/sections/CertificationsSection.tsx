@@ -14,6 +14,7 @@ interface Certification {
   hours?: string;
   downloadUrl?: string;
   previewImage?: string;
+  description: { pt: string; en: string; es: string };
 }
 
 const certifications: Certification[] = [
@@ -24,6 +25,11 @@ const certifications: Certification[] = [
     type: { pt: 'Formação Técnica', en: 'Technical Degree', es: 'Formación Técnica' },
     category: 'technical',
     hours: '1000h',
+    description: {
+      pt: 'Formação técnica completa em desenvolvimento web, redes, banco de dados e infraestrutura de TI.',
+      en: 'Complete technical training in web development, networks, databases, and IT infrastructure.',
+      es: 'Formación técnica completa en desarrollo web, redes, bases de datos e infraestructura de TI.',
+    },
   },
   {
     name: { pt: 'JavaScript [40 Horas]', en: 'JavaScript [40 Hours]', es: 'JavaScript [40 Horas]' },
@@ -34,6 +40,11 @@ const certifications: Certification[] = [
     hours: '40h',
     downloadUrl: '/downloads/certificado-javascript-40h.jpg',
     previewImage: '/downloads/certificado-javascript-40h-thumb.webp',
+    description: {
+      pt: 'Fundamentos e recursos modernos do JavaScript: DOM, ES6+, funções, eventos e manipulação dinâmica.',
+      en: 'JavaScript fundamentals and modern features: DOM, ES6+, functions, events, and dynamic manipulation.',
+      es: 'Fundamentos y recursos modernos de JavaScript: DOM, ES6+, funciones, eventos y manipulación dinámica.',
+    },
   },
   {
     name: { pt: 'Lógica de Programação', en: 'Programming Logic', es: 'Lógica de Programación' },
@@ -44,6 +55,11 @@ const certifications: Certification[] = [
     hours: '48h',
     downloadUrl: '/downloads/certificado-logica-programacao.jpg',
     previewImage: '/downloads/certificado-logica-programacao-thumb.webp',
+    description: {
+      pt: 'Estruturas de decisão, repetição, vetores e algoritmos — base sólida para qualquer linguagem.',
+      en: 'Decision structures, loops, arrays, and algorithms — solid foundation for any language.',
+      es: 'Estructuras de decisión, bucles, vectores y algoritmos — base sólida para cualquier lenguaje.',
+    },
   },
   {
     name: { pt: 'Marketing Digital', en: 'Digital Marketing', es: 'Marketing Digital' },
@@ -52,6 +68,11 @@ const certifications: Certification[] = [
     type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'other',
     hours: '40h',
+    description: {
+      pt: 'SEO, tráfego pago, funis e estratégias para gerar leads e conversão online.',
+      en: 'SEO, paid traffic, funnels, and strategies to generate leads and online conversion.',
+      es: 'SEO, tráfico pagado, embudos y estrategias para generar leads y conversión online.',
+    },
   },
   {
     name: { pt: 'Inglês Nível Básico', en: 'Basic English', es: 'Inglés Nivel Básico' },
@@ -60,6 +81,11 @@ const certifications: Certification[] = [
     type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'languages',
     hours: '40h',
+    description: {
+      pt: 'Vocabulário, gramática e conversação para comunicação técnica e do dia a dia.',
+      en: 'Vocabulary, grammar, and conversation for technical and everyday communication.',
+      es: 'Vocabulario, gramática y conversación para comunicación técnica y cotidiana.',
+    },
   },
   {
     name: { pt: 'Inglês Nível Médio', en: 'Intermediate English', es: 'Inglés Nivel Intermedio' },
@@ -68,6 +94,11 @@ const certifications: Certification[] = [
     type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'languages',
     hours: '40h',
+    description: {
+      pt: 'Leitura de documentação técnica, escrita profissional e comunicação fluente em contexto de TI.',
+      en: 'Reading technical documentation, professional writing, and fluent communication in IT context.',
+      es: 'Lectura de documentación técnica, escritura profesional y comunicación fluida en contexto TI.',
+    },
   },
   {
     name: { pt: 'Informática Básica', en: 'Basic Computing', es: 'Informática Básica' },
@@ -76,6 +107,11 @@ const certifications: Certification[] = [
     type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'technical',
     hours: '75h',
+    description: {
+      pt: 'Sistemas operacionais, pacote Office, internet e fundamentos de hardware e software.',
+      en: 'Operating systems, Office suite, internet, and hardware/software fundamentals.',
+      es: 'Sistemas operativos, paquete Office, internet y fundamentos de hardware y software.',
+    },
   },
   {
     name: { pt: 'Git e GitHub', en: 'Git and GitHub', es: 'Git y GitHub' },
@@ -84,6 +120,11 @@ const certifications: Certification[] = [
     type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'programming',
     hours: '20h',
+    description: {
+      pt: 'Versionamento de código, branches, pull requests e colaboração em projetos reais.',
+      en: 'Code versioning, branches, pull requests, and collaboration on real projects.',
+      es: 'Versionado de código, ramas, pull requests y colaboración en proyectos reales.',
+    },
   },
   {
     name: { pt: 'Java Completo', en: 'Complete Java', es: 'Java Completo' },
@@ -92,6 +133,11 @@ const certifications: Certification[] = [
     type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'programming',
     hours: '40h',
+    description: {
+      pt: 'Programação orientada a objetos, classes, herança, polimorfismo e aplicações Java.',
+      en: 'Object-oriented programming, classes, inheritance, polymorphism, and Java applications.',
+      es: 'Programación orientada a objetos, clases, herencia, polimorfismo y aplicaciones Java.',
+    },
   },
   {
     name: { pt: 'Desenvolvimento de Aplicativos Mobile', en: 'Mobile App Development', es: 'Desarrollo de Aplicaciones Móviles' },
@@ -99,6 +145,11 @@ const certifications: Certification[] = [
     year: '2024',
     type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'programming',
+    description: {
+      pt: 'Criação de apps Android e iOS com foco em UX, navegação e integração com APIs.',
+      en: 'Building Android and iOS apps focused on UX, navigation, and API integration.',
+      es: 'Creación de apps Android e iOS con foco en UX, navegación e integración con APIs.',
+    },
   },
   {
     name: { pt: 'Sistemas Operacionais de Redes', en: 'Network Operating Systems', es: 'Sistemas Operativos de Redes' },
@@ -106,6 +157,11 @@ const certifications: Certification[] = [
     year: '2023',
     type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'technical',
+    description: {
+      pt: 'Administração de servidores, protocolos de rede e configuração de ambientes Linux/Windows.',
+      en: 'Server administration, network protocols, and Linux/Windows environment configuration.',
+      es: 'Administración de servidores, protocolos de red y configuración de entornos Linux/Windows.',
+    },
   },
   {
     name: { pt: 'Internet das Coisas (IoT)', en: 'Internet of Things (IoT)', es: 'Internet de las Cosas (IoT)' },
@@ -113,6 +169,11 @@ const certifications: Certification[] = [
     year: '2024',
     type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'technical',
+    description: {
+      pt: 'Sensores, microcontroladores e dispositivos conectados aplicados a soluções inteligentes.',
+      en: 'Sensors, microcontrollers, and connected devices applied to smart solutions.',
+      es: 'Sensores, microcontroladores y dispositivos conectados aplicados a soluciones inteligentes.',
+    },
   },
 ];
 

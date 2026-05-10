@@ -210,9 +210,9 @@ export function ProjectsSection() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mb-12 sm:mb-20"
         >
-          <h3 className="text-lg sm:text-xl font-heading font-semibold text-primary flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
-            <div className="p-1.5 sm:p-2 rounded-lg bg-primary/20">
-              <Rocket className="w-4 h-4 sm:w-5 sm:h-5" />
+          <h3 className="text-lg sm:text-xl font-heading font-semibold text-primary flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8 group">
+            <div className="glow-icon w-9 h-9 sm:w-11 sm:h-11">
+              <Rocket className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2.4} />
             </div>
             {language === 'pt' ? 'Projetos RoVR' : language === 'es' ? 'Proyectos RoVR' : 'RoVR Projects'}
             <span className="ml-1 sm:ml-2 px-2 py-0.5 text-[10px] sm:text-xs rounded-full bg-accent/20 text-accent animate-pulse">
@@ -229,9 +229,12 @@ export function ProjectsSection() {
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <h3 className="text-lg sm:text-xl font-heading font-semibold text-emerald-400 flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
-            <div className="p-1.5 sm:p-2 rounded-lg bg-emerald-500/20">
-              <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5" />
+          <h3 className="text-lg sm:text-xl font-heading font-semibold text-emerald-400 flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8 group">
+            <div
+              className="glow-icon w-9 h-9 sm:w-11 sm:h-11"
+              style={{ backgroundImage: 'linear-gradient(135deg, #10b981 0%, #059669 100%)', boxShadow: '0 10px 30px -8px rgba(16,185,129,0.55), inset 0 1px 0 0 rgba(255,255,255,0.28), 0 0 0 1px rgba(255,255,255,0.18)' }}
+            >
+              <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2.4} />
             </div>
             {language === 'pt' ? 'Projetos Acadêmicos' : language === 'es' ? 'Proyectos Académicos' : 'Academic Projects'}
           </h3>
@@ -243,24 +246,28 @@ export function ProjectsSection() {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative p-5 rounded-2xl border border-border/50 bg-card/40 backdrop-blur-sm hover:border-primary/40 transition-all"
+                className="glow-card group block"
               >
-                <div className="flex items-center justify-between mb-3">
-                  <Github className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                </div>
-                <h4 className="font-heading font-semibold text-foreground mb-2">{project.name}</h4>
-                <p className="text-xs sm:text-sm text-muted-foreground mb-4 leading-relaxed">
-                  {project.description[language]}
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {project.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2 py-0.5 text-[10px] rounded-full bg-secondary/60 text-muted-foreground border border-border/40"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+                <div className="glow-card-inner p-5">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="glow-icon w-10 h-10" style={{ backgroundImage: 'linear-gradient(135deg, #1f2937 0%, #0f172a 100%)' }}>
+                      <Github className="w-5 h-5" strokeWidth={2.2} />
+                    </div>
+                  </div>
+                  <h4 className="font-heading font-semibold text-foreground mb-2">{project.name}</h4>
+                  <p className="text-xs sm:text-sm text-muted-foreground mb-4 leading-relaxed">
+                    {project.description[language]}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-0.5 text-[10px] rounded-full bg-secondary/60 text-muted-foreground border border-border/40"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </a>
             ))}

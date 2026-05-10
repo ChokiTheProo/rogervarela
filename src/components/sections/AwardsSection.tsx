@@ -45,7 +45,8 @@ export function AwardsSection() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="max-w-6xl mx-auto mb-12"
         >
-          <div className="relative p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-gradient-card border-2 border-primary/30 overflow-hidden">
+          <div className="glow-card group">
+            <div className="glow-card-inner p-4 sm:p-8 overflow-hidden">
             {/* Badge */}
             <div className="flex justify-center sm:absolute sm:top-4 sm:right-4 z-10 mb-4 sm:mb-0">
               <div className="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-amber-500/20 border border-amber-500/40">
@@ -106,7 +107,9 @@ export function AwardsSection() {
               className="mt-8 text-center"
             >
               <div className="flex items-center justify-center gap-3 mb-4">
-                <Trophy className="w-8 h-8 text-amber-400" />
+                <div className="glow-icon w-12 h-12" style={{ backgroundImage: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)', boxShadow: '0 10px 30px -8px rgba(245,158,11,0.6), inset 0 1px 0 0 rgba(255,255,255,0.28), 0 0 0 1px rgba(255,255,255,0.18)' }}>
+                  <Trophy className="w-6 h-6" strokeWidth={2.4} />
+                </div>
                 <h3 className="font-heading font-bold text-2xl text-foreground">
                   QITEC 2023
                 </h3>
@@ -207,6 +210,7 @@ export function AwardsSection() {
                 </Button>
               </div>
             </motion.div>
+            </div>
           </div>
         </motion.div>
       </div>

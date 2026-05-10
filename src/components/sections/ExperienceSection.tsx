@@ -165,31 +165,24 @@ export function ExperienceSection() {
                 onHoverStart={() => !isMobile && setHoveredIndex(index)}
                 onHoverEnd={() => !isMobile && setHoveredIndex(null)}
               >
-                {/* Timeline Dot */}
+                {/* Timeline Dot — premium glow icon */}
                 <motion.div 
-                  className={`absolute left-1.5 sm:left-5 top-2 w-5 h-5 sm:w-6 sm:h-6 rounded-full border-4 border-background z-10 ${
-                    exp.current ? 'bg-gradient-primary' : 'bg-primary/50'
-                  }`}
+                  className="absolute left-0 sm:left-2 top-0 w-10 h-10 sm:w-12 sm:h-12 rounded-2xl glow-icon z-10"
+                  style={!exp.current ? { backgroundImage: 'linear-gradient(135deg, hsl(var(--primary) / 0.7) 0%, hsl(var(--accent) / 0.55) 100%)' } : undefined}
                   animate={exp.current && !isMobile ? {
-                    scale: [1, 1.2, 1],
-                    boxShadow: [
-                      '0 0 0 0 hsl(var(--primary) / 0.4)',
-                      '0 0 0 10px hsl(var(--primary) / 0)',
-                      '0 0 0 0 hsl(var(--primary) / 0.4)',
-                    ]
+                    scale: [1, 1.08, 1],
                   } : {}}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
+                  transition={{ duration: 2.5, repeat: Infinity }}
+                >
+                  <Briefcase className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2.4} />
+                </motion.div>
 
                 {/* Card */}
-                <motion.div 
-                  className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-gradient-card border border-border/50 transition-all duration-300"
-                  whileHover={!isMobile ? { 
-                    scale: 1.02,
-                    borderColor: 'hsl(var(--primary) / 0.5)',
-                    boxShadow: '0 25px 50px -12px hsl(var(--primary) / 0.25)'
-                  } : undefined}
-                >
+                <div className="glow-card">
+                  <motion.div 
+                    className="glow-card-inner p-4 sm:p-6"
+                    whileHover={!isMobile ? { scale: 1.01 } : undefined}
+                  >
                   <div className="flex flex-wrap items-start justify-between gap-2 sm:gap-4 mb-3 sm:mb-4">
                     <div>
                       <motion.h3 
@@ -255,7 +248,8 @@ export function ExperienceSection() {
                       </motion.li>
                     ))}
                   </ul>
-                </motion.div>
+                  </motion.div>
+                </div>
               </motion.div>
             ))}
           </div>

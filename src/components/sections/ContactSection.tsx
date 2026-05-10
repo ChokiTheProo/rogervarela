@@ -180,8 +180,9 @@ export function ContactSection() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
             style={{ x: formX }}
-            className="p-8 rounded-2xl bg-gradient-card border border-border/50"
+            className="glow-card"
           >
+            <div className="glow-card-inner p-8">
             {isSuccess ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -266,6 +267,7 @@ export function ContactSection() {
                 </Button>
               </form>
             )}
+            </div>
           </motion.div>
 
           {/* Contact Info */}
@@ -283,15 +285,17 @@ export function ContactSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                className="p-6 rounded-xl bg-gradient-card border border-border/50 hover:border-primary/30 transition-colors group"
+                className="glow-card group"
               >
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-primary flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <info.icon className="w-6 h-6 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground mb-1">{info.label}</p>
-                    <p className="text-foreground font-medium">{info.value}</p>
+                <div className="glow-card-inner p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="glow-icon w-12 h-12">
+                      <info.icon className="w-6 h-6" strokeWidth={2.4} />
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground mb-1">{info.label}</p>
+                      <p className="text-foreground font-medium">{info.value}</p>
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -302,8 +306,9 @@ export function ContactSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.4, delay: 0.6 }}
-              className="p-6 rounded-xl bg-gradient-card border border-border/50"
+              className="glow-card"
             >
+              <div className="glow-card-inner p-6">
               <p className="text-sm text-muted-foreground mb-4">
                 {language === 'pt' ? 'Me encontre nas redes' : language === 'es' ? 'Encuéntrame en redes sociales' : 'Find me on social media'}
               </p>
@@ -314,11 +319,12 @@ export function ContactSection() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 rounded-lg bg-secondary hover:bg-primary/20 border border-border/50 hover:border-primary/50 flex items-center justify-center transition-all group"
+                    className="glow-icon group/icon w-12 h-12"
                   >
-                    <social.icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                    <social.icon className="w-5 h-5" strokeWidth={2.4} />
                   </a>
                 ))}
+              </div>
               </div>
             </motion.div>
           </motion.div>

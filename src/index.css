@@ -349,4 +349,14 @@
   .animate-gradient-x {
     animation: gradient-x 3s ease infinite;
   }
+
+  @property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  @keyframes spin-border {
+    to { --angle: 360deg; }
+  }
 }

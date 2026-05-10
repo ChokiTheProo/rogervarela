@@ -124,6 +124,53 @@ const categories = [
   { id: 'other', label: { pt: 'Outros', en: 'Other', es: 'Otros' }, icon: BookOpen },
 ];
 
+function getCertTheme(cert: Certification) {
+  const name = cert.name.pt.toLowerCase();
+  const inst = cert.institution.toLowerCase();
+
+  // Specific matches first
+  if (name.includes('javascript')) {
+    return { icon: FileCode, iconGradient: 'linear-gradient(135deg, #f7df1e 0%, #f0a500 100%)', borderGradient: 'linear-gradient(135deg, #f7df1e55, #f0a50033, transparent 70%)', shadowColor: '#f7df1e66' };
+  }
+  if (name.includes('java') && !name.includes('javascript')) {
+    return { icon: Coffee, iconGradient: 'linear-gradient(135deg, #f89820 0%, #e76f00 100%)', borderGradient: 'linear-gradient(135deg, #f8982055, #e76f0033, transparent 70%)', shadowColor: '#f8982066' };
+  }
+  if (name.includes('git')) {
+    return { icon: GitBranch, iconGradient: 'linear-gradient(135deg, #f05033 0%, #b34329 100%)', borderGradient: 'linear-gradient(135deg, #f0503355, #b3432933, transparent 70%)', shadowColor: '#f0503366' };
+  }
+  if (name.includes('mobile') || name.includes('aplicativ')) {
+    return { icon: Smartphone, iconGradient: 'linear-gradient(135deg, #06b6d4 0%, #2563eb 100%)', borderGradient: 'linear-gradient(135deg, #06b6d455, #2563eb33, transparent 70%)', shadowColor: '#06b6d466' };
+  }
+  if (name.includes('iot') || name.includes('coisas')) {
+    return { icon: Cpu, iconGradient: 'linear-gradient(135deg, #14b8a6 0%, #0ea5e9 100%)', borderGradient: 'linear-gradient(135deg, #14b8a655, #0ea5e933, transparent 70%)', shadowColor: '#14b8a666' };
+  }
+  if (name.includes('rede') || name.includes('sistemas operacionais') || name.includes('network')) {
+    return { icon: Network, iconGradient: 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)', borderGradient: 'linear-gradient(135deg, #6366f155, #4f46e533, transparent 70%)', shadowColor: '#6366f166' };
+  }
+  if (name.includes('lógica') || name.includes('logic') || name.includes('lógica de programação')) {
+    return { icon: Code, iconGradient: 'linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%)', borderGradient: 'linear-gradient(135deg, #8b5cf655, #6366f133, transparent 70%)', shadowColor: '#8b5cf666' };
+  }
+  if (name.includes('marketing')) {
+    return { icon: Megaphone, iconGradient: 'linear-gradient(135deg, #ec4899 0%, #f43f5e 100%)', borderGradient: 'linear-gradient(135deg, #ec489955, #f43f5e33, transparent 70%)', shadowColor: '#ec489966' };
+  }
+  if (cert.category === 'languages') {
+    return { icon: Languages, iconGradient: 'linear-gradient(135deg, #10b981 0%, #059669 100%)', borderGradient: 'linear-gradient(135deg, #10b98155, #05966933, transparent 70%)', shadowColor: '#10b98166' };
+  }
+  if (name.includes('informática básica') || name.includes('básica')) {
+    return { icon: Monitor, iconGradient: 'linear-gradient(135deg, #64748b 0%, #475569 100%)', borderGradient: 'linear-gradient(135deg, #64748b55, #47556933, transparent 70%)', shadowColor: '#64748b66' };
+  }
+  if (cert.type.pt === 'Formação Técnica') {
+    return { icon: GraduationCap, iconGradient: 'linear-gradient(135deg, #a855f7 0%, #6366f1 100%)', borderGradient: 'linear-gradient(135deg, #a855f755, #6366f133, transparent 70%)', shadowColor: '#a855f766' };
+  }
+  if (cert.category === 'technical') {
+    return { icon: Cpu, iconGradient: 'linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%)', borderGradient: 'linear-gradient(135deg, #0ea5e955, #6366f133, transparent 70%)', shadowColor: '#0ea5e966' };
+  }
+  if (cert.category === 'programming') {
+    return { icon: Code, iconGradient: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)', borderGradient: 'linear-gradient(135deg, #8b5cf655, #ec489933, transparent 70%)', shadowColor: '#8b5cf666' };
+  }
+  return { icon: BookOpen, iconGradient: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)', borderGradient: 'linear-gradient(135deg, #6366f155, #8b5cf633, transparent 70%)', shadowColor: '#6366f166' };
+}
+
 export function CertificationsSection() {
   const { t, language } = useLanguage();
   const ref = useRef(null);

@@ -106,19 +106,28 @@ export function AboutSection() {
                 </>
               )}
               
-              {/* Main Image Container */}
-              <div 
-                className="absolute inset-0 bg-gradient-card rounded-2xl border border-border overflow-hidden"
-                style={{ 
-                  transform: isMobile ? 'none' : 'translateZ(0px)',
-                  boxShadow: '0 25px 50px -12px hsl(var(--primary) / 0.25)'
+              {/* Animated Gradient Border */}
+              <div
+                className="absolute inset-0 rounded-2xl p-[2px] overflow-hidden"
+                style={{
+                  background: 'conic-gradient(from var(--angle, 0deg), hsl(var(--primary)), hsl(var(--accent)), #06b6d4, #a855f7, hsl(var(--primary)))',
+                  animation: isMobile ? 'none' : 'spin-border 6s linear infinite',
+                  boxShadow: '0 25px 50px -12px hsl(var(--primary) / 0.35), 0 0 0 1px hsl(var(--primary) / 0.2)',
                 }}
               >
-                <ImageZoom
-                  src="https://avatars.githubusercontent.com/u/119018632?v=4"
-                  alt="Roger Varela"
-                  className="w-full h-full"
-                />
+                {/* Inner Image Container */}
+                <div className="relative w-full h-full bg-gradient-card rounded-[14px] overflow-hidden">
+                  <ImageZoom
+                    src="https://avatars.githubusercontent.com/u/119018632?v=4"
+                    alt="Roger Varela"
+                    className="w-full h-full"
+                  />
+                  {/* Corner accents */}
+                  <div className="pointer-events-none absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-primary/70 rounded-tl-[14px]" />
+                  <div className="pointer-events-none absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-accent/70 rounded-tr-[14px]" />
+                  <div className="pointer-events-none absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-accent/70 rounded-bl-[14px]" />
+                  <div className="pointer-events-none absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-primary/70 rounded-br-[14px]" />
+                </div>
               </div>
               
               {/* Floating Glow Effects - simplified on mobile */}

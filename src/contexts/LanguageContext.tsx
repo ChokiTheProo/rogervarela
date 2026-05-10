@@ -22,20 +22,20 @@ const translations: Record<Language, Record<string, string>> = {
     // Hero
     'hero.greeting': 'Olá, eu sou',
     'hero.title': 'Desenvolvedor Low-Code & No-Code',
-    'hero.subtitle': 'Tiro ideias do papel rápido. Construo sites, landing pages e Micro-SaaS com Low-Code, No-Code e IA — do MVP à versão que vende.',
+    'hero.subtitle': 'Desenvolvo sites, landing pages e Micro-SaaS sob medida com Low-Code, No-Code e IA. Do MVP à versão de mercado — entrega ágil, código sustentável e foco em conversão.',
     'hero.cta.projects': 'Ver Projetos',
     'hero.cta.github': 'GitHub',
     'hero.cta.contact': 'Contato',
 
     // About
     'about.title': 'Sobre Mim',
-    'about.description': 'Construo produtos digitais que resolvem dor real — sem perder semanas em código boilerplate. Foco em entregar MVP funcional, página que converte e SaaS no ar em dias, não em meses. Stack moderna, decisão rápida, resultado mensurável.',
-    'about.highlight1.title': 'Velocidade de Execução',
-    'about.highlight1.desc': 'MVP no ar em dias. Iteração rápida, validação real e ciclo curto até o primeiro usuário pagante.',
+    'about.description': 'Desenvolvo produtos digitais sob medida — de landing pages de alta conversão a Micro-SaaS completos. Combino Low-Code, No-Code e IA para entregar soluções funcionais em prazos curtos, com qualidade técnica e foco no resultado de negócio.',
+    'about.highlight1.title': 'Entrega Ágil',
+    'about.highlight1.desc': 'MVPs em produção em poucos dias. Ciclos curtos de iteração e validação contínua até o primeiro resultado mensurável.',
     'about.highlight2.title': 'Foco em Resultado',
-    'about.highlight2.desc': 'Cada projeto começa com um problema claro e termina com algo que vende, converte ou economiza tempo.',
-    'about.highlight3.title': 'Stack Low-Code + IA',
-    'about.highlight3.desc': 'React, TypeScript, Lovable, Supabase e IA aplicada. Tecnologia moderna sem complicação desnecessária.',
+    'about.highlight2.desc': 'Cada projeto parte de um objetivo de negócio claro e termina em uma solução que vende, converte ou otimiza operações.',
+    'about.highlight3.title': 'Stack Moderna + IA',
+    'about.highlight3.desc': 'React, TypeScript, Lovable, Supabase e IA aplicada — tecnologia atual, arquitetura escalável e zero complexidade desnecessária.',
 
     // Certifications
     'certs.title': 'Certificações & Cursos',
@@ -47,7 +47,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Projects
     'projects.title': 'Projetos no Ar',
-    'projects.subtitle': 'SaaS, landing pages e ferramentas que já estão rodando — clique e veja funcionando.',
+    'projects.subtitle': 'Soluções em produção: SaaS, landing pages e ferramentas operando para clientes reais. Clique em qualquer projeto para acessar.',
     'projects.viewGithub': 'Ver no GitHub',
     'projects.viewDemo': 'Ver ao Vivo',
 
@@ -98,20 +98,20 @@ const translations: Record<Language, Record<string, string>> = {
     // Hero
     'hero.greeting': 'Hello, I am',
     'hero.title': 'Low-Code & No-Code Developer',
-    'hero.subtitle': 'I take ideas from sketch to live product fast. Sites, landing pages and Micro-SaaS built with Low-Code, No-Code and AI — from MVP to the version that actually sells.',
+    'hero.subtitle': 'I design and develop tailored websites, landing pages and Micro-SaaS using Low-Code, No-Code and AI. From MVP to market-ready — agile delivery, maintainable code, conversion-focused.',
     'hero.cta.projects': 'View Projects',
     'hero.cta.github': 'GitHub',
     'hero.cta.contact': 'Contact',
 
     // About
     'about.title': 'About Me',
-    'about.description': 'I build digital products that solve real pain — without spending weeks on boilerplate. Focus on shipping a working MVP, a page that converts, and SaaS live in days, not months. Modern stack, fast decisions, measurable outcomes.',
-    'about.highlight1.title': 'Execution Speed',
-    'about.highlight1.desc': 'MVPs live in days. Fast iteration, real validation, short loop to the first paying user.',
-    'about.highlight2.title': 'Outcome-Focused',
-    'about.highlight2.desc': 'Every project starts with a clear problem and ends with something that sells, converts or saves time.',
-    'about.highlight3.title': 'Low-Code + AI Stack',
-    'about.highlight3.desc': 'React, TypeScript, Lovable, Supabase and applied AI. Modern tech without unnecessary complexity.',
+    'about.description': 'I build tailored digital products — from high-conversion landing pages to full Micro-SaaS platforms. I combine Low-Code, No-Code and AI to deliver functional solutions on short timelines, with technical quality and a clear focus on business outcomes.',
+    'about.highlight1.title': 'Agile Delivery',
+    'about.highlight1.desc': 'MVPs in production within days. Short iteration cycles and continuous validation until the first measurable result.',
+    'about.highlight2.title': 'Outcome-Driven',
+    'about.highlight2.desc': 'Every project starts from a clear business goal and ends with a solution that sells, converts or streamlines operations.',
+    'about.highlight3.title': 'Modern Stack + AI',
+    'about.highlight3.desc': 'React, TypeScript, Lovable, Supabase and applied AI — current tech, scalable architecture and zero unnecessary complexity.',
 
     // Certifications
     'certs.title': 'Certifications & Courses',
@@ -123,7 +123,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Projects
     'projects.title': 'Projects Live',
-    'projects.subtitle': 'SaaS, landing pages and tools already running — click and see them working.',
+    'projects.subtitle': 'Live solutions: SaaS, landing pages and tools running for real clients. Click any project to open it.',
     'projects.viewGithub': 'View on GitHub',
     'projects.viewDemo': 'View Live',
 
@@ -174,20 +174,20 @@ const translations: Record<Language, Record<string, string>> = {
     // Hero
     'hero.greeting': 'Hola, soy',
     'hero.title': 'Desarrollador Low-Code & No-Code',
-    'hero.subtitle': 'Saco ideas del papel rápido. Construyo sitios, landing pages y Micro-SaaS con Low-Code, No-Code e IA — del MVP a la versión que vende.',
+    'hero.subtitle': 'Desarrollo sitios, landing pages y Micro-SaaS a medida con Low-Code, No-Code e IA. Del MVP a la versión de mercado — entrega ágil, código sostenible y enfoque en conversión.',
     'hero.cta.projects': 'Ver Proyectos',
     'hero.cta.github': 'GitHub',
     'hero.cta.contact': 'Contacto',
 
     // About
     'about.title': 'Sobre Mí',
-    'about.description': 'Construyo productos digitales que resuelven dolor real — sin gastar semanas en código boilerplate. Foco en entregar MVP funcional, página que convierte y SaaS en producción en días, no meses. Stack moderno, decisión rápida, resultado medible.',
-    'about.highlight1.title': 'Velocidad de Ejecución',
-    'about.highlight1.desc': 'MVP en producción en días. Iteración rápida, validación real, ciclo corto hasta el primer usuario que paga.',
-    'about.highlight2.title': 'Enfoque en Resultado',
-    'about.highlight2.desc': 'Cada proyecto empieza con un problema claro y termina con algo que vende, convierte o ahorra tiempo.',
-    'about.highlight3.title': 'Stack Low-Code + IA',
-    'about.highlight3.desc': 'React, TypeScript, Lovable, Supabase e IA aplicada. Tecnología moderna sin complicación innecesaria.',
+    'about.description': 'Desarrollo productos digitales a medida — desde landing pages de alta conversión hasta Micro-SaaS completos. Combino Low-Code, No-Code e IA para entregar soluciones funcionales en plazos cortos, con calidad técnica y foco en resultados de negocio.',
+    'about.highlight1.title': 'Entrega Ágil',
+    'about.highlight1.desc': 'MVPs en producción en pocos días. Ciclos cortos de iteración y validación continua hasta el primer resultado medible.',
+    'about.highlight2.title': 'Enfoque en Resultados',
+    'about.highlight2.desc': 'Cada proyecto parte de un objetivo de negocio claro y termina en una solución que vende, convierte u optimiza operaciones.',
+    'about.highlight3.title': 'Stack Moderno + IA',
+    'about.highlight3.desc': 'React, TypeScript, Lovable, Supabase e IA aplicada — tecnología actual, arquitectura escalable y cero complejidad innecesaria.',
 
     // Certifications
     'certs.title': 'Certificaciones & Cursos',
@@ -199,7 +199,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Projects
     'projects.title': 'Proyectos en Producción',
-    'projects.subtitle': 'SaaS, landing pages y herramientas que ya están corriendo — haz clic y míralos funcionando.',
+    'projects.subtitle': 'Soluciones en producción: SaaS, landing pages y herramientas operando para clientes reales. Haz clic en cualquier proyecto para acceder.',
     'projects.viewGithub': 'Ver en GitHub',
     'projects.viewDemo': 'Ver en Vivo',
 

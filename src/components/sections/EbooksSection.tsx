@@ -9,27 +9,27 @@ import { HorizonBackground } from '@/components/ui/horizon-hero-section';
 const translations = {
   pt: {
     badge: 'Portfólio Digital',
-    title: 'Sites que estão no ar',
-    description: 'Não é mockup nem template. São sites e blogs reais, em produção, gerando resultado pra clientes — clica e vê funcionando.',
+    title: 'Blogs & Sites em Produção',
+    description: 'Projetos reais publicados e em operação para clientes — sites institucionais, blogs e landing pages entregues, indexados e gerando resultado.',
     cta: 'Ver Sites no Ar',
     contact: 'Quero o Meu',
-    highlight: 'Projetos reais, rodando agora',
+    highlight: 'Projetos publicados e em operação',
   },
   en: {
     badge: 'Digital Portfolio',
-    title: 'Sites already live',
-    description: 'No mockups, no templates. Real sites and blogs in production, getting results for clients — click and see them working.',
+    title: 'Blogs & Sites in Production',
+    description: 'Real projects published and operating for clients — institutional sites, blogs and landing pages delivered, indexed and generating results.',
     cta: 'View Live Sites',
     contact: 'I Want Mine',
-    highlight: 'Real projects, running now',
+    highlight: 'Published projects, live in production',
   },
   es: {
     badge: 'Portafolio Digital',
-    title: 'Sitios ya en producción',
-    description: 'Sin mockups ni plantillas. Sitios y blogs reales en producción, generando resultado para clientes — haz clic y míralos funcionando.',
+    title: 'Blogs y Sitios en Producción',
+    description: 'Proyectos reales publicados y en operación para clientes — sitios institucionales, blogs y landing pages entregados, indexados y generando resultados.',
     cta: 'Ver Sitios en Vivo',
     contact: 'Quiero el Mío',
-    highlight: 'Proyectos reales, corriendo ahora',
+    highlight: 'Proyectos publicados y en operación',
   },
 };
 

@@ -333,42 +333,28 @@ export function SkillsSection() {
 
             {/* Decorative Element with Animation */}
             <motion.div 
-              initial={{ opacity: 0, y: 20, rotateX: isMobile ? 0 : -30 }}
-              animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.6 }}
-              whileHover={isMobile ? {} : { 
-                scale: 1.02, 
-                rotateY: -5,
-                boxShadow: '0 20px 40px -15px hsl(var(--accent) / 0.3)'
-              }}
-              className="mt-4 md:mt-6 p-4 md:p-6 rounded-2xl bg-gradient-card border border-border/50 cursor-pointer transition-all"
-              style={{ 
-                perspective: isMobile ? 'none' : '1000px',
-                transformStyle: isMobile ? 'flat' : 'preserve-3d'
-              }}
+              className="glow-card group mt-4 md:mt-6"
             >
-              <div className="flex items-center gap-3 md:gap-4">
-                <motion.div 
-                  className="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-accent/20 flex items-center justify-center text-2xl md:text-3xl"
-                  animate={isMobile ? {} : { 
-                    rotateZ: [0, 10, -10, 0],
-                    scale: [1, 1.1, 1]
-                  }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                >
-                  📚
-                </motion.div>
-                <div>
-                  <h4 className="font-heading font-semibold text-sm md:text-base text-foreground">
-                    {language === 'pt' ? 'Sempre Evoluindo' : language === 'es' ? 'Siempre Evolucionando' : 'Always Evolving'}
-                  </h4>
-                  <p className="text-xs md:text-sm text-muted-foreground">
-                    {language === 'pt'
-                      ? 'Constantemente aprendendo novas tecnologias e metodologias'
-                      : language === 'es'
-                      ? 'Constantemente aprendiendo nuevas tecnologías y metodologías'
-                      : 'Constantly learning new technologies and methodologies'}
-                  </p>
+              <div className="glow-card-inner p-4 md:p-6">
+                <div className="flex items-center gap-3 md:gap-4">
+                  <div className="glow-icon w-12 h-12 md:w-16 md:h-16 flex-shrink-0" style={{ backgroundImage: 'linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--primary)) 100%)' }}>
+                    <span className="relative z-10 text-2xl md:text-3xl">📚</span>
+                  </div>
+                  <div>
+                    <h4 className="font-heading font-semibold text-sm md:text-base text-foreground">
+                      {language === 'pt' ? 'Sempre Evoluindo' : language === 'es' ? 'Siempre Evolucionando' : 'Always Evolving'}
+                    </h4>
+                    <p className="text-xs md:text-sm text-muted-foreground">
+                      {language === 'pt'
+                        ? 'Constantemente aprendendo novas tecnologias e metodologias'
+                        : language === 'es'
+                        ? 'Constantemente aprendiendo nuevas tecnologías y metodologías'
+                        : 'Constantly learning new technologies and methodologies'}
+                    </p>
+                  </div>
                 </div>
               </div>
             </motion.div>

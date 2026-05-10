@@ -5,8 +5,8 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { ImageZoom } from '@/components/ui/image-zoom';
 import { useIsMobile } from '@/hooks/use-mobile';
-import qitecProject from '@/assets/qitec-project.png';
-import qitecAward from '@/assets/qitec-award.png';
+import qitecProject from '@/assets/qitec-project.webp';
+import qitecAward from '@/assets/qitec-award.webp';
 
 export function AwardsSection() {
   const { t, language } = useLanguage();

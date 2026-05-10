@@ -337,9 +337,13 @@ export function CertificationsSection() {
                 </div>
               )}
               
-              <h3 className="font-heading font-semibold text-base sm:text-lg text-foreground mb-2 sm:mb-3 pr-16 sm:pr-20">
+              <h3 className="font-heading font-semibold text-base sm:text-lg text-foreground mb-1.5 sm:mb-2 pr-16 sm:pr-20">
                 {cert.name[language]}
               </h3>
+
+              <p className="text-xs sm:text-sm text-muted-foreground/90 leading-relaxed mb-3 sm:mb-4">
+                {cert.description[language]}
+              </p>
               
               <div className="space-y-1.5 sm:space-y-2">
                 <div className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">

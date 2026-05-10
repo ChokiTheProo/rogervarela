@@ -364,4 +364,111 @@
   @keyframes spin-border {
     to { --angle: 360deg; }
   }
+
+  /* ============================================================
+     GLOW CARD — animated conic-gradient border + hover glow
+     Use .glow-card on the wrapper and .glow-card-inner on its child.
+     ============================================================ */
+  .glow-card {
+    position: relative;
+    border-radius: 1rem;
+    padding: 2px;
+    background-image: conic-gradient(
+      from var(--angle, 0deg) at 50% 50%,
+      hsl(var(--primary) / 0.55),
+      transparent 35%,
+      hsl(var(--accent) / 0.45) 60%,
+      transparent 85%,
+      hsl(var(--primary) / 0.55)
+    );
+    animation: spin-border 10s linear infinite;
+    transition: transform 0.4s ease;
+  }
+  .glow-card::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: inherit;
+    background:
+      radial-gradient(circle at 30% 30%, hsl(var(--primary) / 0.45), transparent 60%),
+      radial-gradient(circle at 70% 70%, hsl(var(--accent) / 0.35), transparent 60%);
+    filter: blur(28px);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+  }
+  .glow-card:hover::before { opacity: 0.85; }
+  .glow-card:hover { transform: translateY(-4px); }
+
+  .glow-card-inner {
+    position: relative;
+    height: 100%;
+    border-radius: calc(1rem - 2px);
+    background: hsl(var(--card) / 0.95);
+    backdrop-filter: blur(12px);
+    overflow: hidden;
+  }
+  .glow-card-inner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 0%, hsl(var(--primary) / 0.18), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+  .glow-card:hover .glow-card-inner::after { opacity: 1; }
+
+  /* ============================================================
+     GLOW ICON — premium gradient icon container w/ halo + gloss
+     ============================================================ */
+  .glow-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    background-image: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+    box-shadow:
+      0 10px 30px -8px hsl(var(--primary) / 0.55),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.28),
+      0 0 0 1px rgba(255, 255, 255, 0.18);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+  }
+  .glow-icon::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: inherit;
+    background-image: inherit;
+    filter: blur(18px);
+    opacity: 0.45;
+    z-index: -1;
+    transition: opacity 0.5s ease;
+  }
+  .glow-icon::after {
+    content: '';
+    position: absolute;
+    inset: 4px 4px auto 4px;
+    height: 35%;
+    border-radius: 0.75rem 0.75rem 0 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.32), transparent);
+    pointer-events: none;
+  }
+  .group:hover .glow-icon,
+  .glow-icon:hover {
+    transform: scale(1.08) rotate(-4deg);
+  }
+  .group:hover .glow-icon::before,
+  .glow-icon:hover::before {
+    opacity: 0.85;
+  }
+  .glow-icon > svg {
+    position: relative;
+    z-index: 1;
+    color: white;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+  }
 }
+

@@ -4,7 +4,6 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { ParticleBackground } from '@/components/ParticleBackground';
 import { TubesBackground } from '@/components/TubesBackground';
-import { Logo3D } from '@/components/Logo3D';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useTypewriter } from '@/hooks/use-typewriter';
 import { useMemo } from 'react';
@@ -64,16 +63,7 @@ export function HeroSection() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
         )}
         
-        {/* Grid Pattern - hidden on mobile for performance */}
-        {!isMobile && (
-          <div className="absolute inset-0 opacity-5"
-            style={{
-              backgroundImage: `linear-gradient(hsl(var(--primary)) 1px, transparent 1px),
-                               linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)`,
-              backgroundSize: '60px 60px',
-            }}
-          />
-        )}
+        {/* Grid Pattern removed */}
       </div>
 
       <div className="container mx-auto px-4 relative z-10 pt-20 sm:pt-16">
@@ -93,10 +83,9 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="flex flex-col items-center justify-center gap-2 sm:flex-row sm:gap-4 mb-3 sm:mb-4"
+            className="mb-3 sm:mb-4"
           >
-            <Logo3D size={isMobile ? "md" : "lg"} />
-            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-bold">
               <span className="text-foreground">Roger </span>
               <span className="text-gradient">Varela</span>
             </h1>

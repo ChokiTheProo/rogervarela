@@ -105,13 +105,13 @@ const translations: Record<Language, Record<string, string>> = {
 
     // About
     'about.title': 'About Me',
-    'about.description': 'I build digital products that solve real pain — without spending weeks on boilerplate. Focus on shipping a working MVP, a page that converts, and SaaS live in days, not months. Modern stack, fast decisions, measurable outcomes.',
-    'about.highlight1.title': 'Execution Speed',
-    'about.highlight1.desc': 'MVPs live in days. Fast iteration, real validation, short loop to the first paying user.',
-    'about.highlight2.title': 'Outcome-Focused',
-    'about.highlight2.desc': 'Every project starts with a clear problem and ends with something that sells, converts or saves time.',
-    'about.highlight3.title': 'Low-Code + AI Stack',
-    'about.highlight3.desc': 'React, TypeScript, Lovable, Supabase and applied AI. Modern tech without unnecessary complexity.',
+    'about.description': 'I build tailored digital products — from high-conversion landing pages to full Micro-SaaS platforms. I combine Low-Code, No-Code and AI to deliver functional solutions on short timelines, with technical quality and a clear focus on business outcomes.',
+    'about.highlight1.title': 'Agile Delivery',
+    'about.highlight1.desc': 'MVPs in production within days. Short iteration cycles and continuous validation until the first measurable result.',
+    'about.highlight2.title': 'Outcome-Driven',
+    'about.highlight2.desc': 'Every project starts from a clear business goal and ends with a solution that sells, converts or streamlines operations.',
+    'about.highlight3.title': 'Modern Stack + AI',
+    'about.highlight3.desc': 'React, TypeScript, Lovable, Supabase and applied AI — current tech, scalable architecture and zero unnecessary complexity.',
 
     // Certifications
     'certs.title': 'Certifications & Courses',

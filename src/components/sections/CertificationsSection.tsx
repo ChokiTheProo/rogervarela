@@ -226,7 +226,6 @@ export function CertificationsSection() {
                 >
                   <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-white relative z-10" strokeWidth={2.2} />
-                  )}
                 </div>
               )}
               
@@ -249,9 +248,10 @@ export function CertificationsSection() {
                   )}
                 </div>
               </div>
-
+              </div>
             </motion.div>
-          ))}
+            );
+          })}
         </motion.div>
 
         {filteredCertifications.length === 0 && (

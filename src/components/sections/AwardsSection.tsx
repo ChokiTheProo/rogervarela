@@ -107,7 +107,9 @@ export function AwardsSection() {
               className="mt-8 text-center"
             >
               <div className="flex items-center justify-center gap-3 mb-4">
-                <Trophy className="w-8 h-8 text-amber-400" />
+                <div className="glow-icon w-12 h-12" style={{ backgroundImage: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)', boxShadow: '0 10px 30px -8px rgba(245,158,11,0.6), inset 0 1px 0 0 rgba(255,255,255,0.28), 0 0 0 1px rgba(255,255,255,0.18)' }}>
+                  <Trophy className="w-6 h-6" strokeWidth={2.4} />
+                </div>
                 <h3 className="font-heading font-bold text-2xl text-foreground">
                   QITEC 2023
                 </h3>

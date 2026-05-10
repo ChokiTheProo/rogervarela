@@ -92,10 +92,9 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="flex flex-col items-center justify-center gap-2 sm:flex-row sm:gap-4 mb-3 sm:mb-4"
+            className="mb-3 sm:mb-4"
           >
-            <Logo3D size={isMobile ? "md" : "lg"} />
-            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-bold">
               <span className="text-foreground">Roger </span>
               <span className="text-gradient">Varela</span>
             </h1>

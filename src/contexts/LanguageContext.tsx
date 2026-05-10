@@ -29,13 +29,13 @@ const translations: Record<Language, Record<string, string>> = {
 
     // About
     'about.title': 'Sobre Mim',
-    'about.description': 'Construo produtos digitais que resolvem dor real — sem perder semanas em código boilerplate. Foco em entregar MVP funcional, página que converte e SaaS no ar em dias, não em meses. Stack moderna, decisão rápida, resultado mensurável.',
-    'about.highlight1.title': 'Velocidade de Execução',
-    'about.highlight1.desc': 'MVP no ar em dias. Iteração rápida, validação real e ciclo curto até o primeiro usuário pagante.',
+    'about.description': 'Desenvolvo produtos digitais sob medida — de landing pages de alta conversão a Micro-SaaS completos. Combino Low-Code, No-Code e IA para entregar soluções funcionais em prazos curtos, com qualidade técnica e foco no resultado de negócio.',
+    'about.highlight1.title': 'Entrega Ágil',
+    'about.highlight1.desc': 'MVPs em produção em poucos dias. Ciclos curtos de iteração e validação contínua até o primeiro resultado mensurável.',
     'about.highlight2.title': 'Foco em Resultado',
-    'about.highlight2.desc': 'Cada projeto começa com um problema claro e termina com algo que vende, converte ou economiza tempo.',
-    'about.highlight3.title': 'Stack Low-Code + IA',
-    'about.highlight3.desc': 'React, TypeScript, Lovable, Supabase e IA aplicada. Tecnologia moderna sem complicação desnecessária.',
+    'about.highlight2.desc': 'Cada projeto parte de um objetivo de negócio claro e termina em uma solução que vende, converte ou otimiza operações.',
+    'about.highlight3.title': 'Stack Moderna + IA',
+    'about.highlight3.desc': 'React, TypeScript, Lovable, Supabase e IA aplicada — tecnologia atual, arquitetura escalável e zero complexidade desnecessária.',
 
     // Certifications
     'certs.title': 'Certificações & Cursos',

@@ -39,6 +39,9 @@ export const EbooksSection = () => {
 
   return (
     <section id="sites" className="py-20 md:py-32 relative overflow-hidden">
+      {/* Cosmic 3D background */}
+      <HorizonBackground />
+
       {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />

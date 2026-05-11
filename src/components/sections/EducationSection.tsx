@@ -65,25 +65,32 @@ export function EducationSection() {
       <motion.div style={{ y: backgroundY }} className="absolute right-0 top-1/3 w-1/3 h-96 bg-gradient-glow opacity-20" />
       
       <div className="container mx-auto px-4 relative z-10" ref={ref}>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="section-title mb-4">
+        <LampContainer className="!min-h-[360px] md:!min-h-[500px] !bg-transparent mb-[-180px] md:mb-[-240px]">
+          <motion.h2
+            initial={{ opacity: 0.5, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.8, ease: 'easeInOut' }}
+            className="section-title text-center text-3xl md:text-5xl lg:text-6xl font-heading font-bold"
+          >
             <span className="text-gradient">
               {language === 'pt' ? 'Formação Acadêmica' : language === 'es' ? 'Formación Académica' : 'Education'}
             </span>
-          </h2>
-          <p className="section-subtitle mx-auto">
-            {language === 'pt' 
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.6, duration: 0.6 }}
+            className="section-subtitle mx-auto text-center mt-4"
+          >
+            {language === 'pt'
               ? 'Minha jornada educacional em tecnologia e desenvolvimento'
               : language === 'es'
               ? 'Mi trayectoria educativa en tecnología y desarrollo'
               : 'My educational journey in technology and development'}
-          </p>
-        </motion.div>
+          </motion.p>
+        </LampContainer>
 
         <div className="max-w-3xl mx-auto">
           <div className="relative">

@@ -13,9 +13,6 @@ export default {
       },
     },
     extend: {
-      backgroundImage: {
-        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
       fontFamily: {
         heading: ['Outfit', 'sans-serif'],
         body: ['Inter', 'sans-serif'],

@@ -164,38 +164,43 @@ export function Header() {
         <motion.a
           href="/"
           onClick={handleLogoClick}
-          className="relative group flex-shrink-0"
+          className="relative group flex-shrink-0 flex items-center gap-2.5"
           variants={logoVariants}
           initial="initial"
           animate="animate"
           whileHover="hover"
+          aria-label="Roger Varela - Home"
         >
-          <motion.span
-            className="text-2xl font-heading font-bold text-gradient relative z-10 block"
-          >
-            RV
-          </motion.span>
-          
-          {/* Logo glow effect */}
-          <motion.div
-            className="absolute -inset-2 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-lg blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          />
-          
-          {/* Sparkle effect */}
-          <motion.div
-            className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100"
-            animate={{
-              scale: [1, 1.2, 1],
-              rotate: [0, 180, 360],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-          >
-            <Sparkles className="w-3 h-3 text-primary" />
-          </motion.div>
+          {/* Logo Box */}
+          <div className="relative">
+            <motion.div
+              className="absolute -inset-1.5 rounded-xl opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+              style={{
+                background: 'conic-gradient(from 0deg, hsl(var(--primary)), hsl(var(--accent)), #06b6d4, hsl(var(--primary)))',
+                filter: 'blur(8px)',
+              }}
+              animate={{ rotate: 360 }}
+              transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
+            />
+            <div
+              className="relative w-10 h-10 rounded-xl flex items-center justify-center font-heading font-black text-base bg-card border border-primary/30"
+              style={{
+                boxShadow: 'inset 0 1px 0 hsl(var(--primary) / 0.25), 0 4px 16px -4px hsl(var(--primary) / 0.4)',
+              }}
+            >
+              <span className="bg-gradient-to-br from-primary via-primary to-accent bg-clip-text text-transparent">
+                RV
+              </span>
+              {/* Sparkle */}
+              <motion.div
+                className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                animate={{ scale: [1, 1.3, 1], rotate: [0, 180, 360] }}
+                transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
+              >
+                <Sparkles className="w-3 h-3 text-accent" />
+              </motion.div>
+            </div>
+          </div>
         </motion.a>
 
         {/* Desktop Navigation */}

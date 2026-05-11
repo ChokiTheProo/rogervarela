@@ -106,11 +106,20 @@ export function Header() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled 
-          ? 'glass py-3 shadow-lg shadow-primary/5' 
-          : 'bg-transparent py-5'
+        isScrolled ? 'py-2 sm:py-3' : 'py-3 sm:py-5'
       }`}
     >
+      {/* Floating glass container */}
+      <div
+        className={`pointer-events-none absolute inset-x-3 sm:inset-x-6 top-2 sm:top-3 bottom-1 rounded-2xl transition-all duration-500 ${
+          isScrolled
+            ? 'bg-background/40 backdrop-blur-2xl border border-border/40 shadow-[0_10px_40px_-15px_hsl(var(--primary)/0.35)] ring-1 ring-white/5'
+            : 'bg-background/10 backdrop-blur-xl border border-border/20'
+        }`}
+      >
+        {/* Top luminous edge */}
+        <div className="absolute -top-px left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
+      </div>
       {/* Animated background glow */}
       <motion.div
         className="absolute inset-0 pointer-events-none overflow-hidden"
@@ -155,17 +164,14 @@ export function Header() {
           animate="animate"
           whileHover="hover"
         >
-          <motion.span
-            className="text-2xl font-heading font-bold text-gradient relative z-10 block"
-          >
-            RV
-          </motion.span>
-          
-          {/* Logo glow effect */}
-          <motion.div
-            className="absolute -inset-2 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-lg blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          />
-          
+          <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-xl p-[1.5px] bg-gradient-to-br from-primary via-accent to-primary shadow-[0_0_20px_-4px_hsl(var(--primary)/0.6)] group-hover:shadow-[0_0_28px_-4px_hsl(var(--accent)/0.7)] transition-shadow duration-500">
+            <div className="w-full h-full rounded-[10px] bg-background/90 backdrop-blur-md flex items-center justify-center">
+              <span className="text-lg sm:text-xl font-heading font-black text-gradient tracking-tighter leading-none">
+                RV
+              </span>
+            </div>
+          </div>
+
           {/* Sparkle effect */}
           <motion.div
             className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100"
@@ -186,7 +192,7 @@ export function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center">
           <motion.div 
-            className="flex items-center gap-2 px-2 py-1.5 rounded-full bg-card/50 border border-border/30 backdrop-blur-md"
+            className="flex items-center gap-0.5 p-1 rounded-full bg-background/40 border border-border/40 backdrop-blur-xl ring-1 ring-white/5 shadow-inner"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -258,6 +264,7 @@ export function Header() {
           >
             <ThemeToggle />
           </motion.div>
+          <div className="hidden sm:block h-5 w-px bg-border/50 mx-1" />
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}

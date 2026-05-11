@@ -264,6 +264,7 @@ export function Header() {
           >
             <ThemeToggle />
           </motion.div>
+          <div className="hidden sm:block h-5 w-px bg-border/50 mx-1" />
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}

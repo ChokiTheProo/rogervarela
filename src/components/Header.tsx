@@ -208,7 +208,7 @@ export function Header() {
                 transition={{ delay: 0.3 + index * 0.05, duration: 0.4 }}
                 onHoverStart={() => setHoveredIndex(index)}
                 onHoverEnd={() => setHoveredIndex(null)}
-                className="relative px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-all duration-300 cursor-pointer rounded-full"
+                className="relative px-4 py-1.5 text-[13px] font-medium tracking-tight text-muted-foreground hover:text-foreground transition-all duration-300 cursor-pointer rounded-full"
               >
                 {/* Active/Hover background pill */}
                 <motion.span

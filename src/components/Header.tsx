@@ -164,17 +164,14 @@ export function Header() {
           animate="animate"
           whileHover="hover"
         >
-          <motion.span
-            className="text-2xl font-heading font-bold text-gradient relative z-10 block"
-          >
-            RV
-          </motion.span>
-          
-          {/* Logo glow effect */}
-          <motion.div
-            className="absolute -inset-2 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-lg blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          />
-          
+          <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-xl p-[1.5px] bg-gradient-to-br from-primary via-accent to-primary shadow-[0_0_20px_-4px_hsl(var(--primary)/0.6)] group-hover:shadow-[0_0_28px_-4px_hsl(var(--accent)/0.7)] transition-shadow duration-500">
+            <div className="w-full h-full rounded-[10px] bg-background/90 backdrop-blur-md flex items-center justify-center">
+              <span className="text-lg sm:text-xl font-heading font-black text-gradient tracking-tighter leading-none">
+                RV
+              </span>
+            </div>
+          </div>
+
           {/* Sparkle effect */}
           <motion.div
             className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100"
@@ -195,7 +192,7 @@ export function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center">
           <motion.div 
-            className="flex items-center gap-2 px-2 py-1.5 rounded-full bg-card/50 border border-border/30 backdrop-blur-md"
+            className="flex items-center gap-0.5 p-1 rounded-full bg-background/40 border border-border/40 backdrop-blur-xl ring-1 ring-white/5 shadow-inner"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}

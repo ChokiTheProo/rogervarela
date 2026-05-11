@@ -192,7 +192,7 @@ export function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center">
           <motion.div 
-            className="flex items-center gap-0.5 p-1 rounded-full bg-background/40 border border-border/40 backdrop-blur-xl ring-1 ring-white/5 shadow-inner"
+            className="flex items-center gap-0.5 p-1.5 rounded-full bg-white/[0.04] dark:bg-white/[0.04] border border-border/40 backdrop-blur-xl shadow-[0_8px_32px_-12px_rgba(0,0,0,0.4)] transition-all duration-300 hover:border-primary/30"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -208,17 +208,17 @@ export function Header() {
                 transition={{ delay: 0.3 + index * 0.05, duration: 0.4 }}
                 onHoverStart={() => setHoveredIndex(index)}
                 onHoverEnd={() => setHoveredIndex(null)}
-                className="relative px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-all duration-300 cursor-pointer rounded-full"
+                className="relative px-4 py-1.5 text-[13px] font-medium tracking-tight text-muted-foreground hover:text-foreground transition-all duration-300 cursor-pointer rounded-full"
               >
                 {/* Active/Hover background pill */}
                 <motion.span
-                  className="absolute inset-0 rounded-full bg-primary/15 border border-primary/20"
-                  initial={{ opacity: 0, scale: 0.8 }}
+                  className="absolute inset-0 rounded-full bg-white/10 border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
+                  initial={{ opacity: 0, scale: 0.9 }}
                   animate={{
                     opacity: hoveredIndex === index ? 1 : 0,
-                    scale: hoveredIndex === index ? 1 : 0.8
+                    scale: hoveredIndex === index ? 1 : 0.9
                   }}
-                  transition={{ duration: 0.2, ease: "easeOut" }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
                 />
                 
                 {/* Text */}
@@ -247,24 +247,17 @@ export function Header() {
           </motion.div>
         </nav>
 
-        <div className="flex items-center gap-1 sm:gap-2">
+        <div className="flex items-center gap-2 sm:gap-3">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5, duration: 0.5 }}
-            className="hidden sm:block"
+            className="hidden sm:flex items-center gap-0.5 p-1 rounded-full bg-white/[0.04] border border-border/40 backdrop-blur-xl shadow-[0_4px_20px_-8px_rgba(0,0,0,0.3)]"
           >
             <ContrastToggle />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.55, duration: 0.5 }}
-            className="hidden sm:block"
-          >
+            <div className="h-4 w-px bg-border/60" />
             <ThemeToggle />
           </motion.div>
-          <div className="hidden sm:block h-5 w-px bg-border/50 mx-1" />
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}

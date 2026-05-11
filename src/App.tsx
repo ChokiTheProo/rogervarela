@@ -28,12 +28,21 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Faster loading - reduced from 2500ms to 1500ms
-    const timer = setTimeout(() => {
+    // Hide loading once the window has finished loading; fast cap at 800ms
+    const cap = setTimeout(() => setIsLoading(false), 800);
+    const onLoad = () => {
+      clearTimeout(cap);
       setIsLoading(false);
-    }, 1500);
-
-    return () => clearTimeout(timer);
+    };
+    if (document.readyState === 'complete') {
+      onLoad();
+    } else {
+      window.addEventListener('load', onLoad, { once: true });
+    }
+    return () => {
+      clearTimeout(cap);
+      window.removeEventListener('load', onLoad);
+    };
   }, []);
 
   return (

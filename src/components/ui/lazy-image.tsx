@@ -1,4 +1,4 @@
-import { useState, memo } from 'react';
+import { useState, useRef, useEffect, memo } from 'react';
 import { Skeleton } from './skeleton';
 import { cn } from '@/lib/utils';
 
@@ -8,7 +8,6 @@ interface LazyImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   className?: string;
   containerClassName?: string;
   skeletonClassName?: string;
-  eager?: boolean;
 }
 
 export const LazyImage = memo(function LazyImage({
@@ -17,33 +16,58 @@ export const LazyImage = memo(function LazyImage({
   className,
   containerClassName,
   skeletonClassName,
-  eager = false,
   ...props
 }: LazyImageProps) {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const imgRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '500px 0px', threshold: 0.01 }
+    );
+
+    if (imgRef.current) {
+      observer.observe(imgRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div className={cn('relative', containerClassName)}>
+    <div ref={imgRef} className={cn('relative', containerClassName)}>
+      {/* Skeleton placeholder */}
       {!isLoaded && (
-        <Skeleton
-          className={cn('absolute inset-0 w-full h-full', skeletonClassName)}
+        <Skeleton 
+          className={cn(
+            'absolute inset-0 w-full h-full',
+            skeletonClassName
+          )} 
         />
       )}
-      <img
-        src={src}
-        alt={alt}
-        loading={eager ? 'eager' : 'lazy'}
-        decoding="async"
-        // @ts-expect-error - fetchpriority is valid HTML
-        fetchpriority={eager ? 'high' : 'auto'}
-        onLoad={() => setIsLoaded(true)}
-        className={cn(
-          'transition-opacity duration-300',
-          isLoaded ? 'opacity-100' : 'opacity-0',
-          className
-        )}
-        {...props}
-      />
+      
+      {/* Actual image - only load when in view */}
+      {isInView && (
+        <img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          decoding="async"
+          onLoad={() => setIsLoaded(true)}
+          className={cn(
+            'transition-opacity duration-500',
+            isLoaded ? 'opacity-100' : 'opacity-0',
+            className
+          )}
+          {...props}
+        />
+      )}
     </div>
   );
 });

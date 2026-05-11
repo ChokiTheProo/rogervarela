@@ -1,20 +1,24 @@
+import { lazy, Suspense } from 'react';
 import { Header } from '@/components/Header';
 import { HeroSection } from '@/components/sections/HeroSection';
-import { AboutSection } from '@/components/sections/AboutSection';
-import { EducationSection } from '@/components/sections/EducationSection';
-import { CertificationsSection } from '@/components/sections/CertificationsSection';
-import { ExperienceSection } from '@/components/sections/ExperienceSection';
-import { ProjectsSection } from '@/components/sections/ProjectsSection';
-import { EbooksSection } from '@/components/sections/EbooksSection';
-import { CoursesSection } from '@/components/sections/CoursesSection';
-import { GitHubSection } from '@/components/sections/GitHubSection';
-import { AwardsSection } from '@/components/sections/AwardsSection';
-import { SkillsSection } from '@/components/sections/SkillsSection';
-import { ContactSection } from '@/components/sections/ContactSection';
-import { Footer } from '@/components/Footer';
 import { PageTransition } from '@/components/PageTransition';
 import { ParallaxStarsBackground } from '@/components/ParallaxStarsBackground';
 
+// Lazy-load below-the-fold sections for faster initial paint
+const AboutSection = lazy(() => import('@/components/sections/AboutSection').then(m => ({ default: m.AboutSection })));
+const EducationSection = lazy(() => import('@/components/sections/EducationSection').then(m => ({ default: m.EducationSection })));
+const CertificationsSection = lazy(() => import('@/components/sections/CertificationsSection').then(m => ({ default: m.CertificationsSection })));
+const ExperienceSection = lazy(() => import('@/components/sections/ExperienceSection').then(m => ({ default: m.ExperienceSection })));
+const ProjectsSection = lazy(() => import('@/components/sections/ProjectsSection').then(m => ({ default: m.ProjectsSection })));
+const EbooksSection = lazy(() => import('@/components/sections/EbooksSection').then(m => ({ default: m.EbooksSection })));
+const CoursesSection = lazy(() => import('@/components/sections/CoursesSection').then(m => ({ default: m.CoursesSection })));
+const GitHubSection = lazy(() => import('@/components/sections/GitHubSection').then(m => ({ default: m.GitHubSection })));
+const AwardsSection = lazy(() => import('@/components/sections/AwardsSection').then(m => ({ default: m.AwardsSection })));
+const SkillsSection = lazy(() => import('@/components/sections/SkillsSection').then(m => ({ default: m.SkillsSection })));
+const ContactSection = lazy(() => import('@/components/sections/ContactSection').then(m => ({ default: m.ContactSection })));
+const Footer = lazy(() => import('@/components/Footer').then(m => ({ default: m.Footer })));
+
+const SectionFallback = () => <div className="min-h-[40vh]" />;
 
 const Index = () => {
   return (
@@ -24,19 +28,23 @@ const Index = () => {
         <Header />
         <main>
           <HeroSection />
-          <AboutSection />
-          <EducationSection />
-          <CertificationsSection />
-          <ExperienceSection />
-          <ProjectsSection />
-          <EbooksSection />
-          <CoursesSection />
-          <GitHubSection />
-          <AwardsSection />
-          <SkillsSection />
-          <ContactSection />
+          <Suspense fallback={<SectionFallback />}>
+            <AboutSection />
+            <EducationSection />
+            <CertificationsSection />
+            <ExperienceSection />
+            <ProjectsSection />
+            <EbooksSection />
+            <CoursesSection />
+            <GitHubSection />
+            <AwardsSection />
+            <SkillsSection />
+            <ContactSection />
+          </Suspense>
         </main>
-        <Footer />
+        <Suspense fallback={null}>
+          <Footer />
+        </Suspense>
       </div>
     </PageTransition>
   );

@@ -323,6 +323,18 @@ export function Header() {
         </div>
       </div>
 
+      {/* Scroll progress bar */}
+      <motion.div
+        className="absolute bottom-0 left-0 h-[2px] origin-left"
+        style={{
+          width: `${scrollProgress}%`,
+          background: 'linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)), #06b6d4)',
+          boxShadow: '0 0 10px hsl(var(--primary) / 0.6)',
+          opacity: isScrolled ? 1 : 0,
+          transition: 'opacity 0.3s ease',
+        }}
+      />
+
       {/* Mobile Menu - Simplified for touch reliability */}
       {isMobileMenuOpen && (
         <div className="lg:hidden glass mt-2 mx-3 sm:mx-4 rounded-xl overflow-hidden border border-primary/10">

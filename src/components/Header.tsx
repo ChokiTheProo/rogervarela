@@ -247,24 +247,17 @@ export function Header() {
           </motion.div>
         </nav>
 
-        <div className="flex items-center gap-1 sm:gap-2">
+        <div className="flex items-center gap-2 sm:gap-3">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5, duration: 0.5 }}
-            className="hidden sm:block"
+            className="hidden sm:flex items-center gap-0.5 p-1 rounded-full bg-white/[0.04] border border-border/40 backdrop-blur-xl shadow-[0_4px_20px_-8px_rgba(0,0,0,0.3)]"
           >
             <ContrastToggle />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.55, duration: 0.5 }}
-            className="hidden sm:block"
-          >
+            <div className="h-4 w-px bg-border/60" />
             <ThemeToggle />
           </motion.div>
-          <div className="hidden sm:block h-5 w-px bg-border/50 mx-1" />
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}

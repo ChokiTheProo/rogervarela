@@ -106,11 +106,20 @@ export function Header() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled 
-          ? 'glass py-3 shadow-lg shadow-primary/5' 
-          : 'bg-transparent py-5'
+        isScrolled ? 'py-2 sm:py-3' : 'py-3 sm:py-5'
       }`}
     >
+      {/* Floating glass container */}
+      <div
+        className={`pointer-events-none absolute inset-x-3 sm:inset-x-6 top-2 sm:top-3 bottom-1 rounded-2xl transition-all duration-500 ${
+          isScrolled
+            ? 'bg-background/40 backdrop-blur-2xl border border-border/40 shadow-[0_10px_40px_-15px_hsl(var(--primary)/0.35)] ring-1 ring-white/5'
+            : 'bg-background/10 backdrop-blur-xl border border-border/20'
+        }`}
+      >
+        {/* Top luminous edge */}
+        <div className="absolute -top-px left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
+      </div>
       {/* Animated background glow */}
       <motion.div
         className="absolute inset-0 pointer-events-none overflow-hidden"

@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { GraduationCap, Calendar, MapPin, Download } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
+import { LampContainer } from '@/components/ui/lamp';
 
 const education = [
   {

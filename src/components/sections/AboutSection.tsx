@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import { Rocket, Target, Sparkles } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { ImageZoom } from '@/components/ui/image-zoom';
+import { LampContainer } from '@/components/ui/lamp';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const highlights = [
@@ -54,19 +55,16 @@ export function AboutSection() {
       </div>
       
       <div className="container mx-auto px-4 relative z-10" ref={ref}>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-8 md:mb-16"
-        >
-          <motion.h2 
-            className="section-title mb-4 text-2xl md:text-4xl"
-            whileHover={isMobile ? {} : { scale: 1.02 }}
+        <LampContainer className="!min-h-[340px] md:!min-h-[480px] !bg-transparent mb-[-180px] md:mb-[-240px]">
+          <motion.h2
+            initial={{ opacity: 0.5, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.8, ease: 'easeInOut' }}
+            className="section-title text-center text-3xl md:text-5xl lg:text-6xl font-heading font-bold"
           >
             <span className="text-gradient">{t('about.title')}</span>
           </motion.h2>
-        </motion.div>
+        </LampContainer>
 
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* 3D Image Section */}

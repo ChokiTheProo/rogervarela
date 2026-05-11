@@ -205,63 +205,74 @@ export function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center">
-          <motion.div 
-            className="flex items-center gap-2 px-2 py-1.5 rounded-full bg-card/50 border border-border/30 backdrop-blur-md"
+          <motion.div
+            className="relative flex items-center gap-1 px-1.5 py-1.5 rounded-full bg-card/40 border border-border/40 backdrop-blur-xl shadow-[inset_0_1px_0_hsl(var(--primary)/0.08)]"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            {navItems.map((item, index) => (
-              <motion.a
-                key={item.key}
-                href={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
-                custom={index}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 + index * 0.05, duration: 0.4 }}
-                onHoverStart={() => setHoveredIndex(index)}
-                onHoverEnd={() => setHoveredIndex(null)}
-                className="relative px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-all duration-300 cursor-pointer rounded-full"
-              >
-                {/* Active/Hover background pill */}
-                <motion.span
-                  className="absolute inset-0 rounded-full bg-primary/15 border border-primary/20"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{
-                    opacity: hoveredIndex === index ? 1 : 0,
-                    scale: hoveredIndex === index ? 1 : 0.8
-                  }}
-                  transition={{ duration: 0.2, ease: "easeOut" }}
-                />
-                
-                {/* Text */}
-                <motion.span
-                  className="relative z-10 block whitespace-nowrap"
-                  animate={{
-                    color: hoveredIndex === index ? 'hsl(var(--foreground))' : 'hsl(var(--muted-foreground))',
-                  }}
-                  transition={{ duration: 0.2 }}
+            {navItems.map((item, index) => {
+              const isActive = activeSection === item.key;
+              const isHovered = hoveredIndex === index;
+              return (
+                <motion.a
+                  key={item.key}
+                  href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  custom={index}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 + index * 0.05, duration: 0.4 }}
+                  onHoverStart={() => setHoveredIndex(index)}
+                  onHoverEnd={() => setHoveredIndex(null)}
+                  className="relative px-3.5 py-1.5 text-sm font-medium cursor-pointer rounded-full"
                 >
-                  {t(`nav.${item.key}`)}
-                </motion.span>
-                
-                {/* Subtle glow on hover */}
-                {hoveredIndex === index && (
-                  <motion.span
-                    className="absolute inset-0 rounded-full bg-primary/10 blur-md -z-10"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  />
-                )}
-              </motion.a>
-            ))}
+                  {/* Active pill (shared layout) */}
+                  {isActive && (
+                    <motion.span
+                      layoutId="active-nav-pill"
+                      className="absolute inset-0 rounded-full"
+                      style={{
+                        background: 'linear-gradient(135deg, hsl(var(--primary) / 0.25), hsl(var(--accent) / 0.2))',
+                        border: '1px solid hsl(var(--primary) / 0.4)',
+                        boxShadow: '0 4px 16px -4px hsl(var(--primary) / 0.5), inset 0 1px 0 hsl(var(--primary) / 0.3)',
+                      }}
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+
+                  {/* Hover pill (only when not active) */}
+                  {isHovered && !isActive && (
+                    <motion.span
+                      className="absolute inset-0 rounded-full bg-foreground/5 border border-border/40"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.15 }}
+                    />
+                  )}
+
+                  {/* Text */}
+                  <span
+                    className={`relative z-10 block whitespace-nowrap transition-colors duration-200 ${
+                      isActive
+                        ? 'text-foreground font-semibold'
+                        : isHovered
+                        ? 'text-foreground'
+                        : 'text-muted-foreground'
+                    }`}
+                  >
+                    {t(`nav.${item.key}`)}
+                  </span>
+                </motion.a>
+              );
+            })}
           </motion.div>
         </nav>
 
         <div className="flex items-center gap-1 sm:gap-2">
+          {/* Divider */}
+          <div className="hidden sm:block w-px h-6 bg-gradient-to-b from-transparent via-border to-transparent mr-1" />
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}

@@ -192,7 +192,7 @@ export function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center">
           <motion.div 
-            className="flex items-center gap-0.5 p-1 rounded-full bg-background/40 border border-border/40 backdrop-blur-xl ring-1 ring-white/5 shadow-inner"
+            className="flex items-center gap-0.5 p-1.5 rounded-full bg-white/[0.04] dark:bg-white/[0.04] border border-border/40 backdrop-blur-xl shadow-[0_8px_32px_-12px_rgba(0,0,0,0.4)] transition-all duration-300 hover:border-primary/30"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}

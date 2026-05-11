@@ -4,6 +4,7 @@ import { Rocket, GraduationCap, Github } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import ElegantCarousel, { type ElegantSlide } from '@/components/ui/elegant-carousel';
 import { LazyImage } from '@/components/ui/lazy-image';
+import { LampContainer } from '@/components/ui/lamp';
 
 import projectFluxen from '@/assets/project-fluxen.webp';
 import projectKlyexa from '@/assets/project-klyexa.webp';
@@ -191,17 +192,22 @@ export function ProjectsSection() {
       </div>
 
       <div className="container mx-auto px-3 sm:px-4 relative z-10" ref={ref}>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4 }}
-          className="text-center mb-10 sm:mb-16"
+        <LampContainer
+          intensity="soft"
+          className="!min-h-[300px] md:!min-h-[420px] !bg-transparent mb-[-140px] md:mb-[-200px]"
         >
-          <h2 className="section-title mb-4">
-            <span className="text-gradient">{t('projects.title')}</span>
-          </h2>
-          <p className="section-subtitle mx-auto px-2">{t('projects.subtitle')}</p>
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.4 }}
+            className="text-center"
+          >
+            <h2 className="section-title mb-4">
+              <span className="text-gradient">{t('projects.title')}</span>
+            </h2>
+            <p className="section-subtitle mx-auto px-2">{t('projects.subtitle')}</p>
+          </motion.div>
+        </LampContainer>
 
         {/* RoVR Projects Carousel */}
         <motion.div

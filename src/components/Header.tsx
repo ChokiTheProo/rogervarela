@@ -212,13 +212,13 @@ export function Header() {
               >
                 {/* Active/Hover background pill */}
                 <motion.span
-                  className="absolute inset-0 rounded-full bg-primary/15 border border-primary/20"
-                  initial={{ opacity: 0, scale: 0.8 }}
+                  className="absolute inset-0 rounded-full bg-white/10 border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
+                  initial={{ opacity: 0, scale: 0.9 }}
                   animate={{
                     opacity: hoveredIndex === index ? 1 : 0,
-                    scale: hoveredIndex === index ? 1 : 0.8
+                    scale: hoveredIndex === index ? 1 : 0.9
                   }}
-                  transition={{ duration: 0.2, ease: "easeOut" }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
                 />
                 
                 {/* Text */}

@@ -3,10 +3,13 @@ import { ArrowDown, Github, Mail, Briefcase, Download } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { ParticleBackground } from '@/components/ParticleBackground';
-import { TubesBackground } from '@/components/TubesBackground';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useTypewriter } from '@/hooks/use-typewriter';
-import { useMemo } from 'react';
+import { useMemo, lazy, Suspense } from 'react';
+
+const TubesBackground = lazy(() =>
+  import('@/components/TubesBackground').then((m) => ({ default: m.TubesBackground }))
+);
 
 export function HeroSection() {
   const { t, language } = useLanguage();
@@ -45,10 +48,12 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Interactive 3D Tubes Background - desktop only */}
+      {/* Interactive 3D Tubes Background - desktop only, lazy */}
       {!isMobile && (
         <div className="absolute inset-0 z-0 opacity-60 mix-blend-screen pointer-events-auto">
-          <TubesBackground />
+          <Suspense fallback={null}>
+            <TubesBackground />
+          </Suspense>
         </div>
       )}
 

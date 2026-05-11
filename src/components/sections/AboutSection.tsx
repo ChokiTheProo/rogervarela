@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import { Rocket, Target, Sparkles } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { ImageZoom } from '@/components/ui/image-zoom';
+import { LampContainer } from '@/components/ui/lamp';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const highlights = [

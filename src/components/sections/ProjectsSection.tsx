@@ -4,6 +4,7 @@ import { Rocket, GraduationCap, Github } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import ElegantCarousel, { type ElegantSlide } from '@/components/ui/elegant-carousel';
 import { LazyImage } from '@/components/ui/lazy-image';
+import { LampContainer } from '@/components/ui/lamp';
 
 import projectFluxen from '@/assets/project-fluxen.webp';
 import projectKlyexa from '@/assets/project-klyexa.webp';

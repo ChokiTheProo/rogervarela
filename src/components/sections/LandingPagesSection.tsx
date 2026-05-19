@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
+import { ProjectCard } from './ProjectCard';
 
 interface LandingPage {
   category: string;
@@ -106,7 +105,7 @@ export function LandingPagesSection() {
         </motion.div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 items-stretch">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-7 items-stretch">
           {landingPages.map((page, index) => (
             <motion.div
               key={page.title}
@@ -116,57 +115,17 @@ export function LandingPagesSection() {
               variants={cardVariants}
               className="h-full"
             >
-              <a
+              <ProjectCard
+                category={page.category}
+                title={page.title}
+                tagline={page.tagline}
+                description={page.description}
+                tags={page.tools}
                 href={page.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Ver Landing Page do ${page.title}`}
-                className="glow-card group block h-full"
-              >
-                <div className="glow-card-inner p-5 sm:p-6 flex flex-col h-full">
-                  {/* Category chip */}
-                  <span className="inline-block self-start mb-4 px-2.5 py-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.14em] rounded-full bg-primary/10 text-primary border border-primary/20">
-                    {page.category}
-                  </span>
-
-                  {/* Title */}
-                  <h3 className="text-xl sm:text-2xl font-heading font-bold text-foreground mb-3 leading-[1.15] tracking-tight">
-                    {page.title}
-                  </h3>
-
-                  {/* Tagline */}
-                  <p className="text-[15px] sm:text-base text-foreground/85 font-medium mb-4 leading-[1.45] tracking-[-0.01em]">
-                    {page.tagline}
-                  </p>
-
-                  {/* Description */}
-                  <p className="text-[13.5px] sm:text-sm text-muted-foreground leading-[1.65] line-clamp-5 mb-5 flex-grow">
-                    {page.description}
-                  </p>
-
-                  {/* Tools */}
-                  <div className="flex flex-wrap gap-1.5 mb-5">
-                    {page.tools.map((tool) => (
-                      <Badge
-                        key={tool}
-                        variant="outline"
-                        className="text-[10.5px] sm:text-[11px] font-medium px-2 py-0.5 rounded-md border-border/60 text-muted-foreground/90 hover:border-primary/40 hover:text-foreground transition-colors"
-                      >
-                        {tool}
-                      </Badge>
-                    ))}
-                  </div>
-
-                  {/* CTA */}
-                  <div className="mt-auto pt-4 border-t border-border/30 flex items-center gap-1.5 text-[13px] font-semibold tracking-wide text-primary group-hover:text-accent transition-colors">
-                    Ver página
-                    <ArrowUpRight
-                      className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                      strokeWidth={2.2}
-                    />
-                  </div>
-                </div>
-              </a>
+                ctaLabel="Ver página"
+                ariaLabel={`Ver Landing Page do ${page.title}`}
+                showLive
+              />
             </motion.div>
           ))}
         </div>

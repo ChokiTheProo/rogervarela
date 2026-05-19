@@ -63,6 +63,16 @@ const projects: Project[] = [
     stack: ['Low-code', 'Motor fiscal', 'IA fiscal', 'Stripe', 'Mercado Pago'],
     href: 'https://rovrcont.com.br',
   },
+  {
+    category: 'SaaS · Gestão de Clínica',
+    title: 'DentFlow',
+    tagline:
+      'Gestão de clínica odontológica feita pra auxiliar e recepcionista, não pro dentista.',
+    description:
+      'Dashboard, agenda por procedimento, checklist diário de esterilização, pacientes com histórico dental, caixa, prescrições e notificações — num só sistema, com permissão por perfil e suporte a três idiomas.',
+    stack: ['React', 'TypeScript', 'Tailwind', 'shadcn/ui', 'Lovable Cloud'],
+    href: 'https://dentflowbr.lovable.app',
+  },
 ];
 
 const cardVariants = {

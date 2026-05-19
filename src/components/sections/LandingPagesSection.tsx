@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
+import { ProjectCard } from './ProjectCard';
 
 interface LandingPage {
   category: string;

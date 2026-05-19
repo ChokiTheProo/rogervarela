@@ -125,7 +125,7 @@ export function ProjectsSection() {
         </motion.div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 items-stretch">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-7 items-stretch">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -135,57 +135,17 @@ export function ProjectsSection() {
               variants={cardVariants}
               className="h-full"
             >
-              <a
+              <ProjectCard
+                category={project.category}
+                title={project.title}
+                tagline={project.tagline}
+                description={project.description}
+                tags={project.stack}
                 href={project.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Ver projeto ${project.title}: ${project.tagline}`}
-                className="glow-card group block h-full"
-              >
-                <div className="glow-card-inner p-5 sm:p-6 flex flex-col h-full">
-                  {/* Category chip */}
-                  <span className="inline-block self-start mb-4 px-2.5 py-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.14em] rounded-full bg-primary/10 text-primary border border-primary/20">
-                    {project.category}
-                  </span>
-
-                  {/* Title */}
-                  <h3 className="text-xl sm:text-2xl font-heading font-bold text-foreground mb-3 leading-[1.15] tracking-tight">
-                    {project.title}
-                  </h3>
-
-                  {/* Tagline */}
-                  <p className="text-[15px] sm:text-base text-foreground/85 font-medium mb-4 leading-[1.45] tracking-[-0.01em]">
-                    {project.tagline}
-                  </p>
-
-                  {/* Description */}
-                  <p className="text-[13.5px] sm:text-sm text-muted-foreground leading-[1.65] line-clamp-5 mb-5 flex-grow">
-                    {project.description}
-                  </p>
-
-                  {/* Stack */}
-                  <div className="flex flex-wrap gap-1.5 mb-5">
-                    {project.stack.map((tech) => (
-                      <Badge
-                        key={tech}
-                        variant="outline"
-                        className="text-[10.5px] sm:text-[11px] font-medium px-2 py-0.5 rounded-md border-border/60 text-muted-foreground/90 hover:border-primary/40 hover:text-foreground transition-colors"
-                      >
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-
-                  {/* CTA */}
-                  <div className="mt-auto pt-4 border-t border-border/30 flex items-center gap-1.5 text-[13px] font-semibold tracking-wide text-primary group-hover:text-accent transition-colors">
-                    Ver projeto
-                    <ArrowUpRight
-                      className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                      strokeWidth={2.2}
-                    />
-                  </div>
-                </div>
-              </a>
+                ctaLabel="Ver projeto"
+                ariaLabel={`Ver projeto ${project.title}: ${project.tagline}`}
+                showLive
+              />
             </motion.div>
           ))}
         </div>

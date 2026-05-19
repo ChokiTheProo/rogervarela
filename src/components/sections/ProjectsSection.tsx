@@ -63,6 +63,16 @@ const projects: Project[] = [
     stack: ['Low-code', 'Motor fiscal', 'IA fiscal', 'Stripe', 'Mercado Pago'],
     href: 'https://rovrcont.com.br',
   },
+  {
+    category: 'SaaS · Gestão de Clínica',
+    title: 'DentFlow',
+    tagline:
+      'Gestão de clínica odontológica feita pra auxiliar e recepcionista, não pro dentista.',
+    description:
+      'Dashboard, agenda por procedimento, checklist diário de esterilização, pacientes com histórico dental, caixa, prescrições e notificações — num só sistema, com permissão por perfil e suporte a três idiomas.',
+    stack: ['React', 'TypeScript', 'Tailwind', 'shadcn/ui', 'Lovable Cloud'],
+    href: 'https://dentflowbr.lovable.app',
+  },
 ];
 
 const cardVariants = {
@@ -100,7 +110,7 @@ export function ProjectsSection() {
             <span className="text-gradient">Projetos que construí sozinho</span>
           </h2>
           <p className="section-subtitle mx-auto opacity-80">
-            Cinco produtos digitais reais, do papel ao checkout, usando low-code
+            Seis produtos digitais reais, do papel ao checkout, usando low-code
             + IA como sócio técnico.
           </p>
         </motion.div>

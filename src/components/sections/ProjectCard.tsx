@@ -25,20 +25,32 @@ export function ProjectCard({
   showLive = true,
 }: ProjectCardProps) {
   return (
-    <div className="group relative h-full transition-all duration-500 hover:-translate-y-2">
-      {/* Animated halo glow */}
+    <div className="group relative h-full [perspective:1000px]">
+      {/* Outer halo glow */}
       <div
         aria-hidden
-        className="absolute -inset-px bg-gradient-to-r from-primary to-accent rounded-[28px] blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200 pointer-events-none"
+        className="absolute -inset-4 bg-gradient-to-r from-primary/25 to-accent/25 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-[32px]"
       />
 
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={ariaLabel ?? `${ctaLabel} — ${title}: ${tagline}`}
-        className="relative flex flex-col h-full bg-card/80 backdrop-blur-xl border border-white/10 rounded-[24px] sm:rounded-[26px] p-6 sm:p-7 overflow-hidden shadow-2xl transition-colors duration-500 hover:border-primary/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
-      >
+      {/* Rotating conic border wrapper */}
+      <div className="relative h-full p-[1.5px] overflow-hidden rounded-[26px] transition-all duration-500 ease-out group-hover:scale-[1.02] group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:shadow-primary/25">
+        {/* Conic gradient spinning border */}
+        <div
+          aria-hidden
+          className="absolute inset-[-100%] animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+          style={{
+            background:
+              'conic-gradient(from 0deg, transparent 20%, hsl(var(--primary)) 40%, hsl(var(--accent)) 50%, hsl(var(--primary)) 60%, transparent 80%)',
+          }}
+        />
+
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={ariaLabel ?? `${ctaLabel} — ${title}: ${tagline}`}
+          className="relative flex flex-col h-full bg-card/85 backdrop-blur-xl border border-white/10 rounded-[24px] sm:rounded-[25px] p-6 sm:p-7 overflow-hidden shadow-2xl transition-colors duration-500 hover:border-primary/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
+        >
         {/* Top glass reflection */}
         <div
           aria-hidden

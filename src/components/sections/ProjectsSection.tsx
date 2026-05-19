@@ -125,32 +125,32 @@ export function ProjectsSection() {
               >
                 <div className="glow-card-inner p-5 sm:p-6 flex flex-col h-full">
                   {/* Category chip */}
-                  <span className="inline-block self-start mb-4 px-2.5 py-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider rounded-full bg-primary/10 text-primary border border-primary/20">
+                  <span className="inline-block self-start mb-4 px-2.5 py-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.14em] rounded-full bg-primary/10 text-primary border border-primary/20">
                     {project.category}
                   </span>
 
                   {/* Title */}
-                  <h3 className="text-lg sm:text-xl font-heading font-semibold text-foreground mb-2 leading-snug">
+                  <h3 className="text-xl sm:text-2xl font-heading font-bold text-foreground mb-3 leading-[1.15] tracking-tight">
                     {project.title}
                   </h3>
 
                   {/* Tagline */}
-                  <p className="text-sm text-muted-foreground mb-3 leading-snug">
+                  <p className="text-[15px] sm:text-base text-foreground/85 font-medium mb-4 leading-[1.45] tracking-[-0.01em]">
                     {project.tagline}
                   </p>
 
                   {/* Description */}
-                  <p className="text-sm text-muted-foreground/80 leading-relaxed line-clamp-5 mb-5 flex-grow">
+                  <p className="text-[13.5px] sm:text-sm text-muted-foreground leading-[1.65] line-clamp-5 mb-5 flex-grow">
                     {project.description}
                   </p>
 
                   {/* Stack */}
-                  <div className="flex flex-wrap gap-2 mb-5">
+                  <div className="flex flex-wrap gap-1.5 mb-5">
                     {project.stack.map((tech) => (
                       <Badge
                         key={tech}
                         variant="outline"
-                        className="text-[10px] sm:text-[11px] font-medium px-2 py-0.5 rounded-md border-border/60 text-muted-foreground hover:border-primary/40 hover:text-foreground transition-colors"
+                        className="text-[10.5px] sm:text-[11px] font-medium px-2 py-0.5 rounded-md border-border/60 text-muted-foreground/90 hover:border-primary/40 hover:text-foreground transition-colors"
                       >
                         {tech}
                       </Badge>
@@ -158,7 +158,7 @@ export function ProjectsSection() {
                   </div>
 
                   {/* CTA */}
-                  <div className="mt-auto pt-4 border-t border-border/30 flex items-center gap-1.5 text-sm font-medium text-primary group-hover:text-accent transition-colors">
+                  <div className="mt-auto pt-4 border-t border-border/30 flex items-center gap-1.5 text-[13px] font-semibold tracking-wide text-primary group-hover:text-accent transition-colors">
                     Ver projeto
                     <ArrowUpRight
                       className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"

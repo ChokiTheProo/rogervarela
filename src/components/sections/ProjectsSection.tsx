@@ -73,6 +73,16 @@ const projects: Project[] = [
     stack: ['React', 'TypeScript', 'Tailwind', 'shadcn/ui', 'Lovable Cloud'],
     href: 'https://dentflowbr.lovable.app',
   },
+  {
+    category: 'SaaS · Gestão de Empréstimos',
+    title: 'Fluxen',
+    tagline:
+      'Controle profissional de empréstimos pra autônomo e pequeno negócio brasileiro.',
+    description:
+      'Cadastro de clientes, parcelas automáticas, dashboard em tempo real e controle de inadimplência num só sistema. Assinatura mensal acessível, sem taxa de adesão, com acesso em qualquer dispositivo.',
+    stack: ['Lovable', 'Dashboard responsivo', 'Marca RoVR'],
+    href: 'https://fluxenvenda.lovable.app/',
+  },
 ];
 
 const cardVariants = {
@@ -110,7 +120,7 @@ export function ProjectsSection() {
             <span className="text-gradient">Projetos que construí sozinho</span>
           </h2>
           <p className="section-subtitle mx-auto opacity-80">
-            Seis produtos digitais reais, do papel ao checkout, usando low-code
+            Sete produtos digitais reais, do papel ao checkout, usando low-code
             + IA como sócio técnico.
           </p>
         </motion.div>

@@ -167,7 +167,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.certifications': 'Certificaciones',
     'nav.experience': 'Experiencia',
     'nav.projects': 'Proyectos',
-    'nav.sites': 'Blogs y Sitios',
+    'nav.sites': 'Landing Pages y Sitios',
     'nav.skills': 'Habilidades',
     'nav.contact': 'Contacto',
 

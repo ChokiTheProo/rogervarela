@@ -1,278 +1,175 @@
-import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Rocket, GraduationCap, Github } from 'lucide-react';
-import { useLanguage } from '@/contexts/LanguageContext';
-import ElegantCarousel, { type ElegantSlide } from '@/components/ui/elegant-carousel';
-import { LazyImage } from '@/components/ui/lazy-image';
+import { motion, useInView } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
-import projectFluxen from '@/assets/project-fluxen.webp';
-import projectKlyexa from '@/assets/project-klyexa.webp';
-import projectTratamento from '@/assets/project-tratamento.webp';
-import projectEmagrio from '@/assets/project-emagrio.webp';
-import projectDentiflow from '@/assets/project-dentiflow.webp';
-import projectRovrcont from '@/assets/project-rovrcont.webp';
-
-interface RoVRProject {
-  name: string;
-  subtitle: { pt: string; en: string; es: string };
-  description: { pt: string; en: string; es: string };
-  accent: string;
-  image: string;
+interface Project {
+  category: string;
+  title: string;
+  tagline: string;
+  description: string;
+  stack: string[];
   href: string;
 }
 
-const rovrProjects: RoVRProject[] = [
+const projects: Project[] = [
   {
-    name: 'RoVRCont',
-    subtitle: {
-      pt: 'SaaS Contábil Completo',
-      en: 'Full Accounting SaaS',
-      es: 'SaaS Contable Completo',
-    },
-    description: {
-      pt: 'Acabe com planilhas e cálculos manuais. Plataforma única com Fiscal, Tributário, DP, Ponto e NFe — impostos calculados automático e assistente inteligente.',
-      en: 'Stop juggling spreadsheets and manual math. Single platform with Tax, Payroll, Time Control and NFe — taxes calculated automatically and intelligent assistant.',
-      es: 'Olvídate de hojas de cálculo y cuentas manuales. Plataforma única con Fiscal, Tributario, DP, Punto y NFe — impuestos calculados automático y asistente inteligente.',
-    },
-    accent: '#10b981',
-    image: projectRovrcont,
-    href: 'https://rovrcont.com.br',
+    category: 'SaaS · Precificação',
+    title: 'PreçoCerto',
+    tagline:
+      'A IA que calcula em 2 minutos quanto o autônomo brasileiro deveria estar cobrando.',
+    description:
+      'SaaS de precificação pra autônomos. Em 6 perguntas e 2 minutos, a IA devolve o preço ideal, com faixa mínima, faixa ideal e justificativa pronta pra mandar pro cliente. Modelo híbrido: plano único, assinatura PRO e Studio sob consulta.',
+    stack: ['Low-code', 'Supabase', 'Claude', 'Abacate Pay', 'Hotmart'],
+    href: '#',
   },
   {
-    name: 'Klyexa',
-    subtitle: {
-      pt: 'Plataforma de Automação com IA',
-      en: 'AI Automation Platform',
-      es: 'Plataforma de Automatización con IA',
-    },
-    description: {
-      pt: 'Automatize fluxos repetitivos com onboarding inteligente e integração rápida — produtividade real, sem retrabalho.',
-      en: 'Automate repetitive workflows with smart onboarding and quick integration — real productivity, no rework.',
-      es: 'Automatiza flujos repetitivos con onboarding inteligente e integración rápida — productividad real, sin retrabajo.',
-    },
-    accent: '#a855f7',
-    image: projectKlyexa,
-    href: 'https://klyexa.lovable.app/',
+    category: 'SaaS · Design com IA',
+    title: 'Llavero.ai',
+    tagline:
+      'Chaveiros personalizados com IA pro mercado hispano, prontos pra imprimir em 60 segundos.',
+    description:
+      'O usuário conversa com a IA, descreve pra quem é o chaveiro — presente, devocional, pet, marca — e baixa o PDF em 300 DPI pronto pra imprimir. Monetização híbrida: assinatura mensal por tokens + packs avulsos que não expiram.',
+    stack: ['Lovable', 'IA generativa', 'Hotmart'],
+    href: '#',
   },
   {
-    name: 'Emagrio',
-    subtitle: {
-      pt: 'Landing de Alta Conversão',
-      en: 'High-Conversion Landing',
-      es: 'Landing de Alta Conversión',
-    },
-    description: {
-      pt: 'Página estruturada para captura de leads qualificados, com planos personalizados e copy orientada a conversão.',
-      en: 'Page engineered to capture qualified leads, with personalized plans and conversion-oriented copy.',
-      es: 'Página estructurada para captar leads calificados, con planes personalizados y copy orientado a conversión.',
-    },
-    accent: '#14b8a6',
-    image: projectEmagrio,
-    href: 'https://emagrio-venda.lovable.app',
+    category: 'Infoproduto · Gamer',
+    title: 'Rx Otimização',
+    tagline:
+      'Scripts que tiram até +240 FPS de PCs de gamer sem trocar hardware.',
+    description:
+      'Infoproduto pra gamer brasileiro que joga em PC mediano. Pacote com scripts e tutorial em vídeo, executa como admin e em 5 minutos o PC roda como novo. Três planos com upsell claro: Básico, Pro e Elite vitalício.',
+    stack: ['Low-code', 'HTML/CSS/JS', 'ChatGPT', 'Wiapy'],
+    href: '#',
   },
   {
-    name: 'Tratamento Gastrite',
-    subtitle: {
-      pt: 'App de Acompanhamento de Saúde',
-      en: 'Health Tracking App',
-      es: 'App de Seguimiento de Salud',
-    },
-    description: {
-      pt: 'Aplicativo diário com lembretes de medicação, registro de sintomas e histórico clínico salvo automaticamente.',
-      en: 'Daily app with medication reminders, symptom logging and clinical history saved automatically.',
-      es: 'App diaria con recordatorios de medicación, registro de síntomas e historial clínico guardado automáticamente.',
-    },
-    accent: '#f43f5e',
-    image: projectTratamento,
-    href: 'https://tramentodiario.lovable.app',
+    category: 'SaaS · Jurídico pra freelancer',
+    title: 'ContratoZero',
+    tagline:
+      'Contrato profissional pra freelancer em 90 segundos, com cláusulas anti-calote.',
+    description:
+      'O freelancer responde 4 perguntas, a IA monta o contrato com multa, juros e prazo já blindados, gera link e o cliente assina pelo celular com validade jurídica via ICP-Brasil. Pagamento único, acesso vitalício.',
+    stack: ['Lovable', 'IA de contratos', 'ICP-Brasil'],
+    href: '#',
   },
   {
-    name: 'DentFlow',
-    subtitle: {
-      pt: 'Sistema de Gestão Odontológica',
-      en: 'Dental Practice Management',
-      es: 'Sistema de Gestión Odontológica',
-    },
-    description: {
-      pt: 'Gestão completa de clínica: agenda, fluxo de atendimento e dashboard operacional unificados em uma única plataforma.',
-      en: 'Full clinic management: scheduling, patient flow and operational dashboard unified in a single platform.',
-      es: 'Gestión completa de clínica: agenda, flujo de atención y dashboard operacional unificados en una sola plataforma.',
-    },
-    accent: '#3b82f6',
-    image: projectDentiflow,
-    href: 'https://dentflowbr.lovable.app',
-  },
-  {
-    name: 'Fluxen',
-    subtitle: {
-      pt: 'Sistema de Controle Financeiro',
-      en: 'Financial Control System',
-      es: 'Sistema de Control Financiero',
-    },
-    description: {
-      pt: 'Controle de fluxo de caixa com gestão de empréstimos, parcelamentos e visão financeira consolidada em tempo real.',
-      en: 'Cash-flow control with loan management, installments and consolidated financial overview in real time.',
-      es: 'Control de flujo de caja con gestión de préstamos, cuotas y visión financiera consolidada en tiempo real.',
-    },
-    accent: '#84cc16',
-    image: projectFluxen,
-    href: 'https://fluxenvenda.lovable.app',
+    category: 'SaaS · Contabilidade',
+    title: 'RovrCont',
+    tagline:
+      'Plataforma fiscal, tributária e de DP pra contadores e PMEs brasileiras.',
+    description:
+      'Cálculo de ICMS, DIFAL, PIS, COFINS, IRPJ, CSLL, Simples Nacional com Fator R, folha de pagamento, controle de ponto, férias, rescisão e assistente NF-e — num só lugar. Inclui assistente fiscal por IA pra dúvida em tempo real.',
+    stack: ['Low-code', 'Motor fiscal', 'IA fiscal', 'Stripe', 'Mercado Pago'],
+    href: '#',
   },
 ];
 
-const academicProjects = [
-  {
-    name: 'Sistema Operacional de Redes',
-    description: {
-      pt: 'Configuração e administração de sistemas de rede.',
-      en: 'Network operating system configuration and administration.',
-      es: 'Configuración y administración de sistemas de red.',
+const cardVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.1 + i * 0.08,
+      duration: 0.45,
+      ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
     },
-    technologies: ['Windows Server', 'Linux', 'DNS', 'DHCP'],
-    github: 'https://github.com/ChokiTheProo/SISTEMA-OPERACIONAL-DE-REDES',
-  },
-  {
-    name: 'Internet das Coisas (IoT)',
-    description: {
-      pt: 'Soluções IoT com sensores e microcontroladores.',
-      en: 'IoT solutions with sensors and microcontrollers.',
-      es: 'Soluciones IoT con sensores y microcontroladores.',
-    },
-    technologies: ['Arduino', 'ESP32', 'C++', 'IoT'],
-    github: 'https://github.com/ChokiTheProo/INTERNET-DAS-COISAS',
-  },
-  {
-    name: 'Java Spring Boot',
-    description: {
-      pt: 'Aplicação backend robusta com Spring Boot.',
-      en: 'Robust backend application with Spring Boot.',
-      es: 'Aplicación backend robusta con Spring Boot.',
-    },
-    technologies: ['Java', 'Spring Boot', 'SQL', 'REST'],
-    github: 'https://github.com/ChokiTheProo',
-  },
-  {
-    name: 'Desenvolvimento Mobile',
-    description: {
-      pt: 'Apps mobile com Flutter, Dart e Kotlin.',
-      en: 'Mobile apps with Flutter, Dart and Kotlin.',
-      es: 'Apps móviles con Flutter, Dart y Kotlin.',
-    },
-    technologies: ['Flutter', 'Dart', 'Kotlin', 'Firebase'],
-    github: 'https://github.com/ChokiTheProo/DESENVOLVIMENTO-DE-APLICATIVOS-I-',
-  },
-];
+  }),
+};
 
 export function ProjectsSection() {
-  const { t, language } = useLanguage();
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-50px' });
-
-  const slides: ElegantSlide[] = rovrProjects.map((p) => ({
-    title: p.name,
-    subtitle: p.subtitle[language],
-    description: p.description[language],
-    accent: p.accent,
-    imageUrl: p.image,
-    href: p.href,
-    cta: language === 'pt' ? 'Ver Projeto' : language === 'es' ? 'Ver Proyecto' : 'View Project',
-  }));
+  const ref = useRef<HTMLElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="projects" className="py-16 sm:py-24 bg-secondary/20 relative overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none">
-        <div
-          className="absolute -top-1/2 -right-1/2 w-full h-full opacity-30"
-          style={{
-            background:
-              'conic-gradient(from 0deg, transparent, hsl(var(--primary) / 0.05), transparent)',
-          }}
-        />
-      </div>
-
-      <div className="container mx-auto px-3 sm:px-4 relative z-10" ref={ref}>
+    <section
+      id="projects"
+      ref={ref}
+      className="py-16 sm:py-24 bg-secondary/20 relative overflow-hidden"
+    >
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4 }}
-          className="text-center mb-10 sm:mb-16"
+          transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="text-center mb-10 sm:mb-14"
         >
           <h2 className="section-title mb-4">
-            <span className="text-gradient">{t('projects.title')}</span>
+            <span className="text-gradient">Projetos que construí sozinho</span>
           </h2>
-          <p className="section-subtitle mx-auto px-2">{t('projects.subtitle')}</p>
+          <p className="section-subtitle mx-auto opacity-80">
+            Cinco produtos digitais reais, do papel ao checkout, usando low-code
+            + IA como sócio técnico.
+          </p>
         </motion.div>
 
-        {/* RoVR Projects Carousel */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-12 sm:mb-20"
-        >
-          <h3 className="text-lg sm:text-xl font-heading font-semibold text-primary flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8 group">
-            <div className="glow-icon w-9 h-9 sm:w-11 sm:h-11">
-              <Rocket className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2.4} />
-            </div>
-            {language === 'pt' ? 'Projetos RoVR' : language === 'es' ? 'Proyectos RoVR' : 'RoVR Projects'}
-            <span className="ml-1 sm:ml-2 px-2 py-0.5 text-[10px] sm:text-xs rounded-full bg-accent/20 text-accent animate-pulse">
-              Live
-            </span>
-          </h3>
-
-          <ElegantCarousel slides={slides} />
-        </motion.div>
-
-        {/* Academic Projects */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <h3 className="text-lg sm:text-xl font-heading font-semibold text-emerald-400 flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8 group">
-            <div
-              className="glow-icon w-9 h-9 sm:w-11 sm:h-11"
-              style={{ backgroundImage: 'linear-gradient(135deg, #10b981 0%, #059669 100%)', boxShadow: '0 10px 30px -8px rgba(16,185,129,0.55), inset 0 1px 0 0 rgba(255,255,255,0.28), 0 0 0 1px rgba(255,255,255,0.18)' }}
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 items-stretch">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.title}
+              custom={index}
+              initial="hidden"
+              animate={isInView ? 'visible' : 'hidden'}
+              variants={cardVariants}
+              className="h-full"
             >
-              <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2.4} />
-            </div>
-            {language === 'pt' ? 'Projetos Acadêmicos' : language === 'es' ? 'Proyectos Académicos' : 'Academic Projects'}
-          </h3>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {academicProjects.map((project) => (
               <a
-                key={project.name}
-                href={project.github}
+                href={project.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glow-card group block"
+                aria-label={`Ver projeto ${project.title}: ${project.tagline}`}
+                className="glow-card group block h-full"
               >
-                <div className="glow-card-inner p-5">
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="glow-icon w-10 h-10" style={{ backgroundImage: 'linear-gradient(135deg, #1f2937 0%, #0f172a 100%)' }}>
-                      <Github className="w-5 h-5" strokeWidth={2.2} />
-                    </div>
-                  </div>
-                  <h4 className="font-heading font-semibold text-foreground mb-2">{project.name}</h4>
-                  <p className="text-xs sm:text-sm text-muted-foreground mb-4 leading-relaxed">
-                    {project.description[language]}
+                <div className="glow-card-inner p-5 sm:p-6 flex flex-col h-full">
+                  {/* Category chip */}
+                  <span className="inline-block self-start mb-4 px-2.5 py-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider rounded-full bg-primary/10 text-primary border border-primary/20">
+                    {project.category}
+                  </span>
+
+                  {/* Title */}
+                  <h3 className="text-lg sm:text-xl font-heading font-semibold text-foreground mb-2 leading-snug">
+                    {project.title}
+                  </h3>
+
+                  {/* Tagline */}
+                  <p className="text-sm text-muted-foreground mb-3 leading-snug">
+                    {project.tagline}
                   </p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {project.technologies.map((tech) => (
-                      <span
+
+                  {/* Description */}
+                  <p className="text-sm text-muted-foreground/80 leading-relaxed line-clamp-5 mb-5 flex-grow">
+                    {project.description}
+                  </p>
+
+                  {/* Stack */}
+                  <div className="flex flex-wrap gap-2 mb-5">
+                    {project.stack.map((tech) => (
+                      <Badge
                         key={tech}
-                        className="px-2 py-0.5 text-[10px] rounded-full bg-secondary/60 text-muted-foreground border border-border/40"
+                        variant="outline"
+                        className="text-[10px] sm:text-[11px] font-medium px-2 py-0.5 rounded-md border-border/60 text-muted-foreground hover:border-primary/40 hover:text-foreground transition-colors"
                       >
                         {tech}
-                      </span>
+                      </Badge>
                     ))}
+                  </div>
+
+                  {/* CTA */}
+                  <div className="mt-auto pt-4 border-t border-border/30 flex items-center gap-1.5 text-sm font-medium text-primary group-hover:text-accent transition-colors">
+                    Ver projeto
+                    <ArrowUpRight
+                      className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      strokeWidth={2.2}
+                    />
                   </div>
                 </div>
               </a>
-            ))}
-          </div>
-        </motion.div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

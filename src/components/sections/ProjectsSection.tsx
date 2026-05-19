@@ -21,7 +21,7 @@ const projects: Project[] = [
     description:
       'SaaS de precificação pra autônomos. Em 6 perguntas e 2 minutos, a IA devolve o preço ideal, com faixa mínima, faixa ideal e justificativa pronta pra mandar pro cliente. Modelo híbrido: plano único, assinatura PRO e Studio sob consulta.',
     stack: ['Low-code', 'Supabase', 'Claude', 'Abacate Pay', 'Hotmart'],
-    href: '#',
+    href: 'https://preco-certo-magico.lovable.app',
   },
   {
     category: 'SaaS · Design com IA',
@@ -31,7 +31,7 @@ const projects: Project[] = [
     description:
       'O usuário conversa com a IA, descreve pra quem é o chaveiro — presente, devocional, pet, marca — e baixa o PDF em 300 DPI pronto pra imprimir. Monetização híbrida: assinatura mensal por tokens + packs avulsos que não expiram.',
     stack: ['Lovable', 'IA generativa', 'Hotmart'],
-    href: '#',
+    href: 'https://llaveroai.lovable.app',
   },
   {
     category: 'Infoproduto · Gamer',
@@ -41,7 +41,7 @@ const projects: Project[] = [
     description:
       'Infoproduto pra gamer brasileiro que joga em PC mediano. Pacote com scripts e tutorial em vídeo, executa como admin e em 5 minutos o PC roda como novo. Três planos com upsell claro: Básico, Pro e Elite vitalício.',
     stack: ['Low-code', 'HTML/CSS/JS', 'ChatGPT', 'Wiapy'],
-    href: '#',
+    href: 'https://rxotimizacao.lovable.app',
   },
   {
     category: 'SaaS · Jurídico pra freelancer',
@@ -51,7 +51,7 @@ const projects: Project[] = [
     description:
       'O freelancer responde 4 perguntas, a IA monta o contrato com multa, juros e prazo já blindados, gera link e o cliente assina pelo celular com validade jurídica via ICP-Brasil. Pagamento único, acesso vitalício.',
     stack: ['Lovable', 'IA de contratos', 'ICP-Brasil'],
-    href: '#',
+    href: 'https://contratozero.lovable.app',
   },
   {
     category: 'SaaS · Contabilidade',
@@ -61,7 +61,7 @@ const projects: Project[] = [
     description:
       'Cálculo de ICMS, DIFAL, PIS, COFINS, IRPJ, CSLL, Simples Nacional com Fator R, folha de pagamento, controle de ponto, férias, rescisão e assistente NF-e — num só lugar. Inclui assistente fiscal por IA pra dúvida em tempo real.',
     stack: ['Low-code', 'Motor fiscal', 'IA fiscal', 'Stripe', 'Mercado Pago'],
-    href: '#',
+    href: 'https://rovrcont.com.br',
   },
 ];
 

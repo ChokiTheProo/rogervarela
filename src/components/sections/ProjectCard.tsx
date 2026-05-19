@@ -119,6 +119,7 @@ export function ProjectCard({
           className="absolute bottom-0 right-0 w-28 h-28 bg-gradient-to-br from-transparent via-transparent to-accent/10 rounded-br-[24px] sm:rounded-br-[26px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         />
       </a>
+      </div>
     </div>
   );
 }

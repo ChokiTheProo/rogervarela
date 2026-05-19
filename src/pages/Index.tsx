@@ -11,7 +11,7 @@ const CertificationsSection = lazy(() => import('@/components/sections/Certifica
 const ExperienceSection = lazy(() => import('@/components/sections/ExperienceSection').then(m => ({ default: m.ExperienceSection })));
 const ProjectsSection = lazy(() => import('@/components/sections/ProjectsSection').then(m => ({ default: m.ProjectsSection })));
 const LandingPagesSection = lazy(() => import('@/components/sections/LandingPagesSection').then(m => ({ default: m.LandingPagesSection })));
-const EbooksSection = lazy(() => import('@/components/sections/EbooksSection').then(m => ({ default: m.EbooksSection })));
+
 const CoursesSection = lazy(() => import('@/components/sections/CoursesSection').then(m => ({ default: m.CoursesSection })));
 const GitHubSection = lazy(() => import('@/components/sections/GitHubSection').then(m => ({ default: m.GitHubSection })));
 const AwardsSection = lazy(() => import('@/components/sections/AwardsSection').then(m => ({ default: m.AwardsSection })));
@@ -36,7 +36,6 @@ const Index = () => {
             <ExperienceSection />
             <ProjectsSection />
             <LandingPagesSection />
-            <EbooksSection />
             <CoursesSection />
             <GitHubSection />
             <AwardsSection />

@@ -13,7 +13,7 @@ const navItems = [
   { key: 'certifications', href: '#certifications' },
   { key: 'experience', href: '#experience' },
   { key: 'projects', href: '#projects' },
-  { key: 'sites', href: '#sites' },
+  { key: 'sites', href: '#landing-pages' },
   { key: 'skills', href: '#skills' },
   { key: 'contact', href: '#contact' },
 ];

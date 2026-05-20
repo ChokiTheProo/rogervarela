@@ -1,6 +1,6 @@
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import { Github, Star, GitFork, Users, Code } from 'lucide-react';
+import { Github, Code } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { ImageZoom } from '@/components/ui/image-zoom';

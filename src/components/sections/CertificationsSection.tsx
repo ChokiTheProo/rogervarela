@@ -149,6 +149,19 @@ const certifications: Certification[] = [
       es: 'Sensores, microcontroladores y dispositivos conectados aplicados a soluciones inteligentes.',
     },
   },
+  {
+    name: { pt: 'Marketing Digital', en: 'Digital Marketing', es: 'Marketing Digital' },
+    institution: 'Curso em Vídeo',
+    year: '2022',
+    type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
+    category: 'other',
+    hours: '40h',
+    description: {
+      pt: 'SEO, tráfego pago, funis e estratégias para gerar leads e conversão online.',
+      en: 'SEO, paid traffic, funnels, and strategies to generate leads and online conversion.',
+      es: 'SEO, tráfico pagado, embudos y estrategias para generar leads y conversión online.',
+    },
+  },
 ];
 
 const categories = [

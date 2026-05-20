@@ -171,6 +171,9 @@ export function ContactSection() {
             <span className="text-gradient">{t('contact.title')}</span>
           </h2>
           <p className="section-subtitle mx-auto">{t('contact.subtitle')}</p>
+          <p className="mt-4 inline-block text-sm md:text-base font-medium px-4 py-2 rounded-full bg-primary/10 border border-primary/30 text-primary">
+            {language === 'pt' ? 'Resposta em até 4h em horário comercial · Proposta no mesmo dia' : language === 'es' ? 'Respuesta en hasta 4h en horario comercial · Propuesta el mismo día' : 'Reply within 4h on business hours · Proposal the same day'}
+          </p>
         </motion.div>
 
         <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-12">

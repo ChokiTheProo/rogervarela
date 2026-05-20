@@ -13,7 +13,7 @@ export const FloatingWhatsApp = () => {
 
   return (
     <motion.a
-      href="https://wa.me/5554991710543"
+      href={`https://wa.me/5554991710543?text=${encodeURIComponent('Oi Roger, vim pelo seu site rogervarela.site, quero conversar sobre um projeto.')}`}
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-4 md:bottom-8 md:right-6 z-[1000] group"

@@ -12,14 +12,11 @@ const translations: Record<Language, Record<string, string>> = {
   pt: {
     // Navigation
     'nav.about': 'Sobre',
-    'nav.how': 'Como trabalho',
     'nav.certifications': 'Certificações',
     'nav.experience': 'Experiência',
     'nav.projects': 'Projetos',
     'nav.sites': 'Landing Pages & Sites',
-    'nav.awards': 'Premiações',
     'nav.skills': 'Habilidades',
-    'nav.education': 'Formação',
     'nav.contact': 'Contato',
 
     // Hero
@@ -91,14 +88,11 @@ const translations: Record<Language, Record<string, string>> = {
   en: {
     // Navigation
     'nav.about': 'About',
-    'nav.how': 'How I work',
     'nav.certifications': 'Certifications',
     'nav.experience': 'Experience',
     'nav.projects': 'Projects',
     'nav.sites': 'Landing Pages & Sites',
-    'nav.awards': 'Awards',
     'nav.skills': 'Skills',
-    'nav.education': 'Education',
     'nav.contact': 'Contact',
 
     // Hero
@@ -170,14 +164,11 @@ const translations: Record<Language, Record<string, string>> = {
   es: {
     // Navigation
     'nav.about': 'Sobre mí',
-    'nav.how': 'Cómo trabajo',
     'nav.certifications': 'Certificaciones',
     'nav.experience': 'Experiencia',
     'nav.projects': 'Proyectos',
     'nav.sites': 'Landing Pages y Sitios',
-    'nav.awards': 'Premios',
     'nav.skills': 'Habilidades',
-    'nav.education': 'Formación',
     'nav.contact': 'Contacto',
 
     // Hero

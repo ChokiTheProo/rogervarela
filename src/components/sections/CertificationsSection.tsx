@@ -62,6 +62,19 @@ const certifications: Certification[] = [
     },
   },
   {
+    name: { pt: 'Marketing Digital', en: 'Digital Marketing', es: 'Marketing Digital' },
+    institution: 'Curso em Vídeo',
+    year: '2022',
+    type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
+    category: 'other',
+    hours: '40h',
+    description: {
+      pt: 'SEO, tráfego pago, funis e estratégias para gerar leads e conversão online.',
+      en: 'SEO, paid traffic, funnels, and strategies to generate leads and online conversion.',
+      es: 'SEO, tráfico pagado, embudos y estrategias para generar leads y conversión online.',
+    },
+  },
+  {
     name: { pt: 'Inglês Nível Básico', en: 'Basic English', es: 'Inglés Nivel Básico' },
     institution: 'Curso em Vídeo',
     year: '2022',
@@ -85,6 +98,19 @@ const certifications: Certification[] = [
       pt: 'Leitura de documentação técnica, escrita profissional e comunicação fluente em contexto de TI.',
       en: 'Reading technical documentation, professional writing, and fluent communication in IT context.',
       es: 'Lectura de documentación técnica, escritura profesional y comunicación fluida en contexto TI.',
+    },
+  },
+  {
+    name: { pt: 'Informática Básica', en: 'Basic Computing', es: 'Informática Básica' },
+    institution: 'Cooperativa RioGrandense',
+    year: '2020',
+    type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
+    category: 'technical',
+    hours: '75h',
+    description: {
+      pt: 'Sistemas operacionais, pacote Office, internet e fundamentos de hardware e software.',
+      en: 'Operating systems, Office suite, internet, and hardware/software fundamentals.',
+      es: 'Sistemas operativos, paquete Office, internet y fundamentos de hardware y software.',
     },
   },
   {
@@ -147,19 +173,6 @@ const certifications: Certification[] = [
       pt: 'Sensores, microcontroladores e dispositivos conectados aplicados a soluções inteligentes.',
       en: 'Sensors, microcontrollers, and connected devices applied to smart solutions.',
       es: 'Sensores, microcontroladores y dispositivos conectados aplicados a soluciones inteligentes.',
-    },
-  },
-  {
-    name: { pt: 'Marketing Digital', en: 'Digital Marketing', es: 'Marketing Digital' },
-    institution: 'Curso em Vídeo',
-    year: '2022',
-    type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
-    category: 'other',
-    hours: '40h',
-    description: {
-      pt: 'SEO, tráfego pago, funis e estratégias para gerar leads e conversão online.',
-      en: 'SEO, paid traffic, funnels, and strategies to generate leads and online conversion.',
-      es: 'SEO, tráfico pagado, embudos y estrategias para generar leads y conversión online.',
     },
   },
 ];

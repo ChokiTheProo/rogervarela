@@ -67,19 +67,19 @@ const experiences = [
     current: false,
     responsibilities: {
       pt: [
-        'Produção de embutidos de plástico',
+        'Produção de embutidos de teto',
         'Controle de qualidade de produtos',
         'Trabalho em equipe e cumprimento de metas',
         'Organização e manutenção do ambiente de trabalho',
       ],
       en: [
-        'Plastic embedded parts production',
+        'Ceiling embedded production',
         'Product quality control',
         'Teamwork and meeting targets',
         'Organization and maintenance of the work environment',
       ],
       es: [
-        'Producción de embutidos de plástico',
+        'Producción de embutidos de techo',
         'Control de calidad de productos',
         'Trabajo en equipo y cumplimiento de metas',
         'Organización y mantenimiento del ambiente de trabajo',

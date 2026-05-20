@@ -32,6 +32,19 @@ const education = [
     },
     certificate: true,
   },
+  {
+    degree: { pt: 'Ensino Médio', en: 'High School', es: 'Educación Secundaria' },
+    institution: 'E.E.E.M. Prof. Apolinário Alves dos Santos',
+    location: 'Caxias do Sul, RS',
+    period: '2017 - 2019',
+    status: { pt: 'Concluído', en: 'Completed', es: 'Completado' },
+    current: false,
+    description: {
+      pt: 'Ensino médio completo com base sólida em ciências exatas e linguagens.',
+      en: 'Complete high school education with a solid foundation in exact sciences and languages.',
+      es: 'Educación secundaria completa con una base sólida en ciencias exactas y lenguajes.',
+    },
+  },
 ];
 
 export function EducationSection() {

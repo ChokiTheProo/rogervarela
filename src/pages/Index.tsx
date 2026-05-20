@@ -4,18 +4,17 @@ import { HeroSection } from '@/components/sections/HeroSection';
 import { PageTransition } from '@/components/PageTransition';
 import { ParallaxStarsBackground } from '@/components/ParallaxStarsBackground';
 
-// Lazy-load below-the-fold sections for faster initial paint
 const AboutSection = lazy(() => import('@/components/sections/AboutSection').then(m => ({ default: m.AboutSection })));
-const EducationSection = lazy(() => import('@/components/sections/EducationSection').then(m => ({ default: m.EducationSection })));
-const CertificationsSection = lazy(() => import('@/components/sections/CertificationsSection').then(m => ({ default: m.CertificationsSection })));
-const ExperienceSection = lazy(() => import('@/components/sections/ExperienceSection').then(m => ({ default: m.ExperienceSection })));
+const HowIWorkSection = lazy(() => import('@/components/sections/HowIWorkSection').then(m => ({ default: m.HowIWorkSection })));
 const ProjectsSection = lazy(() => import('@/components/sections/ProjectsSection').then(m => ({ default: m.ProjectsSection })));
 const LandingPagesSection = lazy(() => import('@/components/sections/LandingPagesSection').then(m => ({ default: m.LandingPagesSection })));
-
-const CoursesSection = lazy(() => import('@/components/sections/CoursesSection').then(m => ({ default: m.CoursesSection })));
-const GitHubSection = lazy(() => import('@/components/sections/GitHubSection').then(m => ({ default: m.GitHubSection })));
 const AwardsSection = lazy(() => import('@/components/sections/AwardsSection').then(m => ({ default: m.AwardsSection })));
+const TestimonialsSection = lazy(() => import('@/components/sections/TestimonialsSection').then(m => ({ default: m.TestimonialsSection })));
+const ExperienceSection = lazy(() => import('@/components/sections/ExperienceSection').then(m => ({ default: m.ExperienceSection })));
 const SkillsSection = lazy(() => import('@/components/sections/SkillsSection').then(m => ({ default: m.SkillsSection })));
+const EducationSection = lazy(() => import('@/components/sections/EducationSection').then(m => ({ default: m.EducationSection })));
+const CertificationsSection = lazy(() => import('@/components/sections/CertificationsSection').then(m => ({ default: m.CertificationsSection })));
+const GitHubSection = lazy(() => import('@/components/sections/GitHubSection').then(m => ({ default: m.GitHubSection })));
 const ContactSection = lazy(() => import('@/components/sections/ContactSection').then(m => ({ default: m.ContactSection })));
 const Footer = lazy(() => import('@/components/Footer').then(m => ({ default: m.Footer })));
 
@@ -31,15 +30,16 @@ const Index = () => {
           <HeroSection />
           <Suspense fallback={<SectionFallback />}>
             <AboutSection />
-            <EducationSection />
-            <CertificationsSection />
-            <ExperienceSection />
+            <HowIWorkSection />
             <ProjectsSection />
             <LandingPagesSection />
-            <CoursesSection />
-            <GitHubSection />
             <AwardsSection />
+            <TestimonialsSection />
+            <ExperienceSection />
             <SkillsSection />
+            <EducationSection />
+            <CertificationsSection />
+            <GitHubSection />
             <ContactSection />
           </Suspense>
         </main>

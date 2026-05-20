@@ -107,7 +107,7 @@ export function CoursesSection() {
 
                 <p className="text-muted-foreground text-sm md:text-base mb-5 md:mb-6">
                   {language === 'pt' 
-                    ? 'Domine o terminal do Windows e aumente sua produtividade. Aprenda comandos essenciais, automação de tarefas e técnicas avanzadas.'
+                    ? 'Domine o terminal do Windows e aumente sua produtividade. Aprenda comandos essenciais, automação de tarefas e técnicas avançadas.'
                     : language === 'es'
                     ? 'Domina la terminal de Windows y aumenta tu productividad. Aprende comandos esenciales, automatización de tareas y técnicas avanzadas.'
                     : 'Master the Windows terminal and boost your productivity. Learn essential commands, task automation, and advanced techniques.'}

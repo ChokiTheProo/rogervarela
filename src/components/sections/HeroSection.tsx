@@ -1,11 +1,10 @@
 import { motion } from 'framer-motion';
-import { ArrowDown, Github, Mail, Briefcase, Download } from 'lucide-react';
+import { ArrowDown, Github, Mail, Briefcase, Download, Sparkles } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { ParticleBackground } from '@/components/ParticleBackground';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { useTypewriter } from '@/hooks/use-typewriter';
-import { useMemo, lazy, Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 
 const TubesBackground = lazy(() =>
   import('@/components/TubesBackground').then((m) => ({ default: m.TubesBackground }))
@@ -15,40 +14,27 @@ export function HeroSection() {
   const { t, language } = useLanguage();
   const isMobile = useIsMobile();
 
-  const typewriterWords = useMemo(() => {
-    if (language === 'pt') {
-      return [
-        'Sites e SaaS no ar em dias, não em meses',
-        'Micro-SaaS funcionais com Low-Code e IA',
-        'Landing pages que convertem de verdade',
-        'Do MVP à versão que vende',
-      ];
-    } else if (language === 'es') {
-      return [
-        'Sitios y SaaS en producción en días, no meses',
-        'Micro-SaaS funcionales con Low-Code e IA',
-        'Landing pages que convierten de verdad',
-        'Del MVP a la versión que vende',
-      ];
-    }
-    return [
-      'Sites and SaaS shipped in days, not months',
-      'Functional Micro-SaaS with Low-Code and AI',
-      'Landing pages that actually convert',
-      'From MVP to the version that sells',
-    ];
-  }, [language]);
+  const positioning = language === 'pt'
+    ? 'Desenvolvedor de Produto Digital | Low-Code, Code e IA'
+    : language === 'es'
+    ? 'Desarrollador de Producto Digital | Low-Code, Code e IA'
+    : 'Digital Product Developer | Low-Code, Code & AI';
 
-  const { text: typewriterText } = useTypewriter({
-    words: typewriterWords,
-    typeSpeed: 80,
-    deleteSpeed: 40,
-    delayBetweenWords: 2500,
-  });
+  const description = language === 'pt'
+    ? 'Construo Micro-SaaS, landing pages e automações com IA do MVP ao checkout. Já lancei 7 SaaS próprios e 5 sites pra cliente. Entrego em 7 a 14 dias, com preview grátis — você só paga depois de aprovar.'
+    : language === 'es'
+    ? 'Construyo Micro-SaaS, landing pages y automatizaciones con IA del MVP al checkout. Ya lancé 7 SaaS propios y 5 sitios para clientes. Entrego en 7 a 14 días, con preview gratis — pagas solo después de aprobar.'
+    : 'I build Micro-SaaS, landing pages and AI automations from MVP to checkout. I have shipped 7 of my own SaaS and 5 client sites. Delivery in 7–14 days with a free preview — you only pay after approval.';
+
+  const stats = [
+    { value: '12+', labelPt: 'Produtos lançados', labelEn: 'Products shipped', labelEs: 'Productos lanzados' },
+    { value: '15+', labelPt: 'Tecnologias', labelEn: 'Technologies', labelEs: 'Tecnologías' },
+    { value: '3', labelPt: 'anos em TI', labelEn: 'years in IT', labelEs: 'años en TI' },
+    { value: '🥉', labelPt: 'Bronze QITEC 2023', labelEn: 'Bronze QITEC 2023', labelEs: 'Bronce QITEC 2023' },
+  ];
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Interactive 3D Tubes Background - desktop only, lazy */}
       {!isMobile && (
         <div className="absolute inset-0 z-0 opacity-60 mix-blend-screen pointer-events-auto">
           <Suspense fallback={null}>
@@ -57,18 +43,14 @@ export function HeroSection() {
         </div>
       )}
 
-      {/* Particle Animation Background */}
       <ParticleBackground />
-      
-      {/* Background elements - simplified on mobile */}
+
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-48 sm:w-96 h-48 sm:h-96 bg-primary/10 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-40 sm:w-80 h-40 sm:h-80 bg-accent/10 rounded-full blur-3xl" />
         {!isMobile && (
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
         )}
-        
-        {/* Grid Pattern removed */}
       </div>
 
       <div className="container mx-auto px-4 relative z-10 pt-20 sm:pt-16">
@@ -100,98 +82,84 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-base sm:text-xl md:text-2xl lg:text-3xl font-heading font-medium text-muted-foreground mb-2 px-2 h-[1.5em] sm:h-[1.4em]"
+            className="text-base sm:text-xl md:text-2xl lg:text-3xl font-heading font-medium text-foreground mb-4 px-2"
           >
-            <span className="inline-block min-w-[1ch]">
-              {typewriterText}
-              <span className="inline-block w-[2px] h-[1em] bg-primary ml-1 animate-pulse" />
-            </span>
+            {positioning}
           </motion.h2>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.25 }}
-            className="text-sm sm:text-lg text-primary font-medium mb-3 sm:mb-6"
-          >
-            {language === 'pt' 
-              ? 'Desenvolvedor Low-Code & No-Code' 
-              : language === 'es' 
-                ? 'Desarrollador Low-Code & No-Code' 
-                : 'Low-Code & No-Code Developer'}
-          </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-xs sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-6 sm:mb-10 px-4 sm:px-2"
+            className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-6 sm:mb-8 px-4 sm:px-2 leading-relaxed"
           >
-            {t('hero.subtitle')}
+            {description}
           </motion.p>
 
+          {/* Primary CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="grid grid-cols-2 gap-2 sm:flex sm:flex-row sm:items-center sm:justify-center sm:gap-4 px-2 sm:px-0"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 px-2 sm:px-0 mb-4"
           >
-            <Button variant="hero" size="sm" className="sm:size-lg w-full sm:w-auto text-xs sm:text-base" asChild>
-              <a href="#projects">
-                <Briefcase className="w-3.5 h-3.5 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
-                {t('hero.cta.projects')}
-              </a>
-            </Button>
-            <Button variant="heroOutline" size="sm" className="sm:size-lg w-full sm:w-auto text-xs sm:text-base" asChild>
-              <a href="https://github.com/ChokiTheProo" target="_blank" rel="noopener noreferrer">
-                <Github className="w-3.5 h-3.5 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
-                {t('hero.cta.github')}
-              </a>
-            </Button>
-            <Button variant="glass" size="sm" className="sm:size-lg w-full sm:w-auto text-xs sm:text-base" asChild>
+            <Button variant="hero" size="lg" className="w-full sm:w-auto" asChild>
               <a href="#contact">
-                <Mail className="w-3.5 h-3.5 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
-                {t('hero.cta.contact')}
+                <Sparkles className="w-5 h-5 mr-2" />
+                {language === 'pt' ? 'Quero contratar a RoVR' : language === 'es' ? 'Quiero contratar a RoVR' : 'I want to hire RoVR'}
               </a>
             </Button>
-            <Button variant="glass" size="sm" className="sm:size-lg w-full sm:w-auto text-xs sm:text-base" asChild>
+            <Button variant="heroOutline" size="lg" className="w-full sm:w-auto" asChild>
               <a href="/downloads/curriculo-roger-varela.pdf" download>
-                <Download className="w-3.5 h-3.5 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
-                {language === 'pt' ? 'Baixar CV' : language === 'es' ? 'Descargar CV' : 'Download CV'}
+                <Download className="w-5 h-5 mr-2" />
+                {language === 'pt' ? 'Sou recrutador → Baixar CV' : language === 'es' ? 'Soy reclutador → Descargar CV' : 'Recruiter → Download CV'}
               </a>
             </Button>
           </motion.div>
 
-          {/* Stats */}
+          {/* Secondary CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="flex items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm"
+          >
+            <a href="#projects" className="text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-1.5">
+              <Briefcase className="w-4 h-4" />
+              {t('hero.cta.projects')}
+            </a>
+            <span className="text-border">·</span>
+            <a href="https://github.com/ChokiTheProo" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-1.5">
+              <Github className="w-4 h-4" />
+              GitHub
+            </a>
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-8 sm:mt-16 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-8 max-w-2xl mx-auto px-2 sm:px-0"
+            className="mt-8 sm:mt-14 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 max-w-3xl mx-auto px-2 sm:px-0"
           >
-            {[
-              { value: '6+', label: language === 'pt' ? 'Projetos' : language === 'es' ? 'Proyectos' : 'Projects' },
-              { value: '10+', label: language === 'pt' ? 'Tecnologias' : language === 'es' ? 'Tecnologías' : 'Technologies' },
-              { value: '3+', label: language === 'pt' ? 'Anos Exp.' : language === 'es' ? 'Años Exp.' : 'Years Exp.' },
-              { value: '🏆', label: language === 'pt' ? 'Premiado' : language === 'es' ? 'Premiado' : 'Award Winner' },
-            ].map((stat, index) => (
-              <motion.div 
-                key={index} 
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
                 className="text-center p-2 sm:p-3 rounded-xl bg-card/30 sm:bg-transparent border border-border/20 sm:border-0"
                 whileHover={!isMobile ? { scale: 1.05 } : undefined}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                <div className="text-xl sm:text-3xl md:text-4xl font-heading font-bold text-gradient">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-gradient">
                   {stat.value}
                 </div>
-                <div className="text-[10px] sm:text-sm text-muted-foreground mt-0.5 sm:mt-1">{stat.label}</div>
+                <div className="text-[10px] sm:text-sm text-muted-foreground mt-1">
+                  {language === 'pt' ? stat.labelPt : language === 'es' ? stat.labelEs : stat.labelEn}
+                </div>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll Indicator - hidden on mobile */}
       {!isMobile && (
         <motion.div
           initial={{ opacity: 0 }}

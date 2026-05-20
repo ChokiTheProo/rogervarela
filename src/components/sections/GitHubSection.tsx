@@ -1,14 +1,12 @@
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import { Github, Star, GitFork, Users, Code } from 'lucide-react';
+import { Github, Code } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { ImageZoom } from '@/components/ui/image-zoom';
 
 const stats = [
   { icon: Code, value: '6+', labelPt: 'Repositórios', labelEn: 'Repositories', labelEs: 'Repositorios' },
-  { icon: Users, value: '1', labelPt: 'Seguidores', labelEn: 'Followers', labelEs: 'Seguidores' },
-  { icon: Star, value: '2', labelPt: 'Seguindo', labelEn: 'Following', labelEs: 'Siguiendo' },
 ];
 
 const languages = [
@@ -104,7 +102,7 @@ export function GitHubSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="grid grid-cols-3 gap-2 md:gap-4 mb-6 md:mb-8"
+            className="grid grid-cols-1 max-w-xs mx-auto gap-2 md:gap-4 mb-6 md:mb-8"
           >
             {stats.map((stat, index) => (
               <div key={index} className="glow-card group">

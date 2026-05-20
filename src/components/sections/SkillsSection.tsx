@@ -1,363 +1,179 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
+import { Rocket, Database, GraduationCap, Target } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useIsMobile } from '@/hooks/use-mobile';
 
-const hardSkills = [
-  { name: 'React / Next.js', level: 85 },
-  { name: 'TypeScript', level: 85 },
-  { name: 'JavaScript', level: 90 },
-  { name: 'HTML5 / CSS3', level: 95 },
-  { name: 'Tailwind CSS', level: 90 },
-  { name: 'Node.js', level: 75 },
-  { name: 'PHP', level: 75 },
-  { name: 'PostgreSQL / MySQL', level: 80 },
-  { name: 'Supabase', level: 85 },
-  { name: 'Flutter / Dart', level: 70 },
-  { name: 'Kotlin', level: 65 },
-  { name: 'Git / GitHub', level: 90 },
-  { name: 'Linux', level: 80 },
-  { name: 'Windows Server', level: 75 },
-  { name: 'Networking / TCP-IP', level: 80 },
-  { name: 'IoT / Arduino', level: 75 },
-  { name: 'ERP Systems', level: 80 },
-  { name: 'HelpDesk / Suporte N1', level: 90 },
-  { name: 'Marketing Digital', level: 75 },
-];
-
-const languageSkills = {
+const skillGroups = {
   pt: [
-    { name: 'Português', level: 'Nativo' },
-    { name: 'Inglês - Básico', level: 'A1-A2' },
-    { name: 'Inglês - Intermediário', level: 'B1' },
+    { title: 'Front-end', items: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind', 'shadcn/ui'] },
+    { title: 'Back-end e dados', items: ['Node.js', 'PHP', 'PostgreSQL', 'MySQL', 'Supabase'] },
+    { title: 'Mobile', items: ['Flutter', 'Dart', 'Kotlin'] },
+    { title: 'Ferramentas e IA', items: ['Git', 'GitHub', 'Lovable', 'IA Generativa (Claude, ChatGPT)', 'Low-Code', 'APIs REST', 'Webhooks'] },
+    { title: 'Infra e suporte', items: ['Linux', 'Windows Server', 'Networking TCP/IP', 'ERP', 'HelpDesk N1', 'IoT (Arduino)'] },
   ],
   en: [
-    { name: 'Portuguese', level: 'Native' },
-    { name: 'English - Basic', level: 'A1-A2' },
-    { name: 'English - Intermediate', level: 'B1' },
+    { title: 'Front-end', items: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind', 'shadcn/ui'] },
+    { title: 'Back-end & data', items: ['Node.js', 'PHP', 'PostgreSQL', 'MySQL', 'Supabase'] },
+    { title: 'Mobile', items: ['Flutter', 'Dart', 'Kotlin'] },
+    { title: 'Tools & AI', items: ['Git', 'GitHub', 'Lovable', 'Generative AI (Claude, ChatGPT)', 'Low-Code', 'REST APIs', 'Webhooks'] },
+    { title: 'Infra & support', items: ['Linux', 'Windows Server', 'Networking TCP/IP', 'ERP', 'HelpDesk N1', 'IoT (Arduino)'] },
   ],
   es: [
-    { name: 'Portugués', level: 'Nativo' },
-    { name: 'Inglés - Básico', level: 'A1-A2' },
-    { name: 'Inglés - Intermedio', level: 'B1' },
+    { title: 'Front-end', items: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind', 'shadcn/ui'] },
+    { title: 'Back-end y datos', items: ['Node.js', 'PHP', 'PostgreSQL', 'MySQL', 'Supabase'] },
+    { title: 'Mobile', items: ['Flutter', 'Dart', 'Kotlin'] },
+    { title: 'Herramientas e IA', items: ['Git', 'GitHub', 'Lovable', 'IA Generativa (Claude, ChatGPT)', 'Low-Code', 'APIs REST', 'Webhooks'] },
+    { title: 'Infra y soporte', items: ['Linux', 'Windows Server', 'Networking TCP/IP', 'ERP', 'HelpDesk N1', 'IoT (Arduino)'] },
   ],
 };
 
-const softSkills = {
+const softSkillsWithProof = {
   pt: [
-    'Liderança',
-    'Comunicação Efetiva',
-    'Trabalho em Equipe',
-    'Resolução de Problemas',
-    'Pensamento Crítico',
-    'Adaptabilidade',
-    'Gestão de Tempo',
-    'Organização',
-    'Proatividade',
-    'Aprendizado Contínuo',
-    'Atenção aos Detalhes',
-    'Empreendedorismo',
+    { icon: Rocket, title: 'Execução solo', proof: 'Lancei 7 SaaS próprios em 2026, sem time.' },
+    { icon: Database, title: 'Resolução técnica em ambiente real', proof: 'SQL diário em ERP fiscal na Windel desde 2025.' },
+    { icon: GraduationCap, title: 'Aprendizado contínuo', proof: '1000h no Técnico em Informática + Análise e Desenvolvimento de Sistemas em curso.' },
+    { icon: Target, title: 'Mentalidade de produto', proof: 'Cada projeto entregue com modelo de monetização definido (assinatura, vitalício, freemium).' },
   ],
   en: [
-    'Leadership',
-    'Effective Communication',
-    'Teamwork',
-    'Problem Solving',
-    'Critical Thinking',
-    'Adaptability',
-    'Time Management',
-    'Organization',
-    'Proactivity',
-    'Continuous Learning',
-    'Attention to Detail',
-    'Entrepreneurship',
+    { icon: Rocket, title: 'Solo execution', proof: 'Shipped 7 of my own SaaS in 2026, no team.' },
+    { icon: Database, title: 'Real-world technical problem solving', proof: 'Daily SQL on a fiscal ERP at Windel since 2025.' },
+    { icon: GraduationCap, title: 'Continuous learning', proof: '1000h technical degree + Systems Analysis & Development in progress.' },
+    { icon: Target, title: 'Product mindset', proof: 'Every project delivered with a defined monetization model (subscription, lifetime, freemium).' },
   ],
   es: [
-    'Liderazgo',
-    'Comunicación Efectiva',
-    'Trabajo en Equipo',
-    'Resolución de Problemas',
-    'Pensamiento Crítico',
-    'Adaptabilidad',
-    'Gestión del Tiempo',
-    'Organización',
-    'Proactividad',
-    'Aprendizaje Continuo',
-    'Atención al Detalle',
-    'Emprendimiento',
+    { icon: Rocket, title: 'Ejecución solo', proof: 'Lancé 7 SaaS propios en 2026, sin equipo.' },
+    { icon: Database, title: 'Resolución técnica en entorno real', proof: 'SQL diario en ERP fiscal en Windel desde 2025.' },
+    { icon: GraduationCap, title: 'Aprendizaje continuo', proof: '1000h Técnico en Informática + Análisis y Desarrollo de Sistemas en curso.' },
+    { icon: Target, title: 'Mentalidad de producto', proof: 'Cada proyecto entregado con modelo de monetización definido (suscripción, vitalicio, freemium).' },
   ],
+};
+
+const languageLabels = {
+  pt: { title: 'Idiomas', native: 'Português (Nativo)', english: 'Inglês (B1 — intermediário)' },
+  en: { title: 'Languages', native: 'Portuguese (Native)', english: 'English (B1 — intermediate)' },
+  es: { title: 'Idiomas', native: 'Portugués (Nativo)', english: 'Inglés (B1 — intermedio)' },
 };
 
 export function SkillsSection() {
   const { t, language } = useLanguage();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const [hoveredSkill, setHoveredSkill] = useState<number | null>(null);
   const isMobile = useIsMobile();
+
+  const groups = skillGroups[language];
+  const softs = softSkillsWithProof[language];
+  const langs = languageLabels[language];
 
   return (
     <section id="skills" className="py-12 md:py-24 relative overflow-hidden">
-      {/* Animated Background */}
       <div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -50, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute left-0 bottom-0 w-96 h-96 bg-gradient-to-tr from-primary/10 to-transparent rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            x: [0, -80, 0],
-            y: [0, 60, 0],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute right-0 top-0 w-80 h-80 bg-gradient-to-bl from-accent/10 to-transparent rounded-full blur-3xl"
-        />
-        
-        {/* Floating Tech Icons - hidden on mobile */}
-        {!isMobile && ['⚛️', '🔷', '🎨', '⚡', '🔥'].map((emoji, i) => (
-          <motion.div
-            key={i}
-            className="absolute text-4xl opacity-10"
-            style={{
-              top: `${15 + i * 18}%`,
-              left: `${5 + i * 20}%`,
-            }}
-            animate={{
-              y: [-20, 20, -20],
-              rotate: [0, 360],
-              opacity: [0.05, 0.15, 0.05],
-            }}
-            transition={{
-              duration: 8 + i * 2,
-              repeat: Infinity,
-              delay: i * 0.5,
-            }}
-          >
-            {emoji}
-          </motion.div>
-        ))}
+        <div className="absolute left-0 bottom-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute right-0 top-0 w-80 h-80 bg-accent/5 rounded-full blur-3xl" />
       </div>
-      
+
       <div className="container mx-auto px-4 relative z-10" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-8 md:mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <motion.h2 
-            className="section-title mb-4 text-2xl md:text-4xl"
-            whileHover={isMobile ? {} : { scale: 1.02 }}
-          >
+          <h2 className="section-title mb-4">
             <span className="text-gradient">{t('skills.title')}</span>
-          </motion.h2>
+          </h2>
           <p className="section-subtitle mx-auto text-sm md:text-base px-2">{t('skills.subtitle')}</p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
-          {/* Hard Skills with 3D Progress Bars */}
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 md:gap-12">
+          {/* Hard Skills grouped */}
           <motion.div
-            initial={{ opacity: 0, x: isMobile ? 0 : -30 }}
+            initial={{ opacity: 0, x: isMobile ? 0 : -20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <motion.h3 
-              className="font-heading font-semibold text-lg md:text-xl text-foreground mb-4 md:mb-6 flex items-center gap-2"
-              whileHover={isMobile ? {} : { x: 5 }}
-            >
-              <motion.span 
-                className="w-2.5 md:w-3 h-2.5 md:h-3 rounded-full bg-gradient-primary"
-                animate={isMobile ? {} : { scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
+            <h3 className="font-heading font-semibold text-lg md:text-xl text-foreground mb-5 flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-gradient-primary" />
               {t('skills.hard')}
-            </motion.h3>
-            
-            <div className="space-y-3 md:space-y-4">
-              {hardSkills.map((skill, index) => (
-                <motion.div 
-                  key={index}
-                  initial={{ opacity: 0, x: isMobile ? 0 : -20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: 0.1 + index * 0.02 }}
-                  onHoverStart={() => !isMobile && setHoveredSkill(index)}
-                  onHoverEnd={() => !isMobile && setHoveredSkill(null)}
-                  className="group cursor-pointer"
+            </h3>
+
+            <div className="space-y-5">
+              {groups.map((group, gi) => (
+                <motion.div
+                  key={gi}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.1 + gi * 0.08 }}
                 >
-                  <div className="flex justify-between text-xs md:text-sm mb-1">
-                    <motion.span 
-                      className="text-foreground font-medium group-hover:text-primary transition-colors"
-                      animate={!isMobile && hoveredSkill === index ? { x: 5 } : { x: 0 }}
-                    >
-                      {skill.name}
-                    </motion.span>
-                    <motion.span 
-                      className="text-muted-foreground"
-                      animate={!isMobile && hoveredSkill === index ? { scale: 1.1, color: 'hsl(var(--primary))' } : {}}
-                    >
-                      {skill.level}%
-                    </motion.span>
-                  </div>
-                  <div 
-                    className="h-2.5 md:h-3 rounded-full bg-secondary overflow-hidden relative"
-                    style={{ 
-                      perspective: isMobile ? 'none' : '500px',
-                      boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.1)'
-                    }}
-                  >
-                    <motion.div
-                      initial={{ width: 0, rotateX: isMobile ? 0 : 45 }}
-                      animate={isInView ? { 
-                        width: `${skill.level}%`, 
-                        rotateX: 0,
-                      } : {}}
-                      transition={{ 
-                        duration: 0.8, 
-                        delay: 0.2 + index * 0.03,
-                        type: 'spring',
-                        stiffness: 50
-                      }}
-                      className="h-full rounded-full bg-gradient-primary relative"
-                      style={{
-                        boxShadow: !isMobile && hoveredSkill === index 
-                          ? '0 0 20px hsl(var(--primary) / 0.6), inset 0 1px 0 rgba(255,255,255,0.3)' 
-                          : 'inset 0 1px 0 rgba(255,255,255,0.2)'
-                      }}
-                    >
-                      {/* Shine Effect - simplified on mobile */}
-                      {!isMobile && (
-                        <motion.div
-                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                          animate={{
-                            x: ['-100%', '200%'],
-                          }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            repeatDelay: 3,
-                            delay: index * 0.1,
-                          }}
-                        />
-                      )}
-                    </motion.div>
+                  <h4 className="text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2.5">
+                    {group.title}
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {group.items.map((item, ii) => (
+                      <span
+                        key={ii}
+                        className="px-3 py-1.5 rounded-full text-xs md:text-sm font-medium bg-secondary/60 border border-border/50 text-foreground hover:border-primary/50 hover:bg-secondary/80 transition-all"
+                      >
+                        {item}
+                      </span>
+                    ))}
                   </div>
                 </motion.div>
               ))}
             </div>
           </motion.div>
 
-          {/* Soft Skills with 3D Cards */}
+          {/* Soft Skills with proof + Languages */}
           <motion.div
-            initial={{ opacity: 0, x: isMobile ? 0 : 30 }}
+            initial={{ opacity: 0, x: isMobile ? 0 : 20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <motion.h3 
-              className="font-heading font-semibold text-lg md:text-xl text-foreground mb-4 md:mb-6 flex items-center gap-2"
-              whileHover={isMobile ? {} : { x: 5 }}
-            >
-              <motion.span 
-                className="w-2.5 md:w-3 h-2.5 md:h-3 rounded-full bg-accent"
-                animate={isMobile ? {} : { scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-              />
+            <h3 className="font-heading font-semibold text-lg md:text-xl text-foreground mb-5 flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-accent" />
               {t('skills.soft')}
-            </motion.h3>
-            
-            <div className="flex flex-wrap gap-2 md:gap-3 mb-6 md:mb-8">
-              {softSkills[language].map((skill, index) => (
-                <motion.span
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8, rotateY: isMobile ? 0 : -90 }}
-                  animate={isInView ? { opacity: 1, scale: 1, rotateY: 0 } : {}}
-                  transition={{ 
-                    duration: 0.4, 
-                    delay: 0.3 + index * 0.05,
-                    type: 'spring',
-                    stiffness: 100
-                  }}
-                  whileHover={isMobile ? {} : { 
-                    scale: 1.1, 
-                    rotateY: 10,
-                    boxShadow: '0 10px 30px -10px hsl(var(--primary) / 0.4)',
-                    backgroundColor: 'hsl(var(--primary) / 0.2)',
-                  }}
-                  className="px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-secondary/50 border border-border/50 text-foreground text-xs md:text-sm font-medium hover:border-primary/50 transition-all cursor-pointer"
-                  style={{ 
-                    perspective: isMobile ? 'none' : '1000px',
-                    transformStyle: isMobile ? 'flat' : 'preserve-3d'
-                  }}
-                >
-                  {skill}
-                </motion.span>
-              ))}
+            </h3>
+
+            <div className="space-y-3 mb-8">
+              {softs.map((s, i) => {
+                const Icon = s.icon;
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ delay: 0.2 + i * 0.08 }}
+                    className="flex items-start gap-3 md:gap-4 p-4 rounded-xl bg-card/50 border border-border/40 hover:border-primary/40 hover:bg-card/70 transition-all"
+                  >
+                    <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-md ring-1 ring-white/20">
+                      <Icon className="w-5 h-5 text-white" strokeWidth={2.2} />
+                    </div>
+                    <div className="min-w-0">
+                      <h4 className="font-heading font-semibold text-sm md:text-base text-foreground mb-1">
+                        {s.title}
+                      </h4>
+                      <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
+                        {s.proof}
+                      </p>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
 
-            {/* Language Skills */}
-            <motion.h3 
-              className="font-heading font-semibold text-lg md:text-xl text-foreground mb-3 md:mb-4 flex items-center gap-2"
-              whileHover={isMobile ? {} : { x: 5 }}
-            >
-              <motion.span 
-                className="w-2.5 md:w-3 h-2.5 md:h-3 rounded-full bg-emerald-500"
-                animate={isMobile ? {} : { scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-              />
-              {language === 'pt' ? 'Idiomas' : language === 'es' ? 'Idiomas' : 'Languages'}
-            </motion.h3>
-            
-            <div className="flex flex-wrap gap-2 md:gap-3 mb-6 md:mb-8">
-              {languageSkills[language].map((lang, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                  animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
-                  transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                  whileHover={isMobile ? {} : { 
-                    scale: 1.05, 
-                    y: -5,
-                    boxShadow: '0 15px 30px -10px rgba(16, 185, 129, 0.3)'
-                  }}
-                  className="px-3 md:px-4 py-1.5 md:py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs md:text-sm font-medium cursor-pointer transition-all"
-                >
-                  <span className="font-semibold">{lang.name}</span>
-                  <span className="text-emerald-400/70 ml-1 md:ml-2">({lang.level})</span>
-                </motion.div>
-              ))}
+            {/* Languages */}
+            <h3 className="font-heading font-semibold text-lg md:text-xl text-foreground mb-4 flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+              {langs.title}
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              <span className="px-3 py-1.5 rounded-full text-xs md:text-sm font-medium bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+                {langs.native}
+              </span>
+              <span className="px-3 py-1.5 rounded-full text-xs md:text-sm font-medium bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+                {langs.english}
+              </span>
             </div>
-            
-
-            {/* Decorative Element with Animation */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="glow-card group mt-4 md:mt-6"
-            >
-              <div className="glow-card-inner p-4 md:p-6">
-                <div className="flex items-center gap-3 md:gap-4">
-                  <div className="glow-icon w-12 h-12 md:w-16 md:h-16 flex-shrink-0" style={{ backgroundImage: 'linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--primary)) 100%)' }}>
-                    <span className="relative z-10 text-2xl md:text-3xl">📚</span>
-                  </div>
-                  <div>
-                    <h4 className="font-heading font-semibold text-sm md:text-base text-foreground">
-                      {language === 'pt' ? 'Sempre Evoluindo' : language === 'es' ? 'Siempre Evolucionando' : 'Always Evolving'}
-                    </h4>
-                    <p className="text-xs md:text-sm text-muted-foreground">
-                      {language === 'pt'
-                        ? 'Constantemente aprendendo novas tecnologias e metodologias'
-                        : language === 'es'
-                        ? 'Constantemente aprendiendo nuevas tecnologías y metodologías'
-                        : 'Constantly learning new technologies and methodologies'}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </div>

@@ -10,11 +10,13 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 const navItems = [
   { key: 'about', href: '#about' },
-  { key: 'certifications', href: '#certifications' },
-  { key: 'experience', href: '#experience' },
+  { key: 'how', href: '#how-i-work' },
   { key: 'projects', href: '#projects' },
   { key: 'sites', href: '#landing-pages' },
+  { key: 'awards', href: '#awards' },
+  { key: 'experience', href: '#experience' },
   { key: 'skills', href: '#skills' },
+  { key: 'education', href: '#education' },
   { key: 'contact', href: '#contact' },
 ];
 

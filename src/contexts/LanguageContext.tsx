@@ -170,11 +170,14 @@ const translations: Record<Language, Record<string, string>> = {
   es: {
     // Navigation
     'nav.about': 'Sobre mí',
+    'nav.how': 'Cómo trabajo',
     'nav.certifications': 'Certificaciones',
     'nav.experience': 'Experiencia',
     'nav.projects': 'Proyectos',
     'nav.sites': 'Landing Pages y Sitios',
+    'nav.awards': 'Premios',
     'nav.skills': 'Habilidades',
+    'nav.education': 'Formación',
     'nav.contact': 'Contacto',
 
     // Hero

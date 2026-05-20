@@ -12,11 +12,14 @@ const translations: Record<Language, Record<string, string>> = {
   pt: {
     // Navigation
     'nav.about': 'Sobre',
+    'nav.how': 'Como trabalho',
     'nav.certifications': 'Certificações',
     'nav.experience': 'Experiência',
     'nav.projects': 'Projetos',
     'nav.sites': 'Landing Pages & Sites',
+    'nav.awards': 'Premiações',
     'nav.skills': 'Habilidades',
+    'nav.education': 'Formação',
     'nav.contact': 'Contato',
 
     // Hero
@@ -88,11 +91,14 @@ const translations: Record<Language, Record<string, string>> = {
   en: {
     // Navigation
     'nav.about': 'About',
+    'nav.how': 'How I work',
     'nav.certifications': 'Certifications',
     'nav.experience': 'Experience',
     'nav.projects': 'Projects',
     'nav.sites': 'Landing Pages & Sites',
+    'nav.awards': 'Awards',
     'nav.skills': 'Skills',
+    'nav.education': 'Education',
     'nav.contact': 'Contact',
 
     // Hero

@@ -26,14 +26,14 @@ export function ProjectCard({
 }: ProjectCardProps) {
   return (
     <div className="group relative h-full [perspective:1000px]">
-      {/* Outer halo glow */}
+      {/* Outer halo glow — tighter on mobile to avoid overflow/perf issues */}
       <div
         aria-hidden
-        className="absolute -inset-4 bg-gradient-to-r from-primary/25 to-accent/25 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-[32px]"
+        className="absolute -inset-2 sm:-inset-3 lg:-inset-4 bg-gradient-to-r from-primary/25 to-accent/25 blur-2xl sm:blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-[28px] sm:rounded-[30px] lg:rounded-[32px]"
       />
 
-      {/* Rotating conic border wrapper */}
-      <div className="relative h-full p-[1.5px] overflow-hidden rounded-[26px] transition-all duration-500 ease-out group-hover:scale-[1.02] group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:shadow-primary/25">
+      {/* Rotating conic border wrapper — radius matches inner card + 1.5px padding */}
+      <div className="relative h-full p-[1.5px] overflow-hidden rounded-[22px] sm:rounded-[24px] lg:rounded-[26px] transition-transform duration-500 ease-out group-hover:scale-[1.02] group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:shadow-primary/25 will-change-transform">
         {/* Conic gradient spinning border */}
         <div
           aria-hidden
@@ -49,7 +49,7 @@ export function ProjectCard({
           target="_blank"
           rel="noopener noreferrer"
           aria-label={ariaLabel ?? `${ctaLabel} — ${title}: ${tagline}`}
-          className="relative flex flex-col h-full bg-card/85 backdrop-blur-xl border border-white/10 rounded-[24px] sm:rounded-[25px] p-6 sm:p-7 overflow-hidden shadow-2xl transition-colors duration-500 hover:border-primary/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
+          className="relative flex flex-col h-full min-h-[340px] sm:min-h-[380px] lg:min-h-[420px] bg-card/85 backdrop-blur-xl border border-white/10 rounded-[20.5px] sm:rounded-[22.5px] lg:rounded-[24.5px] p-5 sm:p-6 lg:p-7 overflow-hidden shadow-2xl transition-colors duration-500 hover:border-primary/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
         >
         {/* Top glass reflection */}
         <div
@@ -116,7 +116,7 @@ export function ProjectCard({
         {/* Bottom corner highlight on hover */}
         <div
           aria-hidden
-          className="absolute bottom-0 right-0 w-28 h-28 bg-gradient-to-br from-transparent via-transparent to-accent/10 rounded-br-[24px] sm:rounded-br-[26px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          className="absolute bottom-0 right-0 w-24 h-24 sm:w-28 sm:h-28 bg-gradient-to-br from-transparent via-transparent to-accent/10 rounded-br-[20.5px] sm:rounded-br-[22.5px] lg:rounded-br-[24.5px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         />
       </a>
       </div>

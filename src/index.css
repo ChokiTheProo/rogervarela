@@ -375,11 +375,11 @@
     padding: 2px;
     background-image: conic-gradient(
       from var(--angle, 0deg) at 50% 50%,
-      hsl(var(--primary) / 0.55),
+      hsl(var(--primary) / 0.3),
       transparent 35%,
-      hsl(var(--accent) / 0.45) 60%,
+      hsl(var(--accent) / 0.22) 60%,
       transparent 85%,
-      hsl(var(--primary) / 0.55)
+      hsl(var(--primary) / 0.3)
     );
     animation: spin-border 10s linear infinite;
     transition: transform 0.4s ease;
@@ -387,19 +387,20 @@
   .glow-card::before {
     content: '';
     position: absolute;
-    inset: -8px;
+    inset: -6px;
     border-radius: inherit;
     background:
-      radial-gradient(circle at 30% 30%, hsl(var(--primary) / 0.45), transparent 60%),
-      radial-gradient(circle at 70% 70%, hsl(var(--accent) / 0.35), transparent 60%);
-    filter: blur(28px);
+      radial-gradient(circle at 30% 30%, hsl(var(--primary) / 0.22), transparent 60%),
+      radial-gradient(circle at 70% 70%, hsl(var(--accent) / 0.18), transparent 60%);
+    filter: blur(22px);
     opacity: 0;
     z-index: -1;
     transition: opacity 0.6s ease;
     pointer-events: none;
   }
-  .glow-card:hover::before { opacity: 0.85; }
+  .glow-card:hover::before { opacity: 0.5; }
   .glow-card:hover { transform: translateY(-4px); }
+
 
   .glow-card-inner {
     position: relative;

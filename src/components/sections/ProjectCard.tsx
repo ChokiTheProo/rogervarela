@@ -29,32 +29,32 @@ export function ProjectCard({
       className="group relative h-full"
       style={{ contain: 'layout paint' }}
     >
-      {/* Outer halo glow — opacity-only transition, pre-painted layer */}
+      {/* Outer halo glow — consistent inset/blur across breakpoints */}
       <div
         aria-hidden
-        className="absolute -inset-2 sm:-inset-3 lg:-inset-4 bg-gradient-to-r from-primary/25 to-accent/25 blur-2xl sm:blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[28px] sm:rounded-[30px] lg:rounded-[32px]"
+        className="absolute -inset-3 bg-gradient-to-r from-primary/25 to-accent/25 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[28px]"
         style={{ transform: 'translateZ(0)' }}
       />
 
-      {/* Pre-rendered hover shadow layer — animates opacity, not box-shadow */}
+      {/* Pre-rendered hover shadow layer */}
       <div
         aria-hidden
-        className="absolute inset-0 rounded-[22px] sm:rounded-[24px] lg:rounded-[26px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+        className="absolute inset-0 rounded-[24px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
         style={{
           boxShadow: '0 20px 50px -15px hsl(var(--primary) / 0.35)',
         }}
       />
 
-      {/* Wrapper — only transforms animate (GPU composited) */}
+      {/* Wrapper — unified radius so conic border looks identical at all sizes */}
       <div
-        className="relative h-full p-[1.5px] overflow-hidden rounded-[22px] sm:rounded-[24px] lg:rounded-[26px] transition-transform duration-400 ease-out group-hover:scale-[1.02] group-hover:-translate-y-2"
+        className="relative h-full p-[1.5px] overflow-hidden rounded-[24px] transition-transform duration-400 ease-out group-hover:scale-[1.02] group-hover:-translate-y-2"
         style={{
           transform: 'translateZ(0)',
           willChange: 'transform',
           backfaceVisibility: 'hidden',
         }}
       >
-        {/* Conic gradient spinning border — only animates on hover */}
+        {/* Conic gradient spinning border */}
         <div
           aria-hidden
           className="absolute inset-[-100%] opacity-0 group-hover:opacity-100 group-hover:animate-[spin_4s_linear_infinite] transition-opacity duration-400 pointer-events-none"
@@ -69,7 +69,7 @@ export function ProjectCard({
           target="_blank"
           rel="noopener noreferrer"
           aria-label={ariaLabel ?? `${ctaLabel} — ${title}: ${tagline}`}
-          className="relative flex flex-col h-full min-h-[340px] sm:min-h-[380px] lg:min-h-[420px] bg-card/90 backdrop-blur-md border border-white/10 rounded-[20.5px] sm:rounded-[22.5px] lg:rounded-[24.5px] p-5 sm:p-6 lg:p-7 overflow-hidden shadow-xl hover:border-primary/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
+          className="relative flex flex-col h-full min-h-[360px] sm:min-h-[400px] lg:min-h-[440px] bg-card/90 backdrop-blur-md border border-white/10 rounded-[22.5px] p-5 sm:p-6 lg:p-7 overflow-hidden shadow-xl hover:border-primary/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
           style={{ transition: 'border-color 300ms ease' }}
         >
           {/* Top glass reflection — static */}

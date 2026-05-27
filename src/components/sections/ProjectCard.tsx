@@ -37,7 +37,7 @@ export function ProjectCard({
         {/* Conic gradient spinning border */}
         <div
           aria-hidden
-          className="absolute inset-[-100%] animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+          className="absolute inset-[-100%] opacity-0 group-hover:opacity-100 group-hover:animate-[spin_4s_linear_infinite] transition-opacity duration-500 pointer-events-none"
           style={{
             background:
               'conic-gradient(from 0deg, transparent 20%, hsl(var(--primary)) 40%, hsl(var(--accent)) 50%, hsl(var(--primary)) 60%, transparent 80%)',

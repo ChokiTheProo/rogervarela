@@ -116,7 +116,7 @@ export function ProjectCard({
         {/* Bottom corner highlight on hover */}
         <div
           aria-hidden
-          className="absolute bottom-0 right-0 w-28 h-28 bg-gradient-to-br from-transparent via-transparent to-accent/10 rounded-br-[24px] sm:rounded-br-[26px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          className="absolute bottom-0 right-0 w-24 h-24 sm:w-28 sm:h-28 bg-gradient-to-br from-transparent via-transparent to-accent/10 rounded-br-[20.5px] sm:rounded-br-[22.5px] lg:rounded-br-[24.5px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         />
       </a>
       </div>

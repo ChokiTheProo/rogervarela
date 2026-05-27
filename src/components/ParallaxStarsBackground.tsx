@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { cn } from '@/lib/utils';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface ParallaxStarsBackgroundProps {
   className?: string;
@@ -22,9 +23,12 @@ export function ParallaxStarsBackground({
   className,
   speed = 1,
 }: ParallaxStarsBackgroundProps) {
-  const shadowsSmall = useMemo(() => generateBoxShadows(700), []);
-  const shadowsMedium = useMemo(() => generateBoxShadows(200), []);
-  const shadowsBig = useMemo(() => generateBoxShadows(100), []);
+  const isMobile = useIsMobile();
+  // Drastically reduce star count on mobile for perf (1000 → 220)
+  const counts = isMobile ? { s: 150, m: 50, b: 20 } : { s: 700, m: 200, b: 100 };
+  const shadowsSmall = useMemo(() => generateBoxShadows(counts.s), [counts.s]);
+  const shadowsMedium = useMemo(() => generateBoxShadows(counts.m), [counts.m]);
+  const shadowsBig = useMemo(() => generateBoxShadows(counts.b), [counts.b]);
 
   const dSmall = 50 / speed;
   const dMedium = 100 / speed;

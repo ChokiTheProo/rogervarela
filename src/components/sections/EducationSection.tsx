@@ -9,7 +9,7 @@ const education = [
     degree: { pt: 'Análise e Desenvolvimento de Sistemas', en: 'Systems Analysis and Development', es: 'Análisis y Desarrollo de Sistemas' },
     institution: 'Uninter',
     location: 'EAD',
-    period: '2024 - 2027',
+    period: '2024 - 2026',
     status: { pt: 'Em andamento', en: 'In progress', es: 'En curso' },
     current: true,
     description: {
@@ -22,7 +22,7 @@ const education = [
     degree: { pt: 'Técnico em Informática para Internet', en: 'Internet Computing Technician', es: 'Técnico en Informática para Internet' },
     institution: 'QI Faculdade e Escola Técnica',
     location: 'Caxias do Sul, RS',
-    period: '2021 - 2023',
+    period: 'Abr 2022 - Out 2023',
     status: { pt: 'Concluído', en: 'Completed', es: 'Completado' },
     current: false,
     description: {

@@ -63,23 +63,23 @@ const experiences = [
     role: { pt: 'Auxiliar de Produção', en: 'Production Assistant', es: 'Auxiliar de Producción' },
     company: 'Moon',
     location: 'Caxias do Sul, RS',
-    period: 'Jul 2021 - Mar 2023',
+    period: 'Out 2020 - Out 2023',
     current: false,
     responsibilities: {
       pt: [
-        'Produção de embutidos de teto',
+        'Produção de embutidos de plástico',
         'Controle de qualidade de produtos',
         'Trabalho em equipe e cumprimento de metas',
         'Organização e manutenção do ambiente de trabalho',
       ],
       en: [
-        'Ceiling embedded production',
+        'Plastic embedded production',
         'Product quality control',
         'Teamwork and meeting targets',
         'Organization and maintenance of the work environment',
       ],
       es: [
-        'Producción de embutidos de techo',
+        'Producción de embutidos de plástico',
         'Control de calidad de productos',
         'Trabajo en equipo y cumplimiento de metas',
         'Organización y mantenimiento del ambiente de trabajo',

@@ -13,8 +13,6 @@ const hardSkills = [
   { name: 'PHP', level: 75 },
   { name: 'PostgreSQL / MySQL', level: 80 },
   { name: 'Supabase', level: 85 },
-  { name: 'Flutter / Dart', level: 70 },
-  { name: 'Kotlin', level: 65 },
   { name: 'Git / GitHub', level: 90 },
   { name: 'Linux', level: 80 },
   { name: 'Windows Server', level: 75 },

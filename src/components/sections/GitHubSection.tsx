@@ -79,10 +79,10 @@ export function GitHubSection() {
                 <p className="text-muted-foreground text-sm mb-2">@ChokiTheProo</p>
                 <p className="text-xs md:text-sm text-muted-foreground max-w-md">
                   {language === 'pt'
-                    ? 'Em busca de uma oportunidade na área de Desenvolvimento. Compartilhando projetos feitos durante os cursos.'
+                    ? 'Código aberto e projetos públicos. Meus produtos completos estão no ar — veja a seção Projetos.'
                     : language === 'es'
-                    ? 'En busca de una oportunidad en el área de Desarrollo. Compartiendo proyectos realizados durante los cursos.'
-                    : 'Looking for an opportunity in the Development field. Sharing projects made during courses.'}
+                    ? 'Código abierto y proyectos públicos. Mis productos completos están en producción — ve la sección Proyectos.'
+                    : 'Open source and public projects. My complete products are live — see the Projects section.'}
                 </p>
               </div>
 

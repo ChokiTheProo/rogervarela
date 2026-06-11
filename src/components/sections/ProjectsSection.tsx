@@ -16,7 +16,7 @@ const projects: Project[] = [
     category: 'SaaS · Precificação',
     title: 'PreçoCerto',
     tagline:
-      'A IA que calcula em 2 minutos quanto o autônomo brasileiro deveria estar cobrando.',
+      'IA que calcula em 2 minutos quanto o autônomo deve cobrar.',
     description:
       'SaaS de precificação pra autônomos. Em 6 perguntas e 2 minutos, a IA devolve o preço ideal, com faixa mínima, faixa ideal e justificativa pronta pra mandar pro cliente. Modelo híbrido: plano único, assinatura PRO e Studio sob consulta.',
     stack: ['Low-code', 'Supabase', 'Claude', 'Abacate Pay', 'Hotmart'],
@@ -26,7 +26,7 @@ const projects: Project[] = [
     category: 'SaaS · Design com IA',
     title: 'Llavero.ai',
     tagline:
-      'Chaveiros personalizados com IA pro mercado hispano, prontos pra imprimir em 60 segundos.',
+      'Design de chaveiros com IA pro mercado hispano, cobrando em dólar.',
     description:
       'O usuário conversa com a IA, descreve pra quem é o chaveiro — presente, devocional, pet, marca — e baixa o PDF em 300 DPI pronto pra imprimir. Monetização híbrida: assinatura mensal por tokens + packs avulsos que não expiram.',
     stack: ['Lovable', 'IA generativa', 'Hotmart'],
@@ -36,7 +36,7 @@ const projects: Project[] = [
     category: 'Infoproduto · Gamer',
     title: 'Rx Otimização',
     tagline:
-      'Scripts que tiram até +240 FPS de PCs de gamer sem trocar hardware.',
+      'Scripts que entregam até +240 FPS sem trocar hardware.',
     description:
       'Infoproduto pra gamer brasileiro que joga em PC mediano. Pacote com scripts e tutorial em vídeo, executa como admin e em 5 minutos o PC roda como novo. Três planos com upsell claro: Básico, Pro e Elite vitalício.',
     stack: ['Low-code', 'HTML/CSS/JS', 'ChatGPT', 'Wiapy'],
@@ -46,7 +46,7 @@ const projects: Project[] = [
     category: 'SaaS · Jurídico pra freelancer',
     title: 'ContratoZero',
     tagline:
-      'Contrato profissional pra freelancer em 90 segundos, com cláusulas anti-calote.',
+      'Contrato com IA pra freelancer, assinado pelo celular com validade ICP-Brasil.',
     description:
       'O freelancer responde 4 perguntas, a IA monta o contrato com multa, juros e prazo já blindados, gera link e o cliente assina pelo celular com validade jurídica via ICP-Brasil. Pagamento único, acesso vitalício.',
     stack: ['Lovable', 'IA de contratos', 'ICP-Brasil'],
@@ -56,7 +56,7 @@ const projects: Project[] = [
     category: 'SaaS · Contabilidade',
     title: 'RovrCont',
     tagline:
-      'Plataforma fiscal, tributária e de DP pra contadores e PMEs brasileiras.',
+      'SaaS fiscal com motor de cálculo de tributos e simulador da Reforma (CBS/IBS).',
     description:
       'Cálculo de ICMS, DIFAL, PIS, COFINS, IRPJ, CSLL, Simples Nacional com Fator R, folha de pagamento, controle de ponto, férias, rescisão e assistente NF-e — num só lugar. Inclui assistente fiscal por IA pra dúvida em tempo real.',
     stack: ['Low-code', 'Motor fiscal', 'IA fiscal', 'Stripe', 'Mercado Pago'],
@@ -66,7 +66,7 @@ const projects: Project[] = [
     category: 'SaaS · Gestão de Clínica',
     title: 'DentFlow',
     tagline:
-      'Gestão de clínica odontológica feita pra auxiliar e recepcionista, não pro dentista.',
+      'Gestão de clínica odontológica focada em auxiliar e recepcionista.',
     description:
       'Dashboard, agenda por procedimento, checklist diário de esterilização, pacientes com histórico dental, caixa, prescrições e notificações — num só sistema, com permissão por perfil e suporte a três idiomas.',
     stack: ['React', 'TypeScript', 'Tailwind', 'shadcn/ui', 'Lovable Cloud'],
@@ -76,7 +76,7 @@ const projects: Project[] = [
     category: 'SaaS · Gestão de Empréstimos',
     title: 'Fluxen',
     tagline:
-      'Controle profissional de empréstimos pra autônomo e pequeno negócio brasileiro.',
+      'Controle de empréstimos e inadimplência pra quem ainda usa caderno.',
     description:
       'Cadastro de clientes, parcelas automáticas, dashboard em tempo real e controle de inadimplência num só sistema. Assinatura mensal acessível, sem taxa de adesão, com acesso em qualquer dispositivo.',
     stack: ['Lovable', 'Dashboard responsivo', 'Marca RoVR'],

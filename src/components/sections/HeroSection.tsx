@@ -170,7 +170,7 @@ export function HeroSection() {
             className="mt-8 sm:mt-16 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-8 max-w-2xl mx-auto px-2 sm:px-0"
           >
             {[
-              { value: '6+', label: language === 'pt' ? 'Projetos' : language === 'es' ? 'Proyectos' : 'Projects' },
+              { value: '7', label: language === 'pt' ? 'Projetos' : language === 'es' ? 'Proyectos' : 'Projects' },
               { value: '10+', label: language === 'pt' ? 'Tecnologias' : language === 'es' ? 'Tecnologías' : 'Technologies' },
               { value: '3+', label: language === 'pt' ? 'Anos Exp.' : language === 'es' ? 'Años Exp.' : 'Years Exp.' },
               { value: '🏆', label: language === 'pt' ? 'Premiado' : language === 'es' ? 'Premiado' : 'Award Winner' },

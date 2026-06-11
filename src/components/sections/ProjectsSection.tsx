@@ -119,7 +119,7 @@ export function ProjectsSection() {
             <span className="text-gradient">Projetos que construí sozinho</span>
           </h2>
           <p className="section-subtitle mx-auto opacity-80">
-            Sete produtos digitais reais, do papel ao checkout, usando low-code
+            7 produtos digitais reais, do papel ao checkout, usando low-code
             + IA como sócio técnico.
           </p>
         </motion.div>

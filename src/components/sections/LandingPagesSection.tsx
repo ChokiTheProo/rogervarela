@@ -1,11 +1,11 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ProjectCard } from './ProjectCard';
-import integrareCover from '@/assets/integrare-cover.png.asset.json';
-import mambaCover from '@/assets/mamba-journal-cover.png.asset.json';
-import devstartCover from '@/assets/devstart-cover.png.asset.json';
-import eldaCover from '@/assets/elda-beauty-cover.png.asset.json';
-import rovrCover from '@/assets/rovr-cover.png.asset.json';
+import integrareCover from '@/assets/integrare-cover.webp';
+import mambaCover from '@/assets/mamba-journal-cover.webp';
+import devstartCover from '@/assets/devstart-cover.webp';
+import eldaCover from '@/assets/elda-beauty-cover.webp';
+import rovrCover from '@/assets/rovr-cover.webp';
 
 interface LandingPage {
   category: string;
@@ -27,7 +27,7 @@ const landingPages: LandingPage[] = [
       'Site institucional com foco em conversão por WhatsApp, prova social do Google (4.9 / 316 avaliações), galeria da estrutura, serviços e localização. Visual clínico-humanizado, mobile-first.',
     tools: ['Lovable', 'WhatsApp Integration', 'Google Reviews'],
     href: 'https://integare-web-care.lovable.app',
-    image: integrareCover.url,
+    image: integrareCover,
   },
   {
     category: 'LANDING PAGE · INFOPRODUTO (EN)',
@@ -38,7 +38,7 @@ const landingPages: LandingPage[] = [
       'Página editorial-cinematográfica em estilo revista, com tipografia forte, marcas serializadas (Season 04, Edition N° 008) e checkout via Hotmart por US$ 9.90. Mira público de atletas e leitores fora do Brasil.',
     tools: ['Lovable', 'Hotmart', 'Copy em inglês'],
     href: 'https://mamba-journal.lovable.app',
-    image: mambaCover.url,
+    image: mambaCover,
   },
   {
     category: 'LANDING PAGE · EDTECH',
@@ -49,7 +49,7 @@ const landingPages: LandingPage[] = [
       'Página de venda com currículo do curso, professor em destaque, prova social, oferta com gatilho de preço (R$ 297 → R$ 27,90), bônus de certificado e garantia de 7 dias.',
     tools: ['Lovable', 'checkout integrado', 'copy de oferta'],
     href: 'https://devstart.lovable.app',
-    image: devstartCover.url,
+    image: devstartCover,
   },
   {
     category: 'LANDING PAGE · BELEZA',
@@ -60,7 +60,7 @@ const landingPages: LandingPage[] = [
       'Site com serviços categorizados (cabelo, estética, sobrancelha, make, unha), formulário de agendamento com horários disponíveis, portfólio, avaliações verificadas e integração com WhatsApp pra fechar atendimento. Visual elegante e feminino.',
     tools: ['Lovable', 'formulário de agendamento', 'WhatsApp Integration'],
     href: 'https://eldabeauty.lovable.app',
-    image: eldaCover.url,
+    image: eldaCover,
   },
   {
     category: 'SITE INSTITUCIONAL · AGÊNCIA',
@@ -71,7 +71,7 @@ const landingPages: LandingPage[] = [
       'Apresenta o portfólio da RoVR, modelos de serviço, diferenciais (preview grátis, paga depois de aprovar) e tem multi-idioma (PT, EN, ES). É a vitrine que conecta tudo que venho construindo.',
     tools: ['Lovable', 'Multi-idioma', 'Portfólio integrado'],
     href: 'https://rovr.site',
-    image: rovrCover.url,
+    image: rovrCover,
   },
 ];
 

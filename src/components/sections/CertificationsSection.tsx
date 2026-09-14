@@ -4,6 +4,18 @@ import { Award, Calendar, Building, BookOpen, GraduationCap, Code, Globe, Langua
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useIsMobile } from '@/hooks/use-mobile';
+import internetComputingImage from '@/assets/cert-internet-computing.webp';
+import javascriptImage from '@/assets/cert-javascript.webp';
+import programmingLogicImage from '@/assets/cert-programming-logic.webp';
+import digitalMarketingImage from '@/assets/cert-digital-marketing.webp';
+import basicEnglishImage from '@/assets/cert-basic-english.webp';
+import intermediateEnglishImage from '@/assets/cert-intermediate-english.webp';
+import basicComputingImage from '@/assets/cert-basic-computing.webp';
+import gitGithubImage from '@/assets/cert-git-github.webp';
+import javaImage from '@/assets/cert-java.webp';
+import mobileDevelopmentImage from '@/assets/cert-mobile-development.webp';
+import networkSystemsImage from '@/assets/cert-network-systems.webp';
+import iotImage from '@/assets/cert-iot.webp';
 
 interface Certification {
   name: { pt: string; en: string; es: string };
@@ -25,6 +37,7 @@ const certifications: Certification[] = [
     type: { pt: 'Formação Técnica', en: 'Technical Degree', es: 'Formación Técnica' },
     category: 'technical',
     hours: '1000h',
+    previewImage: internetComputingImage,
     description: {
       pt: 'Formação técnica completa em desenvolvimento web, redes, banco de dados e infraestrutura de TI.',
       en: 'Complete technical training in web development, networks, databases, and IT infrastructure.',
@@ -39,7 +52,7 @@ const certifications: Certification[] = [
     category: 'programming',
     hours: '40h',
     downloadUrl: '/downloads/certificado-javascript-40h.jpg',
-    previewImage: '/downloads/certificado-javascript-40h-thumb.webp',
+    previewImage: javascriptImage,
     description: {
       pt: 'Fundamentos e recursos modernos do JavaScript: DOM, ES6+, funções, eventos e manipulação dinâmica.',
       en: 'JavaScript fundamentals and modern features: DOM, ES6+, functions, events, and dynamic manipulation.',
@@ -54,7 +67,7 @@ const certifications: Certification[] = [
     category: 'programming',
     hours: '48h',
     downloadUrl: '/downloads/certificado-logica-programacao.jpg',
-    previewImage: '/downloads/certificado-logica-programacao-thumb.webp',
+    previewImage: programmingLogicImage,
     description: {
       pt: 'Estruturas de decisão, repetição, vetores e algoritmos — base sólida para qualquer linguagem.',
       en: 'Decision structures, loops, arrays, and algorithms — solid foundation for any language.',
@@ -68,6 +81,7 @@ const certifications: Certification[] = [
     type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'other',
     hours: '40h',
+    previewImage: digitalMarketingImage,
     description: {
       pt: 'SEO, tráfego pago, funis e estratégias para gerar leads e conversão online.',
       en: 'SEO, paid traffic, funnels, and strategies to generate leads and online conversion.',
@@ -81,6 +95,7 @@ const certifications: Certification[] = [
     type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'languages',
     hours: '40h',
+    previewImage: basicEnglishImage,
     description: {
       pt: 'Vocabulário, gramática e conversação para comunicação técnica e do dia a dia.',
       en: 'Vocabulary, grammar, and conversation for technical and everyday communication.',
@@ -94,6 +109,7 @@ const certifications: Certification[] = [
     type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'languages',
     hours: '40h',
+    previewImage: intermediateEnglishImage,
     description: {
       pt: 'Leitura de documentação técnica, escrita profissional e comunicação fluente em contexto de TI.',
       en: 'Reading technical documentation, professional writing, and fluent communication in IT context.',
@@ -107,6 +123,7 @@ const certifications: Certification[] = [
     type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'technical',
     hours: '75h',
+    previewImage: basicComputingImage,
     description: {
       pt: 'Sistemas operacionais, pacote Office, internet e fundamentos de hardware e software.',
       en: 'Operating systems, Office suite, internet, and hardware/software fundamentals.',
@@ -120,6 +137,7 @@ const certifications: Certification[] = [
     type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'programming',
     hours: '20h',
+    previewImage: gitGithubImage,
     description: {
       pt: 'Versionamento de código, branches, pull requests e colaboração em projetos reais.',
       en: 'Code versioning, branches, pull requests, and collaboration on real projects.',
@@ -133,6 +151,7 @@ const certifications: Certification[] = [
     type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'programming',
     hours: '40h',
+    previewImage: javaImage,
     description: {
       pt: 'Programação orientada a objetos, classes, herança, polimorfismo e aplicações Java.',
       en: 'Object-oriented programming, classes, inheritance, polymorphism, and Java applications.',
@@ -145,6 +164,7 @@ const certifications: Certification[] = [
     year: '2024',
     type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'programming',
+    previewImage: mobileDevelopmentImage,
     description: {
       pt: 'Criação de apps Android e iOS com foco em UX, navegação e integração com APIs.',
       en: 'Building Android and iOS apps focused on UX, navigation, and API integration.',
@@ -157,6 +177,7 @@ const certifications: Certification[] = [
     year: '2023',
     type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'technical',
+    previewImage: networkSystemsImage,
     description: {
       pt: 'Administração de servidores, protocolos de rede e configuração de ambientes Linux/Windows.',
       en: 'Server administration, network protocols, and Linux/Windows environment configuration.',
@@ -169,6 +190,7 @@ const certifications: Certification[] = [
     year: '2024',
     type: { pt: 'Certificação', en: 'Certification', es: 'Certificación' },
     category: 'technical',
+    previewImage: iotImage,
     description: {
       pt: 'Sensores, microcontroladores e dispositivos conectados aplicados a soluções inteligentes.',
       en: 'Sensors, microcontrollers, and connected devices applied to smart solutions.',
@@ -329,14 +351,17 @@ export function CertificationsSection() {
               </div>
               
               {cert.previewImage && (
-                <div className="mb-3 sm:mb-4 rounded-lg overflow-hidden border border-border/30">
+                <div className="relative -mx-4 -mt-4 sm:-mx-5 sm:-mt-5 mb-4 aspect-[16/9] overflow-hidden border-b border-border/50 bg-muted">
                   <img 
                     src={cert.previewImage} 
                     alt={cert.name[language]} 
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-28 sm:h-32 object-cover object-top group-hover:scale-[1.03] transition-transform duration-500"
+                     width={1088}
+                     height={608}
+                     className="h-full w-full object-cover object-center group-hover:scale-[1.035] transition-transform duration-500"
                   />
+                   <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-card/40 via-transparent to-transparent pointer-events-none" />
                 </div>
               )}
               

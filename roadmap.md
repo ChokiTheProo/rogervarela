@@ -8,3 +8,4 @@
 - [x] Validar os novos cards em celular e computador
 - [ ] Substituir as capas de cursos e certificações por imagens mais realistas e específicas
 - [ ] Validar as novas capas em celular e computador
+- [ ] Ocultar o selo Lovable da página

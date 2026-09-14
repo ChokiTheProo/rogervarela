@@ -8,6 +8,7 @@ interface ProjectCardProps {
   description: string;
   tags: string[];
   href: string;
+  image?: string;
   ctaLabel?: string;
   ariaLabel?: string;
   showLive?: boolean;
@@ -20,6 +21,7 @@ export function ProjectCard({
   description,
   tags,
   href,
+  image,
   ctaLabel = 'Ver projeto',
   ariaLabel,
   showLive = true,
@@ -69,7 +71,7 @@ export function ProjectCard({
           target="_blank"
           rel="noopener noreferrer"
           aria-label={ariaLabel ?? `${ctaLabel} — ${title}: ${tagline}`}
-          className="relative flex flex-col h-full min-h-[360px] sm:min-h-[400px] lg:min-h-[440px] bg-card/90 backdrop-blur-md border border-white/10 rounded-[22.5px] p-5 sm:p-6 lg:p-7 overflow-hidden shadow-xl hover:border-primary/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
+          className={`relative flex flex-col h-full bg-card/90 backdrop-blur-md border border-white/10 rounded-[22.5px] p-5 sm:p-6 lg:p-7 overflow-hidden shadow-xl hover:border-primary/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 ${image ? 'min-h-[500px] sm:min-h-[540px] lg:min-h-[580px]' : 'min-h-[360px] sm:min-h-[400px] lg:min-h-[440px]'}`}
           style={{ transition: 'border-color 300ms ease' }}
         >
           {/* Top glass reflection — static */}
@@ -77,6 +79,19 @@ export function ProjectCard({
             aria-hidden
             className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/[0.06] to-transparent pointer-events-none"
           />
+
+          {image && (
+            <div className="relative -mx-5 -mt-5 sm:-mx-6 sm:-mt-6 lg:-mx-7 lg:-mt-7 mb-5 aspect-[16/10] overflow-hidden border-b border-border/70 bg-muted">
+              <img
+                src={image}
+                alt={`Página inicial do site ${title}`}
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+              />
+              <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-card/45 via-transparent to-transparent pointer-events-none" />
+            </div>
+          )}
 
           {/* Category chip */}
           <span className="relative inline-block self-start mb-5 px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.15em] rounded-full bg-primary/10 text-primary border border-primary/20">

@@ -304,25 +304,24 @@ export function CertificationsSection() {
               transition={{ duration: 0.5, delay: index * 0.05 }}
               layout
               whileHover={{ y: -6 }}
-              className="group relative rounded-2xl p-[2px] transition-all duration-500"
+              className="group relative min-h-[18rem] rounded-xl p-px transition-transform duration-300"
               style={{
-                backgroundImage: `conic-gradient(from var(--angle, 0deg) at 50% 50%, ${theme.shadowColor}, transparent 35%, ${theme.shadowColor} 60%, transparent 85%, ${theme.shadowColor})`,
-                animation: 'spin-border 8s linear infinite',
+                backgroundImage: theme.borderGradient,
               }}
             >
               {/* Outer glow on hover */}
               <div
-                className="absolute -inset-2 rounded-2xl opacity-0 group-hover:opacity-70 blur-2xl transition-opacity duration-700 -z-10"
+                className="absolute -inset-1 rounded-xl opacity-0 group-hover:opacity-35 blur-lg transition-opacity duration-500 -z-10"
                 style={{ backgroundImage: theme.borderGradient }}
               />
               {/* Static gradient overlay */}
               <div
-                className="absolute inset-0 rounded-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+                className="absolute inset-0 rounded-xl opacity-45 group-hover:opacity-70 transition-opacity duration-500"
                 style={{ backgroundImage: theme.borderGradient }}
               />
-              <div className="relative h-full rounded-[14px] bg-card/95 backdrop-blur-md p-4 sm:p-6 overflow-hidden">
+              <div className="relative flex h-full min-h-[18rem] flex-col rounded-[11px] bg-card/95 p-4 sm:p-5 overflow-hidden">
               {/* Subtle shine on hover */}
-              <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: `radial-gradient(circle at 30% 0%, ${theme.shadowColor}, transparent 60%)` }} />
+              <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-50 transition-opacity duration-500" style={{ background: `radial-gradient(circle at 20% 0%, ${theme.shadowColor}, transparent 48%)` }} />
               <div className="absolute top-3 sm:top-4 right-3 sm:right-4 flex gap-2">
                 <span className="px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs font-medium rounded-full" style={{ backgroundColor: `hsl(var(--primary) / 0.1)`, color: `hsl(var(--primary))`, border: `1px solid hsl(var(--primary) / 0.2)` }}>
                   {cert.type[language]}
@@ -336,7 +335,7 @@ export function CertificationsSection() {
                     alt={cert.name[language]} 
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-24 sm:h-32 object-cover object-top hover:scale-105 transition-transform duration-300"
+                    className="w-full h-28 sm:h-32 object-cover object-top group-hover:scale-[1.03] transition-transform duration-500"
                   />
                 </div>
               )}
@@ -345,20 +344,20 @@ export function CertificationsSection() {
                 <div className="relative mb-3 sm:mb-4 inline-block">
                   {/* Glow halo */}
                   <div
-                    className="absolute -inset-2 rounded-2xl blur-xl opacity-50 group-hover:opacity-90 transition-opacity duration-500"
+                     className="absolute -inset-1 rounded-xl blur-md opacity-25 group-hover:opacity-45 transition-opacity duration-500"
                     style={{ backgroundImage: theme.iconGradient }}
                   />
                   {/* Icon container */}
                   <div
-                    className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500 ring-1 ring-white/20"
+                     className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center group-hover:-translate-y-0.5 transition-transform duration-300 ring-1 ring-border/70"
                     style={{
                       backgroundImage: theme.iconGradient,
-                      boxShadow: `0 10px 30px -8px ${theme.shadowColor}, inset 0 1px 0 0 rgba(255,255,255,0.25)`,
+                       boxShadow: `0 8px 20px -12px ${theme.shadowColor}`,
                     }}
                   >
                     {/* Glossy highlight */}
-                    <div className="absolute inset-x-1 top-1 h-1/3 rounded-t-xl bg-gradient-to-b from-white/30 to-transparent pointer-events-none" />
-                    <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-white relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.35)]" strokeWidth={2.4} />
+                     <div className="absolute inset-x-1 top-1 h-1/3 rounded-t-lg bg-gradient-to-b from-foreground/20 to-transparent pointer-events-none" />
+                     <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-primary-foreground relative z-10" strokeWidth={2.2} />
                   </div>
                 </div>
               )}
@@ -367,7 +366,7 @@ export function CertificationsSection() {
                 {cert.name[language]}
               </h3>
 
-              <p className="text-xs sm:text-sm text-muted-foreground/90 leading-relaxed mb-3 sm:mb-4">
+              <p className="text-xs sm:text-sm text-muted-foreground/90 leading-relaxed mb-3 sm:mb-4 flex-grow">
                 {cert.description[language]}
               </p>
               

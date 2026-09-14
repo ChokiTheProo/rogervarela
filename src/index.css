@@ -513,5 +513,9 @@
   .btn-arrow:hover [data-arrow] {
     transform: translateX(4px);
   }
+
+  #lovable-badge {
+    display: none !important;
+  }
 }
 

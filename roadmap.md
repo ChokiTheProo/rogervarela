@@ -6,3 +6,6 @@
 - [x] Adicionar capturas reais aos 7 cards de Projetos
 - [x] Criar imagens temáticas para cada card da seção de cursos
 - [x] Validar os novos cards em celular e computador
+- [x] Substituir as capas de cursos e certificações por imagens mais realistas e específicas
+- [x] Validar as novas capas em celular e computador
+- [x] Ocultar o selo Lovable da página

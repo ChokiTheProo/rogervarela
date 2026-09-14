@@ -1,6 +1,13 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ProjectCard } from './ProjectCard';
+import precoCertoCover from '@/assets/preco-certo-cover.webp';
+import llaveroCover from '@/assets/llavero-cover.webp';
+import rxOtimizacaoCover from '@/assets/rx-otimizacao-cover.webp';
+import contratoZeroCover from '@/assets/contratozero-cover.webp';
+import rovrContCover from '@/assets/rovrcont-cover.webp';
+import dentFlowCover from '@/assets/dentflow-cover.webp';
+import fluxenCover from '@/assets/fluxen-cover.webp';
 
 interface Project {
   category: string;
@@ -9,6 +16,7 @@ interface Project {
   description: string;
   stack: string[];
   href: string;
+  image: string;
 }
 
 const projects: Project[] = [
@@ -21,6 +29,7 @@ const projects: Project[] = [
       'SaaS de precificação pra autônomos. Em 6 perguntas e 2 minutos, a IA devolve o preço ideal, com faixa mínima, faixa ideal e justificativa pronta pra mandar pro cliente. Modelo híbrido: plano único, assinatura PRO e Studio sob consulta.',
     stack: ['Low-code', 'Supabase', 'Claude', 'Abacate Pay', 'Hotmart'],
     href: 'https://preco-certo-magico.lovable.app',
+    image: precoCertoCover,
   },
   {
     category: 'SaaS · Design com IA',
@@ -31,6 +40,7 @@ const projects: Project[] = [
       'O usuário conversa com a IA, descreve pra quem é o chaveiro — presente, devocional, pet, marca — e baixa o PDF em 300 DPI pronto pra imprimir. Monetização híbrida: assinatura mensal por tokens + packs avulsos que não expiram.',
     stack: ['Lovable', 'IA generativa', 'Hotmart'],
     href: 'https://llaveroai.lovable.app',
+    image: llaveroCover,
   },
   {
     category: 'Infoproduto · Gamer',
@@ -41,6 +51,7 @@ const projects: Project[] = [
       'Infoproduto pra gamer brasileiro que joga em PC mediano. Pacote com scripts e tutorial em vídeo, executa como admin e em 5 minutos o PC roda como novo. Três planos com upsell claro: Básico, Pro e Elite vitalício.',
     stack: ['Low-code', 'HTML/CSS/JS', 'ChatGPT', 'Wiapy'],
     href: 'https://rxotimizacao.lovable.app',
+    image: rxOtimizacaoCover,
   },
   {
     category: 'SaaS · Jurídico pra freelancer',
@@ -51,6 +62,7 @@ const projects: Project[] = [
       'O freelancer responde 4 perguntas, a IA monta o contrato com multa, juros e prazo já blindados, gera link e o cliente assina pelo celular com validade jurídica via ICP-Brasil. Pagamento único, acesso vitalício.',
     stack: ['Lovable', 'IA de contratos', 'ICP-Brasil'],
     href: 'https://contratozero.lovable.app',
+    image: contratoZeroCover,
   },
   {
     category: 'SaaS · Contabilidade',
@@ -61,6 +73,7 @@ const projects: Project[] = [
       'Cálculo de ICMS, DIFAL, PIS, COFINS, IRPJ, CSLL, Simples Nacional com Fator R, folha de pagamento, controle de ponto, férias, rescisão e assistente NF-e — num só lugar. Inclui assistente fiscal por IA pra dúvida em tempo real.',
     stack: ['Low-code', 'Motor fiscal', 'IA fiscal', 'Stripe', 'Mercado Pago'],
     href: 'https://rovrcont.com.br',
+    image: rovrContCover,
   },
   {
     category: 'SaaS · Gestão de Clínica',
@@ -71,6 +84,7 @@ const projects: Project[] = [
       'Dashboard, agenda por procedimento, checklist diário de esterilização, pacientes com histórico dental, caixa, prescrições e notificações — num só sistema, com permissão por perfil e suporte a três idiomas.',
     stack: ['React', 'TypeScript', 'Tailwind', 'shadcn/ui', 'Lovable Cloud'],
     href: 'https://dentflowbr.lovable.app',
+    image: dentFlowCover,
   },
   {
     category: 'SaaS · Gestão de Empréstimos',
@@ -81,6 +95,7 @@ const projects: Project[] = [
       'Cadastro de clientes, parcelas automáticas, dashboard em tempo real e controle de inadimplência num só sistema. Assinatura mensal acessível, sem taxa de adesão, com acesso em qualquer dispositivo.',
     stack: ['Lovable', 'Dashboard responsivo', 'Marca RoVR'],
     href: 'https://fluxenvenda.lovable.app/',
+    image: fluxenCover,
   },
 ];
 
@@ -142,6 +157,7 @@ export function ProjectsSection() {
                 description={project.description}
                 tags={project.stack}
                 href={project.href}
+                image={project.image}
                 ctaLabel="Ver projeto"
                 ariaLabel={`Ver projeto ${project.title}: ${project.tagline}`}
                 showLive

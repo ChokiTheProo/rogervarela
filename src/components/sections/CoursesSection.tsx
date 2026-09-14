@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { Terminal, ShoppingCart, Award, CheckCircle } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
+import windowsCommandsImage from '@/assets/course-windows-commands.webp';
 
 export function CoursesSection() {
   const { language } = useLanguage();
@@ -79,6 +80,18 @@ export function CoursesSection() {
         >
           <div className="glow-card group">
             <div className="glow-card-inner p-5 md:p-8">
+            <div className="relative -mx-5 -mt-5 md:-mx-8 md:-mt-8 mb-6 md:mb-8 aspect-[16/7] overflow-hidden border-b border-border/60 bg-muted">
+              <img
+                src={windowsCommandsImage}
+                alt={language === 'pt' ? 'Terminal do Windows e automação de tarefas' : language === 'es' ? 'Terminal de Windows y automatización de tareas' : 'Windows terminal and task automation'}
+                loading="lazy"
+                decoding="async"
+                width={1088}
+                height={608}
+                className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.025]"
+              />
+              <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-card/70 via-transparent to-transparent pointer-events-none" />
+            </div>
             {/* Background decoration */}
             <div className="absolute top-0 right-0 w-32 md:w-64 h-32 md:h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-24 md:w-48 h-24 md:h-48 bg-violet-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
@@ -107,7 +120,7 @@ export function CoursesSection() {
 
                 <p className="text-muted-foreground text-sm md:text-base mb-5 md:mb-6">
                   {language === 'pt' 
-                    ? 'Domine o terminal do Windows e aumente sua produtividade. Aprenda comandos essenciais, automação de tarefas e técnicas avanzadas.'
+                    ? 'Domine o terminal do Windows e aumente sua produtividade. Aprenda comandos essenciais, automação de tarefas e técnicas avançadas.'
                     : language === 'es'
                     ? 'Domina la terminal de Windows y aumenta tu productividad. Aprende comandos esenciales, automatización de tareas y técnicas avanzadas.'
                     : 'Master the Windows terminal and boost your productivity. Learn essential commands, task automation, and advanced techniques.'}

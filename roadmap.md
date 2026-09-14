@@ -3,6 +3,6 @@
 - [x] Verificar visualmente em desktop e celular
 - [x] Adicionar capturas reais aos cards de Landing Pages & Sites
 
-- [ ] Adicionar capturas reais aos 7 cards de Projetos
-- [ ] Criar imagens temáticas para cada card da seção de cursos
-- [ ] Validar os novos cards em celular e computador
+- [x] Adicionar capturas reais aos 7 cards de Projetos
+- [x] Criar imagens temáticas para cada card da seção de cursos
+- [x] Validar os novos cards em celular e computador

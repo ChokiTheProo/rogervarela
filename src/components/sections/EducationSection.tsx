@@ -104,7 +104,7 @@ export function EducationSection() {
                 className="relative pl-12 sm:pl-20 pb-8 sm:pb-12 last:pb-0 group"
               >
                 {/* Timeline Dot */}
-                <div className={`absolute left-0 sm:left-3 top-4 w-10 h-10 sm:w-12 sm:h-12 rounded-xl border-[3px] border-background flex items-center justify-center glow-icon ${
+                <div className={`absolute left-0 sm:left-3 top-4 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-xl border-[3px] border-background flex items-center justify-center glow-icon ${
                   edu.current ? '' : 'opacity-90'
                 }`}
                 style={edu.current ? undefined : { backgroundImage: 'linear-gradient(135deg, hsl(var(--accent) / 0.6) 0%, hsl(var(--primary) / 0.5) 100%)' }}>

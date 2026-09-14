@@ -3,6 +3,9 @@ import { useRef } from 'react';
 import { GraduationCap, Calendar, MapPin, Download } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
+import universityImage from '@/assets/education-university.webp';
+import technicalImage from '@/assets/education-technical.webp';
+import schoolImage from '@/assets/education-school.webp';
 
 const education = [
   {
@@ -12,6 +15,7 @@ const education = [
     period: '2024 - 2026',
     status: { pt: 'Em andamento', en: 'In progress', es: 'En curso' },
     current: true,
+    image: universityImage,
     description: {
       pt: 'Graduação tecnológica com foco em desenvolvimento de software, banco de dados e gestão de projetos.',
       en: 'Technology degree focused on software development, databases, and project management.',
@@ -25,6 +29,7 @@ const education = [
     period: 'Abr 2022 - Out 2023',
     status: { pt: 'Concluído', en: 'Completed', es: 'Completado' },
     current: false,
+    image: technicalImage,
     description: {
       pt: 'Formação técnica de 1000 horas com foco em desenvolvimento web, redes, sistemas operacionais e segurança da informação.',
       en: '1000-hour technical training focused on web development, networking, operating systems, and information security.',
@@ -39,6 +44,7 @@ const education = [
     period: '2017 - 2019',
     status: { pt: 'Concluído', en: 'Completed', es: 'Completado' },
     current: false,
+    image: schoolImage,
     description: {
       pt: 'Ensino médio completo com base sólida em ciências exatas e linguagens.',
       en: 'Complete high school education with a solid foundation in exact sciences and languages.',
@@ -84,10 +90,10 @@ export function EducationSection() {
           </p>
         </motion.div>
 
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <div className="relative">
             {/* Timeline Line */}
-            <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-accent via-accent/50 to-transparent" />
+            <div className="absolute left-5 sm:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-accent via-accent/50 to-transparent" />
 
             {education.map((edu, index) => (
               <motion.div
@@ -95,18 +101,20 @@ export function EducationSection() {
                 initial={{ opacity: 0, x: -30 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="relative pl-20 pb-12 last:pb-0 group"
+                className="relative pl-12 sm:pl-20 pb-8 sm:pb-12 last:pb-0 group"
               >
                 {/* Timeline Dot */}
-                <div className={`absolute left-3 top-1 w-12 h-12 rounded-2xl border-4 border-background flex items-center justify-center glow-icon ${
+                <div className={`absolute left-0 sm:left-3 top-4 w-10 h-10 sm:w-12 sm:h-12 rounded-xl border-[3px] border-background flex items-center justify-center glow-icon ${
                   edu.current ? '' : 'opacity-90'
                 }`}
                 style={edu.current ? undefined : { backgroundImage: 'linear-gradient(135deg, hsl(var(--accent) / 0.6) 0%, hsl(var(--primary) / 0.5) 100%)' }}>
-                  <GraduationCap className="w-5 h-5" strokeWidth={2.4} />
+                  <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2.4} />
                 </div>
 
                 <div className="glow-card">
-                  <div className="glow-card-inner p-6">
+                  <div className="glow-card-inner overflow-hidden">
+                  <div className="grid md:grid-cols-[minmax(0,1fr)_15rem] lg:grid-cols-[minmax(0,1fr)_18rem]">
+                  <div className="p-5 sm:p-6 md:py-7">
                   <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
                     <div>
                       <h3 className="font-heading font-semibold text-xl text-foreground">
@@ -149,6 +157,22 @@ export function EducationSection() {
                     </div>
                   )}
                   </div>
+                  <div className="relative order-first md:order-last min-h-36 sm:min-h-44 md:min-h-full overflow-hidden border-b md:border-b-0 md:border-l border-border/40">
+                    <img
+                      src={edu.image}
+                      alt=""
+                      aria-hidden="true"
+                      loading="lazy"
+                      decoding="async"
+                      width={1280}
+                      height={720}
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card/70 via-transparent to-transparent md:bg-gradient-to-r md:from-card/40 md:to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent md:inset-y-0 md:left-0 md:right-auto md:h-full md:w-px md:bg-gradient-to-b" />
+                  </div>
+                  </div>
+                </div>
                 </div>
               </motion.div>
             ))}

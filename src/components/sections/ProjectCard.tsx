@@ -87,6 +87,8 @@ export function ProjectCard({
                 alt={`Página inicial do site ${title}`}
                 loading="lazy"
                 decoding="async"
+                width={800}
+                height={500}
                 className="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
               />
               <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-card/45 via-transparent to-transparent pointer-events-none" />
